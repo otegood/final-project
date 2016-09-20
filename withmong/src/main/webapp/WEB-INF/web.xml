@@ -27,21 +27,8 @@
 		<url-pattern>/*</url-pattern>
 	</filter-mapping>
 	
-	<!-- spring MVC의 FrontController 설정 -->
-	<servlet>
-		<servlet-name>app</servlet-name>
-		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
-		<init-param>
-			<param-name>contextConfigLocation</param-name>
-			<param-value>WEB-INF/spring/servlet-blog-context.xml</param-value>
-		</init-param>
-		<load-on-startup>1</load-on-startup>
-	</servlet>
+
 	
-	<servlet-mapping>
-		<servlet-name>app</servlet-name>
-		<url-pattern>*.do</url-pattern>
-	</servlet-mapping>
 	
 	
 </web-app>
