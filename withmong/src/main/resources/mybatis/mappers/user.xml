@@ -1,0 +1,22 @@
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.withmong.dao.UserDao">
+	
+	<insert id="insertUser" parameterType="User">
+		insert into user_table
+		(id, password, name, birth, email, phone, gender, schoolAbility, question, answer, point, grade, img, sumLike, delCheck)
+		values
+		(#{id}, #{password}, #{name}, #{birth}, #{email}, #{phone}, #{gender}, #{schoolAbility}, #{question}, #{answer}, 0, 'B', #{img}, #{sumLike}, 'N')
+	</insert>
+	
+	<select id="getUserById" parameterType="string" resultType="User">
+		select
+			id, password, name, birth, email, phone, gender, schoolAbility, question, answer, point, grade, img, sumLike, delCheck
+		from
+			user_table
+		where
+			id = #{value}
+	</select>
+</mapper>
