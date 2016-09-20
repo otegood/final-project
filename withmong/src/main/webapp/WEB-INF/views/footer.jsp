@@ -5,58 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
-
-<style type="text/css">
-	.container {margin-top: 20px;}
-	img.pro-img {width: 200px; height: 200px;}
-	img.aa {width: 80px; height: 80px;}
-	
-	.ex-company {
-	color: white;
-	top: 0; left: 0;
-	border;
-	}
-	
-	strong{
-	color: red;
-	top: 0; left: 0;
-	}
-	
-	#logo{
-	width: 156px; 
-	height: 150px;
-	padding-top: 0px;
-	padding-bottom: 100px;
-	
-	}
-	
-	.footer { 
-	bottom : 0;
-	width: 100%;
-	height: 50px;
-	}
-	
-	.carousel-inner > .item > img,
- 	.carousel-inner > .item > a > img {
-      width: 70%;
-      margin: auto;
-      height: 145px;
-  }
-  
-  #myCarousel {
-  width: 70%;
-  margin-left: 150px;		
-  }
-
-  #foot-alpabet {
-  color : white;
-  }	
-
-</style>
 <title>Insert title here</title>
 </head>
 <body>
@@ -113,8 +62,9 @@
 				            
 						</div>
 							
-					</div>	
+						</div>	
+					</div>
 				</nav>
-			</div>
+			</div>		
 </body>
 </html>
