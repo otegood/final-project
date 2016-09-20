@@ -15,5 +15,19 @@
 		<property name="suffix" value=".jsp"></property>
 	</bean>
 	
+	<!-- interceptor -->
+	<mvc:interceptors>
+		<mvc:interceptor>
+			<mvc:mapping path="/*.do"/>
+			<mvc:exclude-mapping path="/temp.do"/>
+					
+			<bean class="com.withmong.web.interceptor.LoginCheckInterceptor"></bean>
+		</mvc:interceptor>
+	</mvc:interceptors>
 	
+	<mvc:annotation-driven> <!-- spring mvc -->
+		<mvc:argument-resolvers>
+			<bean class="com.withmong.web.argumentResolver.LoginUserHandlerMethodArgumentResolver"></bean>
+		</mvc:argument-resolvers>
+	</mvc:annotation-driven>
 </beans>
