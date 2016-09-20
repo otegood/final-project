@@ -42,8 +42,10 @@
 	}
 	
 	#logo {
-	width: 150px;
+	width: 156px;
 	height: 75px;
+	padding-bottom: 0px;
+	
 	}
 
 </style>
