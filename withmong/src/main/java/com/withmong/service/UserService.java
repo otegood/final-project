@@ -1,5 +1,5 @@
 package com.withmong.service;
 
-public class UserService {
+public interface UserService {
 
 }
