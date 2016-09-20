@@ -161,6 +161,9 @@
 		</div>				
 					
 </div>
-	<%@ include file="../footer.jsp" %>
+	
 </body>
+<footer>
+	<%@ include file="../footer.jsp" %>
+</footer>
 </html>
