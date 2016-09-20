@@ -47,7 +47,7 @@
 </head>
 <body>
 	<%@ include file="../header.jsp" %>
-<div class="container">
+<div class="container" style="margin-top: 150px;">
 	<h1>회원 가입</h1>
 		<div class="well">
 			<form role="form" method="post" action="register.do">

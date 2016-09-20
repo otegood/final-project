@@ -49,18 +49,22 @@
 </style>
 <title>Insert title here</title>
 </head>
-<body>
+<header>
 	<%@ include file="header.jsp" %>
+</header>
+<body>
 	
-		<div class="container">
+		<div class="container" style="margin-top: 150px;">
 		
 					<!-- 내용 기입 -->
 					
 		</div>
 		
 	
-	<%@ include file="footer.jsp" %>	
 </body>
+<footer>
+	<%@ include file="footer.jsp" %>	
+</footer>
 </html>
 
 
