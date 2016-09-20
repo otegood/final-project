@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -9,141 +9,102 @@
 <title>Insert title here</title>
 </head>
 <body>
-<div class="header">
 	<nav class="navbar navbar-inverse">
-		<div class="container">
-			<div id="head">
-				<div class="row">
-					<div class="col-sm-2">
-						<div class="navbar-header">
-				   			<a class="navbar-brand" href="main.do"><img id="logo" src="resources/icon/1.jpg"></a>
-				 		</div>
-					</div>
-					<div class="col-sm-8" style="padding-dop: 20px;">
-						<div class="search-controller">
-							<form method="get" action="#">
-								<div class="col-sm-9" style="padding-left: 0px;">
-			                 	    <div class="search item">
-				                 	    <input class="form-control" type="text" id="search" name="bsearch" autocomplete="off"  onkeyup=""   value="" placeholder="검색" valign="left" />
-			                 	    </div>
-								</div>
-								<div class="col-sm-3">
-									<div class="search input">
-									      <button class="glyphicon glyphicon-zoom-in btn btn-primary">검색</button> 
-									</div>
-								</div>
-		        			</form>
-						</div>
-					</div>
-					<div class="nav navbar-nav navbar-topright">
-						<ul>
-				 		<c:choose>
-				 			<c:when test="${empty LOGIN_USER }">
-					   			<li class="${current_page eq 'login' ? 'active' : '' }"><a href="login.do"><span class="glyphicon glyphicon-log-in"></span> 로그인</a></li>
-					   			<li class="${current_page eq 'register' ? 'active' : '' }"><a href="register.do"><span class="glyphicon glyphicon-user"></span> 회원가입</a></li>
-				 			</c:when>
-				 			<c:otherwise>
-				 				<li><a href="#"><span class="glyphicon glyphicon-log-out"></span> 로그아웃</a></li>
-				 			</c:otherwise>
-				 		</c:choose>
-				 		</ul>
-					</div>
-					<div class="col-sm-2"></div>
-					<div class="row">
-						<div class="container">
- 
-						<div class="category">
-							<ul>
-								<div class="col-sm-2">
-										<div class="dropdown">
-										    <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">공지사항
-										    <span class="caret"></span></button>
-										    <ul class="dropdown-menu">
-										      <li><a href="#">공지사항</a></li>
-										      <li class="divider"></li>
-										      <li><a href="#">요청게시판</a></li>
-										      <li class="divider"></li>
-										      <li><a href="#">QnA</a></li>
-										      <li class="divider"></li>
-										    </ul>
-									  </div>
-									<!--  <li class="${current_page eq 'main' ? 'active' : '' }"><a href="#">공지사항</a></li>
-									--> 				
-								</div>
-								<div class="col-sm-2">
-									<div class="dropdown">
-										    <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">교육
-										    <span class="caret"></span></button>
-										    <ul class="dropdown-menu">
-										      <li><a href="#">언어</a></li>
-										      <li class="divider"></li>
-										      <li><a href="#">수학</a></li>
-										      <li class="divider"></li>
-										      <li><a href="#">예체능</a></li>
-										      <li class="divider"></li>
-										      <li><a href="#">프로그램</a></li>
-										    </ul>
-									  </div>
-						   			<!--  <li class="${current_page eq 'blog' ? 'active' : '' }"><a href="#">교육</a></li>
-						   			-->
-								</div>
-								<div class="col-sm-2">
-									<div class="dropdown">
-										    <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">취미
-										    <span class="caret"></span></button>
-										    <ul class="dropdown-menu">
-										      <li><a href="#">게임</a></li>
-										      <li class="divider"></li>
-										      <li><a href="#">스터디</a></li>
-										      <li class="divider"></li>
-										      <li><a href="#">요리</a></li>
-										      <li class="divider"></li>
-										      <li><a href="#">여행</a></li>
-										      <li class="divider"></li>
-										      <li><a href="#">운동</a></li>
-										    </ul>
-									  </div>
-						   			<!--  <li class="${current_page eq 'blog' ? 'active' : '' }"><a href="#">취미</a></li>
-						   			-->
-								</div>
-								<div class="col-sm-2">
-									<div class="dropdown">
-										    <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">대행
-										    <span class="caret"></span></button>
-										    <ul class="dropdown-menu">
-										      <li><a href="#">게임</a></li>
-										      <li class="divider"></li>
-										      <li><a href="#">스터디</a></li>
-										      <li class="divider"></li>
-										      <li><a href="#">요리</a></li>
-										      <li class="divider"></li>
-										      <li><a href="#">여행</a></li>
-										      <li class="divider"></li>
-										      <li><a href="#">운동</a></li>
-										    </ul>
-									  </div>
-						   			<!--  <li class="${current_page eq 'blog' ? 'active' : '' }"><a href="#">대행</a></li>
-						   			-->
-								</div>
-								<div class="col-sm-2">
-									<div class="dropdown">
-										    <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">Others
-										    <span class="caret"></span></button>
-										    <ul class="dropdown-menu">
-										      <li><a href="#">상담</a></li>
-										    </ul>
-									  </div>
-						   			<!-- <li class="${current_page eq 'blog' ? 'active' : '' }"><a href="#">Others</a></li>
-						   			 -->
-								</div>
-					 		</ul>
-						</div>
-					</div>
-				</div>
-			</div>
-			<!-- hedaer? -->	
-		</div>
-	</nav>
-</div>		
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+   
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="row">
+    	<div class="col-sm-2">
+    		 <div class="navbar-header">
+      			<a class="navbar-brand" href="#"><img id="logo" src="">로고</a>
+    		 </div>
+    	</div>
+    	
+    	<div class="col-sm-10">
+    	
+    	 <div style="height: 40px;">
+    		<form class="navbar-form navbar-left" action="#" style="margin-left: 200px;">
+		         <input type="text" class="form-control" placeholder="검색">
+		       <button type="submit" class="btn btn-default">검색</button>
+		     </form>
+	      <ul class="nav navbar-nav navbar-right" style="margin-top: 10px;">
+	        <c:choose>
+	 			<c:when test="${empty LOGIN_USER }">
+		   			<span class="${current_page eq 'register' ? 'active' : '' }"><a href="register.do"><span class="glyphicon glyphicon-user"></span> 회원가입</a></span>
+		   			<span class="${current_page eq 'login' ? 'active' : '' }"><a href="login.do"><span class="glyphicon glyphicon-log-in"></span> 로그인</a></span>
+	 			</c:when>
+	 			<c:otherwise>
+	 				<span><a href="#"><span class="glyphicon glyphicon-log-out"></span> 로그아웃</a></span>
+	 			</c:otherwise>
+	 		</c:choose>
+	      </ul>
+    	 </div>
+    	 <br />
+    	 <div>
+    	 	<ul class="nav navbar-nav" style="width: 100%;">
+         <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" style="width: 180px;">공지사항<span class="caret"></span></a>
+          <ul class="dropdown-menu">
+              <li><a href="#">공지사항</a></li>
+		      <li class="divider"></li>
+		      <li><a href="#">요청게시판</a></li>
+		      <li class="divider"></li>
+		      <li><a href="#">QnA</a></li>
+		      <li class="divider"></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" style="width: 180px;">교육 <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+              <li><a href="#">언어</a></li>
+		      <li class="divider"></li>
+		      <li><a href="#">수학</a></li>
+		      <li class="divider"></li>
+		      <li><a href="#">예체능</a></li>
+		      <li class="divider"></li>
+		      <li><a href="#">프로그램</a></li>
+          </ul>
+        </li>
+         <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" style="width: 180px;">취미 <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+              <li><a href="#">게임</a></li>
+		      <li class="divider"></li>
+		      <li><a href="#">스터디</a></li>
+		      <li class="divider"></li>
+		      <li><a href="#">요리</a></li>
+		      <li class="divider"></li>
+		      <li><a href="#">여행</a></li>
+		      <li class="divider"></li>
+		      <li><a href="#">운동</a></li>
+          </ul>
+        </li>
+         <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" style="width: 180px;">대행서비스 <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="#">마케팅</a></li>
+	      <li class="divider"></li>
+	      <li><a href="#">번역</a></li>
+	      <li class="divider"></li>
+	      <li><a href="#">문서작업</a></li>
+	      <li class="divider"></li>
+	      <li><a href="#">대필</a></li>
+          </ul>
+        </li>
+         <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" style="width: 180px;">Other <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="#">상담</a></li>
+          </ul>
+        </li>
+      </ul>
+    	 </div>
+    	 
+    	</div>
+    </div>
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1"> </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
 </body>
 </html>

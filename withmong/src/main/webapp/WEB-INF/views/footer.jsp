@@ -9,7 +9,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<div class="footer" style="margin-top: 20px;">
+	<div class="footer">
 			<nav class="navbar navbar-inverse" style="margin-bottom: 0px;">
 				<div class="container">
 						<div class="foot-top">
@@ -47,10 +47,10 @@
 				           	</div>
 				           	<div class="col-sm-5" id="foot-alpabet">
 				           		 <p>회사명: 위드몽 (주)   대표자: 최지웅 &nbsp; 정보처리책임자: 이응수 <br>
-									주소: 서울특별시&nbsp; 종로구&nbsp; 봉익동&nbsp; 디아망&nbsp; 빌딩&nbsp;(401, 402호)</br>
-									통신판매업신고: 2016-서울금천-8282 호</br>
-									사업자번호: 123-45-6789<br>
-									이메일: apple@email.com <br>
+									주소: 서울특별시&nbsp; 종로구&nbsp; 봉익동&nbsp; 디아망&nbsp; 빌딩&nbsp;(401, 402호)<br />
+									통신판매업신고: 2016-서울금천-8282 호<br />
+									사업자번호: 123-45-6789<br/>
+									이메일: apple@email.com <br />
 									대표전화: 1544-8282,  09:00 ~ 18:00,  주말 · 공휴일 휴무<br>
 									</p>
 				           	</div>
