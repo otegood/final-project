@@ -9,7 +9,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-<<<<<<< HEAD
 	<nav class="navbar navbar-inverse" style="margin-bottom: 0px;">
 		<div class="container">
 			<div class="foot-top">
@@ -20,7 +19,7 @@
 								<li id="" class="home"><a href="#">홈</a></li>
 								<li id="explain" class="menu"><a href="#">이용안내</a></li>
 							</ul>
-=======
+
 	<div class="footer">
 			<nav class="navbar navbar-inverse" style="margin-bottom: 0px;">
 				<div class="container">
@@ -72,7 +71,6 @@
 				           	</div>
 				           </div> 
 				            
->>>>>>> branch 'master' of https://github.com/otegood/final-project.git
 						</div>
 					</div>
 					<div class="col-sm-3">
