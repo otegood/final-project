@@ -8,6 +8,8 @@ public class User {
 	private String password;
 	private String name;
 	private Date birth;
+	private String email;
+	private String phone;
 	private String gender;
 	private String schoolAbility;
 	private String question;
@@ -43,6 +45,18 @@ public class User {
 	}
 	public void setBirth(Date birth) {
 		this.birth = birth;
+	}
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	public String getPhone() {
+		return phone;
+	}
+	public void setPhone(String phone) {
+		this.phone = phone;
 	}
 	public String getGender() {
 		return gender;
