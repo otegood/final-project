@@ -10,6 +10,7 @@
 </head>
 <body>
 	<div class="footer">
+	
 			<nav class="navbar navbar-inverse" style="margin-bottom: 0px;">
 				<div class="container">
 						<div class="foot-top">
