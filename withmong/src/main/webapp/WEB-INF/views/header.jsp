@@ -36,9 +36,7 @@
 	 			</c:when>
 	 			<c:otherwise>
 	 				<span><a href="#"><span class="glyphicon glyphicon-log-out"></span> 로그아웃</a></span>
-	 				<c:when test="${empty LOGIN_ADMIN }">
-	 					<%@ inclued file="admin.jsp" %>
-	 				</c:when>
+	 				
 	 			</c:otherwise>
 	 		</c:choose>
 	      </ul>
