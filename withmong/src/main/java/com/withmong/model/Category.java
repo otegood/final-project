@@ -32,6 +32,11 @@ public class Category {
 	public void setbNo(int bNo) {
 		this.bNo = bNo;
 	}
+
+	@Override
+	public String toString() {
+		return "Category [no=" + no + ", name=" + name + ", bNo=" + bNo + "]";
+	}
 	
 	
 }

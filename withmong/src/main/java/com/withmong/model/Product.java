@@ -133,6 +133,14 @@ public class Product {
 	public void setCategoryNo(Category categoryNo) {
 		this.categoryNo = categoryNo;
 	}
+
+	@Override
+	public String toString() {
+		return "Product [no=" + no + ", title=" + title + ", userId=" + userId + ", img=" + img + ", video=" + video
+				+ ", contents=" + contents + ", price=" + price + ", qty=" + qty + ", regDate=" + regDate + ", avglike="
+				+ avglike + ", hits=" + hits + ", tag=" + tag + ", locationNo=" + locationNo + ", categoryNo="
+				+ categoryNo + "]";
+	}
 	
 	
 	
