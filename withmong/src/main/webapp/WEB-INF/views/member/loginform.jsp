@@ -50,7 +50,7 @@
 	<%@ include file="../header.jsp" %>
 	
 	<!-- 로그인 창 -->		
-	<div class="container">
+	<div class="container" style="margin-top: 150px;">
 		<h1>로그인 폼</h1>
 		<div class="well">
 			<c:if test="${param.error eq 'req' }">
