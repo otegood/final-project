@@ -1,20 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
-<c:set var="current_page" value="main"/>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
 <meta charset="UTF-8">
-<link rel = "stylesheet" type="text/css" href="resources/bootstrap/css/bootstrap.css">
-<script type="text/javascript" src="resources/jquery/jquery.js"></script>
-
-<link rel="stylesheet" type="text/css" 
-      href="../resources/bootstrap/css/bootstrap.css" >
-<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-<script src="http://code.jquery.com/jquery-latest.min.js"></script>
-<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-<script src="http://googledrive.com/host/0B-QKv6rUoIcGeHd6VV9JczlHUjg"></script><!-- holder.js link -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <style type="text/css">
 	.container {margin-top: 20px;}
 	img.pro-img {width: 200px; height: 200px;}
@@ -176,7 +171,13 @@
 						   			-->
 								</div>
 								<div class="col-sm-2">
-									
+									<div class="dropdown">
+										    <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">Others
+										    <span class="caret"></span></button>
+										    <ul class="dropdown-menu">
+										      <li><a href="#">상담</a></li>
+										    </ul>
+									  </div>
 						   			<!-- <li class="${current_page eq 'blog' ? 'active' : '' }"><a href="#">Others</a></li>
 						   			 -->
 								</div>
