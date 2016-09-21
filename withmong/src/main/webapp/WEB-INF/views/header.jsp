@@ -31,7 +31,7 @@
 	      <ul class="nav navbar-nav navbar-right" style="margin-top: 10px;">
 	        <c:choose>
 	 			<c:when test="${empty LOGIN_USER }">
-		   			<span class="${current_page eq 'register' ? 'active' : '' }"><a href="register.do"><span class="glyphicon glyphicon-user"></span> 회원가입</a></span>
+		   			<span class="${current_page eq 'register' ? 'active' : '' }"><a href="agree.do"><span class="glyphicon glyphicon-user"></span> 회원가입</a></span>
 		   			<span class="${current_page eq 'login' ? 'active' : '' }"><a href="login.do"><span class="glyphicon glyphicon-log-in"></span> 로그인</a></span>
 	 			</c:when>
 	 			<c:otherwise>
