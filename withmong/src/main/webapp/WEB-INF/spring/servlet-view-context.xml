@@ -25,6 +25,7 @@
 			<mvc:exclude-mapping path="/agree.do"/>
 			<mvc:exclude-mapping path="/messagelist.do"/>
 			
+			
 			<bean class="com.withmong.web.interceptor.LoginCheckInterceptor"></bean>
 		</mvc:interceptor>
 	</mvc:interceptors>
