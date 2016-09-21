@@ -16,7 +16,7 @@
 						<li><a href="login.do"><span class="glyphicon glyphicon-log-out"></span> 로그인</a></li>
 					</ul>
 					<ul class="nav navbar-nav navbar-right">
-						<li><a href="#"><span class="glyphicon glyphicon-log-out"></span> 회원가입</a></li>
+						<li><a href="regist.do"><span class="glyphicon glyphicon-log-out"></span> 회원가입</a></li>
 					</ul>
 				</c:when>
 				<c:otherwise>
