@@ -41,6 +41,11 @@ public class UserController {
 		return "error/error";
 	}
 	
+	@RequestMapping("/main.do")
+	public String main(){
+		return "main";
+	}
+	
 	@RequestMapping("/temp.do")
 	public String temp(){
 		return "temp";

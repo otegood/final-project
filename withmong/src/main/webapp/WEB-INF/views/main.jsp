@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<c:set var="current_page" value="regsuceess"/>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<c:set var="current_page" value="main" /> 
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -27,46 +27,48 @@
 	top: 0; left: 0;
 	}
 	
-	.footer { 
-	position: absolute;	
-	bottom : 0;
-	width: 100%;
-	height: 50px;
-	}
 	
-	.navbar-form navbar-left {
-	text-align: center;
+	.input-group {
+	position: absolute;
+    width: 70%;
+    left: 0;
+    text-align: center;
+    margin: auto;
 	}
 	
 	#foot-alpabet {
 	color: white; 
 	}
 	
-	#logo {
+	.navbar-brand {
 	width: 156px;
 	height: 75px;
 	padding-bottom: 0px;
+	}
+	
+	.foot-menu {
+	background-color: black;
+	position: absolute;
+	bottom: 0;
+	width: 100%;
 	}
 
 </style>
 <title>Insert title here</title>
 </head>
 <header>
-	<%@ include file="../header.jsp" %>
+	<%@ include file="header.jsp" %>
 </header>
 <body>
 	
 		<div class="container" style="margin-top: 150px;">
 		
-					<h1>회원 가입이 완료되었습니다.</h1>
-					<a href="../main.do">홈으로</a>
-					
+					메인페이지 입니다.~
 		</div>
-		
 	
 </body>
 <footer>
-	<%@ include file="../footer.jsp" %>	
+	<%@ include file="footer.jsp" %>	
 </footer>
 </html>
 
