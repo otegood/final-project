@@ -16,23 +16,37 @@
 	</bean>
 	
 	<!-- interceptor -->
+	<!-- 
 	<mvc:interceptors>
 		<mvc:interceptor>
 			<mvc:mapping path="/*.do"/>
 			<mvc:exclude-mapping path="/temp.do"/>
 			<mvc:exclude-mapping path="/register.do"/>
 			<mvc:exclude-mapping path="/login.do"/>
+			<mvc:exclude-mapping path="/detail.do"/>
+			
 			<mvc:exclude-mapping path="/agree.do"/>
+
+
+					
+
 			<mvc:exclude-mapping path="/messagelist.do"/>
 			
+<<<<<<< HEAD
 			
+=======
+
+>>>>>>> branch 'master' of https://github.com/otegood/final-project.git
 			<bean class="com.withmong.web.interceptor.LoginCheckInterceptor"></bean>
 		</mvc:interceptor>
 	</mvc:interceptors>
-	
-	<mvc:annotation-driven> <!-- spring mvc -->
+	-->
+	<!-- spring mvc -->
+	<!--  
+	<mvc:annotation-driven> 
 		<mvc:argument-resolvers>
 			<bean class="com.withmong.web.argumentResolver.LoginUserHandlerMethodArgumentResolver"></bean>
 		</mvc:argument-resolvers>
 	</mvc:annotation-driven>
+	-->
 </beans>
