@@ -61,10 +61,8 @@
 	height: 100%;
 	
 	}
-	.footer {
-	height: auto;
-	width: 100%;
-	margin-top: 150px;
+	#footer {
+	
 	background-color: black;
 	}
 
@@ -78,13 +76,15 @@
 <body>
 	
 		<div class="container" style="margin-top: 150px;">
-		
+			<div class="row">
 					<!-- 내용 기입 -->
 					
+					
+			</div>
+			<%@ include file="footer.jsp" %>	
 		</div>
 		
 	
-	<%@ include file="footer.jsp" %>	
 </body>
 <footer>
 </footer>
