@@ -1,0 +1,19 @@
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.withmong.dao.MessageDao">
+	
+	<insert id="insertMessage" parameterType="Message">
+		
+	</insert>
+	
+	<select id="getMessageByReceiver" parameterType="string" resultType="User">
+		
+	</select>
+	
+	<select id="getMessages" resultType="Message">
+	
+	</select>
+	
+</mapper>

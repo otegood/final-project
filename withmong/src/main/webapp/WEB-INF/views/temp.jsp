@@ -60,9 +60,7 @@
 		<div class="container" style="margin-top: 150px;">
 		
 					<!-- 내용 기입 -->
-					
 		</div>
-		
 	
 </body>
 <footer>
