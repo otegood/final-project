@@ -15,6 +15,9 @@
 	img.pro-img {width: 200px; height: 200px;}
 	img.aa {width: 80px; height: 80px;}
 	
+	header {
+	background-color: black;
+	}
 
 	.ex-company {
 	color: white;
@@ -23,15 +26,8 @@
 	}
 	
 	strong {
-	color: red;
+	color: yellow;
 	top: 0; left: 0;
-	}
-	
-	.footer { 
-	position: absolute;	
-	bottom : 0;
-	width: 100%;
-	height: 50px;
 	}
 	
 	.navbar-form navbar-left {
@@ -46,6 +42,29 @@
 	width: 156px;
 	height: 75px;
 	padding-bottom: 0px;
+	}
+	
+	.wrap {
+	height: auto;
+	min-height: 100%;
+	position: relative;
+	padding-bottom: 180px; /* footer height */
+	}
+	
+	body {
+	height: 100%;
+	margin: 0;
+	padding: 0;
+	
+	}
+	
+	.container {
+	height: 100%;
+	
+	}
+	#footer {
+	
+	background-color: black;
 	}
 
 </style>
@@ -70,12 +89,17 @@
 					<tr>
 						<td>
 							<a class="btn btn-warning" role="button" data-toggle="collapse" href="#${message.sender }" aria-expanded="false" aria-controls="collapseExample">
-							<c:out value="${message.sender }"/>님의 대화방</a>
+							<c:out value="${message.sender }"/>님과 대화내용</a>
 							<div class="collapse" id="${message.sender }">
 								<div class="well">
 									<c:forEach var="by" items="${onebyoneList}">
 										<c:if test="${by.sender eq message.sender or by.receiver eq message.sender }">
-											<div>
+											<c:if test="${by.sender eq message.sender }">
+												<div class="alert alert-info"  role="alert" style="width: 300px; height: auto;">
+											</c:if>											
+											<c:if test="${by.receiver eq message.sender }">
+												<div class="alert alert-warning"  role="alert"  style="width: 300px; height: auto;">
+											</c:if>
 												${by.sender } <br/>
 												${by.contents } <br/>
 												<fmt:formatDate value="${by.senddate }" pattern="yyyy.MM.dd EEEE hh:mm:ss"/><br/>
