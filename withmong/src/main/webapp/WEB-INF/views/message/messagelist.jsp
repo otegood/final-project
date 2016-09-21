@@ -55,20 +55,35 @@
 </header>
 <body>
 	<div class="container" style="margin-top: 150px;">
-		<h1>메세지 보관소</h1>
+		<h1>1:1 대화방</h1>
 		
 		<div class="panel panel-boby">
 			<table class="table">
 				<thead>
 					<tr>
-						<th>보낸이</th>
+						<th>대화방</th>
 					</tr>
 				</thead>
 				<tbody>
 				<c:forEach var="message" items="${messageList }">
 					<tr>
-						<td><a href=""><c:out value="${message.sender }"/>님 과의 대화</a></td>
-					</tr>	
+						<td>
+							<a class="btn btn-warning" role="button" data-toggle="collapse" href="#${message.sender }" aria-expanded="false" aria-controls="collapseExample">
+							<c:out value="${message.sender }"/>님의 대화방</a>
+							<div class="collapse" id="${message.sender }">
+								<div class="well">
+									<c:forEach var="by" items="${onebyoneList}">
+										<c:if test="${by.sender eq message.sender or by.receiver eq message.sender }">
+											<div>
+												${by.sender } <br/>
+												${by.contents } <br/>
+											</div>
+										</c:if>
+									</c:forEach>
+								</div>
+							</div>
+						</td>
+					</tr>
 				</c:forEach>
 				</tbody>
 			</table>

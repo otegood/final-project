@@ -6,7 +6,7 @@ public class Message {
 	
 	private int no;
 	private String contents;
-	private Date regdate;
+	private Date senddate;
 	private String readCheck;
 	private String sender;
 	private String receiver;
@@ -26,10 +26,10 @@ public class Message {
 		this.contents = contents;
 	}
 	public Date getRegdate() {
-		return regdate;
+		return senddate;
 	}
-	public void setRegdate(Date regdate) {
-		this.regdate = regdate;
+	public void setSenddate(Date senddate) {
+		this.senddate = senddate;
 	}
 	public String getReadCheck() {
 		return readCheck;
@@ -52,7 +52,7 @@ public class Message {
 
 	@Override
 	public String toString() {
-		return "Message [no=" + no + ", contents=" + contents + ", regdate=" + regdate + ", readCheck=" + readCheck
+		return "Message [no=" + no + ", contents=" + contents + ", senddate=" + senddate + ", readCheck=" + readCheck
 				+ ", sender=" + sender + ", receiver=" + receiver + "]";
 	}
 	
