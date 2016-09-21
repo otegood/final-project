@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -51,19 +51,45 @@
 <title>Insert title here</title>
 </head>
 <header>
-	<%@ include file="header.jsp" %>
+	<%@ include file="../header.jsp" %>
 </header>
 <body>
-	
-		<div class="container" style="margin-top: 150px;">
+	<div class="container" style="margin-top: 150px;">
+		<h1>메세지 보관소</h1>
 		
-					<!-- 내용 기입 -->
+		<div class="panel panel-boby">
+			<table class="table">
+				<thead>
+					<tr>
+						<th>번호</th>
+						<th>제목</th>
+						<th>작성자</th>
+						<th>등록일</th>
+					</tr>
+				</thead>
+				<tbody>
+				<%--
+				<c:forEach var="blog" items="${blogList }">
+					<c:url var="detailURL" value="detail.do">
+						<c:param name="no" value="${blog.no}" />
+						<c:param name="opt" value="${param.opt }" />
+						<c:param name="keyword" value="${param.keyword }" />
+					</c:url>
+					<tr>
+						<td>${blog.no }</td>
+						<td><a href="${detailURL }"><c:out value="${blog.title }"/></a></td>
+						<td>${blog.writer.name }</td>
+						<td><fmt:formatDate value="${blog.regdate }" pattern="yyyy.MM.dd EEEE"/></td>
+					</tr>	
+				</c:forEach>
+				 --%>
+				</tbody>
+			</table>
 		</div>
-	
+		
+	</div>
+	<%@ include file="../footer.jsp" %>	
 </body>
-<footer>
-	<%@ include file="footer.jsp" %>	
-</footer>
 </html>
 
 
