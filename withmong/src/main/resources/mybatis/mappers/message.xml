@@ -8,12 +8,17 @@
 		
 	</insert>
 	
-	<select id="getMessageByReceiver" parameterType="string" resultType="User">
+	<select id="getMessageByReceiver" parameterType="string" resultType="Message">
 		
 	</select>
 	
 	<select id="getMessages" resultType="Message">
-	
+		select 
+			distinct sender
+		from
+			message_table
+		where
+			receiver = 'park'
 	</select>
 	
 </mapper>

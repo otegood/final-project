@@ -8,8 +8,8 @@ public class Message {
 	private String contents;
 	private Date regdate;
 	private String readCheck;
-	private User sender;
-	private User receiver;
+	private String sender;
+	private String receiver;
 	
 	public Message() {}
 	
@@ -37,16 +37,16 @@ public class Message {
 	public void setReadCheck(String readCheck) {
 		this.readCheck = readCheck;
 	}
-	public User getSender() {
+	public String getSender() {
 		return sender;
 	}
-	public void setSender(User sender) {
+	public void setSender(String sender) {
 		this.sender = sender;
 	}
-	public User getReceiver() {
+	public String getReceiver() {
 		return receiver;
 	}
-	public void setReceiver(User receiver) {
+	public void setReceiver(String receiver) {
 		this.receiver = receiver;
 	}
 
