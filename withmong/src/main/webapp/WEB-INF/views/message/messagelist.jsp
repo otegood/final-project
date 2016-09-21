@@ -61,10 +61,9 @@
 			<table class="table">
 				<thead>
 					<tr>
-						<th>번호</th>
-						<th>제목</th>
-						<th>작성자</th>
-						<th>등록일</th>
+						<th>보낸이</th>
+						<th>내용</th>
+						<th>받은날짜</th>
 					</tr>
 				</thead>
 				<tbody>
