@@ -44,6 +44,10 @@
 	height: 75px;
 	padding-bottom: 0px;
 	}
+	
+	.foot-menu {
+	background-color: black;
+	}
 
 </style>
 <title>Insert title here</title>
