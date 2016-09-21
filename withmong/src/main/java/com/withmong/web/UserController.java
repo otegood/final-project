@@ -30,6 +30,15 @@ public class UserController {
 		return "temp";
 	}
 	
+	@RequestMapping(value="/agree.do", method=RequestMethod.GET)
+	public String agreementform() {
+		return "member/agreement";
+	}
+	@RequestMapping(value="/agree.do", method=RequestMethod.POST)
+	public String agreement() {
+		return "redirect:/register.do";
+	}
+	
 	@RequestMapping(value="/register.do", method=RequestMethod.GET)
 	public String registerform() {
 		return "member/registerform";

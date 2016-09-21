@@ -43,6 +43,36 @@
 	}
 
 </style>
+<script type="text/javascript">
+$(function() {
+	$("form").submit(function() {
+		if(!$.trim($(":input[name='mbid']").val())) {
+			alert("아이디는 필수 입력값입니다.");
+		}
+		if(!$.trim($(":input[name='mbpwd']").val())) {
+			alert("비밀번호는 필수 입력값입니다.");
+		}
+		if(!$.trim($(":input[name='mbpwdck']").val())) {
+			alert("비밀번호 확인을 위해 비밀번호를 한번더 입력해 주시기 바랍니다.");
+		}
+		if(!$.trim($(":input[name='mbname']").val())) {
+			alert("이름은 필수 입력값입니다.");
+		}
+		if(!$.trim($(":input[name='mbbirth']").val())) {
+			alert("생년월일은 필수 입력값입니다.");
+		}
+		if(!$.trim($(":input[name='email']").val())) {
+			alert("이메일은 필수 입력값입니다.");
+		}
+		if(!$.trim($(":input[name='mbphone2']").val())) {
+			alert("전화번호는 필수 입력값입니다.");
+		}
+		if(!$.trim($(":input[name='mbphone3']").val())) {
+			alert("전화번호는 필수 입력값입니다.");
+		}
+	});
+});
+</script>
 <title>WithMong</title>
 </head>
 <body>
@@ -51,45 +81,45 @@
 	<h1>회원 가입</h1>
 		<div class="well">
 			<form role="form" method="post" action="register.do">
-				<div class="panel-body"> 
-					<div class="panel-group row">
+				<div class="form-group"> 
+					<div class="form-group row">
 						<label class="col-sm-3 text-right">아이디</label>
 						<div class="col-sm-9">
 							<input type="text" name="mbid" id="mb_id" style="ime-mode:inactive"/> 
 							<button type="button" class="btn btn-xs" onclick="mbidcheck()">중복확인</button>
 						</div>
 					</div>
-					<div class="panel-group row">
+					<div class="form-group row">
 						<label class="col-sm-3 text-right">비밀번호</label>
 						<div class="col-sm-9">
 							<input type="password" name="mbpwd" id="mb_pwd"/>
 						</div>
 					</div>
-					<div class="panel-group row">
+					<div class="form-group row">
 						<label class="col-sm-3 text-right">비밀번호 확인</label>
 						<div class="col-sm-9">
 							<input type="password" name="mbpwdck"  id="mb_pwd_ck"/>
 						</div>
 					</div>
-					<div class="panel-group row">
+					<div class="form-group row">
 						<label class="col-sm-3 text-right">이름</label>
 						<div class="col-sm-9">
 							<input type="text" name="mbname"/>
 						</div>
 					</div>
-					<div class="panel-group row">
+					<div class="form-group row">
 						<label class="col-sm-3 text-right">생년월일</label>
 						<div class="col-sm-9">
 							<input type="date" name="mbbirth"/>
 						</div>
 					</div>
-					<div class="panel-group row">
+					<div class="form-group row">
 						<label class="col-sm-3 text-right">이메일</label>
 						<div class="col-sm-9">
 							<input type="text" name="email">
 						</div>
 					</div>
-					<div class="panel-group row">
+					<div class="form-group row">
 						<label class="col-sm-3 text-right">핸드폰번호</label> 
 						<div class="col-sm-9">
 							<select name="mbphone1" id="mbp1">
@@ -105,14 +135,14 @@
 							<button type="button" class="btn btn-xs" onclick="mbphonecheck()">중복확인</button>
 						</div>
 					</div>
-					<div class="panel-group row">
+					<div class="form-group row">
 						<label class="col-sm-3 text-right">성별</label>
 						<div class="col-sm-9">
 							<input type="radio" name="mbgender" value="M" checked="checked"/> 남성
 							<input type="radio" name="mbgender" value="F"/> 여성
 						</div>
 					</div>
-					<div class="panel-group row">
+					<div class="form-group row">
 						<label class="col-sm-3 text-right">학력</label>
 						<div class="col-sm-9">
 							<input type="text" name="univ">
@@ -128,7 +158,7 @@
 							</select>
 						</div> 
 					</div>
-					<div class="panel-group row">
+					<div class="form-group row">
 						<label class="col-sm-3 text-right">가입시 질문</label>
 						<div class="col-sm-9">
 							<select name="mbquestion">
@@ -140,7 +170,7 @@
 							</select>
 						</div> 
 					</div>
-					<div class="panel-group row">
+					<div class="form-group row">
 						<label class="col-sm-3 text-right">답변</label>
 						<div class="col-sm-9">
 							<input type="text" name="mbanswer"/>
@@ -163,7 +193,4 @@
 </div>
 	
 </body>
-<footer>
-	<%@ include file="../footer.jsp" %>
-</footer>
 </html>
