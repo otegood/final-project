@@ -25,7 +25,7 @@ public class Message {
 	public void setContents(String contents) {
 		this.contents = contents;
 	}
-	public Date getRegdate() {
+	public Date getSenddate() {
 		return senddate;
 	}
 	public void setSenddate(Date senddate) {
