@@ -57,8 +57,11 @@
 </header>
 <body>
 	
-		<div class="container" style="margin-top: 150px;">
+<div class="container" style="margin-top: 150px;">
 		<!-- 이용/개인정보 약관 동의 폼 -->
+	<h2>회원 가입</h2>
+	
+	<br/>
 	<h4>이용 약관 동의</h4>
  		<form name="check">
  		 <div>
@@ -177,11 +180,11 @@
 시행일자 : 2016년 9월 22일
 		</textarea>
 	</div>
-	<p>위의 약관의 내용에 모두 동의하십니까? </p>
-	<input type="checkbox" name="agree" id="checkAgree" value="이용약관"class="inputCheckbox" />동의함
-</div>
+	<p style="font-weight: bold">위의 약관의 내용에 모두 동의하십니까?</p>
+	<input type="checkbox" name="agree" id="checkAgree" value="이용약관"class="inputCheckbox">동의함
+</div><br/>
 
-<h4>개인정보 사용 약관 동의</h4>
+<h4 style="font-weight: bolder">개인정보 사용 약관 동의</h4>
 	<div class="agreeArea">
 		<div class="agreeIndex2">
 			<textarea name="memo" style="width:100%;height:250px;border:1 solid #333333;overflow:visible;text-overflow:ellipsis;">
@@ -210,8 +213,8 @@
 		<br/>
 		
 		<div class="text-center">
-			<a href="register.do" class="btn btn-primary" name="agreebtn">약관에 동의합니다.</a>
-			<a href="main.do" class="btn btn-danger" name="disagreebtn">약관에 동의하지 않습니다.</a>
+			<a href="register.do" class="btn btn-primary" id="agreebtn">약관에 동의합니다.</a>
+			<a href="main.do" class="btn btn-danger" id="disagreebtn">약관에 동의하지 않습니다.</a>
  	 	</div>
  	 </div>
 	</form>	
