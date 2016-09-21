@@ -26,22 +26,20 @@
 	top: 0; left: 0;
 	}
 	
-	.footer { 
-	position: absolute;	
-	bottom : 0;
-	width: 100%;
-	height: 50px;
-	}
 	
-	.navbar-form navbar-left {
-	text-align: center;
+	.input-group {
+	position: absolute;
+    width: 70%;
+    left: 0;
+    text-align: center;
+    margin: auto;
 	}
 	
 	#foot-alpabet {
 	color: white; 
 	}
 	
-	#logo {
+	.navbar-brand {
 	width: 156px;
 	height: 75px;
 	padding-bottom: 0px;
