@@ -4,14 +4,6 @@
 
 <mapper namespace="com.withmong.dao.MessageDao">
 	
-	<insert id="insertMessage" parameterType="Message">
-		
-	</insert>
-	
-	<select id="getMessageByReceiver" parameterType="string" resultType="Message">
-		
-	</select>
-	
 	<select id="getMessages" resultType="Message">
 		select 
 			distinct sender
@@ -19,6 +11,23 @@
 			message_table
 		where
 			receiver = 'park'
+	</select>
+	
+	<select id="getOnebyone" resultType="Message">
+		select
+			sender,
+			receiver,
+			contents,
+			senddate,
+			readcheck as readCheck
+		from
+			message_table
+		where
+			sender ='park'
+		or
+			receiver = 'park'
+		order by
+			senddate asc
 	</select>
 	
 </mapper>

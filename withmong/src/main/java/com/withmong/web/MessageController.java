@@ -27,7 +27,9 @@ public class MessageController {
 	public String messagelist(Model model) {
 		
 		List<Message> messageList = messageService.getAllMessages();  
+		List<Message> onebyoneList = messageService.getOnebyone();
 		model.addAttribute("messageList", messageList);
+		model.addAttribute("onebyoneList", onebyoneList);
 		return "message/messagelist";
 	}
 }
