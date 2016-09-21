@@ -12,10 +12,13 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
   <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <style type="text/css">
-	.container {margin-top: 20px;}
+	
 	img.pro-img {width: 200px; height: 200px;}
 	img.aa {width: 80px; height: 80px;}
 	
+	header {
+	background-color: black;
+	}
 
 	.ex-company {
 	color: white;
@@ -24,25 +27,48 @@
 	}
 	
 	strong {
-	color: red;
+	color: yellow;
 	top: 0; left: 0;
 	}
 	
-	#logo{
-	width: 156px; 
-	height: 150px;
-	padding-top: 0px;
-	padding-bottom: 100px;
+	.navbar-form navbar-left {
+	text-align: center;
+	}
+	
+	#foot-alpabet {
+	color: white; 
+	}
+	
+	#logo {
+	width: 156px;
+	height: 75px;
+	padding-bottom: 0px;
+	}
+	
+	.wrap {
+	height: auto;
+	min-height: 100%;
+	position: relative;
+	padding-bottom: 180px; /* footer height */
+	}
+	
+	body {
+	height: 100%;
+	margin: 0;
+	padding: 0;
 	
 	}
 	
-	.footer { 
-	position: absolute;	
-	bottom : 0;
+	.container {
+	height: 100%;
+	
+	}
+	.footer {
+	height: auto;
 	width: 100%;
-	height: 50px;
+	margin-top: 150px;
+	background-color: black;
 	}
-
 </style>
 <title>WithMong</title>
 </head>

@@ -14,6 +14,9 @@
 	img.pro-img {width: 200px; height: 200px;}
 	img.aa {width: 80px; height: 80px;}
 	
+	header {
+	background-color: black;
+	}
 
 	.ex-company {
 	color: white;
@@ -22,39 +25,53 @@
 	}
 	
 	strong {
-	color: red;
+	color: yellow;
 	top: 0; left: 0;
 	}
 	
-	
-	.input-group {
-	position: absolute;
-    width: 70%;
-    left: 0;
-    text-align: center;
-    margin: auto;
+	.navbar-form navbar-left {
+	text-align: center;
 	}
 	
 	#foot-alpabet {
 	color: white; 
 	}
 	
-	.navbar-brand {
+	#logo {
 	width: 156px;
 	height: 75px;
 	padding-bottom: 0px;
 	}
 	
-	.foot-menu {
-	background-color: black;
-	position: absolute;
-	bottom: 0;
+	.wrap {
+	height: auto;
+	min-height: 100%;
+	position: relative;
+	padding-bottom: 180px; /* footer height */
+	}
+	
+	body {
+	height: 100%;
+	margin: 0;
+	padding: 0;
+	
+	}
+	
+	.container {
+	height: 100%;
+	
+	}
+	.footer {
+	height: auto;
 	width: 100%;
+	margin-top: 150px;
+	background-color: black;
 	}
 
 </style>
 <title>Insert title here</title>
 </head>
+<div class="wrap">
 <header>
 	<%@ include file="header.jsp" %>
 </header>
@@ -63,12 +80,15 @@
 		<div class="container" style="margin-top: 150px;">
 		
 					<!-- 내용 기입 -->
+					
 		</div>
+		
 	
+	<%@ include file="footer.jsp" %>	
 </body>
 <footer>
-	<%@ include file="footer.jsp" %>	
 </footer>
+</div>
 </html>
 
 
