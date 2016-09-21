@@ -47,6 +47,9 @@
 	
 	.foot-menu {
 	background-color: black;
+	position: absolute;
+	bottom: 0;
+	width: 100%;
 	}
 
 </style>
