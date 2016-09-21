@@ -25,5 +25,10 @@ public class MessageServiceImpl implements MessageService{
 		List<Message> onebyoneList = messageDao.getOnebyone();
 		return onebyoneList;
 	}
+
+	@Override
+	public void addFirstMessage(Message message) {
+		messageDao.firstMessage(message);		
+	}
 	
 }

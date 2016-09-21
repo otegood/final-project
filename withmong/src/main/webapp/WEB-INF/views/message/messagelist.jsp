@@ -78,6 +78,9 @@
 		<h1>1:1 대화방</h1>
 		
 		<div class="panel panel-boby">
+			<div style="text-align: right">			
+				<a href="firstmessage.do" class="btn btn-danger">쪽지보내기</a>
+			</div>
 			<table class="table">
 				<thead>
 					<tr>

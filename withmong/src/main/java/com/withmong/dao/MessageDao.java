@@ -12,5 +12,8 @@ public interface MessageDao {
 	
 	// 1:1메세지
 	List<Message> getOnebyone();
+	
+	// 첫 쪽지 보내기
+	void firstMessage(Message message);
 		
 }
