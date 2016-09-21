@@ -16,6 +16,7 @@
 	</bean>
 	
 	<!-- interceptor -->
+	<!-- 
 	<mvc:interceptors>
 		<mvc:interceptor>
 			<mvc:mapping path="/*.do"/>
@@ -35,10 +36,13 @@
 			<bean class="com.withmong.web.interceptor.LoginCheckInterceptor"></bean>
 		</mvc:interceptor>
 	</mvc:interceptors>
-	
-	<mvc:annotation-driven> <!-- spring mvc -->
+	-->
+	<!-- spring mvc -->
+	<!--  
+	<mvc:annotation-driven> 
 		<mvc:argument-resolvers>
 			<bean class="com.withmong.web.argumentResolver.LoginUserHandlerMethodArgumentResolver"></bean>
 		</mvc:argument-resolvers>
 	</mvc:annotation-driven>
+	-->
 </beans>
