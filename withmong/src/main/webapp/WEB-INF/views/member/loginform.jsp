@@ -72,8 +72,10 @@
 </style>
 <title>WithMong</title>
 </head>
-<body>
+<header>
 	<%@ include file="../header.jsp" %>
+</header>
+<body>
 	
 	<!-- 로그인 창 -->		
 	<div class="container" style="margin-top: 150px;">
