@@ -10,7 +10,7 @@
 </head>
 <body>
 	<div class="footer">
-			<nav class="navbar navbar-inverse" style="margin-bottom: 0px;">
+			<div class="foot-menu" >
 				<div class="container">
 						<div class="foot-top">
 						 <div class="row">
@@ -64,7 +64,7 @@
 							
 						</div>	
 					</div>
-				</nav>
+				</div>
 			</div>		
 </body>
 </html>
