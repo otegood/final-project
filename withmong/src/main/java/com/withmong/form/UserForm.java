@@ -7,16 +7,19 @@ public class UserForm {
 	
 	private String id;
 	private String password;
+	private String passwordCk;
 	private String name;
 	private Date birth;
 	private String email;
-	private String phone;
+	private String phone1;
+	private String phone2;
+	private String phone3;
 	private String gender;
-	private String schoolAbility;
+	private String schoolAbility1;
+	private String schoolAbility2;
+	private String schoolAbility3;
 	private String question;
 	private String answer;
-	private int point;
-	private String img;
 	
 	public UserForm() {}
 	
@@ -31,6 +34,12 @@ public class UserForm {
 	}
 	public void setPassword(String password) {
 		this.password = password;
+	}
+	public String getPasswordCk() {
+		return passwordCk;
+	}
+	public void setPasswordCk(String passwordCk) {
+		this.passwordCk = passwordCk;
 	}
 	public String getName() {
 		return name;
@@ -50,24 +59,62 @@ public class UserForm {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	public String getPhone() {
-		return phone;
+	
+	public String getPhone1() {
+		return phone1;
 	}
-	public void setPhone(String phone) {
-		this.phone = phone;
+
+	public void setPhone1(String phone1) {
+		this.phone1 = phone1;
 	}
+
+	public String getPhone2() {
+		return phone2;
+	}
+
+	public void setPhone2(String phone2) {
+		this.phone2 = phone2;
+	}
+
+	public String getPhone3() {
+		return phone3;
+	}
+
+	public void setPhone3(String phone3) {
+		this.phone3 = phone3;
+	}
+
 	public String getGender() {
 		return gender;
 	}
 	public void setGender(String gender) {
 		this.gender = gender;
 	}
-	public String getSchoolAbility() {
-		return schoolAbility;
+	
+	public String getSchoolAbility1() {
+		return schoolAbility1;
 	}
-	public void setSchoolAbility(String schoolAbility) {
-		this.schoolAbility = schoolAbility;
+
+	public void setSchoolAbility1(String schoolAbility1) {
+		this.schoolAbility1 = schoolAbility1;
 	}
+
+	public String getSchoolAbility2() {
+		return schoolAbility2;
+	}
+
+	public void setSchoolAbility2(String schoolAbility2) {
+		this.schoolAbility2 = schoolAbility2;
+	}
+
+	public String getSchoolAbility3() {
+		return schoolAbility3;
+	}
+
+	public void setSchoolAbility3(String schoolAbility3) {
+		this.schoolAbility3 = schoolAbility3;
+	}
+
 	public String getQuestion() {
 		return question;
 	}
@@ -80,24 +127,18 @@ public class UserForm {
 	public void setAnswer(String answer) {
 		this.answer = answer;
 	}
-	public int getPoint() {
-		return point;
-	}
-	public void setPoint(int point) {
-		this.point = point;
-	}
-	public String getImg() {
-		return img;
-	}
-	public void setImg(String img) {
-		this.img = img;
-	}
+
 	@Override
 	public String toString() {
-		return "UserForm [id=" + id + ", password=" + password + ", name=" + name + ", birth=" + birth + ", email="
-				+ email + ", phone=" + phone + ", gender=" + gender + ", schoolAbility=" + schoolAbility + ", question="
-				+ question + ", answer=" + answer + ", point=" + point + ", img=" + img + "]";
+		return "UserForm [id=" + id + ", password=" + password + ", passwordCk=" + passwordCk + ", name=" + name
+				+ ", birth=" + birth + ", email=" + email + ", phone1=" + phone1 + ", phone2=" + phone2 + ", phone3="
+				+ phone3 + ", gender=" + gender + ", schoolAbility1=" + schoolAbility1 + ", schoolAbility2="
+				+ schoolAbility2 + ", schoolAbility3=" + schoolAbility3 + ", question=" + question + ", answer="
+				+ answer + "]";
 	}
+
+
+
 	
 	
 }

@@ -50,7 +50,7 @@
 	<%@ include file="../header.jsp" %>
 		
 	<!-- Error -->
-	<div class="container">
+	<div class="container" style="margin-top: 150px;">
 		<h1>에러페이지</h1>
 		<div class="alert alert-danger">
 			<strong>에러!</strong> <%=exception.getMessage() %>

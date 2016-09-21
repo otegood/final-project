@@ -11,7 +11,7 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
   <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <style type="text/css">
-	.container {margin-top: 20px;}
+	
 	img.pro-img {width: 200px; height: 200px;}
 	img.aa {width: 80px; height: 80px;}
 	
@@ -27,50 +27,92 @@
 	top: 0; left: 0;
 	}
 	
-	#logo{
-	width: 156px; 
-	height: 150px;
-	padding-top: 0px;
-	padding-bottom: 100px;
 	
+	.input-group {
+	position: absolute;
+    width: 70%;
+    left: 0;
+    text-align: center;
+    margin: auto;
 	}
 	
-	.footer { 
-	position: absolute;	
-	bottom : 0;
+	#foot-alpabet {
+	color: white; 
+	}
+	
+	.navbar-brand {
+	width: 156px;
+	height: 75px;
+	padding-bottom: 0px;
+	}
+	
+	.foot-menu {
+	background-color: black;
+	position: absolute;
+	bottom: 0;
 	width: 100%;
-	height: 50px;
 	}
 
 </style>
 <script type="text/javascript">
 $(function() {
 	$("form").submit(function() {
-		if(!$.trim($(":input[name='mbid']").val())) {
+		if(!$.trim($(":input[name='id']").val())) {
 			alert("아이디는 필수 입력값입니다.");
+			return false;
 		}
-		if(!$.trim($(":input[name='mbpwd']").val())) {
+		if(!$.trim($(":input[name='password']").val())) {
 			alert("비밀번호는 필수 입력값입니다.");
+			return false;
 		}
-		if(!$.trim($(":input[name='mbpwdck']").val())) {
+		if(!$.trim($(":input[name='passwordCk']").val())) {
 			alert("비밀번호 확인을 위해 비밀번호를 한번더 입력해 주시기 바랍니다.");
+			return false;
 		}
-		if(!$.trim($(":input[name='mbname']").val())) {
+		if(!$.trim($(":input[name='name']").val())) {
 			alert("이름은 필수 입력값입니다.");
+			return false;
 		}
-		if(!$.trim($(":input[name='mbbirth']").val())) {
+		if(!$.trim($(":input[name='birth']").val())) {
 			alert("생년월일은 필수 입력값입니다.");
+			return false;
 		}
 		if(!$.trim($(":input[name='email']").val())) {
 			alert("이메일은 필수 입력값입니다.");
+			return false;
 		}
-		if(!$.trim($(":input[name='mbphone2']").val())) {
+		if(!$.trim($(":input[name='phone2']").val())) {
 			alert("전화번호는 필수 입력값입니다.");
+			return false;
 		}
-		if(!$.trim($(":input[name='mbphone3']").val())) {
+		if(!$.trim($(":input[name='phone3']").val())) {
 			alert("전화번호는 필수 입력값입니다.");
+			return false;
 		}
+		if(!$.trim($(":input[name='schoolAbility1']").val())) {
+			alert("학력는 필수 입력값입니다.");
+			return false;
+		}
+		if(!$.trim($(":input[name='answer']").val())) {
+			alert("답변은 필수 입력값입니다.");
+			return false;
+		}
+		
+		if($(":input[name='password']").val() != $(":input[name='passwordCk']").val()){
+			alert("비밀번호가 일치하지 않습니다.")
+			return false;
+		}
+		return true;
 	});
+	
+	// 전화번호 입력란 합치기
+	
+	// 학력 입력란 합치기
+	
+	// 아이디, 전화번호 중복확인 하는거 만들기
+	
+	// 이미지파일올린 이름그대로 저장하는방법
+	
 });
 </script>
 <title>WithMong</title>
@@ -80,49 +122,49 @@ $(function() {
 <div class="container" style="margin-top: 150px;">
 	<h1>회원 가입</h1>
 		<div class="well">
-			<form role="form" method="post" action="register.do">
+			<form role="form" method="post" action="register.do" enctype="multipart/form-data">
 				<div class="form-group"> 
 					<div class="form-group row">
 						<label class="col-sm-3 text-right">아이디</label>
 						<div class="col-sm-9">
-							<input type="text" name="mbid" id="mb_id" style="ime-mode:inactive"/> 
-							<button type="button" class="btn btn-xs" onclick="mbidcheck()">중복확인</button>
+							<input type="text" name="id" id="id" style="ime-mode:inactive" placeholder="입력해주세요"/> 
+							<button type="button" class="btn btn-xs" >중복확인</button>
 						</div>
 					</div>
 					<div class="form-group row">
 						<label class="col-sm-3 text-right">비밀번호</label>
 						<div class="col-sm-9">
-							<input type="password" name="mbpwd" id="mb_pwd"/>
+							<input type="password" name="password" id="password" placeholder="입력해주세요"/>
 						</div>
 					</div>
 					<div class="form-group row">
 						<label class="col-sm-3 text-right">비밀번호 확인</label>
 						<div class="col-sm-9">
-							<input type="password" name="mbpwdck"  id="mb_pwd_ck"/>
+							<input type="password" name="passwordCk"  id="passwordCk" placeholder="입력해주세요"/>
 						</div>
 					</div>
 					<div class="form-group row">
 						<label class="col-sm-3 text-right">이름</label>
 						<div class="col-sm-9">
-							<input type="text" name="mbname"/>
+							<input type="text" name="name" placeholder="입력해주세요"/>
 						</div>
 					</div>
 					<div class="form-group row">
 						<label class="col-sm-3 text-right">생년월일</label>
 						<div class="col-sm-9">
-							<input type="date" name="mbbirth"/>
+							<input type="date" name="birth"/>
 						</div>
 					</div>
 					<div class="form-group row">
 						<label class="col-sm-3 text-right">이메일</label>
 						<div class="col-sm-9">
-							<input type="text" name="email">
+							<input type="text" name="email" placeholder="입력해주세요"/>
 						</div>
 					</div>
 					<div class="form-group row">
 						<label class="col-sm-3 text-right">핸드폰번호</label> 
 						<div class="col-sm-9">
-							<select name="mbphone1" id="mbp1">
+							<select name="phone1" id="phone1">
 								<option value="010" selected="selected">010</option>
 								<option value="011">011</option>
 								<option value="016">016</option>
@@ -130,60 +172,60 @@ $(function() {
 								<option value="017">017</option>
 							</select> - 
 							
-							<input type="text" name="mbphone2" id="mbp2" min="1" maxlength="4" size="6" style="ime-mode:disabled"/> - 
-							<input type="text" name="mbphone3" id="mbp3" min="1" maxlength="4" size="6" style='ime-mode:disabled;'/>
-							<button type="button" class="btn btn-xs" onclick="mbphonecheck()">중복확인</button>
+							<input type="text" name="phone2" id="phone2" min="1" maxlength="4" size="6" style="ime-mode:disabled"/> - 
+							<input type="text" name="phone3" id="phone3" min="1" maxlength="4" size="6" style='ime-mode:disabled;'/>
+							<button type="button" class="btn btn-xs">중복확인</button>
 						</div>
 					</div>
 					<div class="form-group row">
 						<label class="col-sm-3 text-right">성별</label>
 						<div class="col-sm-9">
-							<input type="radio" name="mbgender" value="M" checked="checked"/> 남성
-							<input type="radio" name="mbgender" value="F"/> 여성
+							<input type="radio" name="gender" value="M" checked="checked"/> 남성
+							<input type="radio" name="gender" value="F"/> 여성
 						</div>
 					</div>
 					<div class="form-group row">
 						<label class="col-sm-3 text-right">학력</label>
 						<div class="col-sm-9">
-							<input type="text" name="univ">
-							<select name="mbquestion">
-								<option value="1" selected="selected">고등학교</option>
-								<option value="2">대학교</option>
-								<option value="3">대학원</option>
+							<input type="text" name="schoolAbility1" size="5"/>
+							<select name="schoolAbility2">
+								<option value="고등학교" selected="selected">고등학교</option>
+								<option value="대학교">대학교</option>
+								<option value="대학원">대학원</option>
 							</select>
-							<select name="mbquestion">
-								<option value="1" selected="selected">재학</option>
-								<option value="2">졸업</option>
-								<option value="3">중퇴</option>
+							<select name="schoolAbility3">
+								<option value="재학" selected="selected">재학</option>
+								<option value="졸업">졸업</option>
+								<option value="중퇴">중퇴</option>
 							</select>
 						</div> 
 					</div>
 					<div class="form-group row">
 						<label class="col-sm-3 text-right">가입시 질문</label>
 						<div class="col-sm-9">
-							<select name="mbquestion">
-								<option value="1" selected="selected">내 고향은?</option>
-								<option value="2">내 어릴적 별명은?</option>
-								<option value="3">내가 졸업한 초등학교 이름은?</option>
-								<option value="4">내가 존경하는 사람은?</option>
-								<option value="5">내가 가고싶은 나라는?</option>
+							<select name="question">
+								<option value="내 고향은?" selected="selected">내 고향은?</option>
+								<option value="내 어릴적 별명은?">내 어릴적 별명은?</option>
+								<option value="내가 졸업한 초등학교 이름은?">내가 졸업한 초등학교 이름은?</option>
+								<option value="내가 존경하는 사람은?">내가 존경하는 사람은?</option>
+								<option value="내가 가고싶은 나라는?">내가 가고싶은 나라는?</option>
 							</select>
 						</div> 
 					</div>
 					<div class="form-group row">
 						<label class="col-sm-3 text-right">답변</label>
 						<div class="col-sm-9">
-							<input type="text" name="mbanswer"/>
+							<input type="text" name="answer" placeholder="입력해주세요"/>
 						</div>
 					</div>
 					<div class="form-group">
 						<label class="col-sm-3 text-right">프로필사진</label>
 						<div class="col-sm-9">
-							<input type="file" name="poster" id="poster">
+							<input type="file" name="img" id="img">
 					</div>
 					<div class="form-group text-right">
 						<input type="submit" class="btn btn-primary" value="가입" />
-						<a href="main.do" class="btn btn-default">취소</a>
+						<a href="temp.do" class="btn btn-default">취소</a>
 					</div>
 				</div>
 			</div>
@@ -193,4 +235,7 @@ $(function() {
 </div>
 	
 </body>
+<footer>
+	<%@ include file="../footer.jsp" %>	
+</footer>
 </html>

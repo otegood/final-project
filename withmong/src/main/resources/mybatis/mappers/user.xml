@@ -8,7 +8,7 @@
 		insert into user_table
 		(id, password, name, birth, email, phone, gender, schoolAbility, question, answer, point, grade, img, sumLike, delCheck)
 		values
-		(#{id}, #{password}, #{name}, #{birth}, #{email}, #{phone}, #{gender}, #{schoolAbility}, #{question}, #{answer}, 0, 'B', #{img}, #{sumLike}, 'N')
+		(#{id}, #{password}, #{name}, #{birth}, #{email}, #{phone}, #{gender}, #{schoolAbility}, #{question}, #{answer}, 0, 'B', #{img}, 0, 'N')
 	</insert>
 	
 	<select id="getUserById" parameterType="string" resultType="User">

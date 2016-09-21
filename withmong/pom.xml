@@ -65,7 +65,15 @@
 			<groupId>javax.servlet</groupId>
 			<artifactId>jstl</artifactId>
 		</dependency>
-
+	
+	<!-- 
+		첨부파일 업로드 지원라이브러리 commons-fileupload 
+	 -->
+		<dependency>
+		    <groupId>commons-fileupload</groupId>
+		    <artifactId>commons-fileupload</artifactId>
+		    <version>1.3.2</version>
+		</dependency>
 	
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
