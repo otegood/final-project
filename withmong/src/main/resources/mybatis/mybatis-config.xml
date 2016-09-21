@@ -8,10 +8,12 @@
   <!-- 별칭 -->
   <typeAliases>
   	<typeAlias type="com.withmong.model.User" alias="User"/>
+  	<typeAlias type="com.withmong.model.Message" alias="Message"/>
   </typeAliases>
   
   <mappers>
     <mapper resource="mybatis/mappers/user.xml"/>
+    <mapper resource="mybatis/mappers/message.xml"/>
   </mappers>
   
 </configuration>

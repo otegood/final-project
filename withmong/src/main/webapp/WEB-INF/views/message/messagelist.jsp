@@ -62,26 +62,14 @@
 				<thead>
 					<tr>
 						<th>보낸이</th>
-						<th>내용</th>
-						<th>받은날짜</th>
 					</tr>
 				</thead>
 				<tbody>
-				<%--
-				<c:forEach var="blog" items="${blogList }">
-					<c:url var="detailURL" value="detail.do">
-						<c:param name="no" value="${blog.no}" />
-						<c:param name="opt" value="${param.opt }" />
-						<c:param name="keyword" value="${param.keyword }" />
-					</c:url>
+				<c:forEach var="message" items="${messageList }">
 					<tr>
-						<td>${blog.no }</td>
-						<td><a href="${detailURL }"><c:out value="${blog.title }"/></a></td>
-						<td>${blog.writer.name }</td>
-						<td><fmt:formatDate value="${blog.regdate }" pattern="yyyy.MM.dd EEEE"/></td>
+						<td><a href=""><c:out value="${message.sender }"/>님 과의 대화</a></td>
 					</tr>	
 				</c:forEach>
-				 --%>
 				</tbody>
 			</table>
 		</div>
