@@ -16,13 +16,13 @@
 	img.aa {width: 80px; height: 80px;}
 	
 	header {
-	background-color: black;
+		background-color: black;
 	}
 
 	.ex-company {
-	color: white;
-	top: 0; left: 0;
-	border;
+		color: white;
+		top: 0; left: 0;
+		border;
 	}
 	
 	strong {
@@ -31,51 +31,33 @@
 	}
 	
 	.navbar-form navbar-left {
-	text-align: center;
+		text-align: center;
 	}
 	
 	#foot-alpabet {
-	color: white; 
+		color: white; 
 	}
 	
 	#logo {
-	width: 156px;
-	height: 75px;
-	padding-bottom: 0px;
+		width: 156px;
+		height: 75px;
+		padding-bottom: 0px;
 	}
-	
-	.wrap {
-	height: auto;
-	min-height: 100%;
-	position: relative;
-	padding-bottom: 180px; /* footer height */
-	}
-	
-	body {
-	height: 100%;
-	margin: 0;
-	padding: 0;
-	
-	}
-	
-	.container {
-	height: 100%;
-	
-	}
+
 	#footer {
-	
-	background-color: black;
+		padding: 10px;
+		background-color: black;
 	}
 
 </style>
 <title>Insert title here</title>
 </head>
-<header>
-	<%@ include file="../header.jsp" %>
-</header>
 <body>
-	<div class="container" style="margin-top: 150px;">
-		<h1>1:1 대화방</h1>
+		<header><%@ include file="../header.jsp" %></header>
+	
+		<div class="container" >
+			<div class="row">
+				<h1>1:1 대화방</h1>
 		
 		<div class="panel panel-boby">
 			<div style="text-align: right">			
@@ -110,7 +92,17 @@
 										</c:if>
 									</c:forEach>
 									<div>
-										<input type="text">
+										<form role="form" method="post" action="firstmessage.do">
+											<table>
+												<tr>
+													<td>
+														<input type="text" name="receiver" id="receiver" value="${message.sender }" hidden="hidden">	
+														<textarea rows="4" cols="27" style="resize:none;" placeholder="입력해주세요" name="contents"></textarea>
+													</td>
+													<td><input type="submit" class="btn btn-info" style="height: 60pt;margin-left: 25px;" value="보내기"></td>
+												<tr>
+											</table>
+										</form>
 									</div>
 								</div>
 							</div>
@@ -120,10 +112,16 @@
 				</tbody>
 			</table>
 		</div>
-	<%@ include file="../footer.jsp" %>	
-	</div>
+			</div>
+		</div>
+		
+		<%@ include file="../footer.jsp" %>	
 </body>
 </html>
+
+
+
+
 
 
 
