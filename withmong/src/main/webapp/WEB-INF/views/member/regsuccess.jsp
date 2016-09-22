@@ -1,7 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <c:set var="current_page" value="regsuceess"/>
+
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -15,61 +17,56 @@
 	img.pro-img {width: 200px; height: 200px;}
 	img.aa {width: 80px; height: 80px;}
 	
+	header {
+		background-color: black;
+	}
 
 	.ex-company {
-	color: white;
-	top: 0; left: 0;
-	border;
+		color: white;
+		top: 0; left: 0;
+		border;
 	}
 	
 	strong {
-	color: red;
+	color: yellow;
 	top: 0; left: 0;
 	}
 	
-	.footer { 
-	position: absolute;	
-	bottom : 0;
-	width: 100%;
-	height: 50px;
-	}
-	
 	.navbar-form navbar-left {
-	text-align: center;
+		text-align: center;
 	}
 	
 	#foot-alpabet {
-	color: white; 
+		color: white; 
 	}
 	
 	#logo {
-	width: 156px;
-	height: 75px;
-	padding-bottom: 0px;
+		width: 156px;
+		height: 75px;
+		padding-bottom: 0px;
+	}
+
+	#footer {
+		padding: 10px;
+		background-color: black;
 	}
 
 </style>
 <title>Insert title here</title>
 </head>
-<header>
-	<%@ include file="../header.jsp" %>
-</header>
 <body>
+		<header><%@ include file="../header.jsp" %></header>
 	
-		<div class="container" style="margin-top: 150px;">
-		
+		<div class="container" >
+			<div class="row">
+				
 					<h1>회원 가입이 완료되었습니다.</h1>
 					<a href="../main.do">홈으로</a>
 					
+			</div>
 		</div>
 		
-	
+		<%@ include file="../footer.jsp" %>	
 </body>
-<footer>
-	<%@ include file="../footer.jsp" %>	
-</footer>
 </html>
-
-
-
 

@@ -1,13 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <c:set var="current_page" value="register"/>
+
 <!DOCTYPE html>
 <html lang="ko">
 <head>
 <meta charset="UTF-8">
-
 <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
@@ -17,46 +17,45 @@
 	img.pro-img {width: 200px; height: 200px;}
 	img.aa {width: 80px; height: 80px;}
 	
+	header {
+		background-color: black;
+	}
 
 	.ex-company {
-	color: white;
-	top: 0; left: 0;
-	border;
+		color: white;
+		top: 0; left: 0;
+		border;
 	}
 	
 	strong {
-	color: red;
+	color: yellow;
 	top: 0; left: 0;
 	}
 	
-	
-	.input-group {
-	position: absolute;
-    width: 70%;
-    left: 0;
-    text-align: center;
-    margin: auto;
+	.navbar-form navbar-left {
+		text-align: center;
 	}
 	
 	#foot-alpabet {
-	color: white; 
+		color: white; 
 	}
 	
-	.navbar-brand {
-	width: 156px;
-	height: 75px;
-	padding-bottom: 0px;
+	#logo {
+		width: 156px;
+		height: 75px;
+		padding-bottom: 0px;
 	}
-	
-	.foot-menu {
-	background-color: black;
-	position: absolute;
-	bottom: 0;
-	width: 100%;
+
+	#footer {
+		padding: 10px;
+		background-color: black;
 	}
 
 </style>
 <script type="text/javascript">
+var idnotoverlap = false;
+var phonenotoverlap = false;
+
 $(function() {
 	$("form").submit(function() {
 		if(!$.trim($(":input[name='id']").val())) {
@@ -104,30 +103,48 @@ $(function() {
 			alert("비밀번호가 일치하지 않습니다.")
 			return false;
 		}
+		// 버튼을 체크 안했을때 안내문구 
+		if(idnotoverlap == false){
+			alert("아이디 중복체크를 해주세요.")
+			return false;
+		}
+		
+		if(phonenotoverlap == false){
+			alert("전화번호 중복체크를 해주세요.")
+			return false;
+		}
 		return true;
 	});
 	
 	// 아이디 중복확인 하는거 만들기
 	$("#idCheck").click(function (){
-
+		console.log($("#idCheck").size());
 		var inputedId = $("#id").val();
+		if (inputedId == "") {
+			
+			return false;
+		}
+		
 		$.ajax({
 			url:"../idcheck.do",
 			data:{id:inputedId},
 			dataType:"json",
 			success: function(data) {
+		
+				//2. 이 부분 조건 빈칸일때
 				if(data.size == 1){
 					$("#checkid").text("'"+$("#id").val()+"'은 사용 중인 아이디 입니다.").css({'color':'red'});
 					$("#id").val("");
+					idnotoverlap = false;
 				} else {
 					$("#checkid").text("사용 가능한 아이디 입니다.").css({'color':'blue'});
+					idnotoverlap = true;
 				}
 			}
 		});
+		
+		
 	});
-	
-
-	
 	
 	// 전화번호 중복확인 하는거 만들기
 	$("#phoneCheck").click(function (){
@@ -144,23 +161,35 @@ $(function() {
 					$("#checkphone").text("작성하신 전화번호는 사용 중인 번호 입니다.").css({'color':'red'});
 					$("#phone2").val("");
 					$("#phone3").val("");
+					phonenotoverlap = false;
 				} else {
 					$("#checkphone").text("사용 가능한 전화번호 입니다.").css({'color':'blue'});
+					phonenotoverlap = true;
 				}
 			}
 		});
 	});
 	
-	
+	// 비밀번호 두 개 동일한걸 썼는지 확인하는 
+	$("#passwordCk").keyup(function() {
+		var password = $("#password").val();
+		var passwordCk	= $("#passwordCk").val();
+		if(password != passwordCk){
+			$("#passwordAl").text("비밀번호를 동일하게 적어주십시오.").css({'color':'red'});
+		} else {
+			$("#passwordAl").text("비밀번호와 일치합니다.").css({'color':'blue'});
+		} 
+	});
 });
 
 </script>
-<title>WithMong</title>
+<title>Insert title here</title>
 </head>
 <body>
-	<%@ include file="../header.jsp" %>
-<div class="container" style="margin-top: 150px;">
-	<h1>회원 가입</h1>
+		<header><%@ include file="../header.jsp" %></header>
+	
+		<div class="container" >
+		<h1>회원 가입</h1>
 		<div class="well">
 			<form role="form" method="post" action="register.do" enctype="multipart/form-data">
 				<div class="form-group"> 
@@ -181,7 +210,7 @@ $(function() {
 					<div class="form-group row">
 						<label class="col-sm-3 text-right">비밀번호 확인</label>
 						<div class="col-sm-9">
-							<input type="password" name="passwordCk"  id="passwordCk" placeholder="입력해주세요"/>
+							<input type="password" name="passwordCk"  id="passwordCk" placeholder="입력해주세요"/><p id="passwordAl"></p>
 						</div>
 					</div>
 					<div class="form-group row">
@@ -274,11 +303,10 @@ $(function() {
 			</div>
 			</form>
 		</div>				
-					
-</div>
-	
+				
+		</div>
+		
+		<%@ include file="../footer.jsp" %>	
 </body>
-<footer>
-	<%@ include file="../footer.jsp" %>	
-</footer>
 </html>
+
