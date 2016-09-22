@@ -7,4 +7,5 @@ public interface UserDao {
 	//user 등록
 	void insertUser(User user);
 	User getUserById(String id);
+	User getUserByPhone(String phone);
 }

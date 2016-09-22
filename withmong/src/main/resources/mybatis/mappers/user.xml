@@ -19,4 +19,14 @@
 		where
 			id = #{value}
 	</select>
+	
+	<!-- 전화번호 찾기 -->
+	<select id="getUserByPhone" parameterType="string" resultType="User">
+		select
+			id, password, name, birth, email, phone, gender, schoolAbility, question, answer, point, grade, img, sumLike, delCheck
+		from
+			user_table
+		where
+			phone = #{value}
+	</select>
 </mapper>

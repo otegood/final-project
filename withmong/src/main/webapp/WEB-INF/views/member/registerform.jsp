@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <c:set var="current_page" value="register"/>
 <!DOCTYPE html>
 <html lang="ko">
@@ -106,15 +107,53 @@ $(function() {
 		return true;
 	});
 	
-	// 전화번호 입력란 합치기
+	// 아이디 중복확인 하는거 만들기
+	$("#idCheck").click(function (){
+
+		var inputedId = $("#id").val();
+		$.ajax({
+			url:"../idcheck.do",
+			data:{id:inputedId},
+			dataType:"json",
+			success: function(data) {
+				if(data.size == 1){
+					$("#checkid").text("'"+$("#id").val()+"'은 사용 중인 아이디 입니다.").css({'color':'red'});
+					$("#id").val("");
+				} else {
+					$("#checkid").text("사용 가능한 아이디 입니다.").css({'color':'blue'});
+				}
+			}
+		});
+	});
 	
-	// 학력 입력란 합치기
+
 	
-	// 아이디, 전화번호 중복확인 하는거 만들기
 	
-	// 이미지파일올린 이름그대로 저장하는방법
+	// 전화번호 중복확인 하는거 만들기
+	$("#phoneCheck").click(function (){
+		
+		var inputedPhone = $("#phone1").val()+"-"+$("#phone2").val()+"-"+$("#phone3").val();
+		console.log(inputedPhone);
+		$.ajax({
+			url:"../phonecheck.do",
+			data:{phone:inputedPhone},
+			dataType:"json",
+			success: function(data) {
+				
+				if(data.size == 1){
+					$("#checkphone").text("작성하신 전화번호는 사용 중인 번호 입니다.").css({'color':'red'});
+					$("#phone2").val("");
+					$("#phone3").val("");
+				} else {
+					$("#checkphone").text("사용 가능한 전화번호 입니다.").css({'color':'blue'});
+				}
+			}
+		});
+	});
+	
 	
 });
+
 </script>
 <title>WithMong</title>
 </head>
@@ -128,8 +167,9 @@ $(function() {
 					<div class="form-group row">
 						<label class="col-sm-3 text-right">아이디</label>
 						<div class="col-sm-9">
-							<input type="text" name="id" id="id" style="ime-mode:inactive" placeholder="입력해주세요"/> 
-							<button type="button" class="btn btn-xs" >중복확인</button>
+							<input type="text" name="id" id="id" style="ime-mode:inactive" placeholder="입력해주세요"/>
+							<button type="button" class="btn btn-xs" id="idCheck" >중복확인</button><br/>
+							<p id="checkid"></p>
 						</div>
 					</div>
 					<div class="form-group row">
@@ -175,7 +215,9 @@ $(function() {
 							
 							<input type="text" name="phone2" id="phone2" min="1" maxlength="4" size="6" style="ime-mode:disabled"/> - 
 							<input type="text" name="phone3" id="phone3" min="1" maxlength="4" size="6" style='ime-mode:disabled;'/>
-							<button type="button" class="btn btn-xs">중복확인</button>
+							<input type="hidden" id="phoneChk" value="N" />
+							<button type="button" class="btn btn-xs" id="phoneCheck" >중복확인</button>
+							<p id="checkphone"></p>
 						</div>
 					</div>
 					<div class="form-group row">

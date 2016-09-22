@@ -41,6 +41,19 @@ public class UserServiceImpl implements UserService{
 		return savedUser;
 	}
 
+	// 유저 체크하기
+	@Override
+	public User idCheck(String id) {
+		User checkId = userDao.getUserById(id);
+		return checkId;
+	}
+
+	// 전화번호 체크하기
+	@Override
+	public User phoneCheck(String phone) {
+		User checkPhone = userDao.getUserByPhone(phone);
+		return checkPhone;
+	}
 }
 
 

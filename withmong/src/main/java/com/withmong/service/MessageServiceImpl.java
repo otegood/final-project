@@ -15,14 +15,14 @@ public class MessageServiceImpl implements MessageService{
 	private MessageDao messageDao;
 	
 	@Override
-	public List<Message> getAllMessages() {
-		List<Message> messageList = messageDao.getMessages();
+	public List<Message> getAllMessages(String receiver) {
+		List<Message> messageList = messageDao.getMessages(receiver);
 		return messageList;
 	}
 
 	@Override
-	public List<Message> getOnebyone() {
-		List<Message> onebyoneList = messageDao.getOnebyone();
+	public List<Message> getOnebyone(String receiver) {
+		List<Message> onebyoneList = messageDao.getOnebyone(receiver);
 		return onebyoneList;
 	}
 

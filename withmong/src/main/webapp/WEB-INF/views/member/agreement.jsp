@@ -3,6 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:set var="current_page" value="agree"/>
 
+
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -56,6 +57,20 @@
 
 </style>
 <title>Insert title here</title>
+<script type="text/javascript">
+$(function(){
+	$("#agreebtn").click(function(){
+		if($(":checked").length != 2) {
+			alert("모든 약관을 읽어보신 후 동의함에 체크해 주십시오.");
+			return false;
+		}
+		return true;
+	});
+	
+}) 
+	
+
+</script>
 </head>
 <header>
 	<%@ include file="../header.jsp" %>
@@ -64,10 +79,10 @@
 	
 <div class="container" style="margin-top: 150px;">
 		<!-- 이용/개인정보 약관 동의 폼 -->
-	<h2>회원 가입</h2>
+	<h2 style="font-weight: bolder">회원 가입</h2>
 	
 	<br/>
-	<h4>이용 약관 동의</h4>
+	<h4 style="font-weight: bolder">이용 약관 동의</h4>
  		<form name="check">
  		 <div>
   		<div class="agreeArea">
@@ -186,7 +201,7 @@
 		</textarea>
 	</div>
 	<p style="font-weight: bold">위의 약관의 내용에 모두 동의하십니까?</p>
-	<input type="checkbox" name="agree" id="checkAgree" value="이용약관"class="inputCheckbox">동의함
+	<input type="checkbox" name="agree" id="checkAgree" value="이용약관" class="inputCheckbox">동의함
 </div><br/>
 
 <h4 style="font-weight: bolder">개인정보 사용 약관 동의</h4>
@@ -210,18 +225,18 @@
 - 보존 기간 : 1년
 - 소비자의 불만 또는 분쟁처리에 관한 기록 : 3년 (전자상거래 등에서의 소비자보호에 관한 법률)
 - 부정 이용등에 관한 기록 : 10년
-			</textarea>
-		</div>
-		<p>위의 약관의 내용에 모두 동의하십니까? </p>
-		<input type="checkbox" name="agree" id="checkAgree" value="개인정보 수집약관" class="inputCheckbox"/>동의함
+				</textarea>
+			</div>
+			<p style="font-weight: bold">위의 약관의 내용에 모두 동의하십니까? </p>
+			<input type="checkbox" name="agree" id="checkAgree" value="개인정보 수집약관" class="inputCheckbox"/>동의함
 		</div>
 		<br/>
-		
+			
 		<div class="text-center">
-			<a href="register.do" class="btn btn-primary" id="agreebtn">약관에 동의합니다.</a>
-			<a href="main.do" class="btn btn-danger" id="disagreebtn">약관에 동의하지 않습니다.</a>
- 	 	</div>
- 	 </div>
+			<a href="register.do" class="btn btn-primary" id="agreebtn" role="button">약관에 동의합니다.</a>
+			<a href="main.do" class="btn btn-danger" id="disagreebtn" role="button">약관에 동의하지 않습니다.</a>
+	 	 </div>
+	</div>
 	</form>	
 	<hr>
 </div>
@@ -229,7 +244,6 @@
 	
 </body>
 <footer>
-	<%@ include file="../footer.jsp" %>	
 </footer>
 </html>
 
