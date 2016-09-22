@@ -41,7 +41,8 @@ public class MessageController {
 	
 	@RequestMapping(value="/firstmessage.do", method=RequestMethod.POST)
 	public String firstMessage(Message message, User loginedUser) {
-		message.setSender(loginedUser.getId()); 
+		message.setSender(loginedUser.getId());
+		message.setContents(message.getContents().replace("\r\n", "<br>"));
 		messageService.addFirstMessage(message);
 		return "redirect:/messagelist.do";
 	}

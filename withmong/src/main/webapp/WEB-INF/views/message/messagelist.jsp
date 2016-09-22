@@ -57,7 +57,7 @@
 	
 		<div class="container" >
 			<div class="row">
-				<h1>1:1 대화방</h1>
+				<h1>1:1 쪽지방</h1>
 		
 		<div class="panel panel-boby">
 			<div style="text-align: right">			
@@ -66,7 +66,7 @@
 			<table class="table">
 				<thead>
 					<tr>
-						<th>대화방 [쪽지를 받아야 대화방이 생성됩니다.]</th>
+						<th>쪽지방 [쪽지를 받아야 대화방이 생성됩니다.]</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -87,7 +87,7 @@
 											</c:if>
 												${by.sender } <br/>
 												${by.contents } <br/>
-												<fmt:formatDate value="${by.senddate }" pattern="yyyy.MM.dd EEEE hh:mm:ss"/><br/>
+												<p style="text-align: right;"><small><fmt:formatDate value="${by.senddate }" pattern="yyyy.MM.dd EEEE hh:mm:ss"/></small></p><br/>
 											</div>
 										</c:if>
 									</c:forEach>
