@@ -15,13 +15,13 @@
 	img.aa {width: 80px; height: 80px;}
 	
 	header {
-	background-color: black;
+		background-color: black;
 	}
 
 	.ex-company {
-	color: white;
-	top: 0; left: 0;
-	border;
+		color: white;
+		top: 0; left: 0;
+		border;
 	}
 	
 	strong {
@@ -30,65 +30,38 @@
 	}
 	
 	.navbar-form navbar-left {
-	text-align: center;
+		text-align: center;
 	}
 	
 	#foot-alpabet {
-	color: white; 
+		color: white; 
 	}
 	
 	#logo {
-	width: 156px;
-	height: 75px;
-	padding-bottom: 0px;
+		width: 156px;
+		height: 75px;
+		padding-bottom: 0px;
 	}
-	
-	.wrap {
-	height: auto;
-	min-height: 100%;
-	position: relative;
-	padding-bottom: 180px; /* footer height */
-	}
-	
-	body {
-	height: 100%;
-	margin: 0;
-	padding: 0;
-	
-	}
-	
-	.container {
-	height: 100%;
-	
-	}
+
 	#footer {
-	
-	background-color: black;
+		padding: 10px;
+		background-color: black;
 	}
 
 </style>
 <title>Insert title here</title>
 </head>
-<div class="wrap">
-<header>
-	<%@ include file="header.jsp" %>
-</header>
 <body>
+		<header><%@ include file="header.jsp" %></header>
 	
-		<div class="container" style="margin-top: 150px;">
+		<div class="container" >
 			<div class="row">
-					<!-- 내용 기입 -->
-					
-					
+				
 			</div>
-			<%@ include file="footer.jsp" %>	
 		</div>
 		
-	
+		<%@ include file="footer.jsp" %>	
 </body>
-<footer>
-</footer>
-</div>
 </html>
 
 

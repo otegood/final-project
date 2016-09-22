@@ -109,6 +109,9 @@
 											</div>
 										</c:if>
 									</c:forEach>
+									<div>
+										<input type="text">
+									</div>
 								</div>
 							</div>
 						</td>
