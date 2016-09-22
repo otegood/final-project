@@ -45,12 +45,8 @@
 	}
 
 	#footer {
-<<<<<<< HEAD
-	background-color: black;
-=======
 		padding: 10px;
 		background-color: black;
->>>>>>> branch 'master' of https://github.com/otegood/final-project.git
 	}
 
 </style>
@@ -65,12 +61,8 @@
 			</div>
 		</div>
 		
-<<<<<<< HEAD
-			<%@ include file="footer.jsp" %>	
-	
-=======
+
 		<%@ include file="footer.jsp" %>	
->>>>>>> branch 'master' of https://github.com/otegood/final-project.git
 </body>
 </html>
 

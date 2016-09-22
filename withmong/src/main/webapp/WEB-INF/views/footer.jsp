@@ -1,22 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 	
-<<<<<<< HEAD
-	
-<div class="container-fluid">	
-
-	<div class="row" id="footer">
-		<div class="col-sm-1"></div>
-		<div class="col-sm-10">
-			<div class="col-sm-3">
-				<ul id="footer-home" class="link">
-=======
 <div class="container-fluid" id="footer">
 	<div class="row">
 		<div class="col-sm-3 col-sm-offset-1">
 			<div class="col-sm-6" >
 				<ul>
->>>>>>> branch 'master' of https://github.com/otegood/final-project.git
 					<li id=""><a href="#">홈</a></li>
 					<li id="explain" class="menu"><a href="#">이용안내</a></li>
 					<li id=""><a href="#">로그인</a></li>
@@ -32,23 +21,7 @@
 				</ul>
 			</div>
 		</div>
-<<<<<<< HEAD
-		<div class="col-sm-1"></div>
-
-	</div>
-
-
-</div>
-
-<div class="container-fluid">		
-	<div class="row" id="footer">
-		<div class="col-sm-2">
-			<img alt="card" src="" style="margin-left: 50px;">
-		</div>
-		<div class="col-sm-5" id="foot-alpabet">
-=======
 		<div class="col-sm-4" style="color: white;">
->>>>>>> branch 'master' of https://github.com/otegood/final-project.git
 			<p>
 				회사명: 위드몽 (주) 대표자: 최지웅 &nbsp; 정보처리책임자: 이응수 <br> 주소: 서울특별시&nbsp;
 				종로구&nbsp; 봉익동&nbsp; 디아망&nbsp; 빌딩&nbsp;(401, 402호)<br /> 통신판매업신고:
