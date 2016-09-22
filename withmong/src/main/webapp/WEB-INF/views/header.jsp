@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 
 
-<div class="navbar navbar-inverse">
+<nav class="navbar navbar-inverse">
 	<div class="container">
 		<div class="navbar-header">
 			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -42,9 +42,6 @@
 		</div>
 		<!--/.nav-collapse -->
 	</div>
-</div>
-
-<nav class="navbar navbar-inverse">
 	<div class="container-fluid">
 		<!-- Brand and toggle get grouped for better mobile display -->
 		<div class="navbar-header">
@@ -134,5 +131,6 @@
 		</div>
 		<!-- /.navbar-collapse -->
 	</div>
-	<!-- /.container-fluid -->
 </nav>
+
+
