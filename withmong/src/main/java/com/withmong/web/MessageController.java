@@ -26,10 +26,9 @@ public class MessageController {
 	}
 	
 	@RequestMapping("/messagelist.do")
-	public String messagelist(Model model) {
-		
-		List<Message> messageList = messageService.getAllMessages();  
-		List<Message> onebyoneList = messageService.getOnebyone();
+	public String messagelist(Model model,  User loginedUser) {
+		List<Message> messageList = messageService.getAllMessages(loginedUser.getId());  
+		List<Message> onebyoneList = messageService.getOnebyone(loginedUser.getId());
 		model.addAttribute("messageList", messageList);
 		model.addAttribute("onebyoneList", onebyoneList);
 		return "message/messagelist";
@@ -44,6 +43,6 @@ public class MessageController {
 	public String firstMessage(Message message, User loginedUser) {
 		message.setSender(loginedUser.getId()); 
 		messageService.addFirstMessage(message);
-		return "redirect:message/messagelist";
+		return "redirect:/messagelist.do";
 	}
 }

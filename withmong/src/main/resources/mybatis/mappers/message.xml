@@ -4,17 +4,17 @@
 
 <mapper namespace="com.withmong.dao.MessageDao">
 	<!-- 메세지 리스트 -->
-	<select id="getMessages" resultType="Message">
+	<select id="getMessages" parameterType="string" resultType="Message">
 		select 
 			distinct sender
 		from
 			message_table
 		where
-			receiver = 'park'
+			receiver = #{receiver}
 	</select>
 	
 	<!-- 1:1 대화 리스트 -->
-	<select id="getOnebyone" resultType="Message">
+	<select id="getOnebyone" parameterType="string"  resultType="Message">
 		select
 			sender,
 			receiver,
@@ -24,9 +24,9 @@
 		from
 			message_table
 		where
-			sender ='park'
+			sender = #{receiver}
 		or
-			receiver = 'park'
+			receiver = #{receiver}
 		order by
 			senddate asc
 	</select>
@@ -36,7 +36,7 @@
 		insert into message_table 
 		(no, contents, senddate, readcheck, sender, receiver) 
 		values 
-		(14, #{contents}, sysdate, 'N', #{sender}, #{receiver})
+		(message_seq.nextval, #{contents}, sysdate, 'N', #{sender}, #{receiver})
 	</insert>
 	
 </mapper>

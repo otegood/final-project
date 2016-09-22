@@ -7,10 +7,10 @@ import com.withmong.model.Message;
 public interface MessageService {
 	
 	// 메세지 목록조회
-	List<Message> getAllMessages();
+	List<Message> getAllMessages(String receiver);
 	
 	// 1:1메세지
-	List<Message> getOnebyone();
+	List<Message> getOnebyone(String receiver);
 
 	// 첫 쪽지날리기
 	void addFirstMessage(Message message);
