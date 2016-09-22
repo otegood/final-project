@@ -1,8 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 	
-<div class="row" id="footer">
-	<div class="row">
+	
+<div class="container-fluid">	
+
+	<div class="row" id="footer">
 		<div class="col-sm-1"></div>
 		<div class="col-sm-10">
 			<div class="col-sm-3">
@@ -34,10 +36,13 @@
 
 	</div>
 
-	
-	<div class="row">
+
+</div>
+
+<div class="container-fluid">		
+	<div class="row" id="footer">
 		<div class="col-sm-2">
-			<img alt="카드이미지" src="" style="margin-left: 50px;">
+			<img alt="card" src="" style="margin-left: 50px;">
 		</div>
 		<div class="col-sm-5" id="foot-alpabet">
 			<p>
@@ -54,5 +59,4 @@
 			</p>
 		</div>
 	</div>
-	</div>
-
+</div>

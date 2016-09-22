@@ -58,7 +58,8 @@
 			<!-- 로고 이미지 삽입하기 
 			<img id="logo" src=""></a>
 				-->
-			<a class="navbar-brand" href="temp.do">Brand</a>
+			<a class="navbar-brand" href="main.do"><img style="max-width:100px; margin-top: -7px; src="">brand</a>
+				
 			
 		</div>
 
