@@ -170,4 +170,14 @@ public class UserController {
 		
 		return "redirect:/temp.do";
 	}
+	
+	//로그아웃 실행
+	@RequestMapping(value="/logout.do")
+	public String logout(HttpSession session) {
+		//session.invalidate() 세션 제거
+		session.invalidate();
+		
+		//어디에 담으면 무조건 redirect (저장소에 변경을 가하는것)
+		return "redirect:/main.do";
+	}
 }

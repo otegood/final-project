@@ -21,7 +21,7 @@
 				</c:when>
 				<c:otherwise>
 					<ul class="nav navbar-nav navbar-right">
-						<li><a href="#"><span class="glyphicon glyphicon-log-out"></span> 로그아웃</a></li>
+						<li><a href="logout.do"><span class="glyphicon glyphicon-log-out"></span> 로그아웃</a></li>
 						<!--  님 환영해요 넣는곳
 						-->
 					</ul>

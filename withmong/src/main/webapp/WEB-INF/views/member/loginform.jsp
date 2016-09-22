@@ -66,20 +66,24 @@
 				</div>
 			</c:if>
 			
-			<form role="form" method="post" action="login.do">
-					<div class="form-group">
-						<label>아이디</label>
-						<input type="text" class="form-control" name="id" />
-					</div>
-					<div class="form-group">
-						<label>비밀번호</label>
-						<input type="password" class="form-control" name="password" />
-					</div>
-					<div class="form-group text-right">
-						<input type="submit" class="btn btn-primary" value="로그인" />
-						<a href="main.do" class="btn btn-default">취소</a>
-					</div>
-			</form>
+			<form class="form-inline text-center" role="form" method="post" action="login.do">
+			    <div class="form-group">
+			     	 <label class="sr-only" for="id">Id:</label>
+			     	 <input type="text" class="form-control" name="id" id="id" placeholder="아이디를 입력하세요" autocomplete="off">
+			    </div>
+			    <div class="form-group">
+			      	<label class="sr-only" for="password">Password:</label>
+			     	 <input type="password" class="form-control" name="password" id="password" placeholder="비밀번호를 입력하세요" autocomplete="off">
+			    </div>
+			    <div class="form-group">
+			    	<input type="submit" class="btn btn-primary" value="로그인" />
+					<a href="main.do" class="btn btn-default">취소</a>
+				</div>
+				<br/>
+				<div>
+					<a href="find.do">아이디/비밀번호를 잊었다면?</a>
+				</div>
+			  </form>
 		
 		</div>
 		
