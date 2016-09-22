@@ -1,25 +1,34 @@
 package com.withmong.web;
 
 import java.io.File;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
 
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.util.DigestUtils;
 import org.springframework.util.FileCopyUtils;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.withmong.dao.UserDao;
 import com.withmong.form.UserForm;
 import com.withmong.model.User;
 import com.withmong.service.UserService;
@@ -34,32 +43,28 @@ public class UserController {
 	public void initBinder(WebDataBinder binder) {
 		binder.registerCustomEditor(Date.class, new CustomDateEditor(new SimpleDateFormat("yyyy-MM-dd"), true));
 	}
-	
+	//에러날때
 	@ExceptionHandler(RuntimeException.class)
 	public String runtimeExceptionHandler(RuntimeException ex) {
 		ex.printStackTrace();
 		return "error/error";
 	}
-	
+	//메인접속
 	@RequestMapping("/main.do")
 	public String main(){
 		return "main";
 	}
-	
+	//template접속
 	@RequestMapping("/temp.do")
 	public String temp(){
 		return "temp";
 	}
-	
-	@RequestMapping(value="/agree.do", method=RequestMethod.GET)
+	//agreement 접속
+	@RequestMapping("/agree.do")
 	public String agreementform() {
 		return "member/agreement";
 	}
-	@RequestMapping(value="/agree.do", method=RequestMethod.POST)
-	public String agreement() {
-		return "redirect:/register.do";
-	}
-	
+	//register 가입폼 접속
 	@RequestMapping(value="/register.do", method=RequestMethod.GET)
 	public String registerform() {
 		return "member/registerform";
@@ -111,6 +116,34 @@ public class UserController {
 		//redirect 재요청
 		return "redirect:/regsuccess.do";
 	}
+	
+//------------------------------------------------------------------------------------------------------//
+	
+	// id 중복을 체크하는 문구
+	@RequestMapping("/idcheck.do")
+	public @ResponseBody String idcheck(String id) {
+		
+		User checkUser = userService.idCheck(id);
+		
+		if (checkUser!=null){
+			return "{\"size\":1}";
+		}
+		return "{\"size\":0}";
+	}
+	
+	// 전화번호 중복을 체크하는 문구
+	@RequestMapping("/phonecheck.do")
+	public @ResponseBody String phonecheck(String phone) {
+		
+		User checkPhone = userService.phoneCheck(phone);
+		
+		if (checkPhone != null){
+			return "{\"size\":1}";
+		}
+		return "{\"size\":0}";
+	}
+	
+//------------------------------------------------------------------------------------------------------//
 	
 	//가입 성공시 나오는 문구
 	@RequestMapping("/regsuccess.do")
