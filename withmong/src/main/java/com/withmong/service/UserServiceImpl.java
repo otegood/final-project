@@ -57,10 +57,25 @@ public class UserServiceImpl implements UserService{
 		return checkPhone;
 	}
 
+	// 아이디 찾기
 	@Override
-	public User findId(String name, Date birth, String phone) {
-		User findid = userDao.findId(name, birth, phone);
+	public User findId(User user) {
+		User findid = userDao.findId(user);
 		return findid;
+	}
+
+	
+	// 비밀번호 찾기
+	@Override
+	public User findInfoPassword(User user) {
+		User findPw = userDao.findInfoPassword(user);
+		return findPw;
+	}
+
+	// 비밀번호 분실후 변경
+	@Override
+	public void changePassword(User user) {
+		userDao.changePassword(user);
 	}
 
 	

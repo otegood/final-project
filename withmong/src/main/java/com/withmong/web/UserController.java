@@ -182,19 +182,61 @@ public class UserController {
 	}
 
 //------------------아이디, 비밀번호 찾기-------------------------------------------------------------------//
-	//로그인화면 접속
+	//검색할수 있는 화면 접속
 	@RequestMapping(value="/find.do", method=RequestMethod.GET)
 	public String find() {
 		
 		return "member/find";
 	}
 	
+	//아이디를 찾는 코딩
 	@RequestMapping("/findid.do")
-	public @ResponseBody User findId(String name, Date birth, String phone){
-		User findid = userService.findId(name, birth, phone);
+	public @ResponseBody User findId(UserForm userForm){
+		
+		User user = new User();
+		user.setName(userForm.getName());
+		user.setBirth(userForm.getBirth());
+		user.setPhone(userForm.getPhone1()+"-"+userForm.getPhone2()+"-"+userForm.getPhone3());
+
+		User findid = userService.findId(user);
 		
 		return findid;
 		
 	}
 	
+	//비밀번호를 변경하기위해 정보 확인
+	@RequestMapping("/findpw.do")
+	public @ResponseBody User findPw(UserForm userForm){
+		User user = new User();
+		user.setId(userForm.getId());
+		user.setQuestion(userForm.getQuestion());
+		user.setAnswer(userForm.getAnswer());
+		
+		User findPw = userService.findInfoPassword(user);
+		
+		return findPw;
+	}
+	
+	//비밀번호 변경
+	@RequestMapping(value="/changepassword.do", method=RequestMethod.POST)
+	public String changePassword(UserForm userForm){
+		User user = new User();
+		user.setId(userForm.getId());
+		
+		// 비밀번호 암호화하기
+		String plainPassword = userForm.getPassword();
+		String secretPassword = DigestUtils.md5DigestAsHex(plainPassword.getBytes());
+		user.setPassword(secretPassword);
+		
+		userService.changePassword(user);
+		
+		return "redirect:/chgsuccess.do";
+	}
+	
+	//비밀번호 변경 성공시 나오는 문구
+	@RequestMapping("/chgsuccess.do")
+	public String chgsuccess() {
+		
+		return "member/chgsuccess";
+	}
 }

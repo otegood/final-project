@@ -56,7 +56,10 @@
 <script type="text/javascript">
 
 $(function() {
-	$("#findid").submit(function() {
+	
+	$("#hidechangeform").hide();
+	//아이디 찾을때 적는 입력칸
+	$("#findid").click(function() {
 		if(!$.trim($(":input[name='name']").val())) {
 			alert("이름은 필수 입력값입니다.");
 			return false;
@@ -81,13 +84,62 @@ $(function() {
 		
 		$.ajax({
 			url:"../findid.do",
-			data:{name:inputedName, phone:inputedPhone, birth:inputedBirth},
+			type:"POST",
+			data:{name:inputedName, phone1:$("#phone1").val(), phone2:$("#phone2").val(), phone3:$("#phone3").val(), birth:inputedBirth},
 			dataType:"json",
 			success: function(data) {
-				console.log(data)
-				
+				$("#writeId").text(data.id).css({'color':'blue'});
+			},
+			error: function() {
+				$("#writeId").text("검색하신 정보와 일치하는 ID가 없습니다.").css({'color':'red'});
 			}
 		});
+	});
+	
+	
+	//비밀번호 찾을때 정보 적는 칸
+	$("#findpw").click(function() {
+		if(!$.trim($(":input[name='id']").val())) {
+			alert("아이디는 필수 입력값입니다.");
+			return false;
+		}
+		if(!$.trim($(":input[name='answer']").val())) {
+			alert("답변은 필수 입력값입니다.");
+			return false;
+		}
+		
+		$.ajax({
+			url:"../findpw.do",
+			type:"POST",
+			data:{id:$("#id").val(), question:$("#question").val(), answer:$("#answer").val()},
+			dataType:"json",
+			success: function(data) {
+				
+				$("#hidechangeform").show();
+				$("#cngid").val(data.id);
+				
+			},
+			error: function() {
+				console.log("error");
+			}
+		});
+	});
+	
+	//비밀번호를 변경하였을 때
+	$("#changepwdform").submit(function() {
+		if(!$.trim($(":input[name='password']").val())) {
+			alert("비밀번호는 필수 입력값입니다.");
+			return false;
+		}
+		if(!$.trim($(":input[name='passwordCk']").val())) {
+			alert("비밀번호 확인을 위해 비밀번호를 한번더 입력해 주시기 바랍니다.");
+			return false;
+		}
+		if($(":input[name='password']").val() != $(":input[name='passwordCk']").val()){
+			alert("비밀번호가 일치하지 않습니다.");
+			return false;
+		}
+		
 	});
 });
 </script>
@@ -105,7 +157,7 @@ $(function() {
 				<div class="panel-heading">
 					<h4>ID 찾기</h4>
 				</div>
-				<form role="form" name="findidform" id="findid" onsubmit="return formidCheck()">
+				<form role="form" name="findidform" >
 					<div class="panel-body row">
 						<div class="col-sm-8">
 							<div class="panel-group row">
@@ -117,7 +169,7 @@ $(function() {
 							<div class="form-group row">
 								<b class="col-sm-4 text-right">생년월일</b>
 								<div class="col-sm-8">
-									<input type="date" name="birth"/>
+									<input type="date" name="birth" id="birth"/>
 								</div>
 							</div>
 							<div class="panel-group row">
@@ -142,7 +194,7 @@ $(function() {
 							</div>
 						</div>
 						<div class="col-sm-4 idsearchbtn text-center">
-							<input type="submit" value="찾기" class="btn btn-success"/>
+							<input type="button" value="찾기" id="findid" class="btn btn-success"/>
 						</div>
 					</div>
 				</form>
@@ -154,24 +206,24 @@ $(function() {
 			</ul>
 			
 			
-			<!-- pwd찾기 start -->
+<!-- pwd찾기 start -->
 			<div class="panel panel-info searchpwd">
 				<div class="panel-heading">
 					<h4>PASSWORD 찾기</h4>
 				</div>
-				<form role="form" action="searchpwd.jsp" method="post" name="searchpwdform" onsubmit="return formpwdCheck()">
+				<form role="form" name="searchpwdform">
 					<div class="panel-body row">
 						<div class="col-sm-8">
 							<div class="panel-group row">
 								<b class="col-sm-4 text-right">ID</b>
-								<div class="col-sm-8">
+								<div class="col-sm-4">
 									<input type="text" name="id" id="id"/> 
 								</div>
 							</div>
 							<div class="panel-group row">
 								<b class="col-sm-4 text-right">가입시 질문</b>
 								<div class="col-sm-8">
-									<select name="question">
+									<select name="question" id="question">
 										<option value="내 고향은?" selected="selected">내 고향은?</option>
 										<option value="내 어릴적 별명은?">내 어릴적 별명은?</option>
 										<option value="내가 졸업한 초등학교 이름은?">내가 졸업한 초등학교 이름은?</option>
@@ -183,16 +235,46 @@ $(function() {
 							<div class="panel-group row">
 								<b class="col-sm-4 text-right">답변</b>
 								<div class="col-sm-8">
-									<input type="text" name="answer"/>
+									<input type="text" name="answer" id="answer"/>
 								</div>
 							</div>
 						</div>
 						<div class="col-sm-4 idsearchbtn text-center">
-							<input type="submit" value="찾기" class="btn btn-success"/>
+							<input type="button" value="찾기" id="findpw" class="btn btn-success"/>
 						</div>
 					</div>
 				</form>
 			</div> <!-- pwd찾기 end -->
+			
+<!-- 비밀번호 변경하기 -->
+			<div class="panel panel-info searchpwd" id="hidechangeform">
+				<div class="panel-heading">
+					<h4>PASSWORD 변경하기</h4>
+				</div>
+				<form role="form" action="changepassword.do" method="post" name="changepwdform" id="changepwdform">
+					<div class="panel-body row">
+						<div class="col-sm-8">
+							<div class="panel-group row">
+								<b class="col-sm-4 text-right">비밀번호</b>
+								<div class="col-sm-8">
+									<input type="hidden" name="id" id="cngid"  /> 
+									<input type="password" name="password" id="password"/> 
+								</div>
+							</div>
+							
+							<div class="panel-group row">
+								<b class="col-sm-4 text-right">비밀번호확인</b>
+								<div class="col-sm-8">
+									<input type="password" name="passwordCk" id="passwordCk"/> 
+								</div>
+							</div>
+						</div>
+						<div class="col-sm-4 idsearchbtn text-center">
+							<input type="submit" value="변경하기" id="changepw" class="btn btn-success"/>
+						</div>
+					</div>
+				</form>
+			</div> <!-- pwd변경하기 end -->
 		</div>
 	</div>
 		</div>
