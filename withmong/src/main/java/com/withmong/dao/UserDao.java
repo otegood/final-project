@@ -1,7 +1,5 @@
 package com.withmong.dao;
 
-import java.util.Date;
-
 import com.withmong.model.User;
 
 public interface UserDao {
@@ -10,6 +8,10 @@ public interface UserDao {
 	void insertUser(User user);
 	User getUserById(String id);
 	User getUserByPhone(String phone);
-	User getChangePassword(User user);
-	User findId(String name, Date birth, String phone);
+	//아이디 찾기
+	User findId(User user);
+	//비밀번호 찾기
+	User findInfoPassword(User user);
+	// 비밀번호 변경
+	void changePassword(User user);
 }

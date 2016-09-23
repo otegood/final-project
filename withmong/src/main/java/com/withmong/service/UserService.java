@@ -1,7 +1,5 @@
 package com.withmong.service;
 
-import java.util.Date;
-
 import com.withmong.model.User;
 
 public interface UserService {
@@ -19,5 +17,11 @@ public interface UserService {
 	User phoneCheck(String phone);
 	
 	// 유저 정보 확인
-	User findId(String name, Date birth, String phone);
+	User findId(User user);
+	
+	// 비밀번호 정보 확인
+	User findInfoPassword(User user);
+	
+	// 비밀번호 분실 후 변경
+	void changePassword(User user);
 }

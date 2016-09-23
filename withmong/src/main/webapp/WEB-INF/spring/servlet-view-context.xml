@@ -44,6 +44,10 @@
 
 
 			<mvc:exclude-mapping path="/find.do"/>
+			<mvc:exclude-mapping path="/findid.do"/>
+			<mvc:exclude-mapping path="/findpw.do"/>
+			<mvc:exclude-mapping path="/changepassword.do"/>
+			<mvc:exclude-mapping path="/chgsuccess.do"/>
 
 
 
