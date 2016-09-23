@@ -9,11 +9,14 @@
   <typeAliases>
   	<typeAlias type="com.withmong.model.User" alias="User"/>
   	<typeAlias type="com.withmong.model.Message" alias="Message"/>
+  	<typeAlias type="com.withmong.model.Product" alias="Product"/>
+  	<typeAlias type="com.withmong.model.Category" alias="Category"/>
   </typeAliases>
   
   <mappers>
     <mapper resource="mybatis/mappers/user.xml"/>
     <mapper resource="mybatis/mappers/message.xml"/>
+    <mapper resource="mybatis/mappers/product.xml"/>
   </mappers>
   
 </configuration>

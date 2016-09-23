@@ -17,8 +17,8 @@ public class Product {
 	private int hits;
 	private String tag;
 	
-	private Location locationNo;
-	private Category categoryNo;
+	private int locationNo;
+	private int categoryNo;
 	
 	public Product(){}
 
@@ -118,19 +118,19 @@ public class Product {
 		this.tag = tag;
 	}
 
-	public Location getLocationNo() {
+	public int getLocationNo() {
 		return locationNo;
 	}
 
-	public void setLocationNo(Location locationNo) {
+	public void setLocationNo(int locationNo) {
 		this.locationNo = locationNo;
 	}
 
-	public Category getCategoryNo() {
+	public int  getCategoryNo() {
 		return categoryNo;
 	}
 
-	public void setCategoryNo(Category categoryNo) {
+	public void setCategoryNo(int categoryNo) {
 		this.categoryNo = categoryNo;
 	}
 
