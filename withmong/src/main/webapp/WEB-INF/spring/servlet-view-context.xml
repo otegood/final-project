@@ -40,8 +40,8 @@
 			<mvc:exclude-mapping path="/phonecheck.do"/>
 			<mvc:exclude-mapping path="/idcheck.do"/>
 			<mvc:exclude-mapping path="/agree.do"/>
-
-
+			<mvc:exclude-mapping path="/main.do"/>
+			
 					
 
 			<mvc:exclude-mapping path="/messagelist.do"/>
