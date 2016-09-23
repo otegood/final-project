@@ -14,6 +14,14 @@
 <script
 	src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
+<script type="text/javascript">
+//더보기
+	$(document).ready(function() {
+		$('#more').click(function() {
+			$(".addToProducts").append('<div>aaaa</div><div>aaaa</div><div>aaaa</div><div>aaaa</div>');
+		});
+	});
+</script>
 <style type="text/css">
 
 .ex-company {
@@ -301,15 +309,6 @@ margin-left: 80px;
 
 	<%@ include file="footer.jsp"%>
 </body>
-<script type="text/javascript">
-//더보기
-	$(document).ready(function() {
-		$('#more').click(function() {
-			$(".addToProducts").append('<div>aaaa</div><div>aaaa</div><div>aaaa</div><div>aaaa</div>');
-		});
-	});
-
-</script>
 </html>
 
 
