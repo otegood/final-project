@@ -1,0 +1,51 @@
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.withmong.dao.ProductDao">
+	
+	<insert id="addProduct" parameterType="Product">
+		insert into product_table
+		( no,title,userid,img,video,contents,price,qty,regdate,avglike,hits,tag,categoryno,location )
+		values
+		(test_seq.nextval, #{title},#{userId},#{img}, #{video}, #{contents}, #{price}, #{qty},sysdate,0,0,#{tag},{category},{location})
+	</insert>
+	
+		<select id="findCategory" resultType="Category">
+		select name from category_table
+		where bno != 0
+	</select>
+	
+	<select id="productDetail" parameterType="int" resultType="Product">
+		select no,title,userid,img,video,contents,price,qty,regdate,avglike,hits,tag,categoryno,location 
+		from product_table
+		where no = 1
+	</select>
+	
+	
+</mapper>
+
+<!-- 
+	테이블 컬럼명
+ no,title,userid,img,video,contents,price,qty,regdate,avglike,hits,tag,categoryno,location 
+
+	ProductForm
+	
+	title,img,video,contents,price,qty,tag,locationNo,Category,categoryNo
+
+	private int no;
+	private String title;
+	private String userId;
+	private String img;
+	private String video;
+	private String contents;
+	private int price;
+	private int qty;
+	private Date regDate;
+	private double avglike;
+	private int hits;
+	private String tag;
+
+
+
+ -->
