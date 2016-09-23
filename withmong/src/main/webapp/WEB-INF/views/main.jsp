@@ -243,18 +243,13 @@ margin-left: 80px;
 							</div>
 						</div>
 					</div>
-
-
 				</div>
 			</div>
 		</div>
 		
 		<div class="col-sm-10 addControl" style="text-align: center;">
-			<a class="btn btn-primary btn-large" style="margin-left: 30px;"
-				id="more">더보기</a>
+			<a class="btn btn-primary btn-large" style="margin-left: 30px;"	id="more">더보기</a>
 		</div>
-		<div class="col-sm-2"></div>
-		
 
 	</div>
 	<br>
