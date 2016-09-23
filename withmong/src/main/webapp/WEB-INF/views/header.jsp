@@ -100,6 +100,7 @@ $(document).ready(function(){
 										<li><a href="#">판매</a></li>
 										<li><a href="#">찜</a></li>
 										<li><a href="#">요청글</a></li>
+										<li><a href="messagelist.do">1:1쪽지</a></li>
 									</ul></li>
 								<li class="divider"></li>
 								<li class="dropdown dropdown-submenu"><a href="#"
