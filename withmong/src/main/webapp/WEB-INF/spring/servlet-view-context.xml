@@ -42,6 +42,7 @@
 			<mvc:exclude-mapping path="/find.do"/>
 
 
+			<mvc:exclude-mapping path="/main.do"/>
 					
 
 			<mvc:exclude-mapping path="/messagelist.do"/>
