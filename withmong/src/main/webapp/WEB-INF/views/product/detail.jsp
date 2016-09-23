@@ -13,6 +13,16 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script
 	src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script type="text/javascript">
+
+$(function() {
+	$('#tabmenu1').on('shown.bs.tab', function (e) {
+		
+	})
+	
+})
+
+</script>
 <style type="text/css">
 img.pro-img {
 	width: 200px;
@@ -73,35 +83,60 @@ strong {
 				<div class="sol-sm-9">제목 : ${detail.title }</div>
 			</div>
 			<hr>
-			<span> <strong>태그</strong> #가나다#라마바#사아자
+			<span> <strong style="color: black;">태그</strong> ${detail.tag }</span>
 			<hr>
 				<div class="row">
 					<div class="col-sm-4">이미지가 들어간다!!!!!!!!</div>
-					<div class="col-sm-4">상품설명을 해야한다!(옵션을 넣어야하나?)</div>
+					<div class="col-sm-4">금액이랑 옵션인가</div>
 					<div class="col-sm-4">판매자에 대한 프로필이가 나와야한다!!!!!!</div>
 				</div>
-			</span>
+			
 			<hr>
 
 			<div>
 				<ul class="nav nav-tabs">
-					<li class="active"><a data-toggle="tab" href="#home">Home</a></li>
-					<li><a data-toggle="tab" href="#menu1">Menu 1</a></li>
-					<li><a data-toggle="tab" href="#menu2">Menu 2</a></li>
-					<li><a data-toggle="tab" href="#menu3">Menu 3</a></li>
+					<li class="active"><a data-toggle="tab" href="#content">상세설명</a></li>
+					<li><a data-toggle="tab" id="tabmenu1" href="#menu1">후기</a></li>
+					<li><a data-toggle="tab" id="tabmenu2" href="#menu2">Menu 2</a></li>
+					<li><a data-toggle="tab" id="tabmenu3"href="#menu3">Menu 3</a></li>
 				</ul>
 			</div>
 
 			<div class="tab-content">
-				<div id="home" class="tab-pane fade in active">
-					<h3>HOME</h3>
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-						sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+				<div id="content" class="tab-pane fade in active">
+					<h3>상세 설명</h3>
+					<p>${detail.contents }</p>
 				</div>
 				<div id="menu1" class="tab-pane fade">
-					<h3>Menu 1</h3>
-					<p>Ut enim ad minim veniam, quis nostrud exercitation ullamco
-						laboris nisi ut aliquip ex ea commodo consequat.</p>
+					<form role="form" action="productreple.do" method="post">
+			       		<div class="text-center">
+				         	<input type="radio" name="score" value="5" checked="checked" /><img src="../images/review/5star.PNG">
+				      		<input type="radio" name="score" value="4" /> <img src="../images/review/4star.PNG">
+				      		<input type="radio" name="score" value="3" /> <img src="../images/review/3star.PNG">
+				      		<input type="radio" name="score" value="2" /> <img src="../images/review/2star.PNG">
+				      		<input type="radio" name="score" value="1" /> <img src="../images/review/1star.PNG">
+			         	</div>
+			         	
+			         	<input type="hidden" name="productNo" value="${detail.no }">
+			         	
+						<div class="panel-body">
+							<div class="col-lg-12">
+							    <div class="input-group">
+							      <input type="text" name="contents" class="form-control" placeholder="최대 한글 100자까지 가능하며, 스포일러는 삭제될 수 있습니다.">
+							      <span class="input-group-btn">
+							        <button class="btn btn-danger" type="submit">등록</button>
+							      </span>
+							    </div>
+							  </div>
+							</div>
+						<div class="row">
+							<img class="col-sm-2"
+								src="../images/review/star.PNG">
+							<p class="col-sm-7"></p>
+							<p>아이디 :  작성일 :
+							</p>	
+						</div>
+					</form>
 				</div>
 				<div id="menu2" class="tab-pane fade">
 					<h3>Menu 2</h3>

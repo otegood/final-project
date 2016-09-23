@@ -17,6 +17,7 @@ import com.withmong.form.ProductForm;
 import com.withmong.model.Category;
 import com.withmong.model.Location;
 import com.withmong.model.Product;
+import com.withmong.model.ProductReview;
 import com.withmong.model.User;
 import com.withmong.service.ProductService;
 
@@ -31,13 +32,16 @@ public class ProductController {
 
 	
 	
-	@RequestMapping(value="/detail.do")
-	public String detail(@RequestParam(name="no") int no, Model model) {
-		Product productDetail = productService.productDetail();
-		model.addAttribute("detail",productDetail);
-		
-		return "product/detail";
+
+	
+		@RequestMapping(value="/detail.do")
+		public String detail(@RequestParam(name="no") int no, Model model) {
+			Product productDetail = productService.productDetail();
+			model.addAttribute("detail",productDetail);
+			
+			return "product/detail";
 	}
+
 	
 	
 	@RequestMapping(value="/addProduct.do", method=RequestMethod.GET)
@@ -111,6 +115,27 @@ public class ProductController {
 	public String searchlist() {
 		return "product/searchlist";
 	}
+	
+	
+	@RequestMapping(value="/productreple.do", method=RequestMethod.GET)
+	public String productreple(Model model) {
+		List<ProductReview> productReivewList = productService.getAllProductReivew();
+		model.addAttribute("productReivewList",productReivewList);
+		return "product/productreple";
+	}
+	
+	@RequestMapping(value="/productreple.do", method=RequestMethod.POST)
+	public String productreple(ProductReview productReview, User loginedUser) throws Exception{
+		
+		String loginId = loginedUser.getId();
+		productReview.setUserId(loginId);
+		
+		productService.addProductReview(productReview);
+		
+		
+		return "redirect:/detail.do?no="+productReview.getProductNo();
+	}
+	
 	
 	
 	
