@@ -249,18 +249,7 @@ margin-left: 80px;
 
 							</div>
 							<div class="col-sm-4">
-								<div class="send-message">
-									<p>
-										<a href="#"><span class="glyphicon glyphicon-envelope"></span></a>
-										<!-- 메세지 폼 이동 -->
-									</p>
-								</div>
-								<div class="send-respon">
-									<p>
-										<a href="#"><span class="glyphicon glyphicon-alert"></span></a>
-										<!-- 신고 폼 이동 -->
-									</p>
-								</div>
+								<!-- 메세지,신고 삭제 -->
 							</div>
 						</div>
 						<div class="col-sm-3"
@@ -289,18 +278,7 @@ margin-left: 80px;
 
 							</div>
 							<div class="col-sm-4">
-								<div class="send-message">
-									<p>
-										<a href="#"><span class="glyphicon glyphicon-envelope"></span></a>
-										<!-- 메세지 폼 이동 -->
-									</p>
-								</div>
-								<div class="send-respon">
-									<p>
-										<a href="#"><span class="glyphicon glyphicon-alert"></span></a>
-										<!-- 신고 폼 이동 -->
-									</p>
-								</div>
+								<!-- 메세지,신고 삭제 -->
 							</div>
 						</div>
 						<div class="col-sm-3"
@@ -329,18 +307,7 @@ margin-left: 80px;
 
 							</div>
 							<div class="col-sm-4">
-								<div class="send-message">
-									<p>
-										<a href="#"><span class="glyphicon glyphicon-envelope"></span></a>
-										<!-- 메세지 폼 이동 -->
-									</p>
-								</div>
-								<div class="send-respon">
-									<p>
-										<a href="#"><span class="glyphicon glyphicon-alert"></span></a>
-										<!-- 신고 폼 이동 -->
-									</p>
-								</div>
+								<!-- 메세지,신고 삭제 -->
 							</div>
 						</div>
 						<div class="col-sm-3"
@@ -369,18 +336,7 @@ margin-left: 80px;
 
 							</div>
 							<div class="col-sm-4">
-								<div class="send-message">
-									<p>
-										<a href="#"><span class="glyphicon glyphicon-envelope"></span></a>
-										<!-- 메세지 폼 이동 -->
-									</p>
-								</div>
-								<div class="send-respon">
-									<p>
-										<a href="#"><span class="glyphicon glyphicon-alert"></span></a>
-										<!-- 신고 폼 이동 -->
-									</p>
-								</div>
+								<!-- 메세지,신고 삭제 -->
 							</div>
 						</div>
 					</div>
