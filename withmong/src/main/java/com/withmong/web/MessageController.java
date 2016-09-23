@@ -29,7 +29,9 @@ public class MessageController {
 	public String messagelist(Model model,  User loginedUser) {
 		List<Message> messageList = messageService.getAllMessages(loginedUser.getId());  
 		List<Message> onebyoneList = messageService.getOnebyone(loginedUser.getId());
+		//메세지 목록조회
 		model.addAttribute("messageList", messageList);
+		//1:1메세지 리스트
 		model.addAttribute("onebyoneList", onebyoneList);
 		return "message/messagelist";
 	}
@@ -38,7 +40,7 @@ public class MessageController {
 	public String form() {
 		return "message/messageform";
 	}
-	
+	//쪽지보내기
 	@RequestMapping(value="/firstmessage.do", method=RequestMethod.POST)
 	public String firstMessage(Message message, User loginedUser) {
 		message.setSender(loginedUser.getId());

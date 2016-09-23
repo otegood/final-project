@@ -9,10 +9,10 @@ public interface MessageService {
 	// 메세지 목록조회
 	List<Message> getAllMessages(String receiver);
 	
-	// 1:1메세지
+	// 1:1메세지 리스트
 	List<Message> getOnebyone(String receiver);
 
-	// 첫 쪽지날리기
+	// 쪽지보내기
 	void addFirstMessage(Message message);
 	
 }
