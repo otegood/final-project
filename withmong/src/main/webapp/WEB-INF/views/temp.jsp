@@ -12,9 +12,6 @@
   <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <style type="text/css">
 	
-	img.pro-img {width: 200px; height: 200px;}
-	img.aa {width: 80px; height: 80px;}
-	
 	header {
 		background-color: black;
 	}

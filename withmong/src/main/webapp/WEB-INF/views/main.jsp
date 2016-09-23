@@ -15,19 +15,6 @@
 	src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
 <style type="text/css">
-img.pro-img {
-	width: 200px;
-	height: 200px;
-}
-
-img.aa {
-	width: 80px;
-	height: 80px;
-}
-
-header {
-	background-color: black;
-}
 
 .ex-company {
 	color: white;
@@ -66,70 +53,6 @@ strong {
 	margin: auto;
 }
 
-#show-item {
-	height: 300px;
-	margin-top: 25px;
-	margin-bottom: 25px;
-	width: auto;
-}
-
-#display {
-	width: 70%;
-	height: 350px;
-	width: auto;
-	height: auto;
-}
-#rightSide{
-position: absolute;
-top: 547px;
-left: 50%;
-margin: 0 0 0 510px;
-	}
-#rightSide #right_zzim {
-position: fixed;
-top: 126px;
-left: 50%;
-margin-left: 510px;
-border:1px solid #B0B5BD;
-width:114px;
-height:543px;
-}
-
-#rightSide #right_zzim  div {text-align:center;}
-#rightSide #right_zzim  div.recTit{line-height:1.5em;padding:5px;color:white;background-color:#505A69;}
-#right_zzim #recentCnt {color:yellow;}
-#rightSide #right_zzim ul {min-height:495px;}
-#rightSide #right_zzim  li{text-align:center;padding:5px;position:relative;} 
-#rightSide #right_zzim ul li img {border:1px solid #ccc}
-#right_zzim .detail {
-display: none;
-position: absolute;
-top: 3px;
-right: 20px;
-xheight: 40px;
-xpadding: 15px 11px 0;
-xbackground: #404a59;
-color: #fff;
-xtext-align: left;
-white-space: nowrap;
-
-}
-
-#right_zzim li:hover .detail {display:block}
-#right_zzim li .btn_delete {
-position: absolute;
-top: 3px;
-right: -1px;
-width: 11px;
-height: 11px;
-background: url(/img/sp.png) no-repeat -193px -111px;
-text-indent: -9000px;
-}
-#right_zzim  #currentPage {color:#505A69;font-weight:bold}
-#right_zzim  #totalPageCount {color:#CBC8D2;font-weight:bold}
-.noData {color:#ccc;text-align:center;margin-top:223px;}
-
-}
 #paging {display:;position:relative;line-height:1em;}
 #paging .btn_prev {
 border:1px solid #CCC;
@@ -142,8 +65,6 @@ display:inline-block;
 margin-left: 80px;
 }
 
-
-
 </style>
 <title>Insert title here</title>
 </head>
@@ -151,12 +72,10 @@ margin-left: 80px;
 	<%@ include file="header.jsp"%>
 </header>
 <body>
-
-
 	<!-- 내용 기입 -->
 	<div class="container" id="display">
 		<br>
-		<div id="myCarousel" class="carousel slide" data-ride="carousel">
+		<div id="myCarousel" class="carousel slide" data-ride="carousel" style="height: 250px;">
 			<!-- Indicators -->
 			<ol class="carousel-indicators">
 				<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
@@ -169,22 +88,6 @@ margin-left: 80px;
 			<div class="carousel-inner" role="listbox">
 				<div class="item active" id="show-item">
 					<img src="resources/img/p1.png" alt="cat1" id="show-item">
-				</div>
-
-				<div class="item">
-					<img src="resources/img/p2.png" alt="cat1" id="show-item">
-				</div>
-
-				<div class="item">
-					<img src="resources/img/p3.png" alt="cat1" id="show-item">
-				</div>
-
-				<div class="item">
-					<img src="resources/img/p4.png" alt="cat2" id="show-item">
-				</div>
-
-				<div class="item">
-					<img src="resources/img/p5.png" alt="cat3" id="show-item">
 				</div>
 			</div>
 
@@ -345,20 +248,7 @@ margin-left: 80px;
 				</div>
 			</div>
 		</div>
-		<div class="col-sm-2">
-				<div id="right_zzim">
-					<div  class="recTit">최근본상품 <span id=recentCnt></span></div>
-						<ul style="padding-left: 20px;">
-						<!-- 본 상품이 뿌려질 부분  -->
-							<li>1</li>
-							<li>1</li>
-							<li>1</li>
-							<li>1</li>
-						
-						</ul>    
-					<div id="paging"><a class="btn_prev" style="cursor:pointer" >이전</a><span  id="currentPage"></span><span id="totalPageCount"></span><a class="btn_next" style="cursor:pointer" >다음</a></div>
-				</div>
-		</div>
+		
 		<div class="col-sm-10 addControl" style="text-align: center;">
 			<a class="btn btn-primary btn-large" style="margin-left: 30px;"
 				id="more">더보기</a>
@@ -367,11 +257,11 @@ margin-left: 80px;
 		
 
 	</div>
-	<div class="row">$&nbsp;</div>
-	<div class="row">$&nbsp;</div>
+	<br>
+	<br>
+
 	<%@ include file="footer.jsp"%>
 </body>
-<footer></footer>
 <script type="text/javascript">
 //더보기
 	$(document).ready(function() {
