@@ -143,7 +143,6 @@ public class UserController {
 		return "{\"size\":0}";
 	}
 	
-//------------------------------------------------------------------------------------------------------//
 	
 	//가입 성공시 나오는 문구
 	@RequestMapping("/regsuccess.do")
@@ -152,6 +151,7 @@ public class UserController {
 		return "member/regsuccess";
 	}
 	
+//------------------------------------------------------------------------------------------------------//
 	
 	//로그인화면 접속
 	@RequestMapping(value="/login.do", method=RequestMethod.GET)
@@ -180,4 +180,21 @@ public class UserController {
 		//어디에 담으면 무조건 redirect (저장소에 변경을 가하는것)
 		return "redirect:/main.do";
 	}
+
+//------------------아이디, 비밀번호 찾기-------------------------------------------------------------------//
+	//로그인화면 접속
+	@RequestMapping(value="/find.do", method=RequestMethod.GET)
+	public String find() {
+		
+		return "member/find";
+	}
+	
+	@RequestMapping("/findid.do")
+	public @ResponseBody User findId(String name, Date birth, String phone){
+		User findid = userService.findId(name, birth, phone);
+		
+		return findid;
+		
+	}
+	
 }

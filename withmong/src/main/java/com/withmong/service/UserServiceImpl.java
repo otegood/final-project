@@ -1,5 +1,7 @@
 package com.withmong.service;
 
+import java.util.Date;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.DigestUtils;
@@ -54,6 +56,14 @@ public class UserServiceImpl implements UserService{
 		User checkPhone = userDao.getUserByPhone(phone);
 		return checkPhone;
 	}
+
+	@Override
+	public User findId(String name, Date birth, String phone) {
+		User findid = userDao.findId(name, birth, phone);
+		return findid;
+	}
+
+	
 }
 
 
