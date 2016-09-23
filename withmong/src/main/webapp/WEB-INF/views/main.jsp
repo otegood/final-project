@@ -288,9 +288,8 @@ strong {
 					</div>
 				</div>
 			</div>
-			<div class="col-sm-10 addControl" style="text-align: center; margin-bottom: 30px; margin-top: 30px;">
-				<a class="btn btn-primary btn-large" style="margin-left: 30px;"
-					id="more">더보기</a>
+			<div style="text-align: center; margin-bottom: 30px; margin-top: 30px;">
+				<a class="btn btn-danger btn-large" style="width: 400px;" id="more">더보기</a>
 			</div>
 		</div>
 	</div>
