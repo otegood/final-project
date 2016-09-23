@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import com.withmong.dao.ProductDao;
 import com.withmong.model.Category;
 import com.withmong.model.Product;
+import com.withmong.model.ProductReview;
 
 @Service
 public class ProductServiceImpl implements ProductService{
@@ -30,5 +31,17 @@ public class ProductServiceImpl implements ProductService{
 	@Override
 	public Product productDetail() {
 		return productDao.productDetail();
+	}
+
+	@Override
+	public void addProductReview(ProductReview productReview) {
+		
+		productDao.addProductReview(productReview);
+		
+	}
+
+	@Override
+	public List<ProductReview> getAllProductReivew() {
+		return productDao.getAllProductReivew();
 	}
 }

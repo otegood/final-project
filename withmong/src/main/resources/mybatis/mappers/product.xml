@@ -22,6 +22,19 @@
 		where no = 1
 	</select>
 	
+	<insert id="addProductReview" parameterType="ProductReview">
+		insert into product_review
+		(no,score,contents,regdate,userid,productno)
+		values
+		(test_seq.nextval,#{score},#{contents},sysdate,#{userId},#{productNo})
+	</insert>
+	
+	<select id="getAllProductReivew" parameterType="int" resultType="ProductReview">
+		select score,contents,regdate,userid,productno
+		from product_review
+		where productno = 1
+		
+	</select>
 	
 </mapper>
 
