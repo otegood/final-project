@@ -73,7 +73,7 @@
 				<c:forEach var="message" items="${messageList }">
 					<tr>
 						<td>
-							<a class="btn btn-warning" role="button" data-toggle="collapse" href="#${message.sender }" aria-expanded="false" aria-controls="collapseExample">
+							<a class="btn btn-warning" role="button" data-toggle="collapse" href="#${message.sender }" aria-expanded="false" aria-controls="collapseExample" style="width: 300px;">
 								<c:out value="${message.sender }"/>	님과 대화내용</a>
 							<div class="collapse" id="${message.sender }">
 								<div class="well">
