@@ -110,7 +110,7 @@ $(document).ready(function(){
 										<li><a href="#">내역</a></li>
 									</ul></li>
 								<li class="divider"></li>
-								<li><a href="#"><span
+								<li><a href="logout.do"><span
 										class="glyphicon glyphicon-log-out"></span> 로그아웃</a></li>
 							</ul></li>
 					</ul>
