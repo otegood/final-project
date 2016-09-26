@@ -10,7 +10,7 @@ public interface ProductDao {
 
 	void addProduct(Product product);
 	List<Category> findCategory();
- 	Product productDetail();
+ 	Product productDetail(int no);
 	void addProductReview(ProductReview productReview);
 	List<ProductReview> getAllProductReivew();
 }

@@ -71,7 +71,7 @@ strong {
 					<div class="form-group row">
 						<label class="col-sm-3 text-right">카테고리</label>
 						<div class="col-sm-9">
-							<select name="category" id="category">
+							<select name="categoryNo" id="categoryNo">
 								<option value="defualt" selected="selected">--선택하세요--</option>
 									 <c:forEach var="cate" items="${cateList}">
 									<option value="${cate.no }" selected="selected">${cate.name }</option>
@@ -101,9 +101,7 @@ strong {
 					<div class="form-group row">
 						<label class="col-sm-3 text-right">상품 설명</label>
 						<div class="col-sm-9">
-							<textarea name="contents" rows="7" cols="72">
-								
-							</textarea>
+							<textarea name="contents" rows="7" cols="72"></textarea>
 						</div>
 					</div>
 
@@ -121,11 +119,11 @@ strong {
 					</div>
 
 					<div class="form-group row">
-						<label class="col-sm-3 text-right">수량 및 인원</label> <select
-							name="qty" id="qty">
-							<option value="defualt" selected="selected">--선택하세요--</option>
-							<option value="qty">--수량--</option>
-							<option value="human">--인원--</option>
+						<label class="col-sm-3 text-right">수량 및 인원</label> 
+						<select>
+							<option selected="selected">--선택하세요--</option>
+							<option>--수량--</option>
+							<option>--인원--</option>
 						</select> <input type="number" name="qty" id="qty" size="10" />
 					</div>
 					<div class="form-group row">

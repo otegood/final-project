@@ -29,8 +29,8 @@ public class ProductServiceImpl implements ProductService{
 	}
 
 	@Override
-	public Product productDetail() {
-		return productDao.productDetail();
+	public Product productDetail(int no) {
+		return productDao.productDetail(no);
 	}
 
 	@Override
