@@ -74,12 +74,35 @@
 		<div class="row col-sm-6" id="frames">
 			<h2>회원 관리</h2>
 			<div style="text-align: right">
-				<a class="btn btn-xs btn-info" href="">더 보기</a>
+				<a class="btn btn-xs btn-info" href="userlist.do">더 보기</a>
 			</div>
 			
 			<!-- 회원리스트 -->
 			<div>
-			
+				<div class="panel panel-boby">
+			<table class="table">
+				<thead>
+					<tr>
+						<th>계정</th>
+						<th>이름</th>
+						<th>생년월일</th>
+						<th>성별</th>
+						<th>포인트</th>
+					</tr>
+				</thead>
+				<tbody>
+				<c:forEach var="users" items="${userList }">
+					<tr>
+						<td>${users.id }</td>
+						<td>${users.name }</td>
+						<td><fmt:formatDate value="${users.birth }" pattern="yyyy.MM.dd"/></td>
+						<td>${users.gender }</td>
+						<td>${users.point }</td>
+					</tr>	
+				</c:forEach>
+				</tbody>
+			</table>
+		</div>
 			</div>
 		</div>
 		
