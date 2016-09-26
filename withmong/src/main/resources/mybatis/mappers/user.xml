@@ -64,4 +64,14 @@
 		set password = #{password}
 		where id = #{id}
 	</update>
+	
+	<update id="myInfoModify" parameterType="User">
+		update user_table
+		set password = #{password}
+		and	email = #{email}
+		and gender= #{gender}
+		and phone = #{phone}
+		and schoolAbility = #{schoolAbility}
+		where id = #{id}
+	</update>
 </mapper>

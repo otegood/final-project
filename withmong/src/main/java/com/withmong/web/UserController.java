@@ -83,7 +83,7 @@ public class UserController {
 		String schoolAbility2 = userform.getSchoolAbility2();
 		String schoolAbility3 = userform.getSchoolAbility3();
 		
-		user.setSchoolAbility(schoolAbility1+schoolAbility2+schoolAbility3);
+		user.setSchoolAbility(schoolAbility1+" "+schoolAbility2+" "+schoolAbility3);
 		
 		//파일업로드
 		String filename = img.getOriginalFilename();

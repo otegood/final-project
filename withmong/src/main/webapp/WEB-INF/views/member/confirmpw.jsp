@@ -66,7 +66,7 @@
 				</div>
 			</c:if>
 			
-			<form class="form-inline text-center" role="form" method="post" action="login.do">
+			<form class="form-inline text-center" role="form" method="post" action="confirmpw.do">
 			    <div class="form-group">
 			     <h2>보안을 위하여 사용자의 비밀번호를 입력하여주십시오.</h2>
 			    </div>
