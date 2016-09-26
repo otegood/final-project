@@ -18,4 +18,14 @@ public class ManagerServiceImpl implements ManagerService{
 		return managerDao.getAllUsers();
 	}
 
+	@Override
+	public void userDelete(String id) {
+		managerDao.userDelete(id);
+	}
+
+	@Override
+	public void userRestore(String id) {
+		managerDao.userRestore(id);		
+	}
+
 }

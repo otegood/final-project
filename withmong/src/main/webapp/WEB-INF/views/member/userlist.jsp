@@ -89,10 +89,10 @@
 						<td>${users.point }</td>
 						<td>${users.grade }</td>
 						<c:if test="${users.delCheck eq 'N' }">
-							<td>${users.delCheck }  <a class="btn btn-danger btn-xs">삭제</a></td>
+							<td>${users.delCheck }  <a href="deleteUser.do?id=${users.id }" class="btn btn-danger btn-xs">삭제</a></td>
 						</c:if>
 						<c:if test="${users.delCheck eq 'Y' }">
-							<td>${users.delCheck }  <a class="btn btn-success btn-xs">복구</a></td>
+							<td>${users.delCheck }  <a href="restoreUser.do?id=${users.id }" class="btn btn-success btn-xs">복구</a></td>
 						</c:if>
 					</tr>	
 				</c:forEach>
