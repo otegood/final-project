@@ -8,18 +8,18 @@
 		insert into product_table
 		( no,title,userid,img,video,contents,price,qty,regdate,avglike,hits,tag,categoryno,location )
 		values
-		(test_seq.nextval, #{title},#{userId},#{img}, #{video}, #{contents}, #{price}, #{qty},sysdate,0,0,#{tag},{category},{location})
+		(test_seq.nextval, #{title},#{userId},#{img}, #{video}, #{contents}, #{price}, #{qty},sysdate,0,0,#{tag},#{categoryNo},#{locationNo})
 	</insert>
 	
 		<select id="findCategory" resultType="Category">
-		select name from category_table
+		select no, name from category_table
 		where bno != 0
 	</select>
 	
 	<select id="productDetail" parameterType="int" resultType="Product">
 		select no,title,userid,img,video,contents,price,qty,regdate,avglike,hits,tag,categoryno,location 
 		from product_table
-		where no = 1
+		where no = #{value}
 	</select>
 	
 	<insert id="addProductReview" parameterType="ProductReview">
@@ -33,6 +33,7 @@
 		select score,contents,regdate,userid,productno
 		from product_review
 		where productno = 1
+		order by regdate desc
 		
 	</select>
 	

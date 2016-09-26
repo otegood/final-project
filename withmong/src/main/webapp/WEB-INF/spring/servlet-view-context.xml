@@ -35,12 +35,13 @@
 			<mvc:exclude-mapping path="/temp.do"/>
 			<mvc:exclude-mapping path="/register.do"/>
 			<mvc:exclude-mapping path="/login.do"/>
-			<mvc:exclude-mapping path="/detail.do"/>
 			
 			<mvc:exclude-mapping path="/idcheck.do"/>
 			<mvc:exclude-mapping path="/agree.do"/>
 
+			<mvc:exclude-mapping path="/detail.do"/>
 			<mvc:exclude-mapping path="/searchlist.do"/>
+			<mvc:exclude-mapping path="/getReviewList.do"/>
 
 
 			<mvc:exclude-mapping path="/find.do"/>

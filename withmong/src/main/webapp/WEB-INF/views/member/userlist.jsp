@@ -88,12 +88,20 @@
 						<td>${users.schoolAbility }</td>
 						<td>${users.point }</td>
 						<td>${users.grade }</td>
-						<c:if test="${users.delCheck eq 'N' }">
-							<td>${users.delCheck }  <a href="deleteUser.do?id=${users.id }" class="btn btn-danger btn-xs">삭제</a></td>
-						</c:if>
-						<c:if test="${users.delCheck eq 'Y' }">
-							<td>${users.delCheck }  <a href="restoreUser.do?id=${users.id }" class="btn btn-success btn-xs">복구</a></td>
-						</c:if>
+						<td>
+							<c:if test="${users.id ne 'king' }">
+							${users.delCheck }
+								<c:if test="${users.delCheck eq 'N' }">
+									<a href="deleteUser.do?id=${users.id }" class="btn btn-danger btn-xs">삭제</a>
+								</c:if>
+								<c:if test="${users.delCheck eq 'Y' }">
+									<a href="restoreUser.do?id=${users.id }" class="btn btn-success btn-xs">복구</a>
+								</c:if>
+							</c:if>
+							<c:if test="${users.id eq 'king' }">
+								삭제불가
+							</c:if>
+						</td>
 					</tr>	
 				</c:forEach>
 				</tbody>

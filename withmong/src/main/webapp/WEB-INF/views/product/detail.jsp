@@ -16,9 +16,44 @@
 <script type="text/javascript">
 
 $(function() {
-	$('#tabmenu1').on('shown.bs.tab', function (e) {
+
+	function getReviewList(){
 		
-	})
+		$("#reviewTb").empty();
+		
+		$.ajax({
+			url:"getReviewList.do",
+			data:{},
+			dataType: "json",
+			success: function(data){
+				//로딩하는 ajax 추가
+				$.each(data,function(index, item){	
+					$("#reviewTb").append('<tr><td>'+item.score+'</td><td>'+item.contents+'</td>'+'<td>'+item.userId+'</td>'+'<td>'+item.regdate+'</td></tr>');
+				})
+			}
+		})
+	}
+	
+	$("#tabmenu1").click(function() {
+		
+		getReviewList();
+	});
+	
+	
+	$("#addreviewBtn").click(function(){
+		
+		$.ajax({
+			url:"productreple.do",
+			type:"POST",
+			data:{score:$(":radio:checked").val(),contents:$("#contents").val(),productNo:$("#productNo").val() },
+			dataType: "text",
+			success: function(data){
+				//로딩하는 ajax 추가
+				getReviewList();
+			}
+		})
+		return false;
+	});
 	
 })
 
@@ -117,26 +152,37 @@ strong {
 				      		<input type="radio" name="score" value="1" /> <img src="../images/review/1star.PNG">
 			         	</div>
 			         	
-			         	<input type="hidden" name="productNo" value="${detail.no }">
+			         	<input type="hidden" id="productNo" value="${detail.no }">
 			         	
 						<div class="panel-body">
 							<div class="col-lg-12">
 							    <div class="input-group">
-							      <input type="text" name="contents" class="form-control" placeholder="최대 한글 100자까지 가능하며, 스포일러는 삭제될 수 있습니다.">
+							      <input type="text" id="contents" class="form-control" placeholder="최대 한글 100자까지 가능하며, 스포일러는 삭제될 수 있습니다.">
 							      <span class="input-group-btn">
-							        <button class="btn btn-danger" type="submit">등록</button>
+							        <button class="btn btn-danger" type="submit" id="addreviewBtn">등록</button>
 							      </span>
 							    </div>
 							  </div>
 							</div>
-						<div class="row">
-							<img class="col-sm-2"
-								src="../images/review/star.PNG">
-							<p class="col-sm-7"></p>
-							<p>아이디 :  작성일 :
-							</p>	
+						</form>
+						<div class="row" id="reviewList">
+
+							<table class="table">
+								<thead>
+									<tr>
+										<th>점수</th>
+										<th>컨텐츠</th>
+										<th>아이디</th>
+										<th>작성일</th>
+									</tr>
+								</thead>
+								<tbody id="reviewTb">
+
+								</tbody>
+							</table>
+
 						</div>
-					</form>
+					
 				</div>
 				<div id="menu2" class="tab-pane fade">
 					<h3>Menu 2</h3>

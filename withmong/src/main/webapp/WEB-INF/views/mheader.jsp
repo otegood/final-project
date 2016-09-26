@@ -33,7 +33,13 @@
             <li><a href="#">거래내역</a></li>
           </ul>
         </li>
-        <li><font color="white" style="border: medium;">관리자 페이지 접속중</font></li>
+        <li>
+        	<a href="logout.do">
+        		<font color="white" style="border: medium;">
+        			관리자 페이지 로그아웃 <span class="glyphicon glyphicon-log-out"></span>
+        		</font>
+        	</a>
+        </li>
       </ul>
       
     </div>

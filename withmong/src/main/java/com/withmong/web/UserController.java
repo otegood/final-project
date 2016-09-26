@@ -151,12 +151,17 @@ public class UserController {
 	//로그인을 실행
 	@RequestMapping(value="/login.do", method=RequestMethod.POST)
 	public String login(UserForm userform, HttpSession session){
+		String result = "";
 		
 		User user = userService.login(userform.getId(), userform.getPassword());
-		
 		session.setAttribute("LOGIN_USER", user);
-		
-		return "redirect:/main.do";
+		// 관리자 id = king
+		if(user.getId().equals("king")){
+			result="redirect:/mmain.do";
+		}else{
+			result="redirect:/main.do";
+		}
+		return result;
 	}
 	
 	//로그아웃 실행

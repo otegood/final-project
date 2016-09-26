@@ -11,6 +11,7 @@ import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.withmong.form.ProductForm;
@@ -27,73 +28,105 @@ public class ProductController {
 
 	@Autowired
 	private ProductService productService;
-	
+
 	private static String UPLOAD_DIRECTORY = "c:/upload";
 
+<<<<<<< HEAD
 		@RequestMapping(value="/detail.do")
 		public String detail(@RequestParam(name="no") int no, Model model) {
 			Product productDetail = productService.productDetail();
 			model.addAttribute("detail",productDetail);
 			
 			return "product/detail";
+=======
+
+
+
+
+	@RequestMapping(value="/detail.do")
+	public String detail(@RequestParam(name="no") int no, Model model,Model review) {
+		Product productDetail = productService.productDetail(no);
+		model.addAttribute("detail",productDetail);
+
+		List<ProductReview> productReivewList = productService.getAllProductReivew();
+		review.addAttribute("productReivewList",productReivewList);
+		return "product/detail";
+	}
+	
+	@RequestMapping(value="/getReviewList.do")
+	public @ResponseBody List<ProductReview> getReviewList () {
+		List<ProductReview> productReivewList = productService.getAllProductReivew();
+		return productReivewList;
+>>>>>>> branch 'master' of https://github.com/otegood/final-project.git
 	}
 
-	
-	
+
+
 	@RequestMapping(value="/addProduct.do", method=RequestMethod.GET)
 	public String addProduct(Model model) {
 		List<Category> categoryList = productService.findCategory();
 		model.addAttribute("cateList",categoryList);
 		return "product/addProduct";
 	}
-	
+
 	@RequestMapping(value="/addProduct.do", method=RequestMethod.POST)
 	public String addProduct(ProductForm productForm ,@RequestParam("img")MultipartFile img, User loginedUser) throws Exception{
-	
+
 		//System.out.println("시작");
 		Product product = new Product();
 		BeanUtils.copyProperties(productForm, product);
-		
+
 		// 카테고리 번호
-		product.setNo(productForm.getCategoryNo());
-		
+		product.setCategoryNo(productForm.getCategoryNo());
+
 		// 제목
 		String title = productForm.getTitle();
 		product.setTitle(title);
-		
+
 		// 아이디
 		String loginId = loginedUser.getId();
 		product.setUserId(loginId);
-		
+
 		// 이미지 사진
 		String filename = img.getOriginalFilename();
-		String protitle = productForm.getTitle();
-		String extName = filename.substring(filename.lastIndexOf(".")+1);
-		byte[] bytes = img.getBytes();
-		File file = new File(UPLOAD_DIRECTORY, protitle + "." + extName);
-		FileCopyUtils.copy(bytes, file);
-		product.setImg(protitle + "." + extName);
 		
+		System.out.println("---------------------------------------------------------------------------------");
+		System.out.println(filename);
+		System.out.println("---------------------------------------------------------------------------------");
+		
+		if(!filename.isEmpty()){			
+			String protitle = "pro_"+loginId;
+			
+			String extName = filename.substring(filename.lastIndexOf(".")+1);
+			byte[] bytes = img.getBytes();
+			File file = new File(UPLOAD_DIRECTORY, protitle + "." + extName);
+			FileCopyUtils.copy(bytes, file);
+			product.setImg(protitle + "." + extName);
+		}else{
+			product.setImg("defaultProduct.png");
+		}
+		
+
 		//youtubeURL 
 		String video = productForm.getVideo();
 		product.setVideo(video);
-		
+
 		// 내용
 		String contents = productForm.getContents();
 		product.setContents(contents);
-		
+
 		//지역
 		product.setLocationNo(productForm.getLocationNo());
-		
+
 		//수량 및 인원
-	 	int qty = productForm.getQty();
-	 	product.setQty(qty);
-	 	
-	 	//가격
-	 	int price = productForm.getPrice();
-	 	product.setPrice(price);
-	 	
-	 	//태그
+		int qty = productForm.getQty();
+		product.setQty(qty);
+
+		//가격
+		int price = productForm.getPrice();
+		product.setPrice(price);
+
+		//태그
 		String tag = productForm.getTag();
 		product.setTag(tag);
 		
@@ -101,38 +134,42 @@ public class ProductController {
 		System.out.println("----------------------------------------------------------------------");
 		System.out.println(product.toString());
 		System.out.println("----------------------------------------------------------------------");
-		*/
+		 */
 		productService.addProduct(product);
-	
-		
+
+
 		return "redirect:/searchlist.do";
 	}
 	@RequestMapping(value="/searchlist.do")
 	public String searchlist() {
 		return "product/searchlist";
 	}
-	
-	
-	@RequestMapping(value="/productreple.do", method=RequestMethod.GET)
-	public String productreple(Model model) {
-		List<ProductReview> productReivewList = productService.getAllProductReivew();
-		model.addAttribute("productReivewList",productReivewList);
-		return "product/productreple";
+
+	/*	
+    @RequestMapping(value="/productreple.do", method=RequestMethod.POST)
+	public @ResponseBody void roductreple(ProductReview productReview, User loginedUser) throws Exception{
+
+		String loginId = loginedUser.getId();
+		productReview.setUserId(loginId);
+
+		productService.addProductReview(productReview);
 	}
-	
+	*/
 	@RequestMapping(value="/productreple.do", method=RequestMethod.POST)
-	public String productreple(ProductReview productReview, User loginedUser) throws Exception{
+	public @ResponseBody void productreple(int score,String contents,int productNo, User loginedUser) throws Exception{
+		
+		ProductReview productReview = new ProductReview();
 		
 		String loginId = loginedUser.getId();
 		productReview.setUserId(loginId);
+		productReview.setScore(score);
+		productReview.setContents(contents);
+		productReview.setProductNo(productNo);
 		
 		productService.addProductReview(productReview);
-		
-		
-		return "redirect:/detail.do?no="+productReview.getProductNo();
 	}
-	
-	
-	
-	
+
+
+
+
 }
