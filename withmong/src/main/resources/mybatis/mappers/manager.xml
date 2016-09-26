@@ -21,7 +21,7 @@
 		where id = #{id}
 	</update>
 <!-- 회원복구처리 Y->N -->
-	<update id="userDelete" parameterType="string">
+	<update id="userRestore" parameterType="string">
 		update user_table 
 		set delCheck = 'N'
 		where id = #{id}
