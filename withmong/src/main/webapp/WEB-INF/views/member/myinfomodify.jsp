@@ -133,6 +133,8 @@ $(function() {
 			$("#passwordAl").text("비밀번호와 일치합니다.").css({'color':'blue'});
 		} 
 	});
+	
+	
 });
 
 </script>
@@ -149,7 +151,7 @@ $(function() {
 					<div class="form-group row">
 						<label class="col-sm-3 text-right">아이디</label>
 						<div class="col-sm-9">
-							<input type="text" name="id" id="id" style="ime-mode:inactive" placeholder="입력해주세요"/>
+							<input type="text" name="id" id="id" disabled="disabled" style="ime-mode:inactive" value="${LOGIN_USER.id}"/>
 							<p id="checkid"></p>
 						</div>
 					</div>
@@ -168,34 +170,34 @@ $(function() {
 					<div class="form-group row">
 						<label class="col-sm-3 text-right">이름</label>
 						<div class="col-sm-9">
-							<input type="text" name="name" placeholder="입력해주세요"/>
+							<input type="text" name="name" disabled="disabled" value="${LOGIN_USER.name }"/>
 						</div>
 					</div>
 					<div class="form-group row">
 						<label class="col-sm-3 text-right">생년월일</label>
 						<div class="col-sm-9">
-							<input type="date" name="birth"/>
+							<fmt:formatDate value="${LOGIN_USER.birth }" pattern="yyyy년 MM월 dd일"/>
 						</div>
 					</div>
 					<div class="form-group row">
 						<label class="col-sm-3 text-right">이메일</label>
 						<div class="col-sm-9">
-							<input type="text" name="email" placeholder="입력해주세요"/>
+							<input type="text" name="email" value="${LOGIN_USER.email }" placeholder="입력해주세요"/>
 						</div>
 					</div>
 					<div class="form-group row">
 						<label class="col-sm-3 text-right">핸드폰번호</label> 
 						<div class="col-sm-9">
 							<select name="phone1" id="phone1">
-								<option value="010" selected="selected">010</option>
-								<option value="011">011</option>
-								<option value="016">016</option>
-								<option value="018">018</option>
-								<option value="017">017</option>
+								<option value="010" ${LOGIN_USER.phone1 eq '010' ? 'selected=selected': ''}>010</option>
+								<option value="011"${LOGIN_USER.phone1 eq '011' ? 'selected=selected': ''}>011</option>
+								<option value="016"${LOGIN_USER.phone1 eq '016' ? 'selected=selected': ''}>016</option>
+								<option value="018"${LOGIN_USER.phone1 eq '018' ? 'selected=selected': ''}>018</option>
+								<option value="017"${LOGIN_USER.phone1 eq '017' ? 'selected=selected': ''}>017</option>
 							</select> - 
 							
-							<input type="text" name="phone2" id="phone2" min="1" maxlength="4" size="6" style="ime-mode:disabled"/> - 
-							<input type="text" name="phone3" id="phone3" min="1" maxlength="4" size="6" style='ime-mode:disabled;'/>
+							<input type="text" name="phone2" id="phone2" value="${LOGIN_USER.phone2 }" min="1" maxlength="4" size="6" style="ime-mode:disabled"/> - 
+							<input type="text" name="phone3" id="phone3" value="${LOGIN_USER.phone3 }" min="1" maxlength="4" size="6" style='ime-mode:disabled;'/>
 							<input type="hidden" id="phoneChk" value="N" />
 							<button type="button" class="btn btn-xs" id="phoneCheck" >중복확인</button>
 							<p id="checkphone"></p>
@@ -204,48 +206,30 @@ $(function() {
 					<div class="form-group row">
 						<label class="col-sm-3 text-right">성별</label>
 						<div class="col-sm-9">
-							<input type="radio" name="gender" value="M" checked="checked"/> 남성
-							<input type="radio" name="gender" value="F"/> 여성
+							<input type="radio" name="gender" value="M" ${LOGIN_USER.gender eq 'M' ? 'checked=checked': ''}/> 남성
+							<input type="radio" name="gender" value="F" ${LOGIN_USER.gender eq 'F' ? 'checked=checked': ''}/> 여성
 						</div>
 					</div>
 					<div class="form-group row">
 						<label class="col-sm-3 text-right">학력</label>
 						<div class="col-sm-9">
-							<input type="text" name="schoolAbility1" size="5"/>
+							<input type="text" name="schoolAbility1" value="${LOGIN_USER.schoolAbility1}" size="5"/>
 							<select name="schoolAbility2">
-								<option value="고등학교" selected="selected">고등학교</option>
-								<option value="대학교">대학교</option>
-								<option value="대학원">대학원</option>
+								<option value="고등학교" ${LOGIN_USER.schoolAbility2 eq '고등학교' ? 'selected=selected': ''}>고등학교</option>
+								<option value="대학교" ${LOGIN_USER.schoolAbility2 eq '대학교' ? 'selected=selected': ''}>대학교</option>
+								<option value="대학원" ${LOGIN_USER.schoolAbility2 eq '대학원' ? 'selected=selected': ''}>대학원</option>
 							</select>
 							<select name="schoolAbility3">
-								<option value="재학" selected="selected">재학</option>
-								<option value="졸업">졸업</option>
-								<option value="중퇴">중퇴</option>
+								<option value="재학" ${LOGIN_USER.schoolAbility2 eq '재학' ? 'selected=selected': ''}>재학</option>
+								<option value="졸업" ${LOGIN_USER.schoolAbility2 eq '졸업' ? 'selected=selected': ''}>졸업</option>
+								<option value="중퇴" ${LOGIN_USER.schoolAbility2 eq '중퇴' ? 'selected=selected': ''}>중퇴</option>
 							</select>
 						</div> 
-					</div>
-					<div class="form-group row">
-						<label class="col-sm-3 text-right">가입시 질문</label>
-						<div class="col-sm-9">
-							<select name="question">
-								<option value="내 고향은?" selected="selected">내 고향은?</option>
-								<option value="내 어릴적 별명은?">내 어릴적 별명은?</option>
-								<option value="내가 졸업한 초등학교 이름은?">내가 졸업한 초등학교 이름은?</option>
-								<option value="내가 존경하는 사람은?">내가 존경하는 사람은?</option>
-								<option value="내가 가고싶은 나라는?">내가 가고싶은 나라는?</option>
-							</select>
-						</div> 
-					</div>
-					<div class="form-group row">
-						<label class="col-sm-3 text-right">답변</label>
-						<div class="col-sm-9">
-							<input type="text" name="answer" placeholder="입력해주세요"/>
-						</div>
 					</div>
 					<div class="form-group">
 						<label class="col-sm-3 text-right">프로필사진</label>
 						<div class="col-sm-9">
-							<input type="file" name="img" id="img">
+							<input type="file" name="img" id="img" value="">
 					</div>
 					<div class="form-group text-right">
 						<input type="submit" class="btn btn-primary" value="가입" />

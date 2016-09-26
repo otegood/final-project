@@ -3,11 +3,13 @@ package com.withmong.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.withmong.dao.PointDao;
 import com.withmong.model.Point;
 import com.withmong.model.User;
 
+@Service
 public class PointServiceImpl implements PointService {
 
 	@Autowired PointDao pointDao;
@@ -30,9 +32,9 @@ public class PointServiceImpl implements PointService {
 
 	@Override
 	//포인트 내역 보기
-	public List<Point> getPointList() {
+	public List<Point> getPointList(String userId) {
 		// TODO Auto-generated method stub
-		return pointDao.getPointList();
+		return pointDao.getPointList(userId);
 	}
 
 }

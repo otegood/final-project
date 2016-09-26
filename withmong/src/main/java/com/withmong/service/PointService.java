@@ -11,7 +11,8 @@ public interface PointService {
 	void updateUserPoint(User user);
 	//포인트 내역 추가
 	void addPointHistory(Point point);
+	
 	//포인트 내역 보기
-	List<Point> getPointList();
+	List<Point> getPointList(String userId);
 	
 }

@@ -17,10 +17,7 @@ import com.withmong.service.PointService;
 public class PointController {
 
 	@Autowired
-	
 	private PointService pointService;
-	
-	private static String UPLOAD_DIRECTORY = "c:/upload";
 	
 	//에러날때
 	@ExceptionHandler(RuntimeException.class)
@@ -31,13 +28,13 @@ public class PointController {
 		
 	
 	//포인트 관련 DB에 넣기
-	@RequestMapping(value="/point.do", method=RequestMethod.POST)
+	@RequestMapping(value="/history.do", method=RequestMethod.GET)
 	public String history(Model model, User loginedUser) throws Exception {
-
+		
 		//포인트 사용내역 보기
-		List<Point> pointList = pointService.getPointList();
+		List<Point> pointList = pointService.getPointList(loginedUser.getId());
 		model.addAttribute("getPointList", pointList);
-		return "history";
+		return "point/history";
 	}
 	
 	

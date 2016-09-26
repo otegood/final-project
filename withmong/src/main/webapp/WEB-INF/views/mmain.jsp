@@ -59,7 +59,7 @@
 	<header><%@ include file="mheader.jsp" %></header>
 	
 	<div class="container" style="margin-bottom: 30px;" >
-		<div class="row col-sm-6" id="frames">
+		<div class="row col-sm-6" id="frames" style="margin: auto;">
 			<h2>게시판 관리</h2>
 			<div style="text-align: right">
 				<a class="btn btn-xs btn-default" href="">더 보기</a>
@@ -71,7 +71,7 @@
 			</div>
 		</div>
 			
-		<div class="row col-sm-6" id="frames">
+		<div class="row col-sm-6" id="frames" style="margin: auto;">
 			<h2>회원 관리</h2>
 			<div style="text-align: right">
 				<a class="btn btn-xs btn-info" href="userlist.do">더 보기</a>
@@ -91,7 +91,7 @@
 					</tr>
 				</thead>
 				<tbody>
-				<c:forEach var="users" items="${userList }">
+				<c:forEach var="users" items="${userList }" begin="0" end="6">
 					<tr>
 						<td>${users.id }</td>
 						<td>${users.name }</td>
@@ -106,7 +106,7 @@
 			</div>
 		</div>
 		
-		<div class="row col-sm-6" id="frames">
+		<div class="row col-sm-6" id="frames" style="margin: auto;">
 			<h2>신고 관리</h2>
 			<div style="text-align: right">
 				<a class="btn btn-xs btn-danger" href="">더 보기</a>
@@ -118,7 +118,7 @@
 			</div>
 		</div>
 			
-		<div class="row col-sm-6" id="frames">
+		<div class="row col-sm-6" id="frames" style="margin: auto;">
 			<h2>거래 내역</h2>
 			<div style="text-align: right">
 				<a class="btn btn-xs btn-warning" href="">더 보기</a>

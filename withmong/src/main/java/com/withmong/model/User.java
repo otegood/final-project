@@ -55,6 +55,15 @@ public class User {
 	public String getPhone() {
 		return phone;
 	}
+	public String getPhone1() {
+		return phone.substring(0, phone.indexOf("-"));
+	}
+	public String getPhone2() {
+		return phone.substring(phone.indexOf("-")+1, phone.lastIndexOf("-"));
+	}
+	public String getPhone3() {
+		return phone.substring(phone.lastIndexOf("-")+1);
+	}
 	public void setPhone(String phone) {
 		this.phone = phone;
 	}
@@ -66,6 +75,15 @@ public class User {
 	}
 	public String getSchoolAbility() {
 		return schoolAbility;
+	}
+	public String getSchoolAbility1() {
+		return schoolAbility.substring(0, schoolAbility.indexOf(" "));
+	}
+	public String getSchoolAbility2() {
+		return schoolAbility.substring(schoolAbility.indexOf(" ")+1, schoolAbility.lastIndexOf(" "));
+	}
+	public String getSchoolAbility3() {
+		return schoolAbility.substring(schoolAbility.indexOf(" ")+1);
 	}
 	public void setSchoolAbility(String schoolAbility) {
 		this.schoolAbility = schoolAbility;

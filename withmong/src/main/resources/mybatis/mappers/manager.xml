@@ -1,0 +1,29 @@
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.withmong.dao.ManagerDao">
+
+<!-- 회원목록 -->
+	<select id="getAllUsers" resultType="User">
+		select
+			id, name, birth, email, phone, gender, schoolAbility, question, answer, point, grade, img, sumLike, delCheck
+		from 
+			user_table 
+		order by 
+			name asc
+	</select>
+	
+<!-- 회원삭제체크 N->Y -->
+	<update id="userDelete" parameterType="string">
+		update user_table 
+		set delCheck = 'Y'
+		where id = #{id}
+	</update>
+<!-- 회원복구처리 Y->N -->
+	<update id="userRestore" parameterType="string">
+		update user_table 
+		set delCheck = 'N'
+		where id = #{id}
+	</update>
+</mapper>

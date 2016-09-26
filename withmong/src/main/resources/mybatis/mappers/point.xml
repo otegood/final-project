@@ -13,10 +13,10 @@
 	</insert>
 	
 	<!-- 충전 내역 가져오기 -->
-	<select id="getPointList" resultType="Point">
-		select charge, withraw, regdate, userid
+	<select id="getPointList" parameterType="string" resultType="Point">
+		select charge, withdraw, regdate, userid
 		from point_table
-		where userid = #{userId}
+		where userid = #{value}
 		order by 
 			sysdate asc
 	</select>
@@ -25,7 +25,7 @@
 	<update id="updateUserPoint" parameterType="User">
 		update user_table
 		set point = #{point}
-		where userid = #{}
+		where userid = #{userId}
 	</update>
 
 </mapper>

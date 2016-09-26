@@ -106,7 +106,7 @@ $(document).ready(function(){
 								<li class="dropdown dropdown-submenu"><a href="#"
 									class="dropdown-toggle" data-toggle="dropdown">포인트 관리</a>
 									<ul class="dropdown-menu">
-										<li><a href="hisotory.do">내역</a></li>
+										<li><a href="history.do">내역</a></li>
 									</ul></li>
 								<li class="divider"></li>
 								<li><a href="logout.do"><span
