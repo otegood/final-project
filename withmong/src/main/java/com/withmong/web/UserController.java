@@ -168,7 +168,7 @@ public class UserController {
 		
 		session.setAttribute("LOGIN_USER", user);
 		
-		return "redirect:/temp.do";
+		return "redirect:/main.do";
 	}
 	
 	//로그아웃 실행
