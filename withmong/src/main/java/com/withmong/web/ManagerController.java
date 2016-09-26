@@ -44,13 +44,13 @@ public class ManagerController {
 	@RequestMapping("/deleteUser.do")
 	public String userDelete(@RequestParam(name="id") String id){
 		managerService.userDelete(id);
-		return "member/userlist";
+		return "redirect:/userlist.do";
 	}
 	
 	//유저 계정복구 처리
 	@RequestMapping("/restoreUser.do")
 	public String userRestore(@RequestParam(name="id") String id){
 		managerService.userRestore(id);
-		return "member/userlist";
+		return "redirect:/userlist.do";
 	}
 }
