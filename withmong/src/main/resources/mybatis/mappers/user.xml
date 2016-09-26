@@ -23,7 +23,7 @@
 	<!-- 회원목록 (관리자페이지용) -->
 	<select id="getAllUsers" resultType="User">
 		select
-			id, name, birth, email, phone, gender, schoolAbility, question, answer, point, grade, img, sumLike, deCheck
+			id, name, birth, email, phone, gender, schoolAbility, question, answer, point, grade, img, sumLike, delCheck
 		from 
 			user_table 
 		order by 
