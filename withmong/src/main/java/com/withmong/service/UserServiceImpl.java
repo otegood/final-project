@@ -1,7 +1,6 @@
 package com.withmong.service;
 
 
-import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -77,12 +76,6 @@ public class UserServiceImpl implements UserService{
 	@Override
 	public void changePassword(User user) {
 		userDao.changePassword(user);
-	}
-	
-	// 유저목록 (관리자 페이지)
-	@Override
-	public List<User> getAllUsers() {
-		return userDao.getAllUsers();
 	}
 
 	
