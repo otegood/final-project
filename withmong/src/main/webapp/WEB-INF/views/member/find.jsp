@@ -120,7 +120,7 @@ $(function() {
 				
 			},
 			error: function() {
-				console.log("error");
+				alert("아이디 혹은 질문 답변이 일치하지 않습니다.");
 			}
 		});
 	});
@@ -141,6 +141,8 @@ $(function() {
 		}
 		
 	});
+	
+	
 });
 </script>
 
@@ -149,10 +151,17 @@ $(function() {
 <body>
 		<header><%@ include file="../header.jsp" %></header>
 	
-		<div class="container" >
-<div class="row idpwsearchbox">
-		<div class="col-sm-6 col-sm-offset-3">
-			<!-- id찾기 start -->
+<div class="container" >
+	<h2>아이디/비밀번호 찾기</h2>
+    
+	<ul class="nav nav-tabs nav-justified">
+            <li class="active"><a href="#news" data-toggle="tab">ID 찾기</a></li>
+            <li><a href="#ent" data-toggle="tab">비밀번호</a></li>
+        </ul>
+        <div class="tab-content">
+            <div class="tab-pane active" id="news">
+                <div class="tab-pane" id="news">
+                    <!-- id찾기 start -->
 			<div class="panel panel-info searchid">
 				<div class="panel-heading">
 					<h4>ID 찾기</h4>
@@ -199,15 +208,13 @@ $(function() {
 					</div>
 				</form>
 			</div> <!-- id찾기 end -->
-			
-			<ul class="nav nav-tabs nav-justified">
-			</ul>
-			<ul class="nav nav-pills nav-justified">
-			</ul>
-			
-			
-<!-- pwd찾기 start -->
-			<div class="panel panel-info searchpwd">
+                    
+                    
+                </div>
+            </div>
+            <div class="tab-pane fade" id="ent">
+                <div class="tab-pane" id="ent">
+                   <div class="panel panel-info searchpwd">
 				<div class="panel-heading">
 					<h4>PASSWORD 찾기</h4>
 				</div>
@@ -244,10 +251,8 @@ $(function() {
 						</div>
 					</div>
 				</form>
-			</div> <!-- pwd찾기 end -->
-			
-<!-- 비밀번호 변경하기 -->
-			<div class="panel panel-info searchpwd" id="hidechangeform">
+			</div> <!-- pwd찾기 end --> 
+            <div class="panel panel-info searchpwd" id="hidechangeform">
 				<div class="panel-heading">
 					<h4>PASSWORD 변경하기</h4>
 				</div>
@@ -274,10 +279,13 @@ $(function() {
 						</div>
 					</div>
 				</form>
-			</div> <!-- pwd변경하기 end -->
-		</div>
-	</div>
-		</div>
+			</div> <!-- pwd변경하기 end -->        
+                    
+                </div>
+            </div>
+        </div>     
+  <!--  ------------------------------------------------------------------------------------------------------------------- -->
+</div>
 		
 		<%@ include file="../footer.jsp" %>	
 </body>

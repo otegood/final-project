@@ -231,4 +231,11 @@ public class UserController {
 		
 		return "member/chgsuccess";
 	}
+	
+	//-------------------------------------------------------------------------------------------------//
+	//내 상세정보 보는페이지 들어가기
+	@RequestMapping("/myinfo.do")
+	public String myinfo() {
+		return "member/myinfo";
+	}
 }
