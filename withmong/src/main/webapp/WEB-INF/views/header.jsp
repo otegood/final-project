@@ -90,7 +90,7 @@ $(document).ready(function(){
 				<c:otherwise>
 					<ul class="nav navbar-nav navbar-right">
 						<li class="dropdown"><a href="#" class="dropdown-toggle"
-							data-toggle="dropdown">**님 환영합니다. <b class="caret"></b></a>
+							data-toggle="dropdown">${LOGIN_USER.name }님 환영합니다. <b class="caret"></b></a>
 							<ul class="dropdown-menu">
 								<li class="dropdown dropdown-submenu"><a href="#"
 									class="dropdown-toggle" data-toggle="dropdown">나의 서비스</a>
