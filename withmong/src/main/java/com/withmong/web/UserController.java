@@ -48,19 +48,6 @@ public class UserController {
 	public String main(){
 		return "main";
 	}
-	//관리자 메인
-	@RequestMapping("/mmain.do")
-	public String mmain(){
-		return "mmain";
-	}
-	//유저 목록		
-	@RequestMapping("/userlist.do")
-	public String userlist(Model model) {
-		List<User> userList = userService.getAllUsers();  
-		//메세지 목록조회
-		model.addAttribute("userList", userList);
-		return "member/userlist";
-	}
 	//agreement 접속
 	@RequestMapping("/agree.do")
 	public String agreementform() {
@@ -247,4 +234,32 @@ public class UserController {
 	public String myinfo() {
 		return "member/myinfo";
 	}
+	//-------------------------------------------------------------------------------------------------//
+	//내 정보 수정하기위해서 비밀번호 재입력하는 페이지
+	@RequestMapping(value="/confirmpw.do", method=RequestMethod.GET)
+	public String confirm(){
+		
+		return "member/confirmpw";
+	}
+
+	
+	@RequestMapping(value="/confirmpw.do", method=RequestMethod.POST)
+	public String confirmpw(UserForm userform){
+		
+		User user = userService.login(userform.getId(), userform.getPassword());
+		
+		return "redirect:/myinfomodify.do";
+	}
+	
+	
+	@RequestMapping(value="/myinfomodify.do", method=RequestMethod.GET)
+	public String myinfomodify(){
+		
+		
+		return "member/myinfomodify";
+	}
+	
+	
+	
+	
 }
