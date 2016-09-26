@@ -55,40 +55,46 @@
 		<div class="container" >
 			<div class="row">
 	        	<h1>내정보</h1>
+	        	<img alt="" src="" >
 				<table class="table table striped" style="width:100%;">
 			        <tr>
 			            <th>ID</th>
-			            <td>yeong</td>
+			            <td>${LOGIN_USER.id}</td>
 			            <th>등급</th>
-			            <td></td>
+			            <td>${LOGIN_USER.grade}</td>
 			        </tr>
 			        <tr>
 			            <th>이름</th>
-			            <td>이영준</td>
+			            <td>${LOGIN_USER.name}</td>
 			            <th>포인트</th>
-			            <td>3157p</td>
+			            <td>${LOGIN_USER.point}p</td>
 			        </tr>
 			        <tr>
 			            <th>생년월일</th>
-			            <td>1988-09-23</td>
+			            <td><fmt:formatDate pattern="yyyy년 MM월 dd일" value="${LOGIN_USER.birth}"/></td>
 			        </tr>
 			        <tr>
 			            <th>이메일</th>
-			            <td>lee@naver.com</td>
+			            <td>${LOGIN_USER.email}</td>
 			        </tr>
 			        <tr>
 			            <th>전화번호</th>
-			            <td>010-1111-2222</td>
+			            <td>${LOGIN_USER.phone}</td>
 			        </tr>
 			        <tr>
 			            <th>성별</th>
-			            <td>남자</td>
+			            <td>${LOGIN_USER.gender}</td>
 			        </tr>
 			        <tr>
 			            <th>학력</th>
-			            <td>고졸</td>
+			            <td>${LOGIN_USER.schoolAbility}</td>
 			        </tr>
 			    </table>
+			    <div class="text-center">
+				    <a href="confirmpw.do" class="btn btn-primary">정보수정</a>
+				    <a href="main.do" class="btn btn-danger">메인으로</a>
+			    </div>
+			    <br/>
 			</div>
 		</div>
 		
