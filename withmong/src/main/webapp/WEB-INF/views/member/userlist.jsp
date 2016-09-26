@@ -53,18 +53,53 @@
 		height: 400px;
 	}
 </style>
-<title>관리자 페이지</title>
+<title>회원목록</title>
 </head>
 <body>
 	<header><%@ include file="../mheader.jsp" %></header>
 	
 	<div class="container" >
-		
+		<h1>회원 목록</h1>
+		<div class="panel panel-boby">
+			<table class="table">
+				<thead>
+					<tr>
+						<th>계정</th>
+						<th>이름</th>
+						<th>생년월일</th>
+						<th>이메일</th>
+						<th>연락처</th>
+						<th>성별</th>
+						<th>학력</th>
+						<th>포인트</th>
+						<th>등급</th>
+						<th>삭제여부</th>
+					</tr>
+				</thead>
+				<tbody>
+				<c:forEach var="users" items="${userList }">
+					<tr>
+						<td>${users.id }</td>
+						<td>${users.name }</td>
+						<td><fmt:formatDate value="${users.birth }" pattern="yyyy.MM.dd"/></td>
+						<td>${users.email }</td>
+						<td>${users.phone }</td>
+						<td>${users.gender }</td>
+						<td>${users.schoolAbility }</td>
+						<td>${users.point }</td>
+						<td>${users.grade }</td>
+						<c:if test="${users.delCheck eq 'N' }">
+							<td>${users.delCheck }  <a class="btn btn-danger btn-xs">삭제</a></td>
+						</c:if>
+						<c:if test="${users.delCheck eq 'Y' }">
+							<td>${users.delCheck }  <a class="btn btn-success btn-xs">복구</a></td>
+						</c:if>
+					</tr>	
+				</c:forEach>
+				</tbody>
+			</table>
+		</div>
 	</div>
 	<%@ include file="../footer.jsp" %>	
 </body>
 </html>
-
-
-
-
