@@ -56,58 +56,12 @@
 <title>관리자 페이지</title>
 </head>
 <body>
-	<header><%@ include file="mheader.jsp" %></header>
+	<header><%@ include file="../mheader.jsp" %></header>
 	
-	<div class="container" style="margin-bottom: 30px;" >
-		<div class="row col-sm-6" id="frames">
-			<h2>게시판 관리</h2>
-			<div style="text-align: right">
-				<a class="btn btn-xs btn-default" href="">더 보기</a>
-			</div>
-			
-			<!-- 게시판 리스트 -->
-			<div>
-			
-			</div>
-		</div>
-			
-		<div class="row col-sm-6" id="frames">
-			<h2>회원 관리</h2>
-			<div style="text-align: right">
-				<a class="btn btn-xs btn-info" href="">더 보기</a>
-			</div>
-			
-			<!-- 회원리스트 -->
-			<div>
-			
-			</div>
-		</div>
+	<div class="container" >
 		
-		<div class="row col-sm-6" id="frames">
-			<h2>신고 관리</h2>
-			<div style="text-align: right">
-				<a class="btn btn-xs btn-danger" href="">더 보기</a>
-			</div>
-			
-			<!-- 신고리스트 -->
-			<div>
-			
-			</div>
-		</div>
-			
-		<div class="row col-sm-6" id="frames">
-			<h2>거래 내역</h2>
-			<div style="text-align: right">
-				<a class="btn btn-xs btn-warning" href="">더 보기</a>
-			</div>
-			
-			<!-- 거래내역 리스트 -->
-			<div>
-			
-			</div>
-		</div>
 	</div>
-	<%@ include file="footer.jsp" %>	
+	<%@ include file="../footer.jsp" %>	
 </body>
 </html>
 

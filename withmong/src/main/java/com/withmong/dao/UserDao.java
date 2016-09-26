@@ -1,5 +1,7 @@
 package com.withmong.dao;
 
+import java.util.List;
+
 import com.withmong.model.User;
 
 public interface UserDao {
@@ -14,4 +16,7 @@ public interface UserDao {
 	User findInfoPassword(User user);
 	// 비밀번호 변경
 	void changePassword(User user);
+	
+	//회원목록 (관리자페이지)
+	List<User> getAllUsers();
 }
