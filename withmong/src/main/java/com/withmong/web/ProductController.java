@@ -30,10 +30,6 @@ public class ProductController {
 	
 	private static String UPLOAD_DIRECTORY = "c:/upload";
 
-	
-	
-
-	
 		@RequestMapping(value="/detail.do")
 		public String detail(@RequestParam(name="no") int no, Model model) {
 			Product productDetail = productService.productDetail();

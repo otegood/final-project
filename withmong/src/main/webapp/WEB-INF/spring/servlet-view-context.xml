@@ -49,8 +49,8 @@
 			<mvc:exclude-mapping path="/changepassword.do"/>
 			<mvc:exclude-mapping path="/chgsuccess.do"/>
 
-
-
+			<mvc:exclude-mapping path="/pointcheck.do"/>
+			
 			<mvc:exclude-mapping path="/main.do"/>
 					
 

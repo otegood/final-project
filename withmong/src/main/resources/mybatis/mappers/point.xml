@@ -1,0 +1,47 @@
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.withmong.dao.PointDao">
+
+	<!-- 충전 내역 추가 -->
+	<insert id="addPointHistory" parameterType="Point">
+		insert into point_table
+		(charge, withdraw, regdate, userid)
+		values
+		(#{charge}, #{withdraw}, sysdate, #{userId})
+	</insert>
+	
+	<!-- 충전 내역 가져오기 -->
+	<select id="getPointList" resultType="Point">
+		select charge, withraw, regdate, userid
+		from point_table
+		where userid = #{userId}
+		order by 
+			sysdate asc
+	</select>
+	
+	<!-- 변경된 포인트 -->
+	<update id="updateUserPoint" parameterType="User">
+		update user_table
+		set point = #{point}
+		where userid = #{}
+	</update>
+
+</mapper>
+
+<!-- 
+	테이블 컬럼명
+	 private int charge;		// 충전
+	private int withraw;	// 출금
+	private Date regdate;
+	private User userid;
+
+	Form
+	private int charge;		//충전
+	private int withraw;	//출금
+	private Date regdate;
+	private User userid;
+	
+
+ -->

@@ -12,12 +12,14 @@
   	<typeAlias type="com.withmong.model.Product" alias="Product"/>
   	<typeAlias type="com.withmong.model.Category" alias="Category"/>
   	<typeAlias type="com.withmong.model.ProductReview" alias="ProductReview"/>
+  	<typeAlias type="com.withmong.model.Point" alias="Point"/>
   </typeAliases>
   
   <mappers>
     <mapper resource="mybatis/mappers/user.xml"/>
     <mapper resource="mybatis/mappers/message.xml"/>
     <mapper resource="mybatis/mappers/product.xml"/>
+    <mapper resource="mybatis/mappers/point.xml"/>
   </mappers>
   
 </configuration>
