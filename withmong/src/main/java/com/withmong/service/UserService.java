@@ -1,5 +1,7 @@
 package com.withmong.service;
 
+import java.util.List;
+
 import com.withmong.model.User;
 
 public interface UserService {
@@ -24,4 +26,7 @@ public interface UserService {
 	
 	// 비밀번호 분실 후 변경
 	void changePassword(User user);
+	
+	// 회원목록 (관리자페이지)
+	List<User> getAllUsers();
 }

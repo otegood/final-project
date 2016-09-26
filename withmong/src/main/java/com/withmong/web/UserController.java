@@ -3,6 +3,7 @@ package com.withmong.web;
 import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
@@ -10,6 +11,7 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.util.DigestUtils;
 import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.WebDataBinder;
@@ -51,6 +53,14 @@ public class UserController {
 	public String mmain(){
 		return "mmain";
 	}
+	//유저 목록		
+	@RequestMapping("/userlist.do")
+	public String userlist(Model model) {
+		List<User> userList = userService.getAllUsers();  
+		//메세지 목록조회
+		model.addAttribute("userList", userList);
+		return "member/userlist";
+	}
 	//agreement 접속
 	@RequestMapping("/agree.do")
 	public String agreementform() {
@@ -61,7 +71,6 @@ public class UserController {
 	public String registerform() {
 		return "member/registerform";
 	}
-	
 	// Register - 가입을하면서 데이터를 DB에 넣기
 	@RequestMapping(value="/register.do", method=RequestMethod.POST)
 	public String register(UserForm userform, @RequestParam("img")MultipartFile img)throws Exception{
