@@ -4,12 +4,13 @@ import java.util.Date;
 
 public class Point {
 
-	private int charge;
+	
+	private int charge;		// 충전
+	private int withraw;	// 출금
 	private Date regdate;
-	private User id;
-	private int withdraw;
-
-	public Point () {}
+	private User userid;
+	
+	public Point() {}
 
 	public int getCharge() {
 		return charge;
@@ -17,6 +18,14 @@ public class Point {
 
 	public void setCharge(int charge) {
 		this.charge = charge;
+	}
+
+	public int getWithraw() {
+		return withraw;
+	}
+
+	public void setWithraw(int withraw) {
+		this.withraw = withraw;
 	}
 
 	public Date getRegdate() {
@@ -27,29 +36,18 @@ public class Point {
 		this.regdate = regdate;
 	}
 
-	public User getId() {
-		return id;
+	public User getUserid() {
+		return userid;
 	}
 
-	public void setId(User id) {
-		this.id = id;
-	}
-
-	public int getWithdraw() {
-		return withdraw;
-	}
-
-	public void setWithdraw(int withdraw) {
-		this.withdraw = withdraw;
+	public void setUserid(User userid) {
+		this.userid = userid;
 	}
 
 	@Override
 	public String toString() {
-		return "Point [charge=" + charge + ", regdate=" + regdate + ", id=" + id + ", withdraw=" + withdraw + "]";
+		return "Point [charge=" + charge + ", withraw=" + withraw + ", regdate=" + regdate + ", userid=" + userid + "]";
 	}
-
-	
-	
 
 	
 }
