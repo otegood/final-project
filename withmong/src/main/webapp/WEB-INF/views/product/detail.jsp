@@ -16,19 +16,18 @@
 <script type="text/javascript">
 
 $(function() {
-
 	function getReviewList(){
 		
 		$("#reviewTb").empty();
 		
 		$.ajax({
 			url:"getReviewList.do",
-			data:{},
+			data:{productNo:$("#productNo").val()},
 			dataType: "json",
 			success: function(data){
 				//로딩하는 ajax 추가
 				$.each(data,function(index, item){	
-					$("#reviewTb").append('<tr><td>'+item.score+'</td><td>'+item.contents+'</td>'+'<td>'+item.userId+'</td>'+'<td>'+item.regdate+'</td></tr>');
+					$("#reviewTb").append('<tr><td><img src="../../resources/images/default/'+item.score+'star.PNG"></td><td>'+item.contents+'</td>'+'<td>'+item.userId+'</td>'+'<td>'+item.regdate+'</td></tr>');
 				})
 			}
 		})
@@ -114,16 +113,37 @@ strong {
 		<!-- 내용 기입 -->
 		<div class="container">
 			<div class="row">
-				<div class="col-sm-3">교육 > ${detail.categoryNo }</div>
-				<div class="sol-sm-9">제목 : ${detail.title }</div>
+				<div class="col-sm-3">교육 > ${detail.category.name }</div>
+				<div class="col-sm-6">제목 : ${detail.title }</div>
+				<div class="col-sm-3">조회수 : ${detail.hits }</div>
 			</div>
 			<hr>
 			<span> <strong style="color: black;">태그</strong> ${detail.tag }</span>
 			<hr>
 				<div class="row">
-					<div class="col-sm-4">이미지가 들어간다!!!!!!!!</div>
-					<div class="col-sm-4">금액이랑 옵션인가</div>
-					<div class="col-sm-4">판매자에 대한 프로필이가 나와야한다!!!!!!</div>
+					<div class="col-sm-3"><img src="../../resources/images/${detail.img}" width="260px;"></div>
+					<div class="col-sm-1"></div>
+					<div class="col-sm-3">
+						
+							${detail.price } 원
+							<button type="button" class="btn btn-danger">구매하기</button>
+					</div>
+					<div class="col-sm-1"></div>
+					<div class="col-sm-4">
+						<div class="row">
+							<div class="col-sm-7">판매자 아이디 : ${userDetail.id }</div>
+							<div class="col-sm-5"> 
+								 <button type="button" class="btn btn-primary btn-xs">쪽지</button>
+								 <button type="button" class="btn btn-danger btn-xs">신고</button>
+							</div>
+						</div>
+							<div>판매자 프로필</div>
+							<div><img src="../../resources/images/${userDetail.img}" width="200px;"></div>
+							<p>등급 : ${userDetail.grade }  성별: <c:if test="${userDetail.gender eq 'M'}">남자</c:if>
+															   <c:if test="${userDetail.gender eq 'F'}">여자</c:if>
+							</p>
+							<p>학력 :${userDetail.schoolAbility }</p>
+					</div>
 				</div>
 			
 			<hr>
@@ -145,11 +165,11 @@ strong {
 				<div id="menu1" class="tab-pane fade">
 					<form role="form" action="productreple.do" method="post">
 			       		<div class="text-center">
-				         	<input type="radio" name="score" value="5" checked="checked" /><img src="../images/review/5star.PNG">
-				      		<input type="radio" name="score" value="4" /> <img src="../images/review/4star.PNG">
-				      		<input type="radio" name="score" value="3" /> <img src="../images/review/3star.PNG">
-				      		<input type="radio" name="score" value="2" /> <img src="../images/review/2star.PNG">
-				      		<input type="radio" name="score" value="1" /> <img src="../images/review/1star.PNG">
+				         	<input type="radio" name="score" value="1" checked="checked" /><img src="../../resources/images/default/1star.PNG">
+				      		<input type="radio" name="score" value="2" /> <img src="../../resources/images/default/2star.PNG">
+				      		<input type="radio" name="score" value="3" /> <img src="../../resources/images/default/3star.PNG">
+				      		<input type="radio" name="score" value="4" /> <img src="../../resources/images/default/4star.PNG">
+				      		<input type="radio" name="score" value="5" /> <img src="../../resources/images/default/5star.PNG">
 			         	</div>
 			         	
 			         	<input type="hidden" id="productNo" value="${detail.no }">
@@ -159,7 +179,16 @@ strong {
 							    <div class="input-group">
 							      <input type="text" id="contents" class="form-control" placeholder="최대 한글 100자까지 가능하며, 스포일러는 삭제될 수 있습니다.">
 							      <span class="input-group-btn">
+							     
+							      <c:choose>
+							      	<c:when  test="${empty LOGIN_USER }">
+							        <button class="btn btn-danger" type="submit" id="addreviewBtn" disabled="disabled">등록</button>
+							        </c:when>
+							        <c:otherwise>							        
 							        <button class="btn btn-danger" type="submit" id="addreviewBtn">등록</button>
+							        </c:otherwise>
+							       </c:choose>
+							 
 							      </span>
 							    </div>
 							  </div>

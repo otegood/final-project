@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 	
-<div class="container-fluid" id="footer">
+<div class="container-fluid" id="footer" style="margin-top: 30px;">
 	<div class="row">
 		<div class="col-sm-3 col-sm-offset-1">
 			<div class="col-sm-6" >

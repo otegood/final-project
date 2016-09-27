@@ -71,7 +71,7 @@ strong {
 					<div class="form-group row">
 						<label class="col-sm-3 text-right">카테고리</label>
 						<div class="col-sm-9">
-							<select name="categoryNo" id="categoryNo">
+							<select name="category.no" id="categoryNo">
 								<option value="defualt" selected="selected">--선택하세요--</option>
 									 <c:forEach var="cate" items="${cateList}">
 									<option value="${cate.no }" selected="selected">${cate.name }</option>

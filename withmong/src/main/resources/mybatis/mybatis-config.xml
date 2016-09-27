@@ -13,6 +13,7 @@
   	<typeAlias type="com.withmong.model.Category" alias="Category"/>
   	<typeAlias type="com.withmong.model.ProductReview" alias="ProductReview"/>
   	<typeAlias type="com.withmong.model.Report" alias="Report"/>
+  	<typeAlias type="com.withmong.model.Notice" alias="Notice"/> 	
   </typeAliases>
   
   <mappers>
@@ -20,6 +21,7 @@
     <mapper resource="mybatis/mappers/message.xml"/>
     <mapper resource="mybatis/mappers/product.xml"/>
     <mapper resource="mybatis/mappers/manager.xml"/>
+    <mapper resource="mybatis/mappers/board.xml"/>
   </mappers>
   
 </configuration>

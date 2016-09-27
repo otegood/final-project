@@ -28,4 +28,9 @@ public class ManagerServiceImpl implements ManagerService{
 		managerDao.userRestore(id);		
 	}
 
+	@Override
+	public User getUserM(String id) {
+		return managerDao.getUserM(id);
+	}
+
 }

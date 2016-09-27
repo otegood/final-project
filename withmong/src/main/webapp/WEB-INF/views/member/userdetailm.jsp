@@ -52,67 +52,68 @@
 	#frames{
 		height: 400px;
 	}
+	th{
+		background-color: lightblue;
+	}
 </style>
-<title>회원목록</title>
+<title>회원정보</title>
 </head>
 <body>
 	<header><%@ include file="../mheader.jsp" %></header>
 	
 	<div class="container" >
-		<h1>회원 목록</h1>
+		<h1>회원 정보</h1>
 		<div class="panel panel-boby">
 			<table class="table">
 				<thead>
 					<tr>
-						<th>계정</th>
+						<th>사진</th>
+						<th>아이디</th>
 						<th>이름</th>
-						<th>생년월일</th>
-						<th>이메일</th>
-						<th>연락처</th>
-						<th>성별</th>
-						<th>학력</th>
-						<th>포인트</th>
-						<th>등급</th>
-						<th>삭제여부</th>
 					</tr>
 				</thead>
 				<tbody>
-				<c:forEach var="users" items="${userList }">
 					<tr>
-						<td>
-							<c:choose>
-								<c:when test="${users.id ne 'king' }">
-									<a class="btn btn-info btn-xs" href="userdetailm.do?id=${users.id}">${users.id }</a>
-								</c:when>
-								<c:otherwise>
-									${users.id }
-								</c:otherwise>
-							</c:choose>
-						</td>
-						<td>${users.name }</td>
-						<td><fmt:formatDate value="${users.birth }" pattern="yyyy.MM.dd"/></td>
-						<td>${users.email }</td>
-						<td>${users.phone }</td>
-						<td>${users.gender }</td>
-						<td>${users.schoolAbility }</td>
-						<td>${users.point }</td>
-						<td>${users.grade }</td>
-						<td>
-							<c:if test="${users.id ne 'king' }">
-							${users.delCheck }
-								<c:if test="${users.delCheck eq 'N' }">
-									<a href="deleteUser.do?id=${users.id }" class="btn btn-danger btn-xs">삭제</a>
-								</c:if>
-								<c:if test="${users.delCheck eq 'Y' }">
-									<a href="restoreUser.do?id=${users.id }" class="btn btn-success btn-xs">복구</a>
-								</c:if>
-							</c:if>
-							<c:if test="${users.id eq 'king' }">
-								삭제불가
-							</c:if>
-						</td>
-					</tr>	
-				</c:forEach>
+						<td rowspan="5"></td>
+						<td>${userdetail.id }</td>
+						<td>${userdetail.name }</td>
+					</tr>
+					<tr>
+						<th>등급</th>
+						<th>평점합계</th>
+					</tr>
+					<tr>
+						<td>${userdetail.grade }</td>
+						<td>${userdetail.sumLike }</td>
+					</tr>
+					<tr>
+						<th>생일</th>
+						<th>이메일</th>
+					</tr>
+					<tr>
+						<td><fmt:formatDate value="${userdetail.birth }" pattern="yyyy.MM.dd"/></td>
+						<td>${userdetail.email }</td>
+					</tr>
+					<tr>
+						<th>연락처</th>
+						<th>성별</th>
+						<th>학력</th>
+					</tr>
+					<tr>
+						<td>${userdetail.phone }</td>
+						<td>${userdetail.gender }</td>
+						<td>${userdetail.schoolAbility }</td>
+					</tr>
+					<tr>
+						<th>질문</th>
+						<th>답변</th>
+						<th>잔여포인트</th>
+					</tr>
+					<tr>
+						<td>${userdetail.question }</td>
+						<td>${userdetail.answer }</td>
+						<td>${userdetail.point }</td>
+					</tr>
 				</tbody>
 			</table>
 		</div>

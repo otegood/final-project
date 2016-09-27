@@ -1,5 +1,7 @@
 package com.withmong.form;
 
+import com.withmong.model.Category;
+
 public class ProductForm {
 	
 	private String title;
@@ -11,7 +13,7 @@ public class ProductForm {
 
 	
 	private int locationNo;
-	private int categoryNo;
+	private Category category;
 	
 	public ProductForm(){}
 
@@ -71,12 +73,12 @@ public class ProductForm {
 		this.locationNo = locationNo;
 	}
 
-	public int getCategoryNo() {
-		return categoryNo;
+	public Category getCategory() {
+		return category;
 	}
 
-	public void setCategoryNo(int categoryNo) {
-		this.categoryNo = categoryNo;
+	public void setCategory(Category category) {
+		this.category = category;
 	}
 	
 	
