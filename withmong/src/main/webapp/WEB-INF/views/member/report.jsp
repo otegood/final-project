@@ -47,30 +47,39 @@
 	}
 
 </style>
-<title>나의 정보</title>
+<title>Insert title here</title>
 </head>
 <body>
 		<header><%@ include file="../header.jsp" %></header>
 	
 		<div class="container" >
+			<h2>신고하기</h2>
 			<div class="row">
-	        	<h1>내정보</h1>
-	        	<img alt="profile" src="resources/images/profile/${LOGIN_USER.img }" style="width:42px;height:42px;border:0;">
-				<table class="table table-striped" style="width:100%;">
-			        <tr>
-			            <th><span class="glyphicon glyphicon-user"></span></th>
-			            <td>${LOGIN_USER.id}</td>
-			        </tr>
-			        <tr>
-			            <th><span class="glyphicon glyphicon-email"></span></th>
-			            <td>${LOGIN_USER.email}</td>
-			        </tr>
-			    </table>
-			    <div class="text-center">
-				    <a href="confirmpw.do" class="btn btn-primary">정보수정</a>
-				    <a href="main.do" class="btn btn-danger">메인으로</a>
-			    </div>
-			    <br/>
+				<form role="form" method="post" action="report.do">
+					<div class="form-group row">
+						<label class="text-right">신고 사유</label>
+						<div class="form-control">
+							<select name="reason">
+								<option value="상품 품질 관련" selected="selected">상품 품질 관련</option>
+								<option value="시간 관련">시간관련</option>
+								<option value="사기, 범죄관련">사기, 범죄 관련</option>
+								<option value="기타">기타</option>
+							</select>
+						</div> 
+					</div>
+					<div class="form-group">
+						<label>제목</label>
+						<input type="text" class="form-control" name="title" />
+					</div>
+					<div class="form-group">
+						<label>내용</label>
+						<textarea rows="5" class="form-control" name="contents"></textarea>
+					</div>
+					<div class="form-group text-right">
+						<input type="submit" class="btn btn-primary" value="저장" />
+						
+					</div>
+				</form>
 			</div>
 		</div>
 		

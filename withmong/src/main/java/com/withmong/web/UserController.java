@@ -320,8 +320,15 @@ public class UserController {
 		return "redirect:/chgsuccess.do";
 	}
 	//-------------------------------------------------------------------------------------------------//
+	// 신고하기 페이지
+	@RequestMapping(value="/report.do", method=RequestMethod.GET)
+	public String report(){
+		
+		
+		return "member/report";
+	}
 	
 	
 	
-	
+	//-------------------------------------------------------------------------------------------------//
 }
