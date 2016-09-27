@@ -27,7 +27,7 @@
         <li style="text-align: center;"><a href="userlist.do" style="width: 300px;">회원관리</a></li>
         <li style="text-align: center;"><a href="#" style="width: 300px;">신고관리</a></li>
         <li class="dropdown"  style="text-align: center;">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" style="width: 300px;">통계</a>
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" style="width: 300px;">돈관련</a>
           <ul class="dropdown-menu" style="width: 300px; text-align: center;">
             <li><a href="#">총수익</a></li>
             <li><a href="#">거래내역</a></li>

@@ -13,7 +13,19 @@
 		order by 
 			name asc
 	</select>
-	
+<!-- 회원아이디로 정보조회 -->
+	<select id="getUserM" parameterType="string" resultType="User">
+		select
+			id, name, birth, email, 
+			phone, gender, schoolability, 
+			question, answer, point, 
+			grade, img, sumlike
+		from
+			user_table
+		where 
+			id = #{id}	
+	</select>
+
 <!-- 회원삭제체크 N->Y -->
 	<update id="userDelete" parameterType="string">
 		update user_table 

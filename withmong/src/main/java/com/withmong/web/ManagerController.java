@@ -39,6 +39,12 @@ public class ManagerController {
 		model.addAttribute("userList", userList);
 		return "member/userlist";
 	}
+	//유저 상세조회
+	@RequestMapping("/userdetailm.do")
+	public String userdetailm(Model model, @RequestParam(name="id") String id) {
+		model.addAttribute("userdetail",managerService.getUserM(id));
+		return "member/userdetailm";
+	}
 	
 	//유저 계정삭제 처리
 	@RequestMapping("/deleteUser.do")
