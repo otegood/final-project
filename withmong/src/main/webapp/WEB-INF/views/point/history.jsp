@@ -77,13 +77,15 @@
 						<c:forEach var="point" items="${pointlist }">
 							<tr>
 								<td><fmt:formatDate value="${point.regdate }" pattern="yyyy.MM.dd"/></td>
-								<td>"${point.charge }"</td>
-								<td>"${point.withdraw }"</td>
+								<td><fmt:formatNumber value="${point.charge }" type="number"></fmt:formatNumber>원</td>
+								<td><fmt:formatNumber value="${point.withdraw }" type="number"></fmt:formatNumber>원</td>
 							</tr>
 						</c:forEach>
 						</tbody>
-						
 					</table>
+					<div class="page">
+						<p>pagination</p>
+					</div>
 				</div>
 				
 				<div class="panel panel-footer">

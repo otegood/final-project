@@ -17,7 +17,9 @@
 	src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
 <script type="text/javascript">
-	
+	$(function() {
+		$(":radio[name='point']:checked").val();
+	})
 </script>
 
 <style type="text/css">
