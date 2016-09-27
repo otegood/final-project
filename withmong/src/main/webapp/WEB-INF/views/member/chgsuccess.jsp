@@ -60,7 +60,7 @@
 		<div class="container" >
 			<div class="row">
 				
-					<h1>비밀번호 변경이 완료되었습니다.</h1>
+					<h1>정보 변경이 완료되었습니다.</h1>
 					<a href="../main.do">홈으로</a>
 					
 			</div>

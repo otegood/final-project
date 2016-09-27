@@ -111,10 +111,8 @@ $(function() {
 			success: function(data) {
 				
 				if(data.size == 1){
-					$("#checkphone").text("작성하신 전화번호는 사용 중인 번호 입니다.").css({'color':'red'});
-					$("#phone2").val("");
-					$("#phone3").val("");
-					phonenotoverlap = false;
+					$("#checkphone").text("작성하신 전화번호는 기존 사용중이신 번호입니다.").css({'color':'green'});
+					phonenotoverlap = true;
 				} else {
 					$("#checkphone").text("사용 가능한 전화번호 입니다.").css({'color':'blue'});
 					phonenotoverlap = true;
@@ -146,12 +144,12 @@ $(function() {
 		<div class="container" >
 		<h1>회원 가입</h1>
 		<div class="well">
-			<form role="form" method="post" action="register.do" enctype="multipart/form-data">
+			<form role="form" method="post" action="myinfomodify.do" enctype="multipart/form-data">
 				<div class="form-group"> 
 					<div class="form-group row">
 						<label class="col-sm-3 text-right">아이디</label>
 						<div class="col-sm-9">
-							<input type="text" name="id" id="id" disabled="disabled" style="ime-mode:inactive" value="${LOGIN_USER.id}"/>
+							<input type="text" name="id" id="id" readonly="readonly" style="ime-mode:inactive" value="${LOGIN_USER.id}"/>
 							<p id="checkid"></p>
 						</div>
 					</div>
@@ -170,7 +168,7 @@ $(function() {
 					<div class="form-group row">
 						<label class="col-sm-3 text-right">이름</label>
 						<div class="col-sm-9">
-							<input type="text" name="name" disabled="disabled" value="${LOGIN_USER.name }"/>
+							<input type="text" name="name" id="name" readonly="readonly" value="${LOGIN_USER.name }"/>
 						</div>
 					</div>
 					<div class="form-group row">
@@ -182,7 +180,7 @@ $(function() {
 					<div class="form-group row">
 						<label class="col-sm-3 text-right">이메일</label>
 						<div class="col-sm-9">
-							<input type="text" name="email" value="${LOGIN_USER.email }" placeholder="입력해주세요"/>
+							<input type="text" name="email" id="email" value="${LOGIN_USER.email }" placeholder="입력해주세요"/>
 						</div>
 					</div>
 					<div class="form-group row">
@@ -226,13 +224,31 @@ $(function() {
 							</select>
 						</div> 
 					</div>
+					<div class="form-group row">
+						<label class="col-sm-3 text-right">가입시 질문</label>
+						<div class="col-sm-9">
+							<select name="question">
+								<option value="내 고향은?" ${LOGIN_USER.question eq '내 고향은?' ? 'selected=selected': ''}>내 고향은?</option>
+								<option value="내 어릴적 별명은?" ${LOGIN_USER.question eq '내 어릴적 별명은?' ? 'selected=selected': ''}>내 어릴적 별명은?</option>
+								<option value="내가 존경하는 사람은?" ${LOGIN_USER.question eq '내가 존경하는 사람은?' ? 'selected=selected': ''}>내가 졸업한 초등학교 이름은?</option>
+								<option value="내가 존경하는 사람은?" ${LOGIN_USER.question eq '내가 존경하는 사람은?' ? 'selected=selected': ''}>내가 존경하는 사람은?</option>
+								<option value="내가 가고싶은 나라는?" ${LOGIN_USER.question eq '내가 가고싶은 나라는?' ? 'selected=selected': ''}>내가 가고싶은 나라는?</option>
+							</select>
+						</div> 
+					</div>
+					<div class="form-group row">
+						<label class="col-sm-3 text-right">답변</label>
+						<div class="col-sm-9">
+							<input type="text" name="answer" value="${LOGIN_USER.answer }" placeholder="입력해주세요"/>
+						</div>
+					</div>
 					<div class="form-group">
 						<label class="col-sm-3 text-right">프로필사진</label>
 						<div class="col-sm-9">
-							<input type="file" name="img" id="img" value="">
+							<input type="file" name="img" id="img">
 					</div>
 					<div class="form-group text-right">
-						<input type="submit" class="btn btn-primary" value="가입" />
+						<input type="submit" class="btn btn-primary" value="수정" />
 						<a href="main.do" class="btn btn-default">취소</a>
 					</div>
 				</div>
