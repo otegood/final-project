@@ -55,10 +55,10 @@
 		<div class="container" >
 			<div class="row">
 	        	<h1>내정보</h1>
-	        	<img alt="" src="" >
-				<table class="table table striped" style="width:100%;">
+	        	<img alt="profile" src="resources/images/profile/${LOGIN_USER.img }" style="width:42px;height:42px;border:0;">
+				<table class="table table-striped" style="width:100%;">
 			        <tr>
-			            <th>ID</th>
+			            <th><span class="glyphicon glyphicon-user">ID</span></th>
 			            <td>${LOGIN_USER.id}</td>
 			            <th>등급</th>
 			            <td>${LOGIN_USER.grade}</td>
@@ -70,7 +70,7 @@
 			            <td>${LOGIN_USER.point}p</td>
 			        </tr>
 			        <tr>
-			            <th>생년월일</th>
+			            <th><span class="glyphicons glyphicons-birthday-cake">생년월일</span></th>
 			            <td><fmt:formatDate pattern="yyyy년 MM월 dd일" value="${LOGIN_USER.birth}"/></td>
 			        </tr>
 			        <tr>
@@ -82,11 +82,11 @@
 			            <td>${LOGIN_USER.phone}</td>
 			        </tr>
 			        <tr>
-			            <th>성별</th>
+			            <th><span class="filetypes filetypes-txt"></span>성별</th>
 			            <td>${LOGIN_USER.gender}</td>
 			        </tr>
 			        <tr>
-			            <th>학력</th>
+			            <th><span class="glyphicon glyphicon-education">학력</span></th>
 			            <td>${LOGIN_USER.schoolAbility}</td>
 			        </tr>
 			    </table>

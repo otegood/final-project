@@ -31,7 +31,7 @@ import com.withmong.service.UserService;
 public class UserController {
 	
 	@Autowired private UserService userService;
-	private static String UPLOAD_DIRECTORY = "c:/upload";
+	private static String UPLOAD_DIRECTORY = "C:\\Users\\JHTA\\git\\final-project\\withmong\\src\\main\\webapp\\resources\\images\\profile";
 	
 	@InitBinder
 	public void initBinder(WebDataBinder binder) {
