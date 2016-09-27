@@ -8,7 +8,7 @@
 		insert into product_table
 		( no,title,userid,img,video,contents,price,qty,regdate,avglike,hits,tag,categoryno,location )
 		values
-		(test_seq.nextval, #{title},#{userId},#{img}, #{video}, #{contents}, #{price}, #{qty},sysdate,0,0,#{tag},#{categoryNo},#{locationNo})
+		(test_seq.nextval, #{title},#{userId},#{img}, #{video}, #{contents}, #{price}, #{qty},sysdate,0,0,#{tag},#{category.no},#{locationNo})
 	</insert>
 	
 		<select id="findCategory" resultType="Category">
@@ -17,9 +17,26 @@
 	</select>
 	
 	<select id="productDetail" parameterType="int" resultType="Product">
-		select no,title,userid,img,video,contents,price,qty,regdate,avglike,hits,tag,categoryno,location 
-		from product_table
-		where no = #{value}
+		select A.no,
+			A.title,
+			A.userid,
+			A.img,
+			A.video,
+			A.contents,
+			A.price,
+			A.qty,
+			A.regdate,
+			A.avglike,
+			A.hits,
+			A.tag,
+			A.categoryno as "category.no",
+			A.location,
+			B.no,
+			B.name as "category.name",
+			B.bno as "category.bno"
+		from product_table A,category_table B
+		where A.Categoryno = B.no and
+				A.no = #{value}
 	</select>
 	
 	<insert id="addProductReview" parameterType="ProductReview">
@@ -32,9 +49,21 @@
 	<select id="getAllProductReivew" parameterType="int" resultType="ProductReview">
 		select score,contents,regdate,userid,productno
 		from product_review
-		where productno = 1
+		where productno = #{value}
 		order by regdate desc
 		
+	</select>
+	
+	<select id="findCategoryByNo" parameterType="int" resultType="Category">
+		select no,bno,name
+		from category_table
+		where no = #{value}
+	</select>
+	
+	<select id="getUserDetail" parameterType="String" resultType="User">
+		select id,name,birth,gender,grade,img,schoolAbility
+		from user_table
+		where id = #{value}
 	</select>
 	
 </mapper>

@@ -18,7 +18,7 @@ public class Product {
 	private String tag;
 	
 	private int locationNo;
-	private int categoryNo;
+	private Category category;
 	
 	public Product(){}
 
@@ -126,21 +126,23 @@ public class Product {
 		this.locationNo = locationNo;
 	}
 
-	public int  getCategoryNo() {
-		return categoryNo;
+	public Category  getCategory() {
+		return category;
 	}
 
-	public void setCategoryNo(int categoryNo) {
-		this.categoryNo = categoryNo;
+	public void setCategory(Category category) {
+		this.category = category;
 	}
 
 	@Override
 	public String toString() {
 		return "Product [no=" + no + ", title=" + title + ", userId=" + userId + ", img=" + img + ", video=" + video
 				+ ", contents=" + contents + ", price=" + price + ", qty=" + qty + ", regDate=" + regDate + ", avglike="
-				+ avglike + ", hits=" + hits + ", tag=" + tag + ", locationNo=" + locationNo + ", categoryNo="
-				+ categoryNo + "]";
+				+ avglike + ", hits=" + hits + ", tag=" + tag + ", locationNo=" + locationNo + ", category=" + category
+				+ "]";
 	}
+
+	
 	
 	
 	
