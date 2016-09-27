@@ -22,5 +22,9 @@ public class BoardServiceImpl  implements BoardService{
 	public void addNotice(Notice notice) {
 		boardDao.addNotice(notice);
 	}
+	@Override
+	public Notice noticeDetail(int no) {
+		return boardDao.noticeDetail(no);
+	}
 
 }

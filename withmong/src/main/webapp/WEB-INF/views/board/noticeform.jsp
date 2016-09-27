@@ -50,12 +50,12 @@
 <title>공지사항 등록</title>
 </head>
 <body>
-		<header><%@ include file="../header.jsp" %></header>
+	<header><%@ include file="../mheader.jsp" %></header>
 	
-		<div class="container" >
-			<h1>공지사항 등록</h1>
-			<div class="well">
-				<form role="form" method="post" action="noiceRegister.do">
+	<div class="container" >
+		<h1>공지사항 등록</h1>
+		<div class="well">
+			<form role="form" method="post" action="noticeRegister.do">
 				<div class="form-group">
 					<label>제목</label>
 					<input type="text" class="form-control" name="title"/>
@@ -69,9 +69,9 @@
 					<a class="btn btn-danger" href="noticelist.do">취소</a>
 				</div>
 			</form>
-			</div>
 		</div>
-		<%@ include file="../footer.jsp" %>	
+	</div>
+	<%@ include file="../footer.jsp" %>	
 </body>
 </html>
 
