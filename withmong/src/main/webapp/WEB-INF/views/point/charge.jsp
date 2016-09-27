@@ -17,9 +17,7 @@
 	src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
 <script type="text/javascript">
-	$(function() {
-		$(":radio[name='point']:checked").val();
-	})
+
 </script>
 
 <style type="text/css">
@@ -113,7 +111,7 @@ strong {
 		<div class="row">
 			<h3>충전소</h3>
 			
-			<form action="charge.jsp" role="form">
+			<form method="post" action="charge.do" role="form">
 				<table id="changes" class="table table-striped table-condensed">
 					<thead
 						style="font-weight: bold; background-color: rgb(192, 192, 192);">
@@ -125,48 +123,48 @@ strong {
 					<tbody>
 						<tr>
 							<td>
-								<input type="radio" id="5,000" name="point" value="5000" >
+								<input type="radio" id="" name="point" value="5000" checked="checked">
                      			 <label for="5,000">5,000</label> 
 							</td>
 							<td>5,000</td>
 						</tr>
 						<tr>
 							<td>
-								<input type="radio" id="10,000" name="point" value="10000">
+								<input type="radio" id="" name="point" value="10000">
                      			 <label for="10,000">10,000</label> 
 							</td>
 							<td>10,000</td>
 						</tr>
 						<tr>
 							<td>
-								<input type="radio" id="30,000" name="point" value="30000" >
+								<input type="radio" id="" name="point" value="30000" >
                      			 <label for="30,000">30,000</label> 
 							</td>
 							<td>30,000</td>
 						</tr>
 						<tr>
 							<td>
-								<input type="radio" id="50,000" name="point" value="50000">
+								<input type="radio" id="" name="point" value="50000">
                      			 <label for="50,000">50,000</label>
 							</td>
 							<td>50,000</td>
 						</tr>
 						<tr>
 							<td>
-								<input type="radio" id="100,000" name="point" value="100000" >
+								<input type="radio" id="" name="point" value="100000" >
                      			 <label for="100,000">100,000</label> 
 							</td>
 							<td>100,000</td>
 						</tr>
 					</tbody>
 				</table>
-				<button type="button" class="btn btn-success btn-lg pull-right">충전하기</button>
+				<button class="btn btn-success btn-lg pull-right">충전하기</button>
 			</form>
 		</div>
 		<div class="w3-panel w3-blue w3-card-8">
-
-		<p>충전 후 포인트는  기존 + 충전 금액 포인트 =value 값 활용?</p>
-		
+<!-- 
+		<p>"${point.userid.getPoint }"?</p>
+	 -->	
 		</div>
 		
 	</div>	

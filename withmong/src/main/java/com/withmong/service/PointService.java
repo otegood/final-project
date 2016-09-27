@@ -10,13 +10,13 @@ import com.withmong.model.User;
 
 public interface PointService {
 
-	//포인트 변경
-	void updateUserPoint(User user);
-	//포인트 내역 추가
-	void addPointHistory(Point point);
-
+	// 충전하기
+	void charge(String id, int point);
+	
 	//포인트 내역 보기
 	List<Point> getPointList(String userid);
 	
+	// 환전하기
+	void withdraw(String id, int point);
 }
 

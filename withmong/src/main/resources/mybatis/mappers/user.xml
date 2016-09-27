@@ -77,4 +77,5 @@
 			 	img = #{img}
 		where id = #{id}
 	</update>
+
 </mapper>

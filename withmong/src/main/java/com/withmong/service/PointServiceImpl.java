@@ -7,10 +7,12 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.withmong.dao.PointDao;
+import com.withmong.dao.UserDao;
 import com.withmong.model.Point;
 import com.withmong.model.User;
 
 @Service
+@Transactional
 public class PointServiceImpl implements PointService {
 
 	@Autowired PointDao pointDao;
@@ -21,9 +23,17 @@ public class PointServiceImpl implements PointService {
 		// TODO Auto-generated method stub
 		return pointDao.getPointList(userid);
 	}
-	
-	@Transactional
-	public void Charge(User user, Point point) {
+	//충전하기
+	@Override
+	public void charge(String id, int chargePoint) {
+		User user = new User();
+		user.setId(id);
+		user.setPoint(chargePoint);
+		
+		Point point = new Point();
+		point.setCharge(chargePoint);
+		point.setUserid(user);
+		
 		//포인트 변경
 		pointDao.updateUserPoint(user);
 		//포인트 내역 추가
@@ -32,15 +42,22 @@ public class PointServiceImpl implements PointService {
 	}
 
 	@Override
-	public void updateUserPoint(User user) {
-		// TODO Auto-generated method stub
+	public void withdraw(String id, int withdrawPoint) {
+		User user = new User();
+		user.setId(id);
+		user.setPoint(-withdrawPoint);
 		
+		Point point = new Point();
+		point.setWithdraw(withdrawPoint);
+		point.setUserid(user);
+		
+		//포인트 변경2
+		
+		//환급 내역 추가
 	}
 
-	@Override
-	public void addPointHistory(Point point) {
-		// TODO Auto-generated method stub
-		
-	}
 	
+
+
+
 }

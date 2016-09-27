@@ -40,30 +40,22 @@ public class PointController {
 	}
 	
 	@RequestMapping(value="/charge.do", method=RequestMethod.GET)
-	public String charge(Point pointForm, User userForm) throws Exception{
+	public String charge() {
+		return "point/charge";
+	}
+	
+	@RequestMapping(value="/charge.do", method=RequestMethod.POST)
+	public String charge(int point, User loginedUser) throws Exception{
 		
-		/*
-		//포인트 내역 추가
-		 Point point = new Point();
-		 BeanUtils.copyProperties(pointForm, point);
-		 pointService.addPointHistory(point);
+		pointService.charge(loginedUser.getId(), point);
 		 
-		 //포인트 변경
-		 User user = new User();
-		 BeanUtils.copyProperties(userForm, user);
-		 user.setPoint(pointForm.getCharge());
-		 //userService.changePoint(user);
-		*/
-		
-		 
-		 
-		return "redirect:/charge.do";
+		return "redirect:/history.do";
 	}
 	
 	
 	@RequestMapping(value="/withdraw.do", method=RequestMethod.GET)
 	public String withdraw(Point pointForm) throws Exception{
 		
-		return "redirect:/withdraw.do";
+		return "point/withdraw";
 	}
 }

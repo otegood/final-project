@@ -9,7 +9,7 @@
 		insert into point_table
 		(charge, withdraw, regdate, userid)
 		values
-		(#{charge}, #{withdraw}, sysdate, #{userId})
+		(#{charge}, #{withdraw}, sysdate, #{userid.id})
 	</insert>
 	
 	<!-- 충전 내역 가져오기 -->
@@ -18,16 +18,16 @@
 		from point_table
 		where userid = #{value}
 		order by 
-			sysdate asc
+			regdate desc
 	</select>
 	
-	<!-- 변경된 포인트 -->
+	<!-- 포인트 변경 -->
 	<update id="updateUserPoint" parameterType="User">
 		update user_table
-		set point = #{point}
-		where userid = #{userId}
+		set point = point + #{point}
+		where id = #{id}
 	</update>
-
+	
 </mapper>
 
 <!-- 

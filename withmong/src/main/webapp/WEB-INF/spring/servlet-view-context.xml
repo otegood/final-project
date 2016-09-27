@@ -50,9 +50,17 @@
 			<mvc:exclude-mapping path="/changepassword.do"/>
 			<mvc:exclude-mapping path="/phonecheck.do"/>
 			<mvc:exclude-mapping path="/chgsuccess.do"/>
+<<<<<<< HEAD
 
 			<mvc:exclude-mapping path="/pointcheck.do"/>
 			
+=======
+			<mvc:exclude-mapping path="/report.do"/>
+		
+			
+
+
+>>>>>>> branch 'master' of https://github.com/otegood/final-project.git
 			<mvc:exclude-mapping path="/main.do"/>
 					
 

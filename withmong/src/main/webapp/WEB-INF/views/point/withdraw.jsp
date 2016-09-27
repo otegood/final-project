@@ -103,22 +103,16 @@ strong {
 	<!-- 내용 기입 -->
 	<div class="container">
 		<br>
-		
-		<div class="w3-panel w3-red">
-			
-   			 <p>충전 금액은 </p>
-		</div>
-		
 		<div class="row">
-			<h3>충전금액:</h3>
+			<h3>환불:</h3>
 			
 			<form action="withdraw.jsp" role="form">
 				<table id="changes" class="table table-striped table-condensed">
 					<thead
 						style="font-weight: bold; background-color: rgb(192, 192, 192);">
 						<tr>
-							<th>가격(원)</th>
 							<th>포인트(P)</th>
+							<th>가격(원)</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -159,17 +153,21 @@ strong {
 						</tr>
 					</tbody>
 				</table>
-				<button type="button" class="btn btn-success btn-lg pull-right">충전하기</button>
+				<button type="button" class="btn btn-success btn-lg pull-right">환전하기</button>
 			</form>
+		</div>
+		
+		<div class="w3-panel w3-red">
+			
+   			 <p>환전한 금액: ${point.withdraw }  </p>
+   			 
 		</div>
 		<div class="w3-panel w3-blue w3-card-8">
 
-		<p>환불한 금액 = 가격에 있는 값 읽어오기</p>
+			<p>환전 후 남은 포인트 = user.point</p>
 		
-		<p>환전 후 남은 포인트 = 기존 포인트(user.point) - 환불한 포인트(input value)</p>
-		
-		<p></p>
 		</div>
+		
 		
 	</div>	
 		<%@ include file="../footer.jsp"%>

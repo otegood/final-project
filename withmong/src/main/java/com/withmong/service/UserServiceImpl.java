@@ -84,7 +84,7 @@ public class UserServiceImpl implements UserService{
 		userDao.myInfoModify(user);
 	}
 
-	
+
 }
 
 

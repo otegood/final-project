@@ -28,4 +28,5 @@ public interface UserService {
 	
 	// 내 정보 변경
 	void myInfoModify(User user);
+	
 }
