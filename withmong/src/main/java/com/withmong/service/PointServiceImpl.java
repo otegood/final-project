@@ -52,8 +52,9 @@ public class PointServiceImpl implements PointService {
 		point.setUserid(user);
 		
 		//포인트 변경2
-		
+		pointDao.updateUserPoint(user);
 		//환급 내역 추가
+		pointDao.addPointHistory(point);
 	}
 
 	

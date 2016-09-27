@@ -62,7 +62,9 @@
 		<div class="row col-sm-6" id="frames" style="margin: auto;">
 			<h2>게시판 관리</h2>
 			<div style="text-align: right">
-				<a class="btn btn-xs btn-default" href="">더 보기</a>
+				<a class="btn btn-xs btn-default" href="">공지사항</a>
+				<a class="btn btn-xs btn-default" href="">요청게시판</a>
+				<a class="btn btn-xs btn-default" href="">Q&A</a>
 			</div>
 			
 			<!-- 게시판 리스트 -->
@@ -93,7 +95,16 @@
 				<tbody>
 				<c:forEach var="users" items="${userList }" begin="0" end="6">
 					<tr>
-						<td>${users.id }</td>
+						<td>
+							<c:choose>
+								<c:when test="${users.id ne 'king' }">
+									<a class="btn btn-info btn-xs" href="userdetailm.do?id=${users.id}">${users.id }</a>
+								</c:when>
+								<c:otherwise>
+									${users.id }
+								</c:otherwise>
+							</c:choose>
+						</td>
 						<td>${users.name }</td>
 						<td><fmt:formatDate value="${users.birth }" pattern="yyyy.MM.dd"/></td>
 						<td>${users.gender }</td>

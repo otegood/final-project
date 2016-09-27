@@ -53,6 +53,13 @@
 		color: red;
 	
 	}
+	.remainPoint{
+		text-align: right;
+		color: red;
+		border: 5;
+	}
+	
+	
 </style>
 <title>Insert title here</title>
 </head>
@@ -62,7 +69,7 @@
 		<div class="container" >
 			<div class="row">
 				<div class="panel panel-heading">
-					<h2>충전 내역</h2>
+					<h2>거래 내역</h2>
 				</div>
 				<div class="panel panel-body">
 					<table class="table">
@@ -87,7 +94,9 @@
 						<p>pagination</p>
 					</div>
 				</div>
-				
+				<div class="remainPoint">
+					잔여포인트: <c:out value="${loginedUser.point }"></c:out>P 
+				</div>
 				<div class="panel panel-footer">
 					<div class="cash-btn">
 						<a href="withdraw.do" class="btn btn-warning">출금하기</a>

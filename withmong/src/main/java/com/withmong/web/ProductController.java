@@ -32,22 +32,26 @@ public class ProductController {
 	private static String UPLOAD_DIRECTORY = "c:/upload";
 
 
-
-
-
 	@RequestMapping(value="/detail.do")
-	public String detail(@RequestParam(name="no") int no, Model model,Model review) {
+	public String detail(@RequestParam(name="productNo") int no, Model model,Model review,Model userDe) {
 		Product productDetail = productService.productDetail(no);
 		model.addAttribute("detail",productDetail);
+		
+		String name = productDetail.getUserId();
+		User userDetail = productService.getUserDetail(name);
 
-		List<ProductReview> productReivewList = productService.getAllProductReivew();
+		
+		userDe.addAttribute("userDetail", userDetail);
+		
+		
+		List<ProductReview> productReivewList = productService.getAllProductReivew(no);
 		review.addAttribute("productReivewList",productReivewList);
 		return "product/detail";
 	}
 	
 	@RequestMapping(value="/getReviewList.do")
-	public @ResponseBody List<ProductReview> getReviewList () {
-		List<ProductReview> productReivewList = productService.getAllProductReivew();
+	public @ResponseBody List<ProductReview> getReviewList (@RequestParam(name="productNo") int no) {
+		List<ProductReview> productReivewList = productService.getAllProductReivew(no);
 		return productReivewList;
 
 	}
@@ -69,8 +73,13 @@ public class ProductController {
 		BeanUtils.copyProperties(productForm, product);
 
 		// 카테고리 번호
-		product.setCategoryNo(productForm.getCategoryNo());
+		//product.setCategoryNo(productForm.getCategoryNo());
+		Category category = new Category();
+	
+		category = productService.findCategoryByNo(productForm.getCategory().getNo());
 
+		product.setCategory(category);
+		
 		// 제목
 		String title = productForm.getTitle();
 		product.setTitle(title);
@@ -82,10 +91,6 @@ public class ProductController {
 		// 이미지 사진
 		String filename = img.getOriginalFilename();
 		
-		System.out.println("---------------------------------------------------------------------------------");
-		System.out.println(filename);
-		System.out.println("---------------------------------------------------------------------------------");
-		
 		if(!filename.isEmpty()){			
 			String protitle = "pro_"+loginId;
 			
@@ -95,7 +100,7 @@ public class ProductController {
 			FileCopyUtils.copy(bytes, file);
 			product.setImg(protitle + "." + extName);
 		}else{
-			product.setImg("defaultProduct.png");
+			product.setImg("default/defaultProduct.png");
 		}
 		
 
@@ -151,6 +156,8 @@ public class ProductController {
 	public @ResponseBody void productreple(int score,String contents,int productNo, User loginedUser) throws Exception{
 		
 		ProductReview productReview = new ProductReview();
+		
+
 		
 		String loginId = loginedUser.getId();
 		productReview.setUserId(loginId);

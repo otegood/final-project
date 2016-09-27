@@ -1,0 +1,33 @@
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.withmong.dao.BoardDao">
+	
+	<!-- 공지사항 목록 -->
+	<select id="noticeList" resultType="Notice">
+		select
+			no, title, regdate
+		from
+			notice_table
+	</select>
+	
+	<!-- 공지사항 등록 -->
+	<insert id="addNotice" parameterType="Notice">
+		insert into notice_table 
+		(no, title, contents, regdate) 
+		values 
+		(notice_seq.nextval, #{title}, #{contents}, sysdate)
+	</insert>
+	
+	<!-- 공지사항 상세페이지 -->
+	<select id="noticeDetail" parameterType="int" resultType="Notice">
+		select
+			no, title, contents, regdate
+		from
+			notice_table
+		where
+			no = #{no}
+	</select>
+	
+</mapper>

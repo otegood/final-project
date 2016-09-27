@@ -5,6 +5,7 @@ import java.util.List;
 import com.withmong.model.Category;
 import com.withmong.model.Product;
 import com.withmong.model.ProductReview;
+import com.withmong.model.User;
 
 public interface ProductDao {
 
@@ -12,5 +13,8 @@ public interface ProductDao {
 	List<Category> findCategory();
  	Product productDetail(int no);
 	void addProductReview(ProductReview productReview);
-	List<ProductReview> getAllProductReivew();
+	List<ProductReview> getAllProductReivew(int no);
+	Category findCategoryByNo(int no);
+	User getUserDetail(String name);
+	
 }

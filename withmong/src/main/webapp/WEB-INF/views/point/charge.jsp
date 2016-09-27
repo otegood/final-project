@@ -17,7 +17,11 @@
 	src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
 <script type="text/javascript">
-
+	$(':radio').click(function checkedValue() {
+		var radioVal = $(".radiobox:checked").val();
+		
+		$("#space").html(radioVal);
+	});
 </script>
 
 <style type="text/css">
@@ -105,7 +109,7 @@ strong {
 		<br>
 		
 		<div class="w3-panel w3-red">
-   			 <p>충전 금액은 </p>
+   			 충전 금액은 <div id=space></div>
 		</div>
 		
 		<div class="row">
@@ -160,11 +164,6 @@ strong {
 				</table>
 				<button class="btn btn-success btn-lg pull-right">충전하기</button>
 			</form>
-		</div>
-		<div class="w3-panel w3-blue w3-card-8">
-<!-- 
-		<p>"${point.userid.getPoint }"?</p>
-	 -->	
 		</div>
 		
 	</div>	

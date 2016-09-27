@@ -9,6 +9,7 @@ import com.withmong.dao.ProductDao;
 import com.withmong.model.Category;
 import com.withmong.model.Product;
 import com.withmong.model.ProductReview;
+import com.withmong.model.User;
 
 @Service
 public class ProductServiceImpl implements ProductService{
@@ -41,7 +42,17 @@ public class ProductServiceImpl implements ProductService{
 	}
 
 	@Override
-	public List<ProductReview> getAllProductReivew() {
-		return productDao.getAllProductReivew();
+	public List<ProductReview> getAllProductReivew(int no) {
+		return productDao.getAllProductReivew(no);
+	}
+
+	@Override
+	public Category findCategoryByNo(int no) {
+		return productDao.findCategoryByNo(no);
+	}
+
+	@Override
+	public User getUserDetail(String name) {
+		return productDao.getUserDetail(name);
 	}
 }

@@ -36,11 +36,17 @@ public class PointController {
 		//포인트 사용내역 보기
 		List<Point> pointList = pointService.getPointList(loginedUser.getId());
 		model.addAttribute("pointlist", pointList);
+
+		//포인트 알림
+		model.addAttribute("loginedUser", loginedUser);
+		
+		
 		return "point/history";
+		
 	}
 	
 	@RequestMapping(value="/charge.do", method=RequestMethod.GET)
-	public String charge() {
+	public String charge()  {
 		return "point/charge";
 	}
 	
