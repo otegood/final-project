@@ -23,7 +23,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.withmong.form.ReportForm;
 import com.withmong.form.UserForm;
+import com.withmong.model.Report;
 import com.withmong.model.User;
 import com.withmong.service.UserService;
 
@@ -328,7 +330,25 @@ public class UserController {
 		return "member/report";
 	}
 	
-	
+	@RequestMapping(value="/report.do", method=RequestMethod.POST)
+	public String reportUser(ReportForm reportForm){
+		// 사용자가 가입하기위에 작성한 내용을 DB에 넣기
+		Report report = new Report();
+		report.setReason(reportForm.getReason());
+		report.setContents(reportForm.getContents());
+		
+		User reporter = new User();
+		reporter.setId(reportForm.getReporter());
+		report.setReporter(reporter);
+		
+		User suspecter = new User();
+		suspecter.setId(reportForm.getSuspect());
+		report.setSuspect(suspecter);
+		
+		userService.report(report);
+		
+		return "redirect:/chgsuccess.do";
+	}
 	
 	//-------------------------------------------------------------------------------------------------//
 }

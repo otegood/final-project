@@ -1,6 +1,7 @@
 package com.withmong.dao;
 
 
+import com.withmong.model.Report;
 import com.withmong.model.User;
 
 public interface UserDao {
@@ -17,4 +18,7 @@ public interface UserDao {
 	void changePassword(User user);
 	// 내 정보 변경
 	void myInfoModify(User user);
+	// 신고하기
+	void reportUser(Report report);
+	
 }
