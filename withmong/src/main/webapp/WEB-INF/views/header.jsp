@@ -159,7 +159,7 @@ $(document).ready(function(){
 				data-toggle="dropdown" role="button" aria-haspopup="true"
 				aria-expanded="false">공지사항 <span class="caret"></span></a>
 				<ul class="dropdown-menu">
-					<li><a href="#">공지사항</a></li>
+					<li><a href="noticelist.do">공지사항</a></li>
 					<li class="divider"></li>
 					<li><a href="#">요청게시판</a></li>
 					<li class="divider"></li>

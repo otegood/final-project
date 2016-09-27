@@ -48,11 +48,14 @@
 
 </style>
 <script type="text/javascript">
+
+<!-- tr(id=chain)눌렀을때 페이지 이동시키기 -->
 $(function(){
 	$("#chain").click(function(){
-		$(location).attr('href', 'no');
+		$(location).attr('href', 'noticeDetail.do?no='+$("#noticeNo").text());
 	});
 });
+
 </script>
 <title>공지사항</title>
 </head>

@@ -20,4 +20,14 @@
 		(notice_seq.nextval, #{title}, #{contents}, sysdate)
 	</insert>
 	
+	<!-- 공지사항 상세페이지 -->
+	<select id="noticeDetail" parameterType="int" resultType="Notice">
+		select
+			no, title, contents, regdate
+		from
+			notice_table
+		where
+			no = #{no}
+	</select>
+	
 </mapper>

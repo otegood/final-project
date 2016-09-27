@@ -10,5 +10,7 @@ public interface BoardDao {
 	List<Notice> noticeList();
 	// 공지사항 등록
 	void addNotice(Notice notice);
+	// 공지사항 상세
+	Notice noticeDetail(int no);
 	
 }
