@@ -247,22 +247,79 @@ public class UserController {
 		return "member/confirmpw";
 	}
 
-	
+	//내 정보 수정하기위해 비밀번호 입력후 넘어가는 페이지
 	@RequestMapping(value="/confirmpw.do", method=RequestMethod.POST)
 	public String confirmpw(UserForm userform){
 		
-		User user = userService.login(userform.getId(), userform.getPassword());
+		userService.login(userform.getId(), userform.getPassword());
 		
 		return "redirect:/myinfomodify.do";
 	}
 	
-	
+	//내 정보를 수정하는 페이지로 접속
 	@RequestMapping(value="/myinfomodify.do", method=RequestMethod.GET)
 	public String myinfomodify(){
 		
 		
 		return "member/myinfomodify";
 	}
+	
+	//내 정보를 수정하는 페이지로 접속
+	@RequestMapping(value="/myinfomodify.do", method=RequestMethod.POST)
+	public String myinfoModify(UserForm userform, @RequestParam("img")MultipartFile img)throws Exception{
+		User user = new User();
+		user.setId(userform.getId());
+		
+		// 비밀번호 암호화하기
+		String plainPassword = userform.getPassword();
+		String secretPassword = DigestUtils.md5DigestAsHex(plainPassword.getBytes());
+		user.setPassword(secretPassword);
+		
+		// 전화번호 합치기
+		String phone1 = userform.getPhone1();
+		String phone2 = userform.getPhone2();
+		String phone3 = userform.getPhone3();
+		
+		user.setPhone(phone1+"-"+phone2+"-"+phone3);
+		
+		// 이메일 저장하기
+		user.setEmail(userform.getEmail());
+		
+		// 성별구분
+		user.setGender(userform.getGender());
+		
+		// 학력 합치기
+		String schoolAbility1 = userform.getSchoolAbility1();
+		String schoolAbility2 = userform.getSchoolAbility2();
+		String schoolAbility3 = userform.getSchoolAbility3();
+		
+		user.setSchoolAbility(schoolAbility1+" "+schoolAbility2+" "+schoolAbility3);
+		
+		//질문 답변
+		user.setQuestion(userform.getQuestion());
+		user.setAnswer(userform.getAnswer());
+		
+		
+		//파일업로드 ( 기존파일 삭제가능한지?)
+		String filename = img.getOriginalFilename();
+		
+		String userid = userform.getId();
+		
+		String extName = filename.substring(filename.lastIndexOf(".")+1);
+		
+		byte[] bytes = img.getBytes();
+		File file = new File(UPLOAD_DIRECTORY, userid + "." + extName);
+	
+		FileCopyUtils.copy(bytes, file);
+		
+		user.setImg(userid + "." + extName);
+		
+		userService.myInfoModify(user);
+		System.out.println(user);
+		
+		return "redirect:/chgsuccess.do";
+	}
+	//-------------------------------------------------------------------------------------------------//
 	
 	
 	

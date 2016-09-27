@@ -67,11 +67,14 @@
 	
 	<update id="myInfoModify" parameterType="User">
 		update user_table
-		set password = #{password}
-		and	email = #{email}
-		and gender= #{gender}
-		and phone = #{phone}
-		and schoolAbility = #{schoolAbility}
+		set 	password = #{password},
+				email = #{email},
+			 	phone = #{phone},
+				gender = #{gender},
+				schoolAbility = #{schoolAbility},
+				question = #{question},
+			 	answer = #{answer},
+			 	img = #{img}
 		where id = #{id}
 	</update>
 </mapper>

@@ -78,6 +78,12 @@ public class UserServiceImpl implements UserService{
 		userDao.changePassword(user);
 	}
 
+	// 내 정보 변경하기
+	@Override
+	public void myInfoModify(User user) {
+		userDao.myInfoModify(user);
+	}
+
 	
 }
 

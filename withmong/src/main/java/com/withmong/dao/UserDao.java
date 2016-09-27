@@ -15,5 +15,6 @@ public interface UserDao {
 	User findInfoPassword(User user);
 	// 비밀번호 변경
 	void changePassword(User user);
-	
+	// 내 정보 변경
+	void myInfoModify(User user);
 }

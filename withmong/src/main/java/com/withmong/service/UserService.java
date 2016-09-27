@@ -25,4 +25,7 @@ public interface UserService {
 	
 	// 비밀번호 분실 후 변경
 	void changePassword(User user);
+	
+	// 내 정보 변경
+	void myInfoModify(User user);
 }
