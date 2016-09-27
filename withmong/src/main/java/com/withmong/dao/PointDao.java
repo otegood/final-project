@@ -12,6 +12,6 @@ public interface PointDao {
 	//포인트 내역 추가
 	void addPointHistory(Point point);
 	//포인트 내역 보기
-	List<Point> getPointList(String userId);
+	List<Point> getPointList(String userid);
 	
 }

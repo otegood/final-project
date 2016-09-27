@@ -31,14 +31,6 @@ public class ProductController {
 
 	private static String UPLOAD_DIRECTORY = "c:/upload";
 
-<<<<<<< HEAD
-		@RequestMapping(value="/detail.do")
-		public String detail(@RequestParam(name="no") int no, Model model) {
-			Product productDetail = productService.productDetail();
-			model.addAttribute("detail",productDetail);
-			
-			return "product/detail";
-=======
 
 
 
@@ -57,7 +49,7 @@ public class ProductController {
 	public @ResponseBody List<ProductReview> getReviewList () {
 		List<ProductReview> productReivewList = productService.getAllProductReivew();
 		return productReivewList;
->>>>>>> branch 'master' of https://github.com/otegood/final-project.git
+
 	}
 
 

@@ -107,6 +107,8 @@ $(document).ready(function(){
 									class="dropdown-toggle" data-toggle="dropdown">포인트 관리</a>
 									<ul class="dropdown-menu">
 										<li><a href="history.do">내역</a></li>
+										<li><a href="charge.do">충전</a></li>
+										<li><a href="withdraw.do">출금</a></li>
 									</ul></li>
 								<li class="divider"></li>
 								<li><a href="logout.do"><span

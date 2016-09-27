@@ -32,9 +32,9 @@ public class PointServiceImpl implements PointService {
 
 	@Override
 	//포인트 내역 보기
-	public List<Point> getPointList(String userId) {
+	public List<Point> getPointList(String userid) {
 		// TODO Auto-generated method stub
-		return pointDao.getPointList(userId);
+		return pointDao.getPointList(userid);
 	}
 
 }

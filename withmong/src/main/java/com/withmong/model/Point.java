@@ -6,7 +6,7 @@ public class Point {
 
 	
 	private int charge;		// 충전
-	private int withraw;	// 출금
+	private int withdraw;	// 출금
 	private Date regdate;
 	private User userid;
 	
@@ -20,12 +20,12 @@ public class Point {
 		this.charge = charge;
 	}
 
-	public int getWithraw() {
-		return withraw;
+	public int getWithdraw() {
+		return withdraw;
 	}
 
-	public void setWithraw(int withraw) {
-		this.withraw = withraw;
+	public void setWithdraw(int withdraw) {
+		this.withdraw = withdraw;
 	}
 
 	public Date getRegdate() {
@@ -46,7 +46,7 @@ public class Point {
 
 	@Override
 	public String toString() {
-		return "Point [charge=" + charge + ", withraw=" + withraw + ", regdate=" + regdate + ", userid=" + userid + "]";
+		return "Point [charge=" + charge + ", withraw=" + withdraw + ", regdate=" + regdate + ", userid=" + userid + "]";
 	}
 
 	

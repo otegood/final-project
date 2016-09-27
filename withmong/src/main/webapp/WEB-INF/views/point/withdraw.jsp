@@ -105,13 +105,14 @@ strong {
 		<br>
 		
 		<div class="w3-panel w3-red">
+			
    			 <p>충전 금액은 </p>
 		</div>
 		
 		<div class="row">
-			<h3>충전소</h3>
+			<h3>충전금액:</h3>
 			
-			<form action="charge.jsp" role="form">
+			<form action="withdraw.jsp" role="form">
 				<table id="changes" class="table table-striped table-condensed">
 					<thead
 						style="font-weight: bold; background-color: rgb(192, 192, 192);">
@@ -163,8 +164,11 @@ strong {
 		</div>
 		<div class="w3-panel w3-blue w3-card-8">
 
-		<p>충전 후 포인트는  기존 + 충전 금액 포인트 =value 값 활용?</p>
+		<p>환불한 금액 = 가격에 있는 값 읽어오기</p>
 		
+		<p>환전 후 남은 포인트 = 기존 포인트(user.point) - 환불한 포인트(input value)</p>
+		
+		<p></p>
 		</div>
 		
 	</div>	

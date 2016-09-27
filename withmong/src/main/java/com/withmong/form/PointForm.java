@@ -9,7 +9,7 @@ public class PointForm {
 	private int charge;		//충전
 	private int withraw;	//출금
 	private Date regdate;
-	private User userId;
+	private User userid;
 	
 	public PointForm() {}
 
@@ -46,18 +46,18 @@ public class PointForm {
 	}
 
 	public User getUserid() {
-		return userId;
+		return userid;
 	}
 
 	public void setUserid(User userid) {
-		this.userId = userid;
+		this.userid = userid;
 	}
 
 
 
 	@Override
 	public String toString() {
-		return "PointForm [charge=" + charge + ", withraw=" + withraw + ", regdate=" + regdate + ", userid=" + userId
+		return "PointForm [charge=" + charge + ", withraw=" + withraw + ", regdate=" + regdate + ", userid=" + userid
 				+ "]";
 	}
 
