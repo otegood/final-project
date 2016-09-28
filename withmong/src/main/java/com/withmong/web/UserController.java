@@ -159,11 +159,17 @@ public class UserController {
 		User user = userService.login(userform.getId(), userform.getPassword());
 		session.setAttribute("LOGIN_USER", user);
 		// 관리자 id = king
-		if(user.getId().equals("king")){
-			result="redirect:/mmain.do";
-		}else{
-			result="redirect:/main.do";
+		if(user.getDelCheck().equals("Y")){
+			throw new RuntimeException("이미 탈퇴한 사용자입니다.");
+		} else {
+			if(user.getId().equals("king")){
+				result="redirect:/mmain.do";
+			}else{
+				result="redirect:/main.do";
+			}
 		}
+		
+		
 		return result;
 	}
 	
