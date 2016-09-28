@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.DigestUtils;
 
 import com.withmong.dao.UserDao;
+import com.withmong.model.Order;
 import com.withmong.model.Report;
 import com.withmong.model.User;
 
@@ -91,6 +92,27 @@ public class UserServiceImpl implements UserService{
 	public void report(Report report) {
 		userDao.reportUser(report);
 	}
+
+	// 내 구매정보 보기
+	@Override
+	public Order myPurchase(String purchaseId) {
+	
+		Order checkMyPurchase = userDao.myPurchase(purchaseId);
+		return checkMyPurchase;
+		
+	}
+	
+	// 내 판매정보 보기
+	/*
+		@Override
+		public Order mySell(String userid) {
+			Order checkMySell = userDao.mySell(userid);
+			
+			return checkMySell;
+			
+		}
+	 * 
+	 */
 
 	
 

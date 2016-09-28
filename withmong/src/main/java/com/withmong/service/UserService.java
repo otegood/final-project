@@ -1,6 +1,7 @@
 package com.withmong.service;
 
 
+import com.withmong.model.Order;
 import com.withmong.model.Report;
 import com.withmong.model.User;
 
@@ -32,5 +33,14 @@ public interface UserService {
 
 	// 신고하기
 	void report(Report report);
+<<<<<<< HEAD
 
+=======
+	
+	// 내 구매 정보 보기
+	Order myPurchase(String purchaseId);
+
+	// 내 판매 정보 보기
+	//Order mySell(String id);
+>>>>>>> branch 'master' of https://github.com/otegood/final-project.git
 }
