@@ -20,7 +20,12 @@ function showPrice() {
 	
 	var balance = parseInt('${LOGIN_USER.point }') - price;
 	
-	$("#space2").html("회원님의 환전 후 포인트 잔액은 현재: "+ balance +" 입니다.")
+	$("#space2").html("회원님의 환전 후 포인트 잔액은 현재: "+ balance +" 입니다.  ")
+	
+	if(balance < 0) {
+		$("#space2").html("회원님의 포인트 잔액이 부족하여 환전을 할 수 없습니다.")	
+	}
+	
 }
 </script>
 
@@ -108,10 +113,10 @@ strong {
 	<div class="container">
 		<br>
 		<div class="row">
-			<div class="w3-panel w3-red">
+			<div class="alert alert-danger">
 	   			 <p id=space style="margin-bottom: 0px;"></p>
 			</div>
-			<div class="w3-panel w3-blue">
+			<div class="alert alert-info">
 	   			 <p id=space2 style="margin-bottom: 0px;"></p>
 			</div>
 		

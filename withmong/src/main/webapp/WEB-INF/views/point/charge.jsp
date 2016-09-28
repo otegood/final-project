@@ -8,7 +8,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet"	href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
+
 <link href="bootstrap.min.css" type="text/css" rel="stylesheet">
 
 <script
@@ -109,7 +109,7 @@ strong {
 	<div class="container">
 		<br>
 		<div class="row">
-			<div class="w3-panel w3-red">
+			<div class="alert alert-danger">
 	   			 <p id=space style="margin-bottom: 0px;"></p>
 			</div>
 		
