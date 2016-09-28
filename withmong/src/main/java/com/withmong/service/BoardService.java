@@ -18,4 +18,8 @@ public interface BoardService {
 	void updateNotice(Notice notice);
 	// 요청게시판 목록
 	List<Request> requestList();
+	// 요청게시글 등록
+	void addRequest(Request request);
+	
+	Request requestDetail(int no);
 }

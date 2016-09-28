@@ -20,7 +20,7 @@
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" style="width: 300px;">공지사항</a>
           <ul class="dropdown-menu"  style="width: 300px; text-align: center;">
             <li><a href="noticelist.do">공지사항</a></li>
-            <li><a href="#">요청게시판</a></li>
+            <li><a href="requestlist.do">요청게시판</a></li>
             <li><a href="#">QnA</a></li>
           </ul>
         </li>

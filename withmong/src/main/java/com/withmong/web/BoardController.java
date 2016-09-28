@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.withmong.model.Notice;
+import com.withmong.model.Request;
+import com.withmong.model.User;
 import com.withmong.service.BoardService;
 
 @Controller
@@ -74,5 +76,26 @@ public class BoardController {
 	public String requestList(Model model) {
 		model.addAttribute("requests", boardService.requestList());
 		return "board/requestlist";
+	}
+	
+	//요청글 입력폼
+	@RequestMapping(value="/requestRegister.do", method=RequestMethod.GET)
+	public String requestForm() {
+		return "board/requestform";
+	}
+	//요청글 입력처리
+	@RequestMapping(value="/requestRegister.do", method=RequestMethod.POST)
+	public String requestRegister(Request request, User loginedUser) {
+		request.setContents(request.getContents().replace("\r\n", "<br>"));
+		request.setUserId(loginedUser);
+		boardService.addRequest(request);
+		return "redirect:/requestlist.do";
+	}
+	
+	// 요청글 상세페이지
+	@RequestMapping("/requestDetail.do")
+	public String requestDetail(Model model, @RequestParam(name="no") int no) {
+		model.addAttribute("request", boardService.requestDetail(no));
+		return "board/requestdetail";
 	}
 }
