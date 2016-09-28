@@ -77,10 +77,7 @@
 			 	img = #{img}
 		where id = #{id}
 	</update>
-<<<<<<< HEAD
 
-=======
-	
 	<!-- 신고하기 기능 -->
 	<insert id="reportUser" parameterType="Report">
 		insert into report_table
@@ -88,5 +85,5 @@
 		values
 		(test_seq.nextval, #{contents}, sysdate, #{reason}, #{reporter.id}, #{suspect.id})
 	</insert>
->>>>>>> branch 'master' of https://github.com/otegood/final-project.git
+
 </mapper>

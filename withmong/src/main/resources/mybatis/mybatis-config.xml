@@ -11,15 +11,15 @@
   	<typeAlias type="com.withmong.model.Message" alias="Message"/>
   	<typeAlias type="com.withmong.model.Product" alias="Product"/>
   	<typeAlias type="com.withmong.model.Category" alias="Category"/>
-<<<<<<< HEAD
+
   	<typeAlias type="com.withmong.model.ProductReview" alias="ProductReview"/>
   	<typeAlias type="com.withmong.model.Point" alias="Point"/>
   	<typeAlias type="com.withmong.model.Notice" alias="Notice"/> 	
-=======
+
   	<typeAlias type="com.withmong.model.ProductReview" alias="ProductReview"/>
   	<typeAlias type="com.withmong.model.Report" alias="Report"/>
   	<typeAlias type="com.withmong.model.Notice" alias="Notice"/> 	
->>>>>>> branch 'master' of https://github.com/otegood/final-project.git
+
   </typeAliases>
   
   <mappers>

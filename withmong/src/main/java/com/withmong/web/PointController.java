@@ -2,6 +2,8 @@ package com.withmong.web;
 
 import java.util.List;
 
+import javax.swing.plaf.synth.SynthSeparatorUI;
+
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -55,8 +57,8 @@ public class PointController {
 		loginedUser.setPoint(point);
 		
 		pointService.charge(loginedUser.getId(), point);
-		 
 		return "redirect:/history.do";
+		
 	}
 	
 	//환전하기
@@ -70,8 +72,6 @@ public class PointController {
 	public String withdraw(int point, User loginedUser) throws Exception {
 		if(loginedUser.getPoint() > 0) {
 			pointService.withdraw(loginedUser.getId(), point);
-		} else {
-			
 		}
 		
 		return "redirect:/history.do";
