@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.withmong.dao.BoardDao;
 import com.withmong.model.Notice;
+import com.withmong.model.Request;
 
 @Service
 public class BoardServiceImpl  implements BoardService{
@@ -35,6 +36,10 @@ public class BoardServiceImpl  implements BoardService{
 	@Override
 	public void updateNotice(Notice notice) {
 		boardDao.updateNotice(notice);
+	}
+	@Override
+	public List<Request> requestList() {
+		return boardDao.requestList();
 	}
 
 }
