@@ -7,7 +7,7 @@ public class Product {
 	private int no;
 	private String title;
 	
-	private User userId;
+	private String userid;
 	
 	private String img;
 	private String video;
@@ -40,12 +40,12 @@ public class Product {
 		this.title = title;
 	}
 
-	public User getUserId() {
-		return userId;
+	public String getUserId() {
+		return userid;
 	}
 
-	public void setUserId(User userId) {
-		this.userId = userId;
+	public void setUserId(String userid) {
+		this.userid = userid;
 	}
 
 	public String getImg() {
@@ -138,7 +138,7 @@ public class Product {
 
 	@Override
 	public String toString() {
-		return "Product [no=" + no + ", title=" + title + ", userId=" + userId + ", img=" + img + ", video=" + video
+		return "Product [no=" + no + ", title=" + title + ", userid=" + userid + ", img=" + img + ", video=" + video
 				+ ", contents=" + contents + ", price=" + price + ", qty=" + qty + ", regDate=" + regDate + ", avglike="
 				+ avglike + ", hits=" + hits + ", tag=" + tag + ", locationNo=" + locationNo + ", category=" + category
 				+ "]";

@@ -15,6 +15,26 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script
 	src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script type="text/javascript">
+$(function(){
+	
+	$("#city").change(function(){
+		$.ajax({
+			url:"locationForlocal.do",
+			type:"POST",
+			data:{city:$("#city").val() },
+			dataType: "json",
+			success: function(data){
+				console.log(data)
+				$.each(data,function(index, item){	
+					$("#local").append('<option value="'+item.local+'">'+item.local+'</option>');
+				})
+			}
+		})
+	});		
+	
+});
+</script>
 <style type="text/css">
 .container {
 	margin-top: 20px;
@@ -106,14 +126,18 @@ strong {
 					</div>
 
 					<div class="form-group row">
-						<label class="col-sm-3 text-right">지역 선택</label> 
-						<select name="location" id="location">
-							<option value="defualt" selected="selected">--선택하세요--</option>
-						</select> 
-						
-						<label class="text-right"> 도시 선택</label> 
+						<label class="col-sm-3 text-right">도시 선택</label> 
 						<select name="city" id="city">
 							<option value="defualt" selected="selected">--선택하세요--</option>
+							 <c:forEach var="location" items="${locaList}">
+									<option value="${location.city }">${location.city }</option>
+							</c:forEach>		 
+						</select> 
+						
+						<label class="text-right"> 구 선택</label> 
+						<select name="local" id="local">
+							<option value="defualt" selected="selected">--선택하세요--</option>
+	
 						</select> 
 						
 					</div>
