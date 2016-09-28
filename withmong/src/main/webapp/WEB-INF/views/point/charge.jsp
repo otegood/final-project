@@ -17,11 +17,14 @@
 	src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
 <script type="text/javascript">
-	$(':radio').click(function checkedValue() {
-		var radioVal = $(".radiobox:checked").val();
-		
-		$("#space").html(radioVal);
-	});
+function showPrice() {
+	var $radioval = $(":radio[name='point']:checked").val()
+
+	console.log($radioval);
+	
+	$("#space").html($radioval);
+}
+	
 </script>
 
 <style type="text/css">
@@ -109,7 +112,10 @@ strong {
 		<br>
 		
 		<div class="w3-panel w3-red">
-   			 충전 금액은 <div id=space></div>
+   			 충전 금액은 <div id=space></div>원 입니다.
+   			 <div id="on" style="display: ;"></div>
+   			 <div id="off" style="display: none;"></div>
+   			 
 		</div>
 		
 		<div class="row">
@@ -127,35 +133,35 @@ strong {
 					<tbody>
 						<tr>
 							<td>
-								<input type="radio" id="" name="point" value="5000" checked="checked">
+								<input type="radio" onclick="showPrice();" class="radiobox" name="point" value="5000" checked="checked" >
                      			 <label for="5,000">5,000</label> 
 							</td>
 							<td>5,000</td>
 						</tr>
 						<tr>
 							<td>
-								<input type="radio" id="" name="point" value="10000">
+								<input type="radio" onclick="showPrice();" class="radiobox" name="point" value="10000" >
                      			 <label for="10,000">10,000</label> 
 							</td>
 							<td>10,000</td>
 						</tr>
 						<tr>
 							<td>
-								<input type="radio" id="" name="point" value="30000" >
+								<input type="radio" onclick="showPrice();" class="radiobox" name="point" value="30000" >
                      			 <label for="30,000">30,000</label> 
 							</td>
 							<td>30,000</td>
 						</tr>
 						<tr>
 							<td>
-								<input type="radio" id="" name="point" value="50000">
+								<input type="radio" onclick="showPrice();" class="radiobox" name="point" value="50000" >
                      			 <label for="50,000">50,000</label>
 							</td>
 							<td>50,000</td>
 						</tr>
 						<tr>
 							<td>
-								<input type="radio" id="" name="point" value="100000" >
+								<input type="radio" onclick="showPrice();" class="radiobox" name="point" value="100000" >
                      			 <label for="100,000">100,000</label> 
 							</td>
 							<td>100,000</td>

@@ -106,7 +106,7 @@ strong {
 		<div class="row">
 			<h3>환불:</h3>
 			
-			<form action="withdraw.jsp" role="form">
+			<form method="post" action="withdraw.do" role="form">
 				<table id="changes" class="table table-striped table-condensed">
 					<thead
 						style="font-weight: bold; background-color: rgb(192, 192, 192);">
@@ -153,7 +153,7 @@ strong {
 						</tr>
 					</tbody>
 				</table>
-				<button type="button" class="btn btn-success btn-lg pull-right">환전하기</button>
+				<button class="btn btn-success btn-lg pull-right">환전하기</button>
 			</form>
 		</div>
 		

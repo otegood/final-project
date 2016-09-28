@@ -41,11 +41,12 @@ public class PointServiceImpl implements PointService {
 		
 	}
 
+	//환전하기
 	@Override
 	public void withdraw(String id, int withdrawPoint) {
 		User user = new User();
 		user.setId(id);
-		user.setPoint(-withdrawPoint);
+		user.setPoint((-1)*withdrawPoint);
 		
 		Point point = new Point();
 		point.setWithdraw(withdrawPoint);

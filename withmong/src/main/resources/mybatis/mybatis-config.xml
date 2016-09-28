@@ -12,11 +12,8 @@
   	<typeAlias type="com.withmong.model.Product" alias="Product"/>
   	<typeAlias type="com.withmong.model.Category" alias="Category"/>
   	<typeAlias type="com.withmong.model.ProductReview" alias="ProductReview"/>
-<<<<<<< HEAD
   	<typeAlias type="com.withmong.model.Point" alias="Point"/>
-=======
   	<typeAlias type="com.withmong.model.Notice" alias="Notice"/> 	
->>>>>>> branch 'master' of https://github.com/otegood/final-project.git
   </typeAliases>
   
   <mappers>
@@ -25,11 +22,9 @@
     <mapper resource="mybatis/mappers/product.xml"/>
     <mapper resource="mybatis/mappers/point.xml"/>
     <mapper resource="mybatis/mappers/manager.xml"/>
-<<<<<<< HEAD
 
-=======
     <mapper resource="mybatis/mappers/board.xml"/>
->>>>>>> branch 'master' of https://github.com/otegood/final-project.git
+
   </mappers>
   
 </configuration>
