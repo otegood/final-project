@@ -16,124 +16,120 @@
 
 <script type="text/javascript">
 	//더보기
-	$(document).ready(function() {
-		$('#more').click(function() {
-		$(".addToProducts").append(
-				'<div class="row" style="margin-left: 0px; margin-right: 0px;">'+
-					'<div class="col-sm-3"
-						style="padding-left: 15px; padding-right: 15px;">'+
-						
-						'<span class="pro-img"> <a class="togo" href="#">'+ '<img
-								class="img-responsive" src="resources/img/vvv.png" alt="">'+
-								
-						'</a>'+
-						'</span>'+
-						'<div class="row" style="padding-left: 0px;">'+
-							'<div class="call-product-title">'+
-								'<p>'+
-									'<span class="glyphicon glyphicon-gift"></span>'+
-									
-									'-------상품명-------'+
-								'</p>'+
-							'</div>'+
-	
-							'<div class="call-product-price">'+
-								'<p>'+
-									'<span class="glyphicon glyphicon-cd"></span>'+
-									
-									'-------가격--------'+
-								'</p>'+
-	
-							'</div>'+
-						'</div>'+
-					'</div>'+
-					'<div class="col-sm-3"
-					style="padding-left: 15px; padding-right: 15px;">'+
-					
-					'<span class="pro-img"> <a class="togo" href="#">'+ '<img
-							class="img-responsive" src="resources/img/vvv.png" alt="">'+
-							
-					'</a>'+
-					'</span>'+
-					'<div class="row" style="padding-left: 0px;">'+
-						'<div class="call-product-title">'+
-							'<p>'+
-								'<span class="glyphicon glyphicon-gift"></span>'+
-								
-								'-------상품명-------'+
-							'</p>'+
-						'</div>'+
+	$(document)
+			.ready(
+					function() {
+						$('#more')
+								.click(
+										function() {
+											$(".addToProducts")
+													.append('<div class="row" style="margin-left: 0px; margin-right: 0px;">'+
+															'<div class="col-sm-3" style="padding-left: 15px; padding-right: 15px;">'+
+															'<span class="pro-img"> <a class="togo" href="#">'+ 
+															'<img class="img-responsive" src="resources/img/vvv.png" alt="">'+
+																	'</a>'+'</span>'
+																	
+															+'<div class="row" style="padding-left: 0px;">'+
+																'<div class="call-product-title">'+
+																	'<p>'+
+																		'<span class="glyphicon glyphicon-gift"></span>'+
+																		
+																	'</p>'+
+																'</div>'+
 
-						'<div class="call-product-price">'+
-							'<p>'+
-								'<span class="glyphicon glyphicon-cd"></span>'+
-								
-								'-------가격--------'+
-							'</p>'+
+																'<div class="call-product-price">'+
+																	'<p>'+
+																		'<span class="glyphicon glyphicon-cd"></span>'+
+																		
+																		
+																	'</p>'+
 
-						'</div>'+
-					'</div>'+
-				'</div>'+
-				'<div class="col-sm-3"
-				style="padding-left: 15px; padding-right: 15px;">'+
-				
-				'<span class="pro-img"> <a class="togo" href="#">'+ '<img
-						class="img-responsive" src="resources/img/vvv.png" alt="">'+
-						
-				'</a>'+
-				'</span>'+
-				'<div class="row" style="padding-left: 0px;">'+
-					'<div class="call-product-title">'+
-						'<p>'+
-							'<span class="glyphicon glyphicon-gift"></span>'+
-							
-							'-------상품명-------'+
-						'</p>'+
-					'</div>'+
+																'</div>'+
+															'</div>'+
+														'</div>'+
 
-					'<div class="call-product-price">'+
-						'<p>'+
-							'<span class="glyphicon glyphicon-cd"></span>'+
-							
-							'-------가격--------'+
-						'</p>'+
+														'<div class="col-sm-3" style="padding-left: 15px; padding-right: 15px;">'+
+															
+															'<span class="pro-img"> <a class="togo" href="#">'+ 
+															'<img class="img-responsive" src="resources/img/vvv.png" alt="">'+
+																	
+															'</a>'+
+															'</span>'+
+															'<div class="row" style="padding-left: 0px;">'+
+																'<div class="call-product-title">'+
+																	'<p>'+
+																		'<span class="glyphicon glyphicon-gift"></span>'+
+																		
+																		
+																	'</p>'+
+																'</div>'+
 
-					'</div>'+
-				'</div>'+
-			'</div>'+
-			'<div class="col-sm-3"
-			style="padding-left: 15px; padding-right: 15px;">'+
-			
-			'<span class="pro-img"> <a class="togo" href="#">'+ '<img
-					class="img-responsive" src="resources/img/vvv.png" alt="">'+
-					
-			'</a>'+
-			'</span>'+
-			'<div class="row" style="padding-left: 0px;">'+
-				'<div class="call-product-title">'+
-					'<p>'+
-						'<span class="glyphicon glyphicon-gift"></span>'+
-						
-						'-------상품명-------'+
-					'</p>'+
-				'</div>'+
+																'<div class="call-product-price">'+
+																	'<p>'+
+																		'<span class="glyphicon glyphicon-cd"></span>'+
+																		
+																		
+																	'</p>'+
 
-				'<div class="call-product-price">'+
-					'<p>'+
-						'<span class="glyphicon glyphicon-cd"></span>'+
-						
-						'-------가격--------'+
-					'</p>'+
+																'</div>'+
+															'</div>'+
+														'</div>'+
+														
+														'<div class="col-sm-3" style="padding-left: 15px; padding-right: 15px;">'+
+															'<span class="pro-img"> <a class="togo" href="#">'+ 
+															'<img class="img-responsive" src="resources/img/vvv.png" alt="">'+
+																	'</a>'+'</span>'
+																	
+															+'<div class="row" style="padding-left: 0px;">'+
+																'<div class="call-product-title">'+
+																	'<p>'+
+																		'<span class="glyphicon glyphicon-gift"></span>'+
+																		
+																	'</p>'+
+																'</div>'+
 
-				'</div>'+
-			'</div>'+
-		'</div>'+
-	'</div>'
-		
-		
-		);
-	})
-})
+																'<div class="call-product-price">'+
+																	'<p>'+
+																		'<span class="glyphicon glyphicon-cd"></span>'+
+																		
+																		
+																	'</p>'+
+
+																'</div>'+
+															'</div>'+
+														'</div>'+
+
+														'<div class="col-sm-3" style="padding-left: 15px; padding-right: 15px;">'+
+															
+															'<span class="pro-img"> <a class="togo" href="#">'+ 
+															'<img class="img-responsive" src="resources/img/vvv.png" alt="">'+
+																	
+															'</a>'+
+															'</span>'+
+															'<div class="row" style="padding-left: 0px;">'+
+																'<div class="call-product-title">'+
+																	'<p>'+
+																		'<span class="glyphicon glyphicon-gift"></span>'+
+																		
+																		
+																	'</p>'+
+																'</div>'+
+
+																'<div class="call-product-price">'+
+																	'<p>'+
+																		'<span class="glyphicon glyphicon-cd"></span>'+
+																		
+																		
+																	'</p>'+
+
+																'</div>'+
+															'</div>'+
+														'</div>'+
+
+													'</div>');;		
+													
+										})
+					})
 </script>
 
 <style type="text/css">
@@ -200,7 +196,8 @@ strong {
 	<!-- 내용 기입 -->
 	<div class="container">
 		<br>
-		<div id="myCarousel" class="carousel slide" data-ride="carousel" style="height: 250px;">
+		<div id="myCarousel" class="carousel slide" data-ride="carousel"
+			style="height: 250px;">
 			<!-- Indicators -->
 			<ol class="carousel-indicators">
 				<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
@@ -227,7 +224,7 @@ strong {
 			</a>
 		</div>
 		<div class="row" style="margin-left: 10px;">
-			<h1 class="page-header">상품 리스트</h1>
+			<h1 class="page-header">상품 리스트2</h1>
 		</div>
 		<div class="row" id="">
 			<div class="col-sm-3 col-sm-offset-8" style="margin-bottom: 20px;">
@@ -242,7 +239,7 @@ strong {
 				</div>
 			</div>
 			<div class="addToProducts">
-				<div class="row" style="margin-left: 0px; margin-right: 0px;">
+				<div class="row" id="addpoint" style="margin-left: 0px; margin-right: 0px;">
 					<div class="col-sm-3"
 						style="padding-left: 15px; padding-right: 15px;">
 						<!-- 첫 이미지 크기 400*300 -->
@@ -353,12 +350,13 @@ strong {
 					</div>
 				</div>
 			</div>
-			<div style="text-align: center; margin-bottom: 30px; margin-top: 30px;">
+			<div
+				style="text-align: center; margin-bottom: 30px; margin-top: 30px;">
 				<a class="btn btn-danger btn-large" style="width: 400px;" id="more">더보기</a>
 			</div>
 		</div>
 	</div>
-	
+
 	<%@ include file="footer.jsp"%>
 </body>
 </html>
