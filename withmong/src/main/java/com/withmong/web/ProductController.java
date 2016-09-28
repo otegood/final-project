@@ -89,6 +89,7 @@ public class ProductController {
 		// 아이디
 		String loginId = loginedUser.getId();
 		product.setUserId(loginId);
+	
 
 		// 이미지 사진
 		String filename = img.getOriginalFilename();
