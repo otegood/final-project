@@ -22,14 +22,12 @@ public interface UserDao {
 
 	// 신고하기
 	void reportUser(Report report);
-<<<<<<< HEAD
 
-=======
 	// 내 구매내역 확인하기
 	Order myPurchase(String purchaseId);
 	// 내 판매내역 확인하기
 	//Order mySell(String userid);
 	
->>>>>>> branch 'master' of https://github.com/otegood/final-project.git
+
 	
 }
