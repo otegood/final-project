@@ -62,7 +62,7 @@
 		<div class="row col-sm-6" id="frames" style="margin: auto;">
 			<h2>게시판 관리</h2>
 			<div style="text-align: right">
-				<a class="btn btn-xs btn-default" href="">공지사항</a>
+				<a class="btn btn-xs btn-default" href="noticelist.do">공지사항</a>
 				<a class="btn btn-xs btn-default" href="">요청게시판</a>
 				<a class="btn btn-xs btn-default" href="">Q&A</a>
 			</div>

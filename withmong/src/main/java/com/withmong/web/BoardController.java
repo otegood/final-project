@@ -68,4 +68,11 @@ public class BoardController {
 		boardService.updateNotice(notice);
 		return "redirect:/noticelist.do";
 	}
+	
+	//요청게시판 목록
+	@RequestMapping("/requestlist.do")
+	public String requestList(Model model) {
+		model.addAttribute("requests", boardService.requestList());
+		return "board/requestlist";
+	}
 }
