@@ -51,12 +51,25 @@
 </style>
 <script type="text/javascript">
 $(function() {
-	$(document).ready(function() {
-	    $('#example').DataTable( {
-	        "pagingType": "full_numbers"
-	    } );
-	} );
-	
+	$.ajax({
+		url:"../ckmysell.do",
+		data:{},
+		dataType:"json",
+		success: function(data) {
+			console.log(data);		// 전체 객체가 한꺼번에나옴
+			$.each(data, function(index, item) {
+				console.log(item);	// 객체가 하나씩나오게됨
+				
+				$("tbody").append("<tr>");
+				$("tbody").append("<td>"+item.userid.id+"</td>");
+				$("tbody").append("<td>"+item.productNo.title+"</td>");
+				$("tbody").append("<td>"+item.productNo.price+"</td>");
+				$("tbody").append("<td>"+item.regdate+"</td>");
+				$("tbody").append("<td>"+item.buyCheck+"</td>");
+				$("tbody").append("</tr>");
+			});
+		}
+	});	
 })
 
 </script>
@@ -75,7 +88,7 @@ $(function() {
                 <th>상품명</th>
                 <th>포인트</th>
                 <th>거래일자</th>
-                <th>구매상태</th>
+                <th>판매상태</th>
             </tr>
         </thead>
         <tfoot>
@@ -84,39 +97,10 @@ $(function() {
                 <th>상품명</th>
                 <th>포인트</th>
                 <th>거래일자</th>
-                <th>구매상태</th>
+                <th>판매상태</th>
             </tr>
         </tfoot>
-        <tbody>
-            <tr>
-                <td>Tiger Nixon</td>
-                <td>System Architect</td>
-                <td>Edinburgh</td>
-                <td>2011/04/25</td>
-                <td>61</td>
-            </tr>
-            <tr>
-                <td>Garrett Winters</td>
-                <td>Accountant</td>
-                <td>Tokyo</td>
-                <td>2011/07/25</td>
-                <td>63</td>
-            </tr>
-            <tr>
-                <td>Ashton Cox</td>
-                <td>Junior Technical Author</td>
-                <td>San Francisco</td>
-                <td>2009/01/12</td>
-                <td>66</td>
-            </tr>
-            <tr>
-                <td>Cedric Kelly</td>
-                <td>Senior Javascript Developer</td>
-                <td>Edinburgh</td>
-                <td>2012/03/29</td>
-                <td>22</td>
-            </tr>
-        </tbody>
+        <tbody></tbody>
     </table>
 	</div>
 </div>

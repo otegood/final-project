@@ -1,6 +1,8 @@
 package com.withmong.service;
 
 
+import java.util.List;
+
 import com.withmong.model.Order;
 import com.withmong.model.Report;
 import com.withmong.model.User;
@@ -35,8 +37,8 @@ public interface UserService {
 	void report(Report report);
 	
 	// 내 구매 정보 보기
-	Order myPurchase(String purchaseId);
+	List<Order> myPurchase(String purchaseId);
 
 	// 내 판매 정보 보기
-	//Order mySell(String id);
+	List<Order> mySell(String sellId);
 }

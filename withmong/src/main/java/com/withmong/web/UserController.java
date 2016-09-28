@@ -365,21 +365,11 @@ public class UserController {
 	
 	// json ) 내 구매 정보 보기
 	@RequestMapping("/ckmypurchase.do")
-	public @ResponseBody String ckmypurchase(String id) {
+	public @ResponseBody List<Order> ckmypurchase(User loginUser) {
 		
-		Order myPurchase = userService.myPurchase(id);
+		return userService.myPurchase(loginUser.getId());
 		
-		
-		return "{\"size\":0}";
 	}
-	
-	
-	
-	
-	
-	
-	
-	
 	
 	
 	// 2. 내 판매 내역
@@ -390,6 +380,13 @@ public class UserController {
 		return "member/mysell";
 	}
 		
+	// json ) 내 판매 정보 보기
+	@RequestMapping("/ckmysell.do")
+	public @ResponseBody List<Order> ckmysell(User loginUser) {
+		
+		return userService.mySell(loginUser.getId());
+		
+	}
 		
 	
 	//-------------------------------------------------------------------------------------------------//
