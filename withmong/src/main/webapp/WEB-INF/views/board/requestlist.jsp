@@ -52,7 +52,7 @@
 <!-- tr눌렀을때 페이지 이동시키기 -->
 $(function(){
 	$("#chain tr").click(function(){
-		$(location).attr('href', 'noticeDetail.do?no='+$(this).find("td:first").text());
+		$(location).attr('href', 'requestDetail.do?no='+$(this).find("td:first").text());
 	});
 });
 
@@ -74,7 +74,7 @@ $(function(){
 	<div class="container">
 		<div class="row">
 			<h1>요청게시판</h1>
-			<a class="btn btn-primary" href="noticeRegister.do">글 쓰기</a>
+			<a class="btn btn-primary" href="requestRegister.do">글 쓰기</a>
 			<table class="table table-hover">
 				<thead>
 					<tr>
@@ -85,16 +85,14 @@ $(function(){
 					</tr>
 				</thead>
 				<tbody id="chain">
-				<!-- 
-					<c:forEach var="notice" items="${notices }">
+					<c:forEach var="request" items="${requests }">
 						<tr>
-							<td>${notice.no }</td>
-							<td>${notice.title }</td>
-							<td><fmt:formatDate value="${notice.regdate }"
-									pattern="yyyy.MM.dd" /></td>
+							<td>${request.no }</td>
+							<td>${request.title }</td>
+							<td>${request.userId.id}</td>
+							<td><fmt:formatDate value="${request.regdate }"	pattern="yyyy.MM.dd" /></td>
 						</tr>
 					</c:forEach>
-				 -->
 				</tbody>
 			</table>
 		</div>

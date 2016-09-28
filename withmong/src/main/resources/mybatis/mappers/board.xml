@@ -50,4 +50,23 @@
 		where
 			no = #{no}				
 	</update>
+	
+	<!-- 요청게시판 목록조회 -->
+	<select id="requestList" resultType="Request">
+		select
+			no, title, userid as "userId.id", regdate, delcheck
+		from
+			request_table
+		order by
+			regdate desc
+	</select>
+	
+	<!-- 요청게시글 작성 -->
+	<insert id="addRequest" parameterType="Request">
+		insert into request_table
+		(no, title, contents, userid, regdate) 
+		values 
+		(request_seq.nextval, #{title}, #{contents}, #{userId.id}, sysdate)
+	</insert>
+	
 </mapper>

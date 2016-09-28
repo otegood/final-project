@@ -41,5 +41,14 @@ public class BoardServiceImpl  implements BoardService{
 	public List<Request> requestList() {
 		return boardDao.requestList();
 	}
+	@Override
+	public void addRequest(Request request) {
+		boardDao.addRequest(request);
+	}
+	@Override
+	public Request requestDetail(int no) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
 }
