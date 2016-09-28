@@ -36,6 +36,7 @@ public class BoardController {
 	//공지사항 입력처리
 	@RequestMapping(value="/noticeRegister.do", method=RequestMethod.POST)
 	public String registerNotice(Notice notice) {
+		notice.setContents(notice.getContents().replace("\r\n", "<br>"));
 		boardService.addNotice(notice);
 		return "redirect:/noticelist.do";
 	}
@@ -47,4 +48,24 @@ public class BoardController {
 		return "board/noticedetail";
 	}
 	
+	// 공지사항 삭제
+	@RequestMapping("/noticeDelete.do")
+	public String noticeDelete(Model model, @RequestParam(name="no") int no) {
+		boardService.noticeDelete(no);
+		return "redirect:/noticelist.do";
+	}
+	
+	// 공지사항 업데이트 폼
+	@RequestMapping("/noticeUpdate.do")
+	public String noticeUpdate(Model model, @RequestParam(name="no") int no) {
+		model.addAttribute("notice", boardService.noticeDetail(no));
+		return "board/noticeupdate";
+	}
+	// 공지사항 업데이트
+	@RequestMapping("/noticeDbUpdate.do")
+	public String noticeDbUpdate(Notice notice) {
+		notice.setContents(notice.getContents().replace("\r\n", "<br>")); 
+		boardService.updateNotice(notice);
+		return "redirect:/noticelist.do";
+	}
 }

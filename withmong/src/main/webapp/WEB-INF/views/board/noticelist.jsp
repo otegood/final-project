@@ -49,10 +49,10 @@
 </style>
 <script type="text/javascript">
 
-<!-- tr(id=chain)눌렀을때 페이지 이동시키기 -->
+<!-- tr눌렀을때 페이지 이동시키기 -->
 $(function(){
-	$("#chain").click(function(){
-		$(location).attr('href', 'noticeDetail.do?no='+$("#noticeNo").text());
+	$("#chain tr").click(function(){
+		$(location).attr('href', 'noticeDetail.do?no='+$(this).find("td:first").text());
 	});
 });
 
@@ -85,10 +85,10 @@ $(function(){
 							<th>게시일</th>
 						</tr>
 					</thead>
-					<tbody>
+					<tbody  id="chain">
 						<c:forEach var="notice" items="${notices }">
-							<tr id="chain">
-								<td id="noticeNo">${notice.no }</td>
+							<tr>
+								<td>${notice.no }</td>
 								<td>${notice.title }</td>
 								<td><fmt:formatDate value="${notice.regdate }" pattern="yyyy.MM.dd"/></td>
 							</tr>
@@ -97,7 +97,6 @@ $(function(){
 				</table>
 			</div>
 		</div>
-
 		<%@ include file="../footer.jsp" %>	
 </body>
 </html>
