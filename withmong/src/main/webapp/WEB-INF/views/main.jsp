@@ -20,156 +20,35 @@
 		$('#more').click(function() {
 		$(".addToProducts").append(
 				'<div class="row" style="margin-left: 0px; margin-right: 0px;">'+
-				'<div class="col-sm-3" style="padding-left: 15px; padding-right: 15px;">'+
-					'<span class="pro-img"> <a class="togo" href="#">'+ 
-					'<img class="img-responsive" src="resources/img/vvv.png" alt="">'+
-							'</a>'+'</span>'
-							
-					+'<div class="row" style="padding-left: 0px;">'+
-						'<div class="call-product-title">'+
-							'<p>'+
-								'<span class="glyphicon glyphicon-gift"></span>'+
-								
-							'</p>'+
-						'</div>'+
-
-						'<div class="call-product-price">'+
-							'<p>'+
-								'<span class="glyphicon glyphicon-cd"></span>'+
-								
-								
-							'</p>'+
-
-						'</div>'+
-					'</div>'+
-				'</div>'+
-				'<div class="col-sm-3" style="padding-left: 15px; padding-right: 15px;">'+
-					
-					'<span class="pro-img"> <a class="togo" href="#">'+ 
-					'<img class="img-responsive" src="resources/img/vvv.png" alt="">'+
-							
+				'<div class="col-sm-3"
+					style="padding-left: 15px; padding-right: 15px;">'+
+					<!-- 첫 이미지 크기 400*300 -->
+					'<span class="pro-img"> <a class="togo" href="#">'+ '<img
+							class="img-responsive" src="resources/img/vvv.png" alt="">'+
+							<!-- 이미지 크기는 400*200 -->
 					'</a>'+
 					'</span>'+
 					'<div class="row" style="padding-left: 0px;">'+
-						'<div class="call-product-title">'+
-							'<p>'+
-								'<span class="glyphicon glyphicon-gift"></span>'+
-								
-								
-							'</p>'+
-						'</div>'+
+						<div class="call-product-title">
+							<p>
+								<span class="glyphicon glyphicon-gift"></span>
+								<!-- 상품명 불러오는 곳 -->
+								-------상품명-------
+							</p>
+						</div>
 
-						'<div class="call-product-price">'+
-							'<p>'+
-								'<span class="glyphicon glyphicon-cd"></span>'+
-								
-								
-							'</p>'+
+						<div class="call-product-price">
+							<p>
+								<span class="glyphicon glyphicon-cd"></span>
+								<!-- 상품 가격 불러오는 곳 -->
+								-------가격--------
+							</p>
 
-						'</div>'+
-					'</div>'+
-				'</div>'+
-				+
-				'<div class="col-sm-3" style="padding-left: 15px; padding-right: 15px;">'+
-					'<span class="pro-img"> <a class="togo" href="#">'+ 
-					'<img class="img-responsive" src="resources/img/vvv.png" alt="">'+
-							'</a>'+'</span>'
-							
-					+'<div class="row" style="padding-left: 0px;">'+
-						'<div class="call-product-title">'+
-							'<p>'+
-								'<span class="glyphicon glyphicon-gift"></span>'+
-								
-							'</p>'+
-						'</div>'+
-
-						'<div class="call-product-price">'+
-							'<p>'+
-								'<span class="glyphicon glyphicon-cd"></span>'+
-								
-								
-							'</p>'+
-
-						'</div>'+
-					'</div>'+
-				'</div>'+
-				'<div class="col-sm-3" style="padding-left: 15px; padding-right: 15px;">'+
-					
-					'<span class="pro-img"> <a class="togo" href="#">'+ 
-					'<img class="img-responsive" src="resources/img/vvv.png" alt="">'+
-							
-					'</a>'+
-					'</span>'+
-					'<div class="row" style="padding-left: 0px;">'+
-						'<div class="call-product-title">'+
-							'<p>'+
-								'<span class="glyphicon glyphicon-gift"></span>'+
-								
-								
-							'</p>'+
-						'</div>'+
-
-						'<div class="call-product-price">'+
-							'<p>'+
-								'<span class="glyphicon glyphicon-cd"></span>'+
-								
-								
-							'</p>'+
-
-						'</div>'+
-					'</div>'+
-				'</div>'
-				+
-				'<div class="col-sm-3" style="padding-left: 15px; padding-right: 15px;">'+
-					'<span class="pro-img"> <a class="togo" href="#">'+ 
-					'<img class="img-responsive" src="resources/img/vvv.png" alt="">'+
-							'</a>'+'</span>'
-							
-					+'<div class="row" style="padding-left: 0px;">'+
-						'<div class="call-product-title">'+
-							'<p>'+
-								'<span class="glyphicon glyphicon-gift"></span>'+
-								
-							'</p>'+
-						'</div>'+
-
-						'<div class="call-product-price">'+
-							'<p>'+
-								'<span class="glyphicon glyphicon-cd"></span>'+
-								
-								
-							'</p>'+
-
-						'</div>'+
-					'</div>'+
-				'</div>'+
-				'<div class="col-sm-3" style="padding-left: 15px; padding-right: 15px;">'+
-					
-					'<span class="pro-img"> <a class="togo" href="#">'+ 
-					'<img class="img-responsive" src="resources/img/vvv.png" alt="">'+
-							
-					'</a>'+
-					'</span>'+
-					'<div class="row" style="padding-left: 0px;">'+
-						'<div class="call-product-title">'+
-							'<p>'+
-								'<span class="glyphicon glyphicon-gift"></span>'+
-								
-								
-							'</p>'+
-						'</div>'+
-
-						'<div class="call-product-price">'+
-							'<p>'+
-								'<span class="glyphicon glyphicon-cd"></span>'+
-								
-								
-							'</p>'+
-
-						'</div>'+
-					'</div>'+
-				'</div>'+
-			'</div>'		
+						</div>
+					</div>
+				</div>
+				
+			</div>
 		
 		
 		);
