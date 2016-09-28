@@ -6,7 +6,9 @@ public class Product {
 
 	private int no;
 	private String title;
-	private String userId;
+	
+	private User userId;
+	
 	private String img;
 	private String video;
 	private String contents;
@@ -38,11 +40,11 @@ public class Product {
 		this.title = title;
 	}
 
-	public String getUserId() {
+	public User getUserId() {
 		return userId;
 	}
 
-	public void setUserId(String userId) {
+	public void setUserId(User userId) {
 		this.userId = userId;
 	}
 
