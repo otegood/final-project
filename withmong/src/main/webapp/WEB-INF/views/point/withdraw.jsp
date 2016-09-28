@@ -14,17 +14,21 @@
 
 <script type="text/javascript">
 function showPrice() {
-	var price = $(":radio[name='point']:checked").val()
-
-	$("#space").html("환전하실 금액은 "+price+" 원 입니다.");
 	
-	var balance = parseInt('${LOGIN_USER.point }') - price;
+	$("#bar").show(function() {
+		var price = $(":radio[name='point']:checked").val()
 	
-	$("#space2").html("회원님의 환전 후 포인트 잔액은 현재: "+ balance +" 입니다.  ")
-	
-	if(balance < 0) {
-		$("#space2").html("회원님은 현재 포인트 잔액이 부족하여 환전을 할 수 없습니다.")	
-	}
+		$("#space").html("환전하실 금액은 "+price+" 원 입니다.");
+		
+		var balance = parseInt('${LOGIN_USER.point }') - price;
+		
+		$("#space2").html("회원님의 환전 후 포인트는: "+ balance +"P 입니다.  ")
+		
+		if(balance < 0) {
+			$("#space2").html("회원님은 현재 포인트 잔액이 부족하여 환전을 할 수 없습니다.")	
+		}
+		
+	})
 	
 }
 </script>
@@ -112,14 +116,13 @@ strong {
 	<!-- 내용 기입 -->
 	<div class="container">
 		<br>
-		<div class="row">
-			<div class="alert alert-danger">
+		<div class="row" id="bar" style="display: none;">
+			<div class="alert alert-danger" id="redbar" >
 	   			 <p id=space style="margin-bottom: 0px;"></p>
 			</div>
-			<div class="alert alert-info">
-	   			 <p id=space2 style="margin-bottom: 0px;"></p>
+			<div class="alert alert-info" id="bluebar"  >
+			 	<p id=space2 style="margin-bottom: 0px;"></p>
 			</div>
-		
 		</div>
 		<div class="row">
 			<div class="row" style="margin-bottom: 40px;">

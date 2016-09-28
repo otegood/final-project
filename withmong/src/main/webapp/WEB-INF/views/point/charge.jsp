@@ -18,16 +18,20 @@
 
 <script type="text/javascript">
 function showPrice() {
-	$("#redbar").show(function() {
-		var point = $(":radio[name='point']:checked").val()
 	
+	$("#bar").show(function() {
+		var point = $(":radio[name='point']:checked").val()
+		
 		$("#space").html("충전하실 금액은 "+point+" 원 입니다.");
 		
-		var balance = parseInt('${LOGIN_USER.point }') + price;
+		var upoint = parseInt('${LOGIN_USER.point }')
+		
+		var balance = parseInt(upoint) + parseInt(point) ;
+		
+		$("#space2").html("충전 후 회원님의 포인트는: "+ balance +"P 입니다.  ")
 		
 	})
-	
-	$("#bluebar").show()
+		
 	
 }
 	
@@ -116,14 +120,12 @@ strong {
 	<!-- 내용 기입 -->
 	<div class="container">
 		<br>
-		<div class="row">
-			<div class="alert alert-danger" id="redbar" style="display:none">
+		<div class="row" id="bar" style="display: none;">
+			<div class="alert alert-danger" id="redbar" >
 	   			 <p id=space style="margin-bottom: 0px;"></p>
 			</div>
-			<div class="alert alert-info" id="bluebar" style="display:none">
-  			 	<c:if test="${LOGIN_USER.point eq 0 }">
-  			 		<p id=space2 style="margin-bottom: 0px;" style="display:show">"회원님의 포인트 잔액이 부족하여 서비스를 사용 할 수 없습니다." </p>
-  			 	</c:if>
+			<div class="alert alert-info" id="bluebar"  >
+			 	<p id=space2 style="margin-bottom: 0px;"></p>
 			</div>
 		</div>
 		
