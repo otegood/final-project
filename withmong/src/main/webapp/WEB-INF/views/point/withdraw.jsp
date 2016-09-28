@@ -23,7 +23,7 @@ function showPrice() {
 	$("#space2").html("회원님의 환전 후 포인트 잔액은 현재: "+ balance +" 입니다.  ")
 	
 	if(balance < 0) {
-		$("#space2").html("회원님의 포인트 잔액이 부족하여 환전을 할 수 없습니다.")	
+		$("#space2").html("회원님은 현재 포인트 잔액이 부족하여 환전을 할 수 없습니다.")	
 	}
 	
 }
