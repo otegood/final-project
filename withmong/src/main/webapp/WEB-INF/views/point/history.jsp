@@ -99,8 +99,7 @@ strong {
 					<td></td>
 					<td></td>
 					<td>
-						<div class="col-sm-6"></div>
-						<div class="col-sm-6">
+						<div class="col-sm-6 col-sm-offset-6">
 							<div class="col-sm-2"></div>
 							<div class="col-sm-3">
 								<a href="charge.do" class="btn btn-success">충전하기</a>

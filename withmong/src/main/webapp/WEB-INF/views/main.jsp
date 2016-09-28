@@ -224,18 +224,18 @@ strong {
 			</a>
 		</div>
 		<div class="row" style="margin-left: 10px;">
-			<h1 class="page-header">상품 리스트2</h1>
+			<h1 class="page-header">상품 리스트</h1>
 		</div>
 		<div class="row" id="">
 			<div class="col-sm-3 col-sm-offset-8" style="margin-bottom: 20px;">
 				<div class="col-sm-4">
-					<a href="#">최신순</a>
+					<a href="recent.do">최신순</a>
 				</div>
 				<div class="col-sm-4">
-					<a href="#">인기순</a>
+					<a href="avglike.do">인기순</a>
 				</div>
 				<div class="col-sm-4">
-					<a href="#">조회순</a>
+					<a href="hits.do">조회순</a>
 				</div>
 			</div>
 			<div class="addToProducts">
