@@ -41,22 +41,26 @@ public class PointController {
 
 		//현재 포인트 알림
 		model.addAttribute("loginedUser", loginedUser);
+	
 		
 		return "point/history";
 		
 	}
 	//충전하기
 	@RequestMapping(value="/charge.do", method=RequestMethod.GET)
-	public String charge()  {
+	public String charge(Model model)  {
+		
 		return "point/charge";
 	}
+	
 	//충전
 	@RequestMapping(value="/charge.do", method=RequestMethod.POST)
 	public String charge(int point, User loginedUser) throws Exception{
 		
-		loginedUser.setPoint(point);
+		loginedUser.setPoint(point+loginedUser.getPoint());
 		
 		pointService.charge(loginedUser.getId(), point);
+		
 		return "redirect:/history.do";
 		
 	}
@@ -70,9 +74,12 @@ public class PointController {
 	//환전
 	@RequestMapping(value="/withdraw.do", method=RequestMethod.POST)
 	public String withdraw(int point, User loginedUser) throws Exception {
-		if(loginedUser.getPoint() > 0) {
+		
+		if(loginedUser.getPoint()-point >= 0) {
+			loginedUser.setPoint(loginedUser.getPoint()-point);
 			pointService.withdraw(loginedUser.getId(), point);
 		}
+		
 		
 		return "redirect:/history.do";
 		

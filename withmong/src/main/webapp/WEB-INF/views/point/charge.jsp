@@ -20,9 +20,7 @@
 function showPrice() {
 	var $radioval = $(":radio[name='point']:checked").val()
 
-	console.log($radioval);
-	
-	$("#space").html($radioval);
+	$("#space").html("충전하실 금액은 "+$radioval+" 원 입니다.");
 }
 	
 </script>
@@ -110,16 +108,17 @@ strong {
 	<!-- 내용 기입 -->
 	<div class="container">
 		<br>
+		<div class="row">
+			<div class="w3-panel w3-red">
+	   			 <p id=space style="margin-bottom: 0px;"></p>
+			</div>
 		
-		<div class="w3-panel w3-red">
-   			 충전 금액은 <div id=space></div>원 입니다.
-   			 <div id="on" style="display: ;"></div>
-   			 <div id="off" style="display: none;"></div>
-   			 
 		</div>
 		
 		<div class="row">
-			<h3>충전소</h3>
+			<div class="row" style="margin-bottom: 40px;">
+					<h2>포인트 충전</h2>
+				</div>
 			
 			<form method="post" action="charge.do" role="form">
 				<table id="changes" class="table table-striped table-condensed">

@@ -9,15 +9,19 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet"	href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
-<link href="bootstrap.min.css" type="text/css" rel="stylesheet">
-
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-<script
-	src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
 <script type="text/javascript">
+function showPrice() {
+	var price = $(":radio[name='point']:checked").val()
+
+	$("#space").html("환전하실 금액은 "+price+" 원 입니다.");
 	
+	var balance = parseInt('${LOGIN_USER.point }') - price;
+	
+	$("#space2").html("회원님의 환전 후 포인트 잔액은 현재: "+ balance +" 입니다.")
+}
 </script>
 
 <style type="text/css">
@@ -104,7 +108,18 @@ strong {
 	<div class="container">
 		<br>
 		<div class="row">
-			<h3>환불:</h3>
+			<div class="w3-panel w3-red">
+	   			 <p id=space style="margin-bottom: 0px;"></p>
+			</div>
+			<div class="w3-panel w3-blue">
+	   			 <p id=space2 style="margin-bottom: 0px;"></p>
+			</div>
+		
+		</div>
+		<div class="row">
+			<div class="row" style="margin-bottom: 40px;">
+					<h2>포인트 환전</h2>
+				</div>
 			
 			<form method="post" action="withdraw.do" role="form">
 				<table id="changes" class="table table-striped table-condensed">
@@ -118,35 +133,35 @@ strong {
 					<tbody>
 						<tr>
 							<td>
-								<input type="radio" id="5,000" name="point" value="5000" >
+								<input type="radio" onclick="showPrice();" id="5,000" name="point" value="5000" >
                      			 <label for="5,000">5,000</label> 
 							</td>
 							<td>5,000</td>
 						</tr>
 						<tr>
 							<td>
-								<input type="radio" id="10,000" name="point" value="10000">
+								<input type="radio" onclick="showPrice();" id="10,000" name="point" value="10000">
                      			 <label for="10,000">10,000</label> 
 							</td>
 							<td>10,000</td>
 						</tr>
 						<tr>
 							<td>
-								<input type="radio" id="30,000" name="point" value="30000" >
+								<input type="radio" onclick="showPrice();" id="30,000" name="point" value="30000" >
                      			 <label for="30,000">30,000</label> 
 							</td>
 							<td>30,000</td>
 						</tr>
 						<tr>
 							<td>
-								<input type="radio" id="50,000" name="point" value="50000">
+								<input type="radio" onclick="showPrice();" id="50,000" name="point" value="50000">
                      			 <label for="50,000">50,000</label>
 							</td>
 							<td>50,000</td>
 						</tr>
 						<tr>
 							<td>
-								<input type="radio" id="100,000" name="point" value="100000" >
+								<input type="radio" onclick="showPrice();" id="100,000" name="point" value="100000" >
                      			 <label for="100,000">100,000</label> 
 							</td>
 							<td>100,000</td>
@@ -155,17 +170,6 @@ strong {
 				</table>
 				<button class="btn btn-success btn-lg pull-right">환전하기</button>
 			</form>
-		</div>
-		
-		<div class="w3-panel w3-red">
-			
-   			 <p>환전한 금액: ${point.withdraw }  </p>
-   			 
-		</div>
-		<div class="w3-panel w3-blue w3-card-8">
-
-			<p>환전 후 남은 포인트 = user.point</p>
-		
 		</div>
 		
 		

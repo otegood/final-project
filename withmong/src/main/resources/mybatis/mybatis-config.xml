@@ -19,11 +19,9 @@
   	<typeAlias type="com.withmong.model.ProductReview" alias="ProductReview"/>
   	<typeAlias type="com.withmong.model.Report" alias="Report"/>
   	<typeAlias type="com.withmong.model.Notice" alias="Notice"/> 	
-<<<<<<< HEAD
 
-=======
   	<typeAlias type="com.withmong.model.Location" alias="Location"/> 	
->>>>>>> branch 'master' of https://github.com/otegood/final-project.git
+
   </typeAliases>
   
   <mappers>
