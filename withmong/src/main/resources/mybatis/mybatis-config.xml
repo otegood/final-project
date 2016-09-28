@@ -14,6 +14,7 @@
   	<typeAlias type="com.withmong.model.ProductReview" alias="ProductReview"/>
   	<typeAlias type="com.withmong.model.Report" alias="Report"/>
   	<typeAlias type="com.withmong.model.Notice" alias="Notice"/> 	
+  	<typeAlias type="com.withmong.model.Location" alias="Location"/> 	
   </typeAliases>
   
   <mappers>

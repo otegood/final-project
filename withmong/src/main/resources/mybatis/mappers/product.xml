@@ -65,6 +65,17 @@
 		from user_table
 		where id = #{value}
 	</select>
+	<select id="findLocation" resultType="Location">
+		select distinct city
+		from location_table
+		order by city
+	</select>
+	
+	<select id="findLocalbyCity" parameterType="String" resultType="Location">
+		select no,city,local
+		from location_table
+		where city = #{value}
+	</select>
 	
 </mapper>
 

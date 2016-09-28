@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.withmong.dao.ProductDao;
 import com.withmong.model.Category;
+import com.withmong.model.Location;
 import com.withmong.model.Product;
 import com.withmong.model.ProductReview;
 import com.withmong.model.User;
@@ -54,5 +55,15 @@ public class ProductServiceImpl implements ProductService{
 	@Override
 	public User getUserDetail(String name) {
 		return productDao.getUserDetail(name);
+	}
+
+	@Override
+	public List<Location> findLocation() {
+		return productDao.findLocation();
+	}
+
+	@Override
+	public List<Location> findLocalbyCity(String city) {
+		return productDao.findLocalbyCity(city);
 	}
 }

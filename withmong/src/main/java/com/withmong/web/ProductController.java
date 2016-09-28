@@ -61,13 +61,16 @@ public class ProductController {
 	public String addProduct(Model model) {
 		List<Category> categoryList = productService.findCategory();
 		model.addAttribute("cateList",categoryList);
+		
+		List<Location> locationList = productService.findLocation();
+		model.addAttribute("locaList",locationList);
+		
 		return "product/addProduct";
 	}
 
 	@RequestMapping(value="/addProduct.do", method=RequestMethod.POST)
 	public String addProduct(ProductForm productForm ,@RequestParam("img")MultipartFile img, User loginedUser) throws Exception{
 
-		//System.out.println("시작");
 		Product product = new Product();
 		BeanUtils.copyProperties(productForm, product);
 
@@ -126,11 +129,7 @@ public class ProductController {
 		String tag = productForm.getTag();
 		product.setTag(tag);
 		
-		/*
-		System.out.println("----------------------------------------------------------------------");
-		System.out.println(product.toString());
-		System.out.println("----------------------------------------------------------------------");
-		 */
+
 		productService.addProduct(product);
 
 
@@ -141,16 +140,7 @@ public class ProductController {
 		return "product/searchlist";
 	}
 
-	/*	
-    @RequestMapping(value="/productreple.do", method=RequestMethod.POST)
-	public @ResponseBody void roductreple(ProductReview productReview, User loginedUser) throws Exception{
 
-		String loginId = loginedUser.getId();
-		productReview.setUserId(loginId);
-
-		productService.addProductReview(productReview);
-	}
-	*/
 	@RequestMapping(value="/productreple.do", method=RequestMethod.POST)
 	public @ResponseBody void productreple(int score,String contents,int productNo, User loginedUser) throws Exception{
 		
@@ -165,6 +155,24 @@ public class ProductController {
 		productReview.setProductNo(productNo);
 		
 		productService.addProductReview(productReview);
+	}
+	@RequestMapping(value="/locationForlocal.do", method=RequestMethod.POST)
+	public @ResponseBody List<Location> locationForlocal(String city) throws Exception{
+
+		List<Location> location = productService.findLocalbyCity(city);
+		
+		System.out.println("-------------------------------");
+		System.out.println("-------------------------------");
+		System.out.println("-------------------------------");
+		System.out.println(location.get(0));
+		System.out.println(location.get(1));
+		System.out.println("-------------------------------");
+		System.out.println("-------------------------------");
+		System.out.println("-------------------------------");
+		
+		return location;
+	
+
 	}
 
 
