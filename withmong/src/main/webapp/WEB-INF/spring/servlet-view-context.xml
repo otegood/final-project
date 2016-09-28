@@ -49,8 +49,10 @@
 			<mvc:exclude-mapping path="/findpw.do"/>
 			<mvc:exclude-mapping path="/changepassword.do"/>
 			<mvc:exclude-mapping path="/phonecheck.do"/>
-			<mvc:exclude-mapping path="/chgsuccess.do"/>
-			<mvc:exclude-mapping path="/report.do"/>
+			<mvc:exclude-mapping path="/chgsuccess.do"/>		
+			<mvc:exclude-mapping path="/report.do"/>			<!-- 신고하기 (임시) -->
+			<mvc:exclude-mapping path="/mypurchase.do"/>		<!-- 내 구매내역(임시) -->
+			<mvc:exclude-mapping path="/mysell.do"/>			<!-- 내 판매내역(임시) -->
 		
 			
 

@@ -7,7 +7,7 @@ public class Order {
 	private int no;
 	private Date regdate;
 	private String buyCheck;
-	private User userId;
+	private User userid;
 	private Product productNo;
 	
 	public Order () {}
@@ -30,11 +30,11 @@ public class Order {
 	public void setBuyCheck(String buyCheck) {
 		this.buyCheck = buyCheck;
 	}
-	public User getUserId() {
-		return userId;
+	public User getUserid() {
+		return userid;
 	}
-	public void setUserId(User userId) {
-		this.userId = userId;
+	public void setUserid(User userid) {
+		this.userid = userid;
 	}
 	public Product getProductNo() {
 		return productNo;
@@ -45,7 +45,7 @@ public class Order {
 	
 	@Override
 	public String toString() {
-		return "Order [no=" + no + ", regdate=" + regdate + ", buyCheck=" + buyCheck + ", userId=" + userId
+		return "Order [no=" + no + ", regdate=" + regdate + ", buyCheck=" + buyCheck + ", userid=" + userid
 				+ ", productNo=" + productNo + "]";
 	}
 	

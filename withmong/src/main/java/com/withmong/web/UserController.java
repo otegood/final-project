@@ -25,6 +25,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.withmong.form.ReportForm;
 import com.withmong.form.UserForm;
+import com.withmong.model.Order;
 import com.withmong.model.Report;
 import com.withmong.model.User;
 import com.withmong.service.UserService;
@@ -322,7 +323,7 @@ public class UserController {
 		return "redirect:/chgsuccess.do";
 	}
 	//-------------------------------------------------------------------------------------------------//
-	// 신고하기 페이지
+	// 신고하기 페이지 접속
 	@RequestMapping(value="/report.do", method=RequestMethod.GET)
 	public String report(){
 		
@@ -330,6 +331,7 @@ public class UserController {
 		return "member/report";
 	}
 	
+	// 신고하기 페이지 데이터 입력
 	@RequestMapping(value="/report.do", method=RequestMethod.POST)
 	public String reportUser(ReportForm reportForm){
 		// 사용자가 가입하기위에 작성한 내용을 DB에 넣기
@@ -350,5 +352,46 @@ public class UserController {
 		return "redirect:/chgsuccess.do";
 	}
 	
+	//-------------------------------------------------------------------------------------------------//
+	// 내 구매*판매 내역 보기
+	
+	// 1. 내 구매 내역
+	@RequestMapping(value="/mypurchase.do", method=RequestMethod.GET)
+	public String mypurchase(){
+		
+		
+		return "member/mypurchase";
+	}
+	
+	// json ) 내 구매 정보 보기
+	@RequestMapping("/ckmypurchase.do")
+	public @ResponseBody String ckmypurchase(String id) {
+		
+		Order myPurchase = userService.myPurchase(id);
+		
+		
+		return "{\"size\":0}";
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	// 2. 내 판매 내역
+	@RequestMapping(value="/mysell.do", method=RequestMethod.GET)
+	public String mysell(){
+		
+		
+		return "member/mysell";
+	}
+		
+		
+	
+	//-------------------------------------------------------------------------------------------------//
 	//-------------------------------------------------------------------------------------------------//
 }
