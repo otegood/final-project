@@ -10,6 +10,8 @@
 			no, title, regdate
 		from
 			notice_table
+		order by
+			regdate desc
 	</select>
 	
 	<!-- 공지사항 등록 -->
@@ -30,4 +32,22 @@
 			no = #{no}
 	</select>
 	
+	<!-- 공지사항 삭제 -->
+	<delete id="noticeDelete" parameterType="int">
+		delete from 
+			notice_table
+		where 
+			no = #{no}
+	</delete>
+	
+	<!-- 공지사항 업데이트 -->
+	<update id="updateNotice" parameterType="Notice">
+		update 
+			notice_table
+		set
+			title = #{title},
+			contents = #{contents}
+		where
+			no = #{no}				
+	</update>
 </mapper>

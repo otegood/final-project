@@ -22,9 +22,19 @@ public class BoardServiceImpl  implements BoardService{
 	public void addNotice(Notice notice) {
 		boardDao.addNotice(notice);
 	}
+	// 공지사항 상세페이지
 	@Override
 	public Notice noticeDetail(int no) {
 		return boardDao.noticeDetail(no);
+	}
+	// 공자사항 삭제
+	@Override
+	public void noticeDelete(int no) {
+		boardDao.noticeDelete(no);
+	}
+	@Override
+	public void updateNotice(Notice notice) {
+		boardDao.updateNotice(notice);
 	}
 
 }
