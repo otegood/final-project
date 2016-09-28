@@ -53,13 +53,18 @@
 		<header><%@ include file="../header.jsp" %></header>
 	
 		<div class="container" >
-			<h2>신고하기</h2>
+			<h2><span class="glyphicon glyphicon-warning-sign"> 신고하기</span></h2>
 			<div class="row">
 				<form role="form" method="post" action="report.do">
 					<div class="form-group row">
+						<label>신고할 사람</label>
+						<input class="form-control" id="suspect" name="suspect"/>
+						<input class="form-control" id="reporter" name="reporter"/>
+					</div>
+					<div class="form-group row">
 						<label class="text-right">신고 사유</label>
-						<div class="form-control">
-							<select name="reason">
+						<div>
+							<select class="form-control" name="reason">
 								<option value="상품 품질 관련" selected="selected">상품 품질 관련</option>
 								<option value="시간 관련">시간관련</option>
 								<option value="사기, 범죄관련">사기, 범죄 관련</option>
@@ -67,13 +72,9 @@
 							</select>
 						</div> 
 					</div>
-					<div class="form-group">
-						<label>제목</label>
-						<input type="text" class="form-control" name="title" />
-					</div>
-					<div class="form-group">
+					<div class="form-group row">
 						<label>내용</label>
-						<textarea rows="5" class="form-control" name="contents"></textarea>
+						<input type="text" class="form-control" name="contents" />
 					</div>
 					<div class="form-group text-right">
 						<input type="submit" class="btn btn-primary" value="저장" />

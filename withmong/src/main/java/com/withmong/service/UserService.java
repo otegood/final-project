@@ -1,6 +1,7 @@
 package com.withmong.service;
 
 
+import com.withmong.model.Report;
 import com.withmong.model.User;
 
 public interface UserService {
@@ -28,5 +29,8 @@ public interface UserService {
 	
 	// 내 정보 변경
 	void myInfoModify(User user);
-	
+
+	// 신고하기
+	void report(Report report);
+
 }

@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.DigestUtils;
 
 import com.withmong.dao.UserDao;
+import com.withmong.model.Report;
 import com.withmong.model.User;
 
 @Service
@@ -84,6 +85,14 @@ public class UserServiceImpl implements UserService{
 		userDao.myInfoModify(user);
 	}
 
+
+	// 신고하기
+	@Override
+	public void report(Report report) {
+		userDao.reportUser(report);
+	}
+
+	
 
 }
 
