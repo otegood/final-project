@@ -3,6 +3,7 @@ package com.withmong.dao;
 import java.util.List;
 
 import com.withmong.model.Notice;
+import com.withmong.model.Request;
 
 public interface BoardDao {
 	
@@ -16,5 +17,6 @@ public interface BoardDao {
 	void noticeDelete(int no);
 	// 공지사항 수정
 	void updateNotice(Notice notice);
-	
+	// 요청게시판 목록
+	List<Request> requestList();
 }
