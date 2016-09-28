@@ -2,6 +2,8 @@ package com.withmong.service;
 
 
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.DigestUtils;
@@ -95,24 +97,18 @@ public class UserServiceImpl implements UserService{
 
 	// 내 구매정보 보기
 	@Override
-	public Order myPurchase(String purchaseId) {
+	public List<Order> myPurchase(String purchaseId) {
 	
-		Order checkMyPurchase = userDao.myPurchase(purchaseId);
-		return checkMyPurchase;
+		return userDao.myPurchase(purchaseId);
 		
 	}
 	
 	// 내 판매정보 보기
-	/*
-		@Override
-		public Order mySell(String userid) {
-			Order checkMySell = userDao.mySell(userid);
-			
-			return checkMySell;
-			
-		}
-	 * 
-	 */
+	@Override
+	public List<Order> mySell(String sellId) {
+		return userDao.mySell(sellId);
+		
+	}
 
 	
 

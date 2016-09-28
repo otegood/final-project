@@ -10,8 +10,6 @@
   <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
   <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  <link rel="stylesheet" href="https://cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css">
-  <script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
 <style type="text/css">
 	
 	header {
@@ -51,27 +49,29 @@
 </style>
 <script type="text/javascript">
 $(function() {
-	$(document).ready(function() {
-	    $('#example').DataTable( {
-	        "pagingType": "full_numbers"
-	    } );
-	} );
 	
-	// 아이디 중복확인 하는거 만들기
-	$("#example").ready(function (){
-		var inputedId = $("${LOGIN_USER.id}").val();
-		console.log(inputedId);
-		$.ajax({
-			url:"../ckmypurchase.do",
-			data:{id:inputedId},
-			dataType:"json",
-			success: function(data) {
-		
-			}
-		});
-		
-		
+	
+	$.ajax({
+		url:"../ckmypurchase.do",
+		data:{},
+		dataType:"json",
+		success: function(data) {
+			console.log(data);		// 전체 객체가 한꺼번에나옴
+			$.each(data, function(index, item) {
+				console.log(item);	// 객체가 하나씩나오게됨
+				
+				$("tbody").append("<tr>");
+				$("tbody").append("<td>"+item.productNo.userId+"</td>");
+				$("tbody").append("<td>"+item.productNo.title+"</td>");
+				$("tbody").append("<td>"+item.productNo.price+"</td>");
+				$("tbody").append("<td>"+item.regdate+"</td>");
+				$("tbody").append("<td>"+item.buyCheck+"</td>");
+				$("tbody").append("</tr>");
+			});
+		}
 	});
+	
+		
 	
 })
 
@@ -96,7 +96,7 @@ $(function() {
         </thead>
         <tfoot>
             <tr>
-                <th>구매자ID</th>
+                <th>판매자ID</th>
                 <th>상품명</th>
                 <th>포인트</th>
                 <th>거래일자</th>

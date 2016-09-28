@@ -2,6 +2,8 @@ package com.withmong.model;
 
 import java.util.Date;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 public class Order {
 
 	private int no;
@@ -18,6 +20,7 @@ public class Order {
 	public void setNo(int no) {
 		this.no = no;
 	}
+	@JsonFormat(pattern="yyyy-MM-dd")
 	public Date getRegdate() {
 		return regdate;
 	}

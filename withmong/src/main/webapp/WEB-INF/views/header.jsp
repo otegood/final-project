@@ -96,8 +96,8 @@ $(document).ready(function(){
 									class="dropdown-toggle" data-toggle="dropdown">나의 서비스</a>
 									<ul class="dropdown-menu">
 										<li><a href="myinfo.do">내 정보</a></li>
-										<li><a href="#">구매</a></li>
-										<li><a href="#">판매</a></li>
+										<li><a href="mypurchase.do">구매</a></li>
+										<li><a href="mysell.do">판매</a></li>
 										<li><a href="#">찜</a></li>
 										<li><a href="#">요청글</a></li>
 										<li><a href="messagelist.do">1:1쪽지</a></li>

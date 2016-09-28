@@ -95,32 +95,31 @@
 			o.userid		as "userid.id", 
 			o.productNo		as "productNo.no", 
 			o.buyCheck		as buyCheck,
-			p.userid		as "productNo.userid"
+			p.userid		as "productNo.userid",
 			p.title			as "productNo.title"
 		from
 			order_table o, product_table p 
 		where
 			o.productno = p.no
 		and	
-			o.userid = #{value};
+			o.userid = #{value}
 	</select>
 	
-	<!--  
-	내 판매 정보 보기 기능 (Product에 들어갈 예정)
+	<!--  내 판매 정보 보기 기능 (Product에 들어갈 예정)-->
 	<select id="mySell" parameterType="string" resultType="Order">
 		select
 			o.no 			as no, 
 			o.regdate 		as regdate, 
-			o.purchaseId	as "purchaseId.id", 
+			o.userid		as "userid.id", 
 			o.productNo		as "productNo.no", 
 			o.buyCheck		as buyCheck,
-			p.userid		as "productNo.userid"
+			p.userid		as "productNo.userid",
 			p.title			as "productNo.title"
 		from
 			order_table o, product_table p 
 		where
-			p.userid = #{value};
+			o.productno = p.no
+		and	
+			p.userid = #{value}
 	</select>
-	-->
-
 </mapper>

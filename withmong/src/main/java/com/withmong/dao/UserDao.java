@@ -1,6 +1,8 @@
 package com.withmong.dao;
 
 
+import java.util.List;
+
 import com.withmong.model.Order;
 import com.withmong.model.Report;
 import com.withmong.model.User;
@@ -24,9 +26,9 @@ public interface UserDao {
 	void reportUser(Report report);
 
 	// 내 구매내역 확인하기
-	Order myPurchase(String purchaseId);
+	List<Order> myPurchase(String purchaseId);
 	// 내 판매내역 확인하기
-	//Order mySell(String userid);
+	List<Order> mySell(String sellId);
 	
 
 	
