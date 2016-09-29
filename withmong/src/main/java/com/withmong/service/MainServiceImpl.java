@@ -18,20 +18,31 @@ public class MainServiceImpl implements MainService {
 	@Override
 	public List<Product> getAvglikeList() {
 		// TODO Auto-generated method stub
-		return mainDao.getAvglikeList();
+		return getAvglikeList();
 	}
 	//등록순 상품 내역 보기
 	@Override
 	public List<Product> getRegList() {
 		// TODO Auto-generated method stub
-		return mainDao.getRegList();
+		return getRegList();
 	}
 	//조회순 상품 내역 보기
 	@Override
 	public List<Product> getHitList() {
 		// TODO Auto-generated method stub
-		return mainDao.getHitList();
+		return getHitList();
 	}
+
+	
+
+	
+
+	
+	
+
+	
+	
+	
 
 	
 	

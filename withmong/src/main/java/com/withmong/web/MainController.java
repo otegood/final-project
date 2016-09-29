@@ -2,6 +2,9 @@ package com.withmong.web;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -31,7 +34,8 @@ public class MainController {
 	/* 	
 	//인기순 보기
 	@RequestMapping("avglike.do")
-	public @ResponseBody Product getAvglike(@RequestParam(name="no") String avglike){
+	@ResponseBody
+	public  Product getAvglike(@RequestParam(name="no") String avglike){
 		List<Product> getAvglike = mainService.getAvglikeList();
 		
 		return (Product) getAvglike;
@@ -41,7 +45,7 @@ public class MainController {
 	
 	
 	//조회순 보기
-	@RequestMapping(value="/hits.do", method=RequestMethod.GET)
+	@RequestMapping(value="/hitslist.do", method=RequestMethod.GET)
 	public String history(Model model, User loginedUser) throws Exception {
 		
 		//포인트 사용내역 보기
@@ -51,12 +55,14 @@ public class MainController {
 	*/
 	
 	//등록순 보기
-	@RequestMapping(value="/recent.do", method=RequestMethod.GET)
-	public String recent(Model model) throws Exception {
-		List<Product> recentList = mainService.getRegList();
+	@RequestMapping(value="/recentlist.do")
+	@ResponseBody
+	public String recent(Product product, Model model) throws Exception {
+		
+		List<Product> recentList = mainService.getRegList(product);
 		model.addAttribute("recentList", recentList);
 		
-		return "main.do";
+		return null;
 	}
 		
 }

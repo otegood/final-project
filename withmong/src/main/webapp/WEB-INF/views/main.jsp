@@ -134,45 +134,48 @@
 		
 					
 					$("#recent").click(function() {
-						 $.ajax({
-						        url: "",
-						        datatype: "text",
-						        type: "POST",
-						        success: function (data) {
-						          $('#testarea').html("All OK");
-						        },
-						        error: function () {
-						          $("#testarea").html("ERROR");
-						        }
-						      });
+						$.ajax({
+					        url: "recentlist.do",
+					        type: "POST",
+					        data: param,
+					        success: function (data) {
+					        	
+					          $('#togo').html("All OK");
+					        },
+					        error: function () {
+					          $("#togo").html("ERROR");
+					        }
+					      });
 					})
 					
 					$("#avglike").click(function() {
-						 $.ajax({
-						        url: "",
-						        datatype: "text",
-						        type: "POST",
-						        success: function (data) {
-						          $('#testarea').html("All OK");
-						        },
-						        error: function () {
-						          $("#testarea").html("ERROR");
-						        }
-						      });
+						$.ajax({
+					        url: "avglikelist.do",
+					        type: "POST",
+					       
+					        success: function (data) {
+					        	
+					          $('#togo').html("All OK");
+					        },
+					        error: function () {
+					          $("#togo").html("ERROR");
+					        }
+					      });
 					})
 					
 					$("#hits").click(function() {
-						 $.ajax({
-						        url: "",
-						        datatype: "text",
-						        type: "POST",
-						        success: function (data) {
-						          $('#testarea').html("All OK");
-						        },
-						        error: function () {
-						          $("#testarea").html("ERROR");
-						        }
-						      });
+						$.ajax({
+					        url: "hitslist.do",
+					        type: "POST",
+					       
+					        success: function (data) {
+					        	
+					          $('#togo').html("All OK");
+					        },
+					        error: function () {
+					          $("#togo").html("ERROR");
+					        }
+					      });
 					})
 </script>
 
