@@ -84,16 +84,35 @@ $(function(){
 						<th>제목</th>
 						<th>게시자</th>
 						<th>게시일</th>
+						<c:if test="${LOGIN_USER.id eq 'king'}">
+							<th>삭제유무</th>
+						</c:if>
 					</tr>
 				</thead>
 				<tbody id="chain">
 					<c:forEach var="request" items="${requests }">
-						<tr>
-							<td>${request.no }</td>
-							<td>${request.title }</td>
-							<td>${request.userId.id}</td>
-							<td><fmt:formatDate value="${request.regdate }"	pattern="yyyy.MM.dd" /></td>
-						</tr>
+						<c:if test="${LOGIN_USER.id ne 'king' and request.delCheck eq 'N'}">
+							<tr>
+								<td>${request.no }</td>
+								<td>${request.title }</td>
+								<td>${request.userId.id}</td>
+								<td><fmt:formatDate value="${request.regdate }" pattern="yyyy.MM.dd" /></td>
+							</tr>
+						</c:if>
+						<c:if test="${LOGIN_USER.id eq 'king' }">
+							<c:if test="${request.delCheck eq 'Y' }">
+								<tr class="danger">
+							</c:if>
+							<c:if test="${request.delCheck eq 'N' }">
+								<tr>
+							</c:if>	
+								<td>${request.no }</td>
+								<td>${request.title }</td>
+								<td>${request.userId.id}</td>
+								<td><fmt:formatDate value="${request.regdate }"	pattern="yyyy.MM.dd" /></td>
+								<td>${request.delCheck }</td>
+							</tr>
+						</c:if>
 					</c:forEach>
 				</tbody>
 			</table>

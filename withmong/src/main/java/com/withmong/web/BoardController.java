@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.withmong.model.Notice;
+import com.withmong.model.QNA;
+import com.withmong.model.QNAReple;
 import com.withmong.model.Request;
 import com.withmong.model.RequestReple;
 import com.withmong.model.User;
@@ -126,7 +128,7 @@ public class BoardController {
 		boardService.updateRequest(request);
 		return "redirect:/requestlist.do";
 	}
-	// 요철게시글 댓글 작성
+	// 요청게시글 댓글 작성
 	@RequestMapping(value="/requestReple.do")
 	public String requestReple(RequestReple requestReply, User loginedUser, @RequestParam(name="no") int no) {
 		requestReply.setContents(requestReply.getContents().replace("\r\n", "<br>"));
@@ -141,5 +143,60 @@ public class BoardController {
 	public String qnaList(Model model) {
 		model.addAttribute("qna", boardService.qnaList());
 		return "board/qnalist";
+	}
+	//QNA 입력폼
+	@RequestMapping(value="/qnaRegister.do", method=RequestMethod.GET)
+	public String qnaForm() {
+		return "board/qnaform";
+	}
+	//QNA 입력처리
+	@RequestMapping(value="/qnaRegister.do", method=RequestMethod.POST)
+	public String qnaRegister(QNA qna, User loginedUser) {
+		qna.setContents(qna.getContents().replace("\r\n", "<br>"));
+		qna.setUserId(loginedUser);
+		boardService.addQna(qna);
+		return "redirect:/qnalist.do";
+	}
+	
+	// qna 상세페이지
+	@RequestMapping("/qnaDetail.do")
+	public String qnaDetail(Model model, @RequestParam(name="no") int no) {
+		model.addAttribute("qna", boardService.qnaDetail(no));
+		// 댓글 목록
+		List<QNAReple> reples = boardService.qnaRepleList(no);
+		model.addAttribute("qnaReple", reples);
+		model.addAttribute("qnaRepleLength", reples.size());
+		return "board/qnadetail";
+	}
+	
+	// qna 삭제처리
+	@RequestMapping("/qnaDelete.do")
+	public String qnaDelete(@RequestParam(name="no") int no) {
+		boardService.qnaDelete(no);
+		return "redirect:/qnalist.do";
+	}
+	
+	// QNA 업데이트폼
+	@RequestMapping("/qnaUpdateForm.do")
+	public String qnaUpdateForm(Model model, @RequestParam(name="no") int no){
+		model.addAttribute("qna", boardService.qnaDetail(no));
+		return "board/qnaupdate";
+	}
+	// 요청게시글 업데이트
+	@RequestMapping("/qnaUpdate.do")
+	public String qnaUpdate(QNA	qna) {
+		qna.setContents(qna.getContents().replace("\r\n", "<br>"));
+		boardService.updateQna(qna);
+		return "redirect:/qnalist.do";
+	}
+	
+	// qna 댓글 작성
+	@RequestMapping(value="/qnaReple.do")
+	public String qnaReple(QNAReple qnaReple, User loginedUser, @RequestParam(name="no") int no) {
+		qnaReple.setContents(qnaReple.getContents().replace("\r\n", "<br>"));
+		qnaReple.setUserId(loginedUser);
+		qnaReple.setBoardNo(boardService.qnaDetail(no));
+		boardService.addQnaReply(qnaReple);
+		return "redirect:/qnaDetail.do?no="+no;
 	}
 }

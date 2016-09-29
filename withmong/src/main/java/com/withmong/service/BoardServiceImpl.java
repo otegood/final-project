@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import com.withmong.dao.BoardDao;
 import com.withmong.model.Notice;
 import com.withmong.model.QNA;
+import com.withmong.model.QNAReple;
 import com.withmong.model.Request;
 import com.withmong.model.RequestReple;
 
@@ -70,13 +71,44 @@ public class BoardServiceImpl  implements BoardService{
 	public void addRequestReply(RequestReple requestReple) {
 		boardDao.addRequestReple(requestReple);
 	}
+	// 요청게시글 댓글목록
 	@Override
 	public List<RequestReple> requestRepleList(int no) {
 		return boardDao.requestRelpleList(no);
 	}
+	// qna게시판 목록
 	@Override
 	public List<QNA> qnaList() {
 		return boardDao.qnaList();
+	}
+	// qna게시글 작성
+	@Override
+	public void addQna(QNA qna) {
+		boardDao.addQna(qna);
+	}
+	// qna 상세페이지
+	@Override
+	public QNA qnaDetail(int no) {
+		return boardDao.qnaDetail(no);
+	}
+	// qna 삭제처리
+	@Override
+	public void qnaDelete(int no) {
+		boardDao.qnaDelete(no);
+	}
+	// qna 게시글 수정
+	@Override
+	public void updateQna(QNA qna) {
+		boardDao.qnaUpdate(qna);
+	}
+	// qna 댓글작성
+	@Override
+	public void addQnaReply(QNAReple qnaReple) {
+		boardDao.addQnaReple(qnaReple);
+	}
+	@Override
+	public List<QNAReple> qnaRepleList(int no) {
+		return boardDao.qnaRepleList(no);
 	}
 
 }

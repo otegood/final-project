@@ -49,7 +49,7 @@
 		background-color: lightgreen;
 	}
 </style>
-<title>요청게시판 상세페이지</title>
+<title>QNA 상세페이지</title>
 </head>
 <body>
 	<header>
@@ -61,34 +61,34 @@
 		</c:if>
 	</header>
 	<div class="container" >
-		<h1>요청게시판 상세페이지</h1>
-		<form role="form" method="post" action="requestUpdate.do">
+		<h1>QNA 상세페이지</h1>
+		<form role="form" method="post" action="qnaUpdate.do">
 			<table class="table">
 				<thead>
 					<tr>
 						<th>번호</th>
-						<td><input type="text" value="${request.no }" hidden="hidden" name="no">${request.no }</td>
+						<td><input type="text" value="${qna.no }" hidden="hidden" name="no">${qna.no }</td>
 						<th>작성자</th>
-						<td>${request.userId.id }</td>
+						<td>${qna.userId.id }</td>
 						<th>등록일</th>
-						<td><fmt:formatDate value="${request.regdate }" pattern="yyyy-MM-dd EEEE" /></td>
+						<td><fmt:formatDate value="${qna.regdate }" pattern="yyyy-MM-dd EEEE" /></td>
 					</tr>
 				</thead>
 				<tbody>
 					<tr>
 						<th>제목</th>
-						<td colspan="5"><input type="text" class="form-control" value="${request.title }" name="title"></td>
+						<td colspan="5"><input type="text" class="form-control" value="${qna.title }" name="title"></td>
 					</tr>
 					<tr>
 						<th>내용</th>
-						<td colspan="5"><textarea class="form-control" rows="10" cols="60" name="contents"  style="resize:none;">${request.contents }</textarea></td>
+						<td colspan="5"><textarea class="form-control" rows="10" cols="60" name="contents"  style="resize:none;">${qna.contents }</textarea></td>
 					</tr>
 				</tbody>
 			</table>
 			
 			<div>
 				<input type="submit" class="btn btn-primary" value="완료" />
-				<a href="requestDetail.do?no=${request.no }" class="btn btn-danger">취소</a>
+				<a href="qnaDetail.do?no=${qna.no }" class="btn btn-danger">취소</a>
 			</div>
 		</form>
 	</div>

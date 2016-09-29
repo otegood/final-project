@@ -75,7 +75,9 @@ $(function(){
 			<div class="row">
 				<h1>공지사항</h1>
 				<c:if test="${LOGIN_USER.id eq 'king' }">
-					<a class="btn btn-primary" href="noticeRegister.do">글 쓰기</a>
+					<div style="text-align: right">
+						<a class="btn btn-primary" href="noticeRegister.do">글 쓰기</a>
+					</div>
 				</c:if>
 				<table class="table table-hover">
 					<thead>

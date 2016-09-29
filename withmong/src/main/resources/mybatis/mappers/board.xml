@@ -115,4 +115,71 @@
 		order by
 			regdate desc
 	</select>
+	
+	<!-- QnA 게시판 목록 -->
+	<select id="qnaList" resultType="QNA">
+		select
+			no, title, userid as "userId.id", regdate, delcheck
+		from
+			qna_table
+		order by
+			regdate desc
+	</select>
+	
+	<!-- QNA 게시글 작성 -->
+	<insert id="addQna" parameterType="QNA">
+		insert into qna_table 
+		(no, title, contents, userid, regdate, delcheck) 
+		values 
+		(qna_seq.nextval, #{title}, #{contents}, #{userId.id}, sysdate, 'N')
+	</insert>
+	<!-- QNA 상세페이지 -->
+	<select id="qnaDetail" parameterType="int" resultType="QNA">
+		select
+			no, title, userid as "userId.id", contents, regdate
+		from
+			qna_table
+		where
+			no = #{no}
+	</select>
+	<!-- QNA 삭제처리 -->
+	<update id="qnaDelete" parameterType="int">
+		update 
+			qna_table
+		set
+			delcheck = 'Y'
+		where
+			no = #{no}	
+	</update>
+	
+	<!-- 요청게시글 수정 -->
+	<update id="qnaUpdate" parameterType="QNA">
+		update
+			qna_table
+		set
+			title = #{title}, 
+			contents = #{contents}
+		where
+			no = #{no}	
+	</update>
+	
+	<!-- qna 댓글 작성 -->
+	<insert id="addQnaReple" parameterType="QNAReple">
+		insert into qnareple_table
+		(no, contents, userid, regdate, boardno) 
+		values 
+		(qnareple_seq.nextval, #{contents}, #{userId.id}, sysdate, #{boardNo.no})		
+	</insert>
+	
+	<!-- qna 댓글 목록 -->
+	<select id="qnaRepleList" parameterType="int" resultType="QNAReple">
+		select
+			no, contents, userid as "userId.id", regdate
+		from
+			qnareple_table
+		where
+			boardno = #{boardNo.no}
+		order by
+			regdate desc
+	</select>
 </mapper>

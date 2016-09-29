@@ -53,7 +53,7 @@
 <script type="text/javascript">
 	var count = 0;
 </script>
-<title>요청게시판 상세페이지</title>
+<title>QNA 상세페이지</title>
 </head>
 <body>
 	<header>
@@ -65,45 +65,44 @@
 		</c:if>
 	</header>
 	<div class="container" >
-		<h1>요청게시판 상세페이지</h1>
+		<h1>QNA 상세페이지</h1>
 		<table class="table">
 			<thead>
 				<tr>
 					<th>번호</th>
-					<td>${request.no }</td>
+					<td>${qna.no }</td>
 					<th>작성자</th>
-					<td>${request.userId.id }</td>
+					<td>${qna.userId.id }</td>
 					<th>등록일</th>
-					<td><fmt:formatDate value="${request.regdate }" pattern="yyyy-MM-dd EEEE" /></td>
+					<td><fmt:formatDate value="${qna.regdate }" pattern="yyyy-MM-dd EEEE" /></td>
 				</tr>
 			</thead>
 			<tbody>
 				<tr>
 					<th>제목</th>
-					<td colspan="5"><c:out value="${request.title }" /></td>
+					<td colspan="5"><c:out value="${qna.title }" /></td>
 				</tr>
 				<tr>
 					<th>내용</th>
-					<td colspan="5">${request.contents }</td>
+					<td colspan="5">${qna.contents }</td>
 				</tr>
 			</tbody>
 		</table>
 		
 		<div style="height: 50px;">
-			<c:if test="${LOGIN_USER.id eq request.userId.id or LOGIN_USER.id eq 'king'}">
-				<a href="requestUpdateForm.do?no=${request.no }" class="btn btn-warning">수정</a>
-				<a href="requestDelete.do?no=${request.no }" class="btn btn-danger">삭제</a>
+			<c:if test="${LOGIN_USER.id eq qna.userId.id or LOGIN_USER.id eq 'king'}">
+				<a href="qnaUpdateForm.do?no=${qna.no }" class="btn btn-warning">수정</a>
+				<a href="qnaDelete.do?no=${qna.no }" class="btn btn-danger">삭제</a>
 			</c:if>
-			<a href="requestlist.do" class="btn btn-warning pull-right">목록</a>
+			<a href="qnalist.do" class="btn btn-warning pull-right">목록</a>
 		</div>
-		
 		<div style="margin-top: 30px;">
-			<form role="form" method="post" action="requestReple.do">
+			<form role="form" method="post" action="qnaReple.do">
 				<table >
 					<tr>
 						<th style="width: 137px;">댓글</th>
 						<td>
-							<input type="text" hidden="hidden" name="no" value="${request.no }"/>
+							<input type="text" hidden="hidden" name="no" value="${qna.no }"/>
 							<textarea rows="3" style="width:700px;" class="form-control" name="contents"
 									  placeholder="명예훼손, 개인정보 유출, 분쟁 유발, 허위사실 유포 등의 글은 이용약관에 의해 제재는 물론 법률에 의해 처벌받을 수 있습니다. 건전한 커뮤니티를 위해 자제를 당부 드립니다." ></textarea>
 						</td>
@@ -112,9 +111,9 @@
 				</table>
 			</form>
 			<br/>
-			<p><b>코멘트 (${requestRepleLength} )</b></p>
+			<p><b>코멘트 (${qnaRepleLength} )</b></p>
 			<table class="table">
-				<c:forEach var="reple" items="${requestReple }">
+				<c:forEach var="reple" items="${qnaReple }">
 					<tr>
 						<td style="width: 137px;">${reple.userId.id }</td>
 						<td style="width:700px;" >${reple.contents }</td>

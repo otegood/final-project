@@ -21,14 +21,15 @@
           <ul class="dropdown-menu"  style="width: 300px; text-align: center;">
             <li><a href="noticelist.do">공지사항</a></li>
             <li><a href="requestlist.do">요청게시판</a></li>
-            <li><a href="#">QnA</a></li>
+            <li><a href="qnalist.do">QnA</a></li>
           </ul>
         </li>
         <li style="text-align: center;"><a href="userlist.do" style="width: 300px;">회원관리</a></li>
         <li style="text-align: center;"><a href="#" style="width: 300px;">신고관리</a></li>
         <li class="dropdown"  style="text-align: center;">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" style="width: 300px;">돈관련</a>
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" style="width: 300px;">상품관리</a>
           <ul class="dropdown-menu" style="width: 300px; text-align: center;">
+          	<li><a href="#">상품목록</a></li>
             <li><a href="#">총수익</a></li>
             <li><a href="#">거래내역</a></li>
           </ul>

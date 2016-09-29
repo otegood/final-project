@@ -169,7 +169,7 @@ $(document).ready(function(){
 					<li class="divider"></li>
 					<li><a href="requestlist.do">요청게시판</a></li>
 					<li class="divider"></li>
-					<li><a href="#">QnA</a></li>
+					<li><a href="qnalist.do">QnA</a></li>
 
 				</ul></li>
 		</ul>
