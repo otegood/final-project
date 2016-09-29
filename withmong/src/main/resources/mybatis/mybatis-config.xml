@@ -20,6 +20,7 @@
   	<typeAlias type="com.withmong.model.Request" alias="Request"/>	
 
   	<typeAlias type="com.withmong.form.BreadcrumbsForm" alias="Crumbs"/>
+  	<typeAlias type="com.withmong.form.SearchForm" alias="Search"/>
   	<typeAlias type="com.withmong.model.RequestReply" alias="RequestReply"/>
 
   </typeAliases>
