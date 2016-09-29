@@ -21,7 +21,7 @@
           <ul class="dropdown-menu"  style="width: 300px; text-align: center;">
             <li><a href="noticelist.do">공지사항</a></li>
             <li><a href="requestlist.do">요청게시판</a></li>
-            <li><a href="#">QnA</a></li>
+            <li><a href="qnalist.do">QnA</a></li>
           </ul>
         </li>
         <li style="text-align: center;"><a href="userlist.do" style="width: 300px;">회원관리</a></li>

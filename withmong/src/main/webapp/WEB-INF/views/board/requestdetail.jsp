@@ -90,7 +90,7 @@
 		</table>
 		
 		<div style="height: 50px;">
-			<c:if test="${LOGIN_USER.id eq request.userId.id }">
+			<c:if test="${LOGIN_USER.id eq request.userId.id or LOGIN_USER.id eq 'king'}">
 				<a href="requestUpdateForm.do?no=${request.no }" class="btn btn-warning">수정</a>
 				<a href="requestDelete.do?no=${request.no }" class="btn btn-danger">삭제</a>
 			</c:if>

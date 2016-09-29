@@ -90,7 +90,7 @@
 		</table>
 		
 		<div style="height: 50px;">
-			<c:if test="${LOGIN_USER.id eq qna.userId.id }">
+			<c:if test="${LOGIN_USER.id eq qna.userId.id or LOGIN_USER.id eq 'king'}">
 				<a href="qnaUpdateForm.do?no=${qna.no }" class="btn btn-warning">수정</a>
 				<a href="qnaDelete.do?no=${qna.no }" class="btn btn-danger">삭제</a>
 			</c:if>

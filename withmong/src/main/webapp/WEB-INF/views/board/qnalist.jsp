@@ -84,16 +84,35 @@ $(function(){
 						<th>제목</th>
 						<th>게시자</th>
 						<th>게시일</th>
+						<c:if test="${LOGIN_USER.id eq 'king'}">
+							<th>삭제유무</th>
+						</c:if>
 					</tr>
 				</thead>
 				<tbody id="chain">
 					<c:forEach var="q" items="${qna }">
-						<tr>
-							<td>${q.no }</td>
-							<td>${q.title }</td>
-							<td>${q.userId.id}</td>
-							<td><fmt:formatDate value="${q.regdate }"	pattern="yyyy.MM.dd" /></td>
-						</tr>
+						<c:if test="${LOGIN_USER.id ne 'king' and q.delCheck eq 'N'}">
+							<tr>
+								<td>${q.no }</td>
+								<td>${q.title }</td>
+								<td>${q.userId.id}</td>
+								<td><fmt:formatDate value="${q.regdate }" pattern="yyyy.MM.dd" /></td>
+							</tr>
+						</c:if>
+						<c:if test="${LOGIN_USER.id eq 'king' }">
+							<c:if test="${q.delCheck eq 'Y' }">
+								<tr class="danger">
+							</c:if>
+							<c:if test="${q.delCheck eq 'N' }">
+								<tr>
+							</c:if>							
+								<td>${q.no }</td>
+								<td>${q.title }</td>
+								<td>${q.userId.id}</td>
+								<td><fmt:formatDate value="${q.regdate }"	pattern="yyyy.MM.dd" /></td>
+								<td>${q.delCheck }</td>
+							</tr>
+						</c:if>
 					</c:forEach>
 				</tbody>
 			</table>

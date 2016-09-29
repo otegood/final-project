@@ -78,7 +78,12 @@
 				</thead>
 				<tbody>
 				<c:forEach var="users" items="${userList }">
-					<tr>
+					<c:if test="${users.delCheck eq 'Y' }">
+						<tr class="danger">					
+					</c:if>
+					<c:if test="${users.delCheck eq 'N' }">
+						<tr>
+					</c:if>
 						<td>
 							<c:choose>
 								<c:when test="${users.id ne 'king' }">
