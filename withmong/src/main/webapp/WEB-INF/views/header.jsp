@@ -161,7 +161,7 @@ $(document).ready(function(){
 				<ul class="dropdown-menu">
 					<li><a href="noticelist.do">공지사항</a></li>
 					<li class="divider"></li>
-					<li><a href="#">요청게시판</a></li>
+					<li><a href="requestlist.do">요청게시판</a></li>
 					<li class="divider"></li>
 					<li><a href="#">QnA</a></li>
 

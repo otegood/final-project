@@ -20,6 +20,10 @@ public interface BoardService {
 	List<Request> requestList();
 	// 요청게시글 등록
 	void addRequest(Request request);
-	
+	// 요청게시글 상세페이지
 	Request requestDetail(int no);
+	// 요청게시글 삭제처리
+	void requestDelete(int no);
+	// 요청게시글 업데이트
+	void updateRequest(Request request);
 }

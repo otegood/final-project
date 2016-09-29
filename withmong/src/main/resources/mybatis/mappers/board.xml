@@ -64,9 +64,37 @@
 	<!-- 요청게시글 작성 -->
 	<insert id="addRequest" parameterType="Request">
 		insert into request_table
-		(no, title, contents, userid, regdate) 
+		(no, title, contents, userid, regdate, delcheck) 
 		values 
-		(request_seq.nextval, #{title}, #{contents}, #{userId.id}, sysdate)
+		(request_seq.nextval, #{title}, #{contents}, #{userId.id}, sysdate, 'N')
 	</insert>
 	
+	<!-- 요청게시글 상세페이지 -->
+	<select id="requestDetail" parameterType="int" resultType="Request">
+		select
+			no, title, userid as "userId.id", contents, regdate
+		from
+			request_table
+		where
+			no = #{no}
+	</select>
+	<!-- 요청게시글 삭제처리 -->
+	<update id="requestDelete" parameterType="int">
+		update 
+			request_table
+		set
+			delcheck = 'Y'
+		where
+			no = #{no}	
+	</update>
+	<!-- 요청게시글 수정 -->
+		<update id="requestUpdate" parameterType="Request">
+		update 
+			request_table
+		set
+			title = #{title}, 
+			contents = #{contents}
+		where
+			no = #{no}	
+	</update>
 </mapper>
