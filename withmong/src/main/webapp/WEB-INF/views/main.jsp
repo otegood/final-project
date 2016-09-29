@@ -130,6 +130,50 @@
 													
 										})
 					})
+					
+		
+					
+					$("#recent").click(function() {
+						 $.ajax({
+						        url: "",
+						        datatype: "text",
+						        type: "POST",
+						        success: function (data) {
+						          $('#testarea').html("All OK");
+						        },
+						        error: function () {
+						          $("#testarea").html("ERROR");
+						        }
+						      });
+					})
+					
+					$("#avglike").click(function() {
+						 $.ajax({
+						        url: "",
+						        datatype: "text",
+						        type: "POST",
+						        success: function (data) {
+						          $('#testarea').html("All OK");
+						        },
+						        error: function () {
+						          $("#testarea").html("ERROR");
+						        }
+						      });
+					})
+					
+					$("#hits").click(function() {
+						 $.ajax({
+						        url: "",
+						        datatype: "text",
+						        type: "POST",
+						        success: function (data) {
+						          $('#testarea').html("All OK");
+						        },
+						        error: function () {
+						          $("#testarea").html("ERROR");
+						        }
+						      });
+					})
 </script>
 
 <style type="text/css">
@@ -229,23 +273,28 @@ strong {
 		<div class="row" id="">
 			<div class="col-sm-4 col-sm-offset-8" style="margin-bottom: 20px;">
 				<div class="col-sm-4">
-					<a href="avglike.do">인기순</a>
+					<a href="avglike.do" id="avglike">인기순</a>
 				</div>
 				<div class="col-sm-4">
-					<a href="recent.do">최신 등록순</a>
+					<a href="recent.do" id="recent">최신 등록순</a>
 				</div>
 				<div class="col-sm-4">
-					<a href="hits.do">조회순</a>
+					<a href="hits.do" id="hits">조회순</a>
 				</div>
 			</div>
 			<div class="addToProducts">
-				<div class="row" id="addpoint" style="margin-left: 0px; margin-right: 0px;">
+		
+				<div class="row" id="recent" style="margin-left: 0px; margin-right: 0px;">
 					<div class="col-sm-3"
 						style="padding-left: 15px; padding-right: 15px;">
+						
 						<!-- 첫 이미지 크기 400*300 -->
 						<span class="pro-img"> <a class="togo" href="#"> <img
 								class="img-responsive" src="resources/img/vvv.png" alt="">
 								<!-- 이미지 크기는 400*200 -->
+								<c:forEach var="recent" items="${recentList }">
+									<c:out value="${recent.img }"></c:out>
+								</c:forEach>
 						</a>
 						</span>
 						<div class="row" style="padding-left: 0px;">
@@ -253,7 +302,9 @@ strong {
 								<p>
 									<span class="glyphicon glyphicon-gift"></span>
 									<!-- 상품명 불러오는 곳 -->
-									-------상품명-------
+									<c:forEach var="recent" items="${recentList }">
+									<c:out value="${recent.title }"></c:out> 
+									</c:forEach>
 								</p>
 							</div>
 
@@ -261,92 +312,12 @@ strong {
 								<p>
 									<span class="glyphicon glyphicon-cd"></span>
 									<!-- 상품 가격 불러오는 곳 -->
-									-------가격--------
+									
 								</p>
 
 							</div>
 						</div>
-					</div>
-					<div class="col-sm-3"
-						style="padding-left: 15px; padding-right: 15px;">
-						<!-- 첫 이미지 크기 400*300 -->
-						<span class="pro-img"> <a class="togo" href="#"> <img
-								class="img-responsive" src="resources/img/vvv.png" alt="">
-								<!-- 이미지 크기는 400*200 -->
-						</a>
-						</span>
-						<div class="row" style="padding-left: 0px;">
-							<div class="call-product-title">
-								<p>
-									<span class="glyphicon glyphicon-gift"></span>
-									<!-- 상품명 불러오는 곳 -->
-									-------상품명-------
-								</p>
-							</div>
-
-							<div class="call-product-price">
-								<p>
-									<span class="glyphicon glyphicon-cd"></span>
-									<!-- 상품 가격 불러오는 곳 -->
-									-------가격--------
-								</p>
-
-							</div>
-						</div>
-					</div>
-					<div class="col-sm-3"
-						style="padding-left: 15px; padding-right: 15px;">
-						<!-- 첫 이미지 크기 400*300 -->
-						<span class="pro-img"> <a class="togo" href="#"> <img
-								class="img-responsive" src="resources/img/vvv.png" alt="">
-								<!-- 이미지 크기는 400*200 -->
-						</a>
-						</span>
-						<div class="row" style="padding-left: 0px;">
-							<div class="call-product-title">
-								<p>
-									<span class="glyphicon glyphicon-gift"></span>
-									<!-- 상품명 불러오는 곳 -->
-									-------상품명-------
-								</p>
-							</div>
-
-							<div class="call-product-price">
-								<p>
-									<span class="glyphicon glyphicon-cd"></span>
-									<!-- 상품 가격 불러오는 곳 -->
-									-------가격--------
-								</p>
-
-							</div>
-						</div>
-					</div>
-					<div class="col-sm-3"
-						style="padding-left: 15px; padding-right: 15px;">
-						<!-- 첫 이미지 크기 400*300 -->
-						<span class="pro-img"> <a class="togo" href="#"> <img
-								class="img-responsive" src="resources/img/vvv.png" alt="">
-								<!-- 이미지 크기는 400*200 -->
-						</a>
-						</span>
-						<div class="row" style="padding-left: 0px;">
-							<div class="call-product-title">
-								<p>
-									<span class="glyphicon glyphicon-gift"></span>
-									<!-- 상품명 불러오는 곳 -->
-									-------상품명-------
-								</p>
-							</div>
-
-							<div class="call-product-price">
-								<p>
-									<span class="glyphicon glyphicon-cd"></span>
-									<!-- 상품 가격 불러오는 곳 -->
-									-------가격--------
-								</p>
-
-							</div>
-						</div>
+					
 					</div>
 				</div>
 			</div>
@@ -354,7 +325,7 @@ strong {
 				style="text-align: center; margin-bottom: 30px; margin-top: 30px;">
 				<a class="btn btn-danger btn-large" style="width: 400px;" id="more">더보기</a>
 			</div>
-		</div>
+			</div>
 	</div>
 
 	<%@ include file="footer.jsp"%>

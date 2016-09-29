@@ -5,7 +5,7 @@
 <mapper namespace="com.withmong.dao.MainDao">
 
 	<!--인기순으로  내역 가져오기 -->
-	<select id="getAvglikeList" parameterType="string" resultType="Product">
+	<select id="getAvglikeList" parameterType="double" resultType="Product">
 		select *
 		from product_table
 		

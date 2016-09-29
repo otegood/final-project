@@ -28,7 +28,7 @@ public class MainController {
 		ex.printStackTrace();
 		return "error/error";
 	}
-	
+	/* 	
 	//인기순 보기
 	@RequestMapping("avglike.do")
 	public @ResponseBody Product getAvglike(@RequestParam(name="no") String avglike){
@@ -36,9 +36,7 @@ public class MainController {
 		
 		return (Product) getAvglike;
 	}
-/* 
-	//등록순 보기
-	@RequestMapping("recent.do")
+
 	
 	
 	
@@ -51,4 +49,14 @@ public class MainController {
 		model.addAttribute("pointlist", pointList);
 	
 	*/
+	
+	//등록순 보기
+	@RequestMapping(value="/recent.do", method=RequestMethod.GET)
+	public String recent(Model model) throws Exception {
+		List<Product> recentList = mainService.getRegList();
+		model.addAttribute("recentList", recentList);
+		
+		return "main.do";
+	}
+		
 }
