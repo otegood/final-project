@@ -97,4 +97,8 @@
 		where
 			no = #{no}	
 	</update>
+	<!-- 요청게시글 댓글 작성 -->
+	<insert id="addRequestReple" >
+		
+	</insert>
 </mapper>

@@ -62,7 +62,7 @@
 				</div>
 				<div class="form-group">
 					<label>내용</label>
-					<textarea rows="5" class="form-control" name="contents"></textarea>
+					<textarea rows="5" class="form-control" placeholder="입력해주세요" style="resize:none;"  name="contents"></textarea>
 				</div>
 				<div class="form-group">
 					<input type="submit"  class="btn btn-primary" value="저장" />
