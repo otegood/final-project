@@ -98,14 +98,14 @@
 			no = #{no}	
 	</update>
 	<!-- 요청게시글 댓글 작성 -->
-	<insert id="addRequestReple" parameterType="RequestReply">
+	<insert id="addRequestReple" parameterType="RequestReple">
 		insert into requestreple_table
 		(no, contents, userid, regdate, boardno) 
 		values 
 		(requestreple_seq.nextval, #{contents}, #{userId.id}, sysdate, #{boardNo.no})		
 	</insert>
 	<!-- 요청게시글 댓글 목록 -->
-	<select id="requestRelpleList" parameterType="int" resultType="RequestReply">
+	<select id="requestRelpleList" parameterType="int" resultType="RequestReple">
 		select
 			no, contents, userid as "userId.id", regdate
 		from
