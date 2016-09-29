@@ -16,6 +16,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.withmong.form.BreadcrumbsForm;
 import com.withmong.form.ProductForm;
+import com.withmong.form.SearchForm;
 import com.withmong.model.Category;
 import com.withmong.model.Location;
 import com.withmong.model.Product;
@@ -176,9 +177,25 @@ public class ProductController {
 	}
 	
 	@RequestMapping(value="/searchList.do", method=RequestMethod.GET)
-	public String searchList (@RequestParam(name="search")String search, @RequestParam(name="type")String type) throws Exception{
-		//List<Product> searchProduct = productService.searchProduct(search);	
+	public String searchList (@RequestParam(name="search")String search, @RequestParam(name="type")String type,Model model) throws Exception{
+
 		
+		SearchForm searchForm = new SearchForm();
+		searchForm.setType(type);
+		searchForm.setSearch(search);
+		
+		System.out.println("-----------------------------------------");
+		System.out.println("-----------------------------------------");
+		System.out.println("-----------------------------------------");
+		System.out.println(searchForm.toString());
+		System.out.println("-----------------------------------------");
+		System.out.println("-----------------------------------------");
+		System.out.println("-----------------------------------------");
+		
+		
+		List<Product> searchProduct = productService.searchProduct(searchForm);	
+		
+		model.addAttribute("searchList",searchProduct);
 		return "product/searchList";
 	}
 

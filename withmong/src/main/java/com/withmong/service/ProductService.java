@@ -3,6 +3,7 @@ package com.withmong.service;
 import java.util.List;
 
 import com.withmong.form.BreadcrumbsForm;
+import com.withmong.form.SearchForm;
 import com.withmong.model.Category;
 import com.withmong.model.Location;
 import com.withmong.model.Product;
@@ -26,6 +27,6 @@ public interface ProductService {
 	Location findLocationNo(Location location);
 	Location getLocationByno(int no);
 	BreadcrumbsForm getCrumbs(int no);
-	List<Product> searchProduct(String search);
+	List<Product> searchProduct(SearchForm searchForm);
 	
 }

@@ -18,6 +18,11 @@ public class SearchForm {
 	public void setSearch(String search) {
 		this.search = search;
 	}
+	@Override
+	public String toString() {
+		return "SearchForm [type=" + type + ", search=" + search + "]";
+	}
+	
 	
 	
 	
