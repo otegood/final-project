@@ -2,6 +2,7 @@ package com.withmong.dao;
 
 import java.util.List;
 
+import com.withmong.form.BreadcrumbsForm;
 import com.withmong.model.Category;
 import com.withmong.model.Location;
 import com.withmong.model.Product;
@@ -10,7 +11,7 @@ import com.withmong.model.User;
 
 public interface ProductDao {
 
-	List<Location> findLocalbyCity(String city);
+	List<Location> findLocalList(String city);
 	void addProduct(Product product);
 	List<Category> findCategory();
  	Product productDetail(int no);
@@ -19,5 +20,10 @@ public interface ProductDao {
 	Category findCategoryByNo(int no);
 	User getUserDetail(String name);
 	List<Location> findLocation();
+	Location findLocationNo(Location location);
+	Location getLocationByno(int no);
+	BreadcrumbsForm getCrumbs(int no);
+	List<Product> searchProduct(String search);
+
 	
 }

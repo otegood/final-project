@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.withmong.form.BreadcrumbsForm;
 import com.withmong.form.ProductForm;
 import com.withmong.model.Category;
 import com.withmong.model.Location;
@@ -29,13 +30,19 @@ public class ProductController {
 	@Autowired
 	private ProductService productService;
 
-	private static String UPLOAD_DIRECTORY = "c:/upload";
+	private static String UPLOAD_DIRECTORY = "C:\\Users\\JHTA\\git\\final-project\\withmong\\src\\main\\webapp\\resources\\images\\";
 
 
 	@RequestMapping(value="/detail.do")
 	public String detail(@RequestParam(name="productNo") int no, Model model,Model review,Model userDe) {
 		Product productDetail = productService.productDetail(no);
+		Location location = productService.getLocationByno(productDetail.getLocation().getNo());
+		productDetail.setLocation(location);
+		
+		BreadcrumbsForm crumbs = productService.getCrumbs(productDetail.getCategory().getNo());	
+		
 		model.addAttribute("detail",productDetail);
+		model.addAttribute("crumbs", crumbs);
 		
 		String name = productDetail.getUserId();
 		User userDetail = productService.getUserDetail(name);
@@ -95,7 +102,7 @@ public class ProductController {
 		String filename = img.getOriginalFilename();
 		
 		if(!filename.isEmpty()){			
-			String protitle = "pro_"+loginId;
+			String protitle = "product/"+loginId;
 			
 			String extName = filename.substring(filename.lastIndexOf(".")+1);
 			byte[] bytes = img.getBytes();
@@ -103,7 +110,7 @@ public class ProductController {
 			FileCopyUtils.copy(bytes, file);
 			product.setImg(protitle + "." + extName);
 		}else{
-			product.setImg("default/defaultProduct.png");
+			product.setImg("default\\defaultProduct.png");
 		}
 		
 
@@ -116,8 +123,13 @@ public class ProductController {
 		product.setContents(contents);
 
 		//지역
-		product.setLocationNo(productForm.getLocationNo());
-
+		//product.setLocationNo(productForm.getLocationNo());
+		Location location = new Location();
+		location = productService.findLocationNo(productForm.getLocation());
+		product.setLocation(location);
+	
+		
+		
 		//수량 및 인원
 		int qty = productForm.getQty();
 		product.setQty(qty);
@@ -134,11 +146,7 @@ public class ProductController {
 		productService.addProduct(product);
 
 
-		return "redirect:/searchlist.do";
-	}
-	@RequestMapping(value="/searchlist.do")
-	public String searchlist() {
-		return "product/searchlist";
+		return "redirect:/searchList.do";
 	}
 
 
@@ -160,20 +168,15 @@ public class ProductController {
 	@RequestMapping(value="/locationForlocal.do", method=RequestMethod.POST)
 	public @ResponseBody List<Location> locationForlocal(String city) throws Exception{
 
-		List<Location> location = productService.findLocalbyCity(city);
-		
-		System.out.println("-------------------------------");
-		System.out.println("-------------------------------");
-		System.out.println("-------------------------------");
-		System.out.println(location.get(0));
-		System.out.println(location.get(1));
-		System.out.println("-------------------------------");
-		System.out.println("-------------------------------");
-		System.out.println("-------------------------------");
-		
+		List<Location> location = productService.findLocalList(city);		
 		return location;
+	}
 	
-
+	@RequestMapping(value="/searchList.do", method=RequestMethod.GET)
+	public String searchList (@RequestParam(name="search")String search, @RequestParam(name="type")String type) throws Exception{
+		//List<Product> searchProduct = productService.searchProduct(search);	
+		
+		return "product/searchList";
 	}
 
 

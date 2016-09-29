@@ -1,6 +1,7 @@
 package com.withmong.form;
 
 import com.withmong.model.Category;
+import com.withmong.model.Location;
 
 public class ProductForm {
 	
@@ -12,7 +13,7 @@ public class ProductForm {
 	private String tag;
 
 	
-	private int locationNo;
+	private Location location;
 	private Category category;
 	
 	public ProductForm(){}
@@ -65,12 +66,12 @@ public class ProductForm {
 		this.tag = tag;
 	}
 
-	public int getLocationNo() {
-		return locationNo;
+	public Location getLocation() {
+		return location;
 	}
 
-	public void setLocationNo(int locationNo) {
-		this.locationNo = locationNo;
+	public void setLocation(Location location) {
+		this.location = location;
 	}
 
 	public Category getCategory() {
@@ -80,7 +81,8 @@ public class ProductForm {
 	public void setCategory(Category category) {
 		this.category = category;
 	}
-	
+
+
 	
 	
 }
