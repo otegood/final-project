@@ -32,13 +32,16 @@ public interface UserService {
 	
 	// 내 정보 변경
 	void myInfoModify(User user);
-	
+
 	// 신고하기
 	void report(Report report);
+
 	
 	// 내 구매 정보 보기
 	List<Order> myPurchase(String purchaseId);
 
 	// 내 판매 정보 보기
+
 	List<Order> mySell(String sellId);
+
 }

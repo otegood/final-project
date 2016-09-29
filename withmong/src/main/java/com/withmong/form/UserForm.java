@@ -20,7 +20,16 @@ public class UserForm {
 	private String schoolAbility3;
 	private String question;
 	private String answer;
+	private int point;
 	
+	public int getPoint() {
+		return point;
+	}
+
+	public void setPoint(int point) {
+		this.point = point;
+	}
+
 	public UserForm() {}
 	
 	public String getId() {
@@ -134,11 +143,8 @@ public class UserForm {
 				+ ", birth=" + birth + ", email=" + email + ", phone1=" + phone1 + ", phone2=" + phone2 + ", phone3="
 				+ phone3 + ", gender=" + gender + ", schoolAbility1=" + schoolAbility1 + ", schoolAbility2="
 				+ schoolAbility2 + ", schoolAbility3=" + schoolAbility3 + ", question=" + question + ", answer="
-				+ answer + "]";
+				+ answer + ", point=" + point + "]";
 	}
 
-
-
-	
 	
 }

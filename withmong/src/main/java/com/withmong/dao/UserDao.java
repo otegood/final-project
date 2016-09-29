@@ -21,12 +21,15 @@ public interface UserDao {
 	void changePassword(User user);
 	// 내 정보 변경
 	void myInfoModify(User user);
+
 	// 신고하기
 	void reportUser(Report report);
+
 	// 내 구매내역 확인하기
 	List<Order> myPurchase(String purchaseId);
 	// 내 판매내역 확인하기
 	List<Order> mySell(String sellId);
 	
+
 	
 }

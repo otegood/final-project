@@ -30,7 +30,9 @@ public class ProductController {
 	@Autowired
 	private ProductService productService;
 
+
 	private static String UPLOAD_DIRECTORY = "C:\\Users\\JHTA\\git\\final-project\\withmong\\src\\main\\webapp\\resources\\images\\";
+
 
 
 	@RequestMapping(value="/detail.do")
@@ -60,6 +62,7 @@ public class ProductController {
 	public @ResponseBody List<ProductReview> getReviewList (@RequestParam(name="productNo") int no) {
 		List<ProductReview> productReivewList = productService.getAllProductReivew(no);
 		return productReivewList;
+
 	}
 
 

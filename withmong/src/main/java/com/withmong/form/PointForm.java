@@ -1,31 +1,40 @@
-package com.withmong.model;
+package com.withmong.form;
 
 import java.util.Date;
 
-public class Point {
+import com.withmong.model.User;
 
-	
-	private int charge;		// 충전
-	private int withdraw;	// 출금
+public class PointForm {
+
+	private int charge;		//충전
+	private int withraw;	//출금
 	private Date regdate;
 	private User userid;
 	
-	public Point() {}
+	public PointForm() {}
 
+	
+	
 	public int getCharge() {
 		return charge;
 	}
+
+
 
 	public void setCharge(int charge) {
 		this.charge = charge;
 	}
 
-	public int getWithdraw() {
-		return withdraw;
+
+
+	public int getWithraw() {
+		return withraw;
 	}
 
-	public void setWithdraw(int withdraw) {
-		this.withdraw = withdraw;
+
+
+	public void setWithraw(int withraw) {
+		this.withraw = withraw;
 	}
 
 	public Date getRegdate() {
@@ -44,10 +53,15 @@ public class Point {
 		this.userid = userid;
 	}
 
+
+
 	@Override
 	public String toString() {
-		return "Point [charge=" + charge + ", withraw=" + withdraw + ", regdate=" + regdate + ", userid=" + userid + "]";
+		return "PointForm [charge=" + charge + ", withraw=" + withraw + ", regdate=" + regdate + ", userid=" + userid
+				+ "]";
 	}
 
+	
+	
 	
 }

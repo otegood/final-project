@@ -88,6 +88,7 @@ public class UserServiceImpl implements UserService{
 		userDao.myInfoModify(user);
 	}
 
+
 	// 신고하기
 	@Override
 	public void report(Report report) {
@@ -110,6 +111,7 @@ public class UserServiceImpl implements UserService{
 	}
 
 	
+
 }
 
 

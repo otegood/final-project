@@ -77,7 +77,7 @@
 			 	img = #{img}
 		where id = #{id}
 	</update>
-	
+
 	<!-- 신고하기 기능 -->
 	<insert id="reportUser" parameterType="Report">
 		insert into report_table
@@ -85,6 +85,7 @@
 		values
 		(test_seq.nextval, #{contents}, sysdate, #{reason}, #{reporter.id}, #{suspect.id})
 	</insert>
+
 	
 	<!-- 내 구매 정보 보기 기능 (Product에 들어갈 예정)--> 
 	<select id="myPurchase" parameterType="string" resultType="Order">
