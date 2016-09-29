@@ -10,12 +10,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.withmong.model.User;
+import com.withmong.service.BoardService;
 import com.withmong.service.ManagerService;
 
 @Controller
 public class ManagerController {
 
 	@Autowired private ManagerService managerService;
+	@Autowired private BoardService boardService;
 	
 	@ExceptionHandler(RuntimeException.class)
 	public String runtimeExceptionHandler(RuntimeException ex) {
@@ -30,6 +32,10 @@ public class ManagerController {
 		String url = "";
 		List<User> userList = managerService.getAllUsers();  
 		model.addAttribute("userList", userList);
+		
+		model.addAttribute("noticelist", boardService.noticeList() );
+		model.addAttribute("qnalist", boardService.qnaList());
+		model.addAttribute("requestlist", boardService.requestList() );
 		
 		if(loginedUser.getId().equals("king")){
 			url = "mmain"; 
