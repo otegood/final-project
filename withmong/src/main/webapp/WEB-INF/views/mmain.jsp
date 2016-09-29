@@ -130,7 +130,7 @@ $(function(){
 							</tr>
 						</thead>
 						<tbody id="requestChain">
-							<c:forEach var="r" items="${requestlist }">
+							<c:forEach var="r" items="${requestlist }" begin="0" end="6">
 								<c:if test="${r.delCheck eq 'Y' }">
 									<tr class="danger">
 								</c:if>
