@@ -112,6 +112,7 @@
 			requestreple_table 
 		where
 			boardno = #{boardNo.no}
-		
+		order by
+			regdate desc
 	</select>
 </mapper>

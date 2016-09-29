@@ -2,9 +2,6 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<%
-	int count = 0;
-%>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -78,13 +75,12 @@
 						<td>
 							<a class="btn btn-warning" role="button" data-toggle="collapse" href="#${message.sender }" aria-expanded="false" aria-controls="collapseExample" style="width: 300px;">
 								<c:out value="${message.sender }"/>	님과 대화내용
+								<!-- 
 								<c:forEach var="one" items="${onebyoneList}">
 									<c:if test="${one.readCheck eq 'N' and one.sender eq message.sender}">
-										<%count += 1; %>									
 									</c:if>
 								</c:forEach>
-								new <%=count %>
-								<%count=0; %>
+								-->
 							</a>
 							<div class="collapse" id="${message.sender }">
 								<div class="well">

@@ -1,5 +1,7 @@
 package com.withmong.web;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -98,7 +100,9 @@ public class BoardController {
 	public String requestDetail(Model model, @RequestParam(name="no") int no) {
 		model.addAttribute("request", boardService.requestDetail(no));
 		// 댓글 목록
-		model.addAttribute("requestReple", boardService.requestRepleList(no));
+		List<RequestReple> reples = boardService.requestRepleList(no);
+		model.addAttribute("requestReple", reples);
+		model.addAttribute("requestRepleLength", reples.size());
 		return "board/requestdetail";
 	}
 	
@@ -130,5 +134,12 @@ public class BoardController {
 		requestReply.setBoardNo(boardService.requestDetail(no));
 		boardService.addRequestReply(requestReply);
 		return "redirect:/requestDetail.do?no="+no;
+	}
+	
+	// QnA게시판 목록
+	@RequestMapping("/qnalist.do")
+	public String qnaList(Model model) {
+		model.addAttribute("qna", boardService.qnaList());
+		return "board/qnalist";
 	}
 }

@@ -11,7 +11,6 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
   <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <style type="text/css">
-	
 	header {
 		background-color: black;
 	}
@@ -50,6 +49,10 @@
 		text-align: center;
 	}
 </style>
+
+<script type="text/javascript">
+	var count = 0;
+</script>
 <title>요청게시판 상세페이지</title>
 </head>
 <body>
@@ -86,19 +89,19 @@
 			</tbody>
 		</table>
 		
-		<div>
+		<div style="height: 50px;">
 			<c:if test="${LOGIN_USER.id eq request.userId.id }">
 				<a href="requestUpdateForm.do?no=${request.no }" class="btn btn-warning">수정</a>
 				<a href="requestDelete.do?no=${request.no }" class="btn btn-danger">삭제</a>
 			</c:if>
-			<a href="requestlist.do" class="btn btn-primary pull-right">목록</a>
+			<a href="requestlist.do" class="btn btn-warning pull-right">목록</a>
 		</div>
 		
 		<div style="margin-top: 30px;">
 			<form role="form" method="post" action="requestReple.do">
 				<table >
 					<tr>
-						<th style="width: 137px;">내용</th>
+						<th style="width: 137px;">댓글</th>
 						<td>
 							<input type="text" hidden="hidden" name="no" value="${request.no }"/>
 							<textarea rows="3" style="width:700px;" class="form-control" name="contents"
@@ -108,13 +111,14 @@
 					</tr>
 				</table>
 			</form>
-			<h5>코멘트</h5>
-			<table>
+			<br/>
+			<p><b>코멘트 (${requestRepleLength} )</b></p>
+			<table class="table">
 				<c:forEach var="reple" items="${requestReple }">
 					<tr>
-						<td>${reple.userId.id }</td>
-						<td>${reple.contents }</td>
-						<td>${reple.regdate }</td>
+						<td style="width: 137px;">${reple.userId.id }</td>
+						<td style="width:700px;" >${reple.contents }</td>
+						<td><fmt:formatDate value="${reple.regdate }" pattern="yyyy-MM-dd EEEE hh:mm:ss" /></td>
 					</tr>
 				</c:forEach>
 			</table>

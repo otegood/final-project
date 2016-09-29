@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.withmong.dao.BoardDao;
 import com.withmong.model.Notice;
+import com.withmong.model.QNA;
 import com.withmong.model.Request;
 import com.withmong.model.RequestReple;
 
@@ -72,6 +73,10 @@ public class BoardServiceImpl  implements BoardService{
 	@Override
 	public List<RequestReple> requestRepleList(int no) {
 		return boardDao.requestRelpleList(no);
+	}
+	@Override
+	public List<QNA> qnaList() {
+		return boardDao.qnaList();
 	}
 
 }

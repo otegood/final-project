@@ -74,7 +74,9 @@ $(function(){
 	<div class="container">
 		<div class="row">
 			<h1>요청게시판</h1>
-			<a class="btn btn-primary" href="requestRegister.do">글 쓰기</a>
+			<div style="text-align: right;">
+				<a class="btn btn-primary" href="requestRegister.do">글 쓰기</a>
+			</div>
 			<table class="table table-hover">
 				<thead>
 					<tr>

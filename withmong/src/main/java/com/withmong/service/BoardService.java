@@ -3,6 +3,7 @@ package com.withmong.service;
 import java.util.List;
 
 import com.withmong.model.Notice;
+import com.withmong.model.QNA;
 import com.withmong.model.Request;
 import com.withmong.model.RequestReple;
 
@@ -29,5 +30,8 @@ public interface BoardService {
 	void updateRequest(Request request);
 	// 요청게시글 댓글 작성
 	void addRequestReply(RequestReple requestReply);
+	// 요청게시글 댓글 목록
 	List<RequestReple> requestRepleList(int no);
+	// QnA 게시판 목록
+	List<QNA> qnaList();
 }
