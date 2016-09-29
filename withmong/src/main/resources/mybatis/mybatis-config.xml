@@ -27,8 +27,10 @@
     <mapper resource="mybatis/mappers/product.xml"/>
     <mapper resource="mybatis/mappers/point.xml"/>
     <mapper resource="mybatis/mappers/manager.xml"/>
-
+	
     <mapper resource="mybatis/mappers/board.xml"/>
+
+	<mapper resource="mybatis/mappers/main.xml"/>
 
   </mappers>
   
