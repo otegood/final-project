@@ -237,7 +237,7 @@ $(function(){
 		</div>
 			
 		<div class="row col-sm-6" id="frames" style="margin: auto;">
-			<h2>거래 내역</h2>
+			<h2>상품 관리</h2>
 			<div style="text-align: right">
 				<a class="btn btn-xs btn-warning" href="">더 보기</a>
 			</div>
