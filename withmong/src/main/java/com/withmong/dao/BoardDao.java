@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.withmong.model.Notice;
 import com.withmong.model.QNA;
+import com.withmong.model.QNAReple;
 import com.withmong.model.Request;
 import com.withmong.model.RequestReple;
 
@@ -35,5 +36,17 @@ public interface BoardDao {
 	List<RequestReple> requestRelpleList(int no);
 	// QnA게시판 목록
 	List<QNA> qnaList();
+	// QnA게시글 등록
+	void addQna(QNA qna);
+	// QnA 상세피이지
+	QNA qnaDetail(int no);
+	// QnA 삭제처리
+	void qnaDelete(int no);
+	// QnA 업데이트
+	void qnaUpdate(QNA qna);
+	// Qna 댓글 작성
+	void addQnaReple(QNAReple qnaReple);
+	// Qna 댓글 목록
+	List<QNAReple> qnaRepleList(int no);
 	
 }
