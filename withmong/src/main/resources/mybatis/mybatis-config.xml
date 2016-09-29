@@ -18,10 +18,9 @@
 	<typeAlias type="com.withmong.model.Report" alias="Report"/>
   	<typeAlias type="com.withmong.model.Location" alias="Location"/>
   	<typeAlias type="com.withmong.model.Request" alias="Request"/>	
-
   	<typeAlias type="com.withmong.form.BreadcrumbsForm" alias="Crumbs"/>
   	<typeAlias type="com.withmong.form.SearchForm" alias="Search"/>
-  	<typeAlias type="com.withmong.model.RequestReply" alias="RequestReply"/>
+  	<typeAlias type="com.withmong.model.RequestReple" alias="RequestReple"/>
 
   </typeAliases>
   

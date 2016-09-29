@@ -4,7 +4,7 @@ import java.util.List;
 
 import com.withmong.model.Notice;
 import com.withmong.model.Request;
-import com.withmong.model.RequestReply;
+import com.withmong.model.RequestReple;
 
 public interface BoardDao {
 	
@@ -29,5 +29,8 @@ public interface BoardDao {
 	// 요청게시글 업데이트
 	void requestUpdate(Request request);
 	// 요청게시글 댓글 작성
-	void addRequestReple(RequestReply requestReply);
+	void addRequestReple(RequestReple requestReply);
+	// 요청게시글 댓글 목록
+	List<RequestReple> requestRelpleList(int no);
+	
 }

@@ -95,7 +95,6 @@
 		</div>
 		
 		<div style="margin-top: 30px;">
-			<h4>댓글</h4>
 			<form role="form" method="post" action="requestReple.do">
 				<table >
 					<tr>
@@ -109,6 +108,16 @@
 					</tr>
 				</table>
 			</form>
+			<h5>코멘트</h5>
+			<table>
+				<c:forEach var="reple" items="${requestReple }">
+					<tr>
+						<td>${reple.userId.id }</td>
+						<td>${reple.contents }</td>
+						<td>${reple.regdate }</td>
+					</tr>
+				</c:forEach>
+			</table>
 		</div>
 	</div>
 	<%@ include file="../footer.jsp" %>	

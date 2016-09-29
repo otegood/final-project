@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 import com.withmong.dao.BoardDao;
 import com.withmong.model.Notice;
 import com.withmong.model.Request;
-import com.withmong.model.RequestReply;
+import com.withmong.model.RequestReple;
 
 @Service
 public class BoardServiceImpl  implements BoardService{
@@ -59,13 +59,19 @@ public class BoardServiceImpl  implements BoardService{
 	public void requestDelete(int no) {
 		boardDao.requestDelete(no);
 	}
+	// 요청게시글 수정
 	@Override
 	public void updateRequest(Request request) {
 		boardDao.requestUpdate(request);		
 	}
+	// 요청게시글 댓글 작성
 	@Override
-	public void addRequestReply(RequestReply requestReply) {
-		boardDao.addRequestReple(requestReply);
+	public void addRequestReply(RequestReple requestReple) {
+		boardDao.addRequestReple(requestReple);
+	}
+	@Override
+	public List<RequestReple> requestRepleList(int no) {
+		return boardDao.requestRelpleList(no);
 	}
 
 }

@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.withmong.model.Notice;
 import com.withmong.model.Request;
-import com.withmong.model.RequestReply;
+import com.withmong.model.RequestReple;
 import com.withmong.model.User;
 import com.withmong.service.BoardService;
 
@@ -97,6 +97,8 @@ public class BoardController {
 	@RequestMapping("/requestDetail.do")
 	public String requestDetail(Model model, @RequestParam(name="no") int no) {
 		model.addAttribute("request", boardService.requestDetail(no));
+		// 댓글 목록
+		model.addAttribute("requestReple", boardService.requestRepleList(no));
 		return "board/requestdetail";
 	}
 	
@@ -122,7 +124,7 @@ public class BoardController {
 	}
 	// 요철게시글 댓글 작성
 	@RequestMapping(value="/requestReple.do")
-	public String requestReple(RequestReply requestReply, User loginedUser, @RequestParam(name="no") int no) {
+	public String requestReple(RequestReple requestReply, User loginedUser, @RequestParam(name="no") int no) {
 		requestReply.setContents(requestReply.getContents().replace("\r\n", "<br>"));
 		requestReply.setUserId(loginedUser);
 		requestReply.setBoardNo(boardService.requestDetail(no));

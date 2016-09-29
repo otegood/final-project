@@ -2,15 +2,15 @@ package com.withmong.model;
 
 import java.util.Date;
 
-public class RequestReply {
+public class QNAReple {
 
 	private int no;
 	private String contents;
 	private Date regdate;
-	private Request boardNo;
+	private QNA boardNo;
 	private User userId;
 	
-	public RequestReply() {}
+	public QNAReple () {}
 	
 	public int getNo() {
 		return no;
@@ -30,10 +30,10 @@ public class RequestReply {
 	public void setRegdate(Date regdate) {
 		this.regdate = regdate;
 	}
-	public Request getBoardNo() {
+	public QNA getBoardNo() {
 		return boardNo;
 	}
-	public void setBoardNo(Request boardNo) {
+	public void setBoardNo(QNA boardNo) {
 		this.boardNo = boardNo;
 	}
 	public User getUserId() {
@@ -42,10 +42,9 @@ public class RequestReply {
 	public void setUserId(User userId) {
 		this.userId = userId;
 	}
-
 	@Override
 	public String toString() {
-		return "RequestReply [no=" + no + ", contents=" + contents + ", regdate=" + regdate + ", boardNo=" + boardNo
+		return "QNAReply [no=" + no + ", contents=" + contents + ", regdate=" + regdate + ", boardNo=" + boardNo
 				+ ", userId=" + userId + "]";
 	}
 	

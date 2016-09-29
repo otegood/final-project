@@ -4,7 +4,7 @@ import java.util.List;
 
 import com.withmong.model.Notice;
 import com.withmong.model.Request;
-import com.withmong.model.RequestReply;
+import com.withmong.model.RequestReple;
 
 public interface BoardService {
 	// 공지사항 목록
@@ -28,5 +28,6 @@ public interface BoardService {
 	// 요청게시글 업데이트
 	void updateRequest(Request request);
 	// 요청게시글 댓글 작성
-	void addRequestReply(RequestReply requestReply);
+	void addRequestReply(RequestReple requestReply);
+	List<RequestReple> requestRepleList(int no);
 }
