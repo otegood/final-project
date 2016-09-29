@@ -97,11 +97,39 @@
 			a.bno = b.no	
 	</select>
 	
-	<!-- 
-	<select id="searchProduct" parameterType="String" resultType="Product">
-		
+
+	<select id="searchProduct" parameterType="Search" resultType="Product">
+		select no,
+			title,
+			userid,
+			img,
+			video,
+			contents,
+			price,
+			qty,
+			regdate,
+			avglike,
+			hits,
+			tag,
+			categoryno as "category.no",
+			location as "location.no"
+		from product_table
+		<where> 
+			<if test="type == 'title'">
+				title like '%' || #{search} || '%'
+			</if>
+			<if test="type == 'contents'">
+				and contents like '%' || #{search} || '%'
+			</if>
+			<if test="type == 'tag'">
+				and tag like '%' || #{search} || '%'
+			</if>
+			<if test="type == 'writer'">
+				and userid like '%' || #{search} || '%'
+			</if>
+		</where>
 	</select>
-	 -->
+
 	
 </mapper>
 

@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.withmong.dao.ProductDao;
 import com.withmong.form.BreadcrumbsForm;
+import com.withmong.form.SearchForm;
 import com.withmong.model.Category;
 import com.withmong.model.Location;
 import com.withmong.model.Product;
@@ -84,9 +85,11 @@ public class ProductServiceImpl implements ProductService{
 	}
 
 	@Override
-	public List<Product> searchProduct(String search) {
-		return productDao.searchProduct(search);
+	public List<Product> searchProduct(SearchForm searchForm) {
+		return productDao.searchProduct(searchForm);
 	}
+
+
 
 
 }
