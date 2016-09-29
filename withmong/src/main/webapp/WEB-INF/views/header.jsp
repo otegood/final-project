@@ -127,7 +127,7 @@ $(document).ready(function(){
 								<button type="submit">
 									<span class="glyphicon glyphicon-search"></span>
 								</button>
-								<select>
+								<select name="type">
 									<option selected="selected" value="title">제목</option>
 									<option value="contents">내용</option>
 									<option value="tag">태그</option>
