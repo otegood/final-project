@@ -19,7 +19,7 @@ public class Product {
 	private int hits;
 	private String tag;
 	
-	private int locationNo;
+	private Location location;
 	private Category category;
 	
 	public Product(){}
@@ -120,12 +120,12 @@ public class Product {
 		this.tag = tag;
 	}
 
-	public int getLocationNo() {
-		return locationNo;
+	public Location getLocation() {
+		return location;
 	}
 
-	public void setLocationNo(int locationNo) {
-		this.locationNo = locationNo;
+	public void setLocation(Location location) {
+		this.location = location;
 	}
 
 	public Category  getCategory() {
@@ -140,7 +140,7 @@ public class Product {
 	public String toString() {
 		return "Product [no=" + no + ", title=" + title + ", userid=" + userid + ", img=" + img + ", video=" + video
 				+ ", contents=" + contents + ", price=" + price + ", qty=" + qty + ", regDate=" + regDate + ", avglike="
-				+ avglike + ", hits=" + hits + ", tag=" + tag + ", locationNo=" + locationNo + ", category=" + category
+				+ avglike + ", hits=" + hits + ", tag=" + tag + ", location=" + location + ", category=" + category
 				+ "]";
 	}
 

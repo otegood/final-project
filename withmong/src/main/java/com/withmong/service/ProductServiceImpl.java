@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.withmong.dao.ProductDao;
+import com.withmong.form.BreadcrumbsForm;
 import com.withmong.model.Category;
 import com.withmong.model.Location;
 import com.withmong.model.Product;
@@ -63,7 +64,29 @@ public class ProductServiceImpl implements ProductService{
 	}
 
 	@Override
-	public List<Location> findLocalbyCity(String city) {
-		return productDao.findLocalbyCity(city);
+	public List<Location> findLocalList(String city) {
+		return productDao.findLocalList(city);
 	}
+
+	@Override
+	public Location findLocationNo(Location location) {
+		return productDao.findLocationNo(location);
+	}
+
+	@Override
+	public Location getLocationByno(int no) {
+		return productDao.getLocationByno(no);
+	}
+
+	@Override
+	public BreadcrumbsForm getCrumbs(int no) {
+		return productDao.getCrumbs(no);
+	}
+
+	@Override
+	public List<Product> searchProduct(String search) {
+		return productDao.searchProduct(search);
+	}
+
+
 }

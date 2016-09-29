@@ -18,14 +18,48 @@
 <script type="text/javascript">
 $(function(){
 	
+	$("form").submit(function() {
+		if($("#categoryNo").val() == "default") {
+			alert("카테고리를 선택해주세요");
+			return false;
+		}
+		if(!$.trim($(":input[name='title']").val())) {
+			alert("타이틀을 입력해주세요");
+			return false;
+		}
+		if(!$.trim($("textarea[name='contents']").val())) {
+			alert("상품 설명을 입력해주세요");
+			return false;
+		}
+		if($("#city").val() == "default") {
+			alert("도시를 선택해주세요");
+			return false;
+		}
+		if($("#selectqty").val() == "default") {
+			alert("수량및 인원을 선택해주세요");
+			return false;
+		}
+		if(!$.trim($(":input[name='price']").val())) {
+			alert("가격을 입력해주세요");
+			return false;
+		}
+		if(!$.trim($(":input[name='tag']").val())) {
+			alert("태그를 입력해주세요");
+			return false;
+		}
+		return true;
+	});
+	
+	
+// 도시 선택시 구 나오기
 	$("#city").change(function(){
+		$("#local").empty();
 		$.ajax({
 			url:"locationForlocal.do",
 			type:"POST",
 			data:{city:$("#city").val() },
 			dataType: "json",
 			success: function(data){
-				console.log(data)
 				$.each(data,function(index, item){	
 					$("#local").append('<option value="'+item.local+'">'+item.local+'</option>');
 				})
@@ -92,9 +126,9 @@ strong {
 						<label class="col-sm-3 text-right">카테고리</label>
 						<div class="col-sm-9">
 							<select name="category.no" id="categoryNo">
-								<option value="defualt" selected="selected">--선택하세요--</option>
+								<option value="default" selected="selected">--선택하세요--</option>
 									 <c:forEach var="cate" items="${cateList}">
-									<option value="${cate.no }" selected="selected">${cate.name }</option>
+									<option value="${cate.no }">${cate.name }</option>
 									</c:forEach>		 
 							</select>
 						</div>
@@ -121,22 +155,22 @@ strong {
 					<div class="form-group row">
 						<label class="col-sm-3 text-right">상품 설명</label>
 						<div class="col-sm-9">
-							<textarea name="contents" rows="7" cols="72"></textarea>
+							<textarea id="contents" name="contents" rows="7" cols="72"></textarea>
 						</div>
 					</div>
 
 					<div class="form-group row">
 						<label class="col-sm-3 text-right">도시 선택</label> 
-						<select name="city" id="city">
-							<option value="defualt" selected="selected">--선택하세요--</option>
+						<select name="location.city" id="city">
+							<option value="default" selected="selected">--선택하세요--</option>
 							 <c:forEach var="location" items="${locaList}">
 									<option value="${location.city }">${location.city }</option>
 							</c:forEach>		 
 						</select> 
 						
 						<label class="text-right"> 구 선택</label> 
-						<select name="local" id="local">
-							<option value="defualt" selected="selected">--선택하세요--</option>
+						<select name="location.local" id="local">
+							<option value="default" selected="selected">--선택하세요--</option>
 	
 						</select> 
 						
@@ -144,8 +178,8 @@ strong {
 
 					<div class="form-group row">
 						<label class="col-sm-3 text-right">수량 및 인원</label> 
-						<select>
-							<option selected="selected">--선택하세요--</option>
+						<select id="selectqty">
+							<option selected="selected" value="default">--선택하세요--</option>
 							<option>--수량--</option>
 							<option>--인원--</option>
 						</select> <input type="number" name="qty" id="qty" size="10" />

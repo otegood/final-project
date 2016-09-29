@@ -8,7 +8,7 @@
 		insert into product_table
 		( no,title,userid,img,video,contents,price,qty,regdate,avglike,hits,tag,categoryno,location )
 		values
-		(test_seq.nextval, #{title},#{userId},#{img}, #{video}, #{contents}, #{price}, #{qty},sysdate,0,0,#{tag},#{category.no},#{locationNo})
+		(test_seq.nextval, #{title},#{userId},#{img}, #{video}, #{contents}, #{price}, #{qty},sysdate,0,0,#{tag},#{category.no},#{location.no})
 	</insert>
 	
 		<select id="findCategory" resultType="Category">
@@ -30,7 +30,7 @@
 			A.hits,
 			A.tag,
 			A.categoryno as "category.no",
-			A.location,
+			A.location as "location.no",
 			B.no,
 			B.name as "category.name",
 			B.bno as "category.bno"
@@ -71,11 +71,37 @@
 		order by city
 	</select>
 	
-	<select id="findLocalbyCity" parameterType="String" resultType="Location">
+	<select id="findLocalList" parameterType="String" resultType="Location">
 		select no,city,local
 		from location_table
 		where city = #{value}
 	</select>
+	
+	<select id="findLocationNo" parameterType="Location" resultType="Location">
+		select no,city,local
+		from location_table
+		where city = #{city} and local = #{local}
+	</select>
+	
+	<select id="getLocationByno" parameterType="int" resultType="Location">
+		select no,city,local
+		from location_table
+		where no = #{value}
+	</select>
+	
+	<select id="getCrumbs" parameterType="int" resultType="Crumbs">
+		select a.name as "CateSName",b.name as "CateBName"
+		from Category_table A , Category_table B
+		where 	
+			a.no = #{value} and 
+			a.bno = b.no	
+	</select>
+	
+	<!-- 
+	<select id="searchProduct" parameterType="String" resultType="Product">
+		
+	</select>
+	 -->
 	
 </mapper>
 

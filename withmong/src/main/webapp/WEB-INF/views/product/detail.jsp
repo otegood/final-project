@@ -113,7 +113,7 @@ strong {
 		<!-- 내용 기입 -->
 		<div class="container">
 			<div class="row">
-				<div class="col-sm-3">교육 > ${detail.category.name }</div>
+				<div class="col-sm-3">${crumbs.cateBName} > ${crumbs.cateSName }</div>
 				<div class="col-sm-6">제목 : ${detail.title }</div>
 				<div class="col-sm-3">조회수 : ${detail.hits }</div>
 			</div>
@@ -125,24 +125,24 @@ strong {
 					<div class="col-sm-1"></div>
 					<div class="col-sm-3">
 						
-							${detail.price } 원
-							<button type="button" class="btn btn-danger">구매하기</button>
+							${detail.price } 원<br>
+							<button id="buybtn" type="button" class="btn btn-danger">구매하기</button>
 					</div>
 					<div class="col-sm-1"></div>
 					<div class="col-sm-4">
 						<div class="row">
-							<div class="col-sm-7">판매자 아이디 : ${userDetail.id }</div>
-							<div class="col-sm-5"> 
-								 <button type="button" class="btn btn-primary btn-xs">쪽지</button>
-								 <button type="button" class="btn btn-danger btn-xs">신고</button>
-							</div>
-						</div>
-							<div>판매자 프로필</div>
-							<div><img src="../../resources/images/${userDetail.img}" width="200px;"></div>
-							<p>등급 : ${userDetail.grade }  성별: <c:if test="${userDetail.gender eq 'M'}">남자</c:if>
-															   <c:if test="${userDetail.gender eq 'F'}">여자</c:if>
+							<p>판매자 아이디 : ${userDetail.id }</p>
+							<p>판매자 프로필 
+								<a href="" style="margin-left: 10px;"><span class="glyphicon glyphicon-envelope"></span></a> 
+								<a href="" style="margin-left: 10px;"><span class="glyphicon glyphicon-alert" style="color: red"></span></a>
+							</p>
+							<img src="../../resources/images/${userDetail.img}" width="200px;">
+							<p>등급 : ${userDetail.grade }        성별:  <c:if test="${userDetail.gender eq 'M'}">남자</c:if>
+															 		  <c:if test="${userDetail.gender eq 'F'}">여자</c:if>
 							</p>
 							<p>학력 :${userDetail.schoolAbility }</p>
+							<p>가능 지역 : ${detail.location.city } > ${detail.location.local }</p>
+						</div>
 					</div>
 				</div>
 			
@@ -164,6 +164,7 @@ strong {
 				</div>
 				<div id="menu1" class="tab-pane fade">
 					<form role="form" action="productreple.do" method="post">
+							<br>
 			       		<div class="text-center">
 				         	<input type="radio" name="score" value="1" checked="checked" /><img src="../../resources/images/default/1star.PNG">
 				      		<input type="radio" name="score" value="2" /> <img src="../../resources/images/default/2star.PNG">

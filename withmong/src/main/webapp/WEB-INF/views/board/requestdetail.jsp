@@ -47,6 +47,7 @@
 	}
 	th{
 		background-color: lightgreen;
+		text-align: center;
 	}
 </style>
 <title>요청게시판 상세페이지</title>
@@ -95,8 +96,18 @@
 		
 		<div style="margin-top: 30px;">
 			<h4>댓글</h4>
-			<form role="form" method="post" action="">
-				
+			<form role="form" method="post" action="requestReple.do">
+				<table >
+					<tr>
+						<th style="width: 137px;">내용</th>
+						<td>
+							<input type="text" hidden="hidden" name="no" value="${request.no }"/>
+							<textarea rows="3" style="width:700px;" class="form-control" name="contents"
+									  placeholder="명예훼손, 개인정보 유출, 분쟁 유발, 허위사실 유포 등의 글은 이용약관에 의해 제재는 물론 법률에 의해 처벌받을 수 있습니다. 건전한 커뮤니티를 위해 자제를 당부 드립니다." ></textarea>
+						</td>
+						<td><input type="submit" class="btn btn-primary"  style="height: 73px;" value="댓글등록" /> </td>
+					</tr>
+				</table>
 			</form>
 		</div>
 	</div>

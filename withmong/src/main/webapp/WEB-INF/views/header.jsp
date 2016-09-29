@@ -119,7 +119,7 @@ $(document).ready(function(){
 			</c:choose>
 
 			<div class="navbar-collapse collapse " id="searchbar">
-				<form class="navbar-form" action="#">
+				<form class="navbar-form" action="searchList.do" method="get">
 					<div class="form-group" style="display: inline;">
 						<div class="input-group" style="display: table;">
 							<span class="input-group-addon"
@@ -127,6 +127,12 @@ $(document).ready(function(){
 								<button type="submit">
 									<span class="glyphicon glyphicon-search"></span>
 								</button>
+								<select>
+									<option selected="selected" value="title">제목</option>
+									<option value="contents">내용</option>
+									<option value="tag">태그</option>
+									<option value="writer">작성자</option>
+								</select>
 							</span> <input class="form-control" name="search"
 								placeholder="검색" autocomplete="off"
 								autofocus="autofocus" type="text">
