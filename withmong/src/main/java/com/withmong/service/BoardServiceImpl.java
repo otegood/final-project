@@ -33,22 +33,34 @@ public class BoardServiceImpl  implements BoardService{
 	public void noticeDelete(int no) {
 		boardDao.noticeDelete(no);
 	}
+	// 공지사항 수정
 	@Override
 	public void updateNotice(Notice notice) {
 		boardDao.updateNotice(notice);
 	}
+	// 요청게시판 목록
 	@Override
 	public List<Request> requestList() {
 		return boardDao.requestList();
 	}
+	// 요청게시글 작성
 	@Override
 	public void addRequest(Request request) {
 		boardDao.addRequest(request);
 	}
+	// 요청게시글 상세페이지
 	@Override
 	public Request requestDetail(int no) {
-		// TODO Auto-generated method stub
-		return null;
+		return boardDao.requestDetail(no);
+	}
+	// 요청게시글 삭제처리
+	@Override
+	public void requestDelete(int no) {
+		boardDao.requestDelete(no);
+	}
+	@Override
+	public void updateRequest(Request request) {
+		boardDao.requestUpdate(request);		
 	}
 
 }

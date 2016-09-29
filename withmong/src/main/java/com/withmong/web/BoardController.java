@@ -98,4 +98,25 @@ public class BoardController {
 		model.addAttribute("request", boardService.requestDetail(no));
 		return "board/requestdetail";
 	}
+	
+	// 요청글 삭제처리
+	@RequestMapping("/requestDelete.do")
+	public String requestDelete(@RequestParam(name="no") int no) {
+		boardService.requestDelete(no);
+		return "redirect:/requestlist.do";
+	}
+	
+	// 요청게시글 업데이트폼
+	@RequestMapping("/requestUpdateForm.do")
+	public String requestUpdateForm(Model model, @RequestParam(name="no") int no){
+		model.addAttribute("request", boardService.requestDetail(no));
+		return "board/requestupdate";
+	}
+	// 요청게시글 업데이트
+	@RequestMapping("/requestUpdate.do")
+	public String requestUpdate(Request	request) {
+		request.setContents(request.getContents().replace("\r\n", "<br>"));
+		boardService.updateRequest(request);
+		return "redirect:/requestlist.do";
+	}
 }

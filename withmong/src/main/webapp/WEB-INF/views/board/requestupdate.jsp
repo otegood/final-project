@@ -62,44 +62,40 @@
 	</header>
 	<div class="container" >
 		<h1>요청게시판 상세페이지</h1>
-		<table class="table">
-			<thead>
-				<tr>
-					<th>번호</th>
-					<td>${request.no }</td>
-					<th>작성자</th>
-					<td>${request.userId.id }</td>
-					<th>등록일</th>
-					<td><fmt:formatDate value="${request.regdate }" pattern="yyyy-MM-dd EEEE" /></td>
-				</tr>
-			</thead>
-			<tbody>
-				<tr>
-					<th>제목</th>
-					<td colspan="5"><c:out value="${request.title }" /></td>
-				</tr>
-				<tr>
-					<th>내용</th>
-					<td colspan="5">${request.contents }</td>
-				</tr>
-			</tbody>
-		</table>
-		
-		<div>
-			<c:if test="${LOGIN_USER.id eq request.userId.id }">
-				<a href="requestUpdateForm.do?no=${request.no }" class="btn btn-warning">수정</a>
-				<a href="requestDelete.do?no=${request.no }" class="btn btn-danger">삭제</a>
-			</c:if>
-			<a href="requestlist.do" class="btn btn-primary pull-right">목록</a>
-		</div>
-		
-		<div style="margin-top: 30px;">
-			<h4>댓글</h4>
-			<form role="form" method="post" action="">
-				
-			</form>
-		</div>
+		<form role="form" method="post" action="requestUpdate.do">
+			<table class="table">
+				<thead>
+					<tr>
+						<th>번호</th>
+						<td><input type="text" value="${request.no }" hidden="hidden" name="no">${request.no }</td>
+						<th>작성자</th>
+						<td>${request.userId.id }</td>
+						<th>등록일</th>
+						<td><fmt:formatDate value="${request.regdate }" pattern="yyyy-MM-dd EEEE" /></td>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<th>제목</th>
+						<td colspan="5"><input type="text" class="form-control" value="${request.title }" name="title"></td>
+					</tr>
+					<tr>
+						<th>내용</th>
+						<td colspan="5"><textarea class="form-control" rows="10" cols="60" name="contents"  style="resize:none;">${request.contents }</textarea></td>
+					</tr>
+				</tbody>
+			</table>
+			
+			<div>
+				<input type="submit" class="btn btn-primary" value="완료" />
+				<a href="requestDelete.do?no=${request.no }" class="btn btn-danger">취소</a>
+			</div>
+		</form>
 	</div>
 	<%@ include file="../footer.jsp" %>	
 </body>
 </html>
+
+
+
+
