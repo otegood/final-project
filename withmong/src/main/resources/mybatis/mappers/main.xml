@@ -1,0 +1,50 @@
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.withmong.dao.MainDao">
+
+	<!--인기순으로  내역 가져오기 -->
+	<select id="getAvglikeList" parameterType="string" resultType="Product">
+		select *
+		from product_table
+		where userid = #{value}
+		order by 
+			regdate desc
+	</select>
+	
+	<!-- 등록순으로 내역 가져오기 -->
+	<select id="getRegList" parameterType="string" resultType="Product">
+		select *
+		from product_table
+		where userid = #{value}
+		order by 
+			regdate desc
+	</select>
+	
+	<!-- 조회순으로 내역 가져오기 -->
+	<select id="getHitList" parameterType="string" resultType="Product">
+		select *
+		from product_table
+		where userid = #{value}
+		order by 
+			regdate desc
+	</select>
+	
+</mapper>
+
+<!-- 
+	테이블 컬럼명
+	 private int charge;		// 충전
+	private int withraw;	// 출금
+	private Date regdate;
+	private User userid;
+
+	Form
+	private int charge;		//충전
+	private int withraw;	//출금
+	private Date regdate;
+	private User userid;
+	
+
+ -->
