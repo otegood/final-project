@@ -151,7 +151,10 @@
 	</select>
 
 	<insert id="addOrder" parameterType="Order">
-	
+		insert into Order_table
+		(no,regdate,buycheck,userid,productno)
+		values
+		(test_seq.nextval,sysdate,'W',#{userid.id},#{productNo.no})
 	</insert>
 
 	

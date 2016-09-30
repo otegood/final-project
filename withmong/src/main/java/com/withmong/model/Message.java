@@ -8,8 +8,8 @@ public class Message {
 	private String contents;
 	private Date senddate;
 	private String readCheck;
-	private String sender;
-	private String receiver;
+	private User sender;
+	private User receiver;
 	
 	public Message() {}
 	
@@ -37,24 +37,21 @@ public class Message {
 	public void setReadCheck(String readCheck) {
 		this.readCheck = readCheck;
 	}
-	public String getSender() {
+	public User getSender() {
 		return sender;
 	}
-	public void setSender(String sender) {
+	public void setSender(User sender) {
 		this.sender = sender;
 	}
-	public String getReceiver() {
+	public User getReceiver() {
 		return receiver;
 	}
-	public void setReceiver(String receiver) {
+	public void setReceiver(User receiver) {
 		this.receiver = receiver;
 	}
-
 	@Override
 	public String toString() {
 		return "Message [no=" + no + ", contents=" + contents + ", senddate=" + senddate + ", readCheck=" + readCheck
 				+ ", sender=" + sender + ", receiver=" + receiver + "]";
 	}
-	
-	
 }

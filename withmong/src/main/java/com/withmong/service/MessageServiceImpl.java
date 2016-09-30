@@ -15,14 +15,14 @@ public class MessageServiceImpl implements MessageService{
 	private MessageDao messageDao;
 	//메세지 목록조회
 	@Override
-	public List<Message> getAllMessages(String receiver) {
-		List<Message> messageList = messageDao.getMessages(receiver);
+	public List<Message> getAllMessages(String user) {
+		List<Message> messageList = messageDao.getMessages(user);
 		return messageList;
 	}
 	// 1:1메세지 리스트
 	@Override
-	public List<Message> getOnebyone(String receiver) {
-		List<Message> onebyoneList = messageDao.getOnebyone(receiver);
+	public List<Message> getOnebyone(String user) {
+		List<Message> onebyoneList = messageDao.getOnebyone(user);
 		return onebyoneList;
 	}
 	// 쪽지보내기
