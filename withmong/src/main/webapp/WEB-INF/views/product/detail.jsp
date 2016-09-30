@@ -54,15 +54,16 @@ $(function() {
 		return false;
 	});
 	
+	
+	// 컨트롤러에서 Order를 받아 확인하는 코드를 해야한다.
 	$("#buybtn").click(function(){
-		console.log($("#buybtn").val())
 		$.ajax({
 			url:"productBuy.do",
 			type:"POST",
 			data:{buyId:$("#buybtn").val(),productNo:$("#productNo").val() },
 			dataType: "text",
 			success: function(data){
-				console.log("asdf");
+				$("#buybtn").addClass("disabled");
 			}
 		})
 		
@@ -141,7 +142,15 @@ strong {
 					<div class="col-sm-3">
 						
 							${detail.price } 원<br>
-							<button id="buybtn" type="button" class="btn btn-danger" value="${LOGIN_USER }">구매하기</button>
+							 <c:choose>
+							      	<c:when  test="${empty LOGIN_USER }">
+							        	<button id="buybtn" type="button" class="btn btn-danger" disabled="disabled"  value="${LOGIN_USER }">구매하기</button>
+							        </c:when>
+							        <c:otherwise>							        
+							        	<button id="buybtn" type="button" class="btn btn-danger" value="${LOGIN_USER }">구매하기</button>
+							        </c:otherwise>
+							   </c:choose>
+							
 					</div>
 					<div class="col-sm-1"></div>
 					<div class="col-sm-4">
