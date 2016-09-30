@@ -10,8 +10,6 @@
   <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
   <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  <link rel="stylesheet" href="https://cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css">
-  <script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
 <style type="text/css">
 	
 	header {
@@ -81,7 +79,14 @@ $(function() {
 		<div class="container" >
 			<div class="row">
 				<h1>나의 판매내역</h1>
-				<table id="example" class="display" cellspacing="0" width="100%">
+		<table class="table table-striped">
+		<colgroup>
+			<col width="10%">
+			<col width="*%">
+			<col width="10%">
+			<col width="15%">
+			<col width="10%">
+		</colgroup>
         <thead>
             <tr>
                 <th>구매자ID</th>
