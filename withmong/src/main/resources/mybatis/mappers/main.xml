@@ -6,29 +6,38 @@
 
 	<!--인기순으로  내역 가져오기 -->
 	<select id="getAvglikeList" parameterType="double" resultType="Product">
-		select *
-		from product_table
-		
-		order by 
-			avglike desc
+		<![CDATA[ 
+		select * 
+		from(
+			select *
+			from product_table
+			order by avglike desc)
+		where rownum <=12
+		]]> 
 	</select>
 	
 	<!-- 등록순으로 내역 가져오기 -->
 	<select id="getRegList" parameterType="date" resultType="Product">
-		select *
-		from product_table
-		
-		order by 
-			regdate desc
+		<![CDATA[ 
+		select * 
+		from(
+			select *
+			from product_table
+			order by regdate desc)
+		where rownum <=12
+		]]>
 	</select>
 	
 	<!-- 조회순으로 내역 가져오기 -->
 	<select id="getHitList" parameterType="int" resultType="Product">
-		select *
-		from product_table
-		
-		order by 
-			hits desc
+		<![CDATA[ 
+		select * 
+		from(
+			select *
+			from product_table
+			order by hits desc)
+		where rownum <=12
+		]]>
 	</select>
 	
 </mapper>

@@ -1,6 +1,8 @@
 package com.withmong.web;
 
 import java.io.PrintWriter;
+import java.sql.Date;
+import java.text.SimpleDateFormat;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -34,35 +36,31 @@ public class MainController {
 		return "error/error";
 	}
 		
-	//인기순 보기
-	@RequestMapping(value="/avglike.do", method=RequestMethod.GET)
-	
-	public @ResponseBody  List<Product> avglike (int no) throws Exception{
-		List<Product> avglikeList = mainService.getAvglikeList();
-		
-		return avglikeList;
-	}
-
-
-	
-	
-	//조회순 보기
-	@RequestMapping(value="/hitslist.do", method=RequestMethod.GET)
-	public @ResponseBody List<Product>  hits (int no) throws Exception{
-		List<Product> hitsList = mainService.getHitList();
-		
-		return hitsList;
-		
-	}
-	
-	
-	
-	
 	//등록순 보기
 	@RequestMapping(value="/recentlist.do", method=RequestMethod.GET)
-	public @ResponseBody List<Product>  recent(int no) throws Exception{
+	public @ResponseBody List<Product>  recent (int no) throws Exception{
 		List<Product> recentList = mainService.getRegList();
+		
 		
 		return recentList;
 	}
+	
+	
+	//조회순 보기
+		@RequestMapping(value="/hitslist.do", method=RequestMethod.GET)
+		public @ResponseBody List<Product>  hits (int no) throws Exception{
+			List<Product> hitsList = mainService.getHitList();
+
+			
+			return hitsList;
+			
+		}
+	
+	//인기순 보기
+		@RequestMapping(value="/avglikelist.do", method=RequestMethod.GET)
+		public @ResponseBody  List<Product> avglike (int no) throws Exception{
+			List<Product> avglikeList = mainService.getAvglikeList();
+			
+			return avglikeList;
+		}
 }

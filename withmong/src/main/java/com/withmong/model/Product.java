@@ -2,6 +2,8 @@ package com.withmong.model;
 
 import java.util.Date;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 public class Product {
 
 	private int no;
@@ -88,6 +90,7 @@ public class Product {
 		this.qty = qty;
 	}
 
+	@JsonFormat(pattern="yyyy-MM-dd")
 	public Date getRegDate() {
 		return regDate;
 	}

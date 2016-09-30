@@ -55,7 +55,7 @@ $(function() {
 								'<div class="call-product-title">'+
 									'<p>'+
 										'<span class="glyphicon glyphicon-calendar" id="regdate">'+
-											'<div>'+item.regdate+'</div>'+
+											'<div>'+item.regDate+'</div>'+
 										'</span>'+
 									'</p>'+
 								'</div>'+
@@ -83,15 +83,16 @@ $(function() {
 	      });
 		
 	})
+	
 	//조회순 클릭시
 	$("#hits").click(function() {
 		$("#area").empty();
 		$.ajax({
-	        url: "hitsList.do",
+	        url: "hitslist.do",
 	        data:{no:$("#hits").val()},
 			dataType:"json",
 	        success: function(data){
-	        
+	        console.log("안넘어 옴?");
 	        	$.each(data,function(index, item){
 	        		console.log(item.img);
 	        		$("#area").append(
@@ -122,7 +123,7 @@ $(function() {
 								'<div class="call-product-title">'+
 									'<p>'+
 										'<span class="glyphicon glyphicon-calendar" id="regdate">'+
-											'<div>'+item.regdate+'</div>'+
+											'<div>'+item.regDate+'</div>'+
 										'</span>'+
 									'</p>'+
 								'</div>'+
@@ -154,11 +155,11 @@ $(function() {
 	$("#avglike").click(function() {
 		$("#area").empty();
 		$.ajax({
-	        url: "avglikeList.do",
+	        url: "avglikelist.do",
 	        data:{no:$("#avglike").val()},
 			dataType:"json",
 	        success: function(data){
-	        
+	        console.log("안넘어 옴?");
 	        	$.each(data,function(index, item){
 	        		console.log(item.img);
 	        		$("#area").append(
@@ -189,7 +190,7 @@ $(function() {
 								'<div class="call-product-title">'+
 									'<p>'+
 										'<span class="glyphicon glyphicon-calendar" id="regdate">'+
-											'<div>'+item.regdate+'</div>'+
+											'<div>'+item.regDate+'</div>'+
 										'</span>'+
 									'</p>'+
 								'</div>'+
@@ -220,8 +221,17 @@ $(function() {
 	
 	//더보기
 	
-	$("#more").click(function () {
-		
+	$("#more").click(function() {
+		$.ajax({
+			 	url: "avglikeList.do",
+		        data:{no:$("#avglike").val()},
+				dataType:"json",
+		        success: function(data){
+		        	
+		        }
+		})
+	});
+	
 	})
 </script>
 
@@ -324,13 +334,13 @@ strong {
 		<div class="row" id="">
 			<div class="col-sm-6 col-sm-offset-6" style="margin-bottom: 20px;">
 				<div class="col-sm-4">
-					<button id="avglike" value="7">인기순</button>
+					<button id="avglike" value="7" class="btn-primary btn-xs">인기순</button>
 				</div>
 				<div class="col-sm-4">
-					<button id="recent" value="77">최신 등록순</button>
+					<button id="recent" value="77" class="btn-success btn-xs">최신 등록순</button>
 				</div>
 				<div class="col-sm-4">
-					<button  id="hits" value="777">조회순</button>
+					<button  id="hits" value="777" class="btn-warning btn-xs">조회순</button>
 				</div>
 			</div>
 			<div class="addToProducts">
