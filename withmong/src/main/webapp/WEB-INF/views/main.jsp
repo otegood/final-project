@@ -222,8 +222,10 @@ $(function() {
 	//더보기
 	
 	$("#more").click(function() {
+		//버튼값을 클릭할떄마다 1씩 카운트 증가
 		var cnt = parseInt($("#morecnt").val()) + 1
 		$("#morecnt").val(cnt);
+		
 		$.ajax({
 			 	url: "addmainlist.do",
 		        data:{no:cnt},
@@ -358,7 +360,7 @@ strong {
 			</div>
 			<div
 				style="text-align: center; margin-bottom: 30px; margin-top: 30px;">
-				<input type="hidden" class="btn btn-danger btn-large" id="morecnt" value="1" /> 
+				<input type="hidden" id="morecnt" value="0" /> 
 				<a class="btn btn-danger btn-large" style="width: 400px;" id="more" >더보기</a>
 			</div>
 			</div>
