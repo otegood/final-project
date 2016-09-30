@@ -17,8 +17,10 @@
 	src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script type="text/javascript">
 $(function(){
+	$("#addProduct").click(function(){
+		
 	
-	$("form").submit(function() {
+		$("form").submit(function() {
 		if($("#categoryNo").val() == "default") {
 			alert("카테고리를 선택해주세요");
 			return false;
@@ -49,7 +51,7 @@ $(function(){
 		}
 		return true;
 	});
-	
+});
 	
 // 도시 선택시 구 나오기
 	$("#city").change(function(){
@@ -195,8 +197,8 @@ strong {
 					</div>
 
 					<div class="form-group text-center">
-						<input type="submit" class="btn btn-primary" value="등록" />
-						<a href="list.do" class="btn btn-default">취소</a>
+						<input type="button" class="btn btn-primary" value="등록" id="addProduct" />
+						<a href="searchList.do" class="btn btn-default">취소</a>
 					</div>
 					
 

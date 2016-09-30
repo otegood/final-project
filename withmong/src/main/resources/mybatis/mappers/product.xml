@@ -130,6 +130,30 @@
 		</where>
 	</select>
 
+	<select id="getProductByNo" parameterType="int" resultType="Product">
+		select  no,
+				title,
+				userid,
+				img,
+				video,
+				contents,
+				price,
+				qty,
+				regdate,
+				avglike,
+				hits,
+				tag,
+				categoryno as "category.no",
+				location as "location.no"
+		from product_table
+		where
+			no = #{value}
+	</select>
+
+	<insert id="addOrder" parameterType="Order">
+	
+	</insert>
+
 	
 </mapper>
 

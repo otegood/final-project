@@ -10,6 +10,7 @@ import com.withmong.form.BreadcrumbsForm;
 import com.withmong.form.SearchForm;
 import com.withmong.model.Category;
 import com.withmong.model.Location;
+import com.withmong.model.Order;
 import com.withmong.model.Product;
 import com.withmong.model.ProductReview;
 import com.withmong.model.User;
@@ -87,6 +88,17 @@ public class ProductServiceImpl implements ProductService{
 	@Override
 	public List<Product> searchProduct(SearchForm searchForm) {
 		return productDao.searchProduct(searchForm);
+	}
+
+	@Override
+	public Product getProductByNo(int productNo) {
+		return productDao.getProductByNo(productNo);
+	}
+
+	@Override
+	public void addOrder(Order order) {
+		productDao.addOrder(order);
+		
 	}
 
 

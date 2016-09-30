@@ -19,6 +19,7 @@ import com.withmong.form.ProductForm;
 import com.withmong.form.SearchForm;
 import com.withmong.model.Category;
 import com.withmong.model.Location;
+import com.withmong.model.Order;
 import com.withmong.model.Product;
 import com.withmong.model.ProductReview;
 import com.withmong.model.User;
@@ -176,22 +177,14 @@ public class ProductController {
 		return location;
 	}
 	
-	@RequestMapping(value="/searchList.do", method=RequestMethod.GET)
-	public String searchList (@RequestParam(name="search")String search, @RequestParam(name="type")String type,Model model) throws Exception{
+	@RequestMapping(value="/searchList.do")
+	//public String searchList (@RequestParam(name="search")String search, @RequestParam(name="type")String type,Model model) throws Exception{
+	public String searchList (String search, String type,Model model) throws Exception{
 
 		
 		SearchForm searchForm = new SearchForm();
 		searchForm.setType(type);
 		searchForm.setSearch(search);
-		
-		System.out.println("-----------------------------------------");
-		System.out.println("-----------------------------------------");
-		System.out.println("-----------------------------------------");
-		System.out.println(searchForm.toString());
-		System.out.println("-----------------------------------------");
-		System.out.println("-----------------------------------------");
-		System.out.println("-----------------------------------------");
-		
 		
 		List<Product> searchProduct = productService.searchProduct(searchForm);	
 		
@@ -199,7 +192,22 @@ public class ProductController {
 		return "product/searchList";
 	}
 
+	
+	@RequestMapping(value="/productBuy.do", method=RequestMethod.POST)
+	public @ResponseBody void  productBuy (User buyId,int productNo) throws Exception{
+		Product product = productService.getProductByNo(productNo);
+		
+			Order order = new Order();
+			order.setUserid(buyId);
+			order.setProductNo(product);
+			
+			productService.addOrder(order);
+			
+	}
 
+
+	
+	
 
 
 }

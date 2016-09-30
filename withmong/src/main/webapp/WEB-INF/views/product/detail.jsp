@@ -54,6 +54,21 @@ $(function() {
 		return false;
 	});
 	
+	$("#buybtn").click(function(){
+		console.log($("#buybtn").val())
+		$.ajax({
+			url:"productBuy.do",
+			type:"POST",
+			data:{buyId:$("#buybtn").val(),productNo:$("#productNo").val() },
+			dataType: "text",
+			success: function(data){
+				console.log("asdf");
+			}
+		})
+		
+	})
+	
+	
 })
 
 </script>
@@ -126,7 +141,7 @@ strong {
 					<div class="col-sm-3">
 						
 							${detail.price } 원<br>
-							<button id="buybtn" type="button" class="btn btn-danger">구매하기</button>
+							<button id="buybtn" type="button" class="btn btn-danger" value="${LOGIN_USER }">구매하기</button>
 					</div>
 					<div class="col-sm-1"></div>
 					<div class="col-sm-4">
