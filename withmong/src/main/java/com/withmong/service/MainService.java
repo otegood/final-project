@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.withmong.dao.PointDao;
+import com.withmong.model.Criteria;
 import com.withmong.model.Point;
 import com.withmong.model.Product;
 import com.withmong.model.User;
@@ -17,5 +18,10 @@ public interface MainService {
 	List<Product> getRegList( );
 	//조회순 상품 내역 보기
 	List<Product> getHitList( );
+	
+	//추가 상품 나타낼 개수
+	int getTotalRows(Criteria criteria);
+	//상품리스트 불러오기(통산?)
+	List<Product> getProducts(Criteria criteria);
 }
 

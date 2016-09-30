@@ -222,12 +222,17 @@ $(function() {
 	//더보기
 	
 	$("#more").click(function() {
+		var cnt = parseInt($("#morecnt").val()) + 1
+		$("#morecnt").val(cnt);
 		$.ajax({
-			 	url: "avglikeList.do",
-		        data:{no:$("#avglike").val()},
+			 	url: "addmainlist.do",
+		        data:{no:cnt},
 				dataType:"json",
 		        success: function(data){
-		        	
+		        	$.each(data,function(index, item){
+		        		$("#area").append("<>");
+		        		
+		        	})
 		        }
 		})
 	});
@@ -346,14 +351,15 @@ strong {
 			<div class="addToProducts">
 		
 				<div class="row" id="area" style="margin-left: 0px; margin-right: 0px;">
-					
+					<!-- 리스트 추가되는 부분? -->
 				</div>
 				
 				
 			</div>
 			<div
 				style="text-align: center; margin-bottom: 30px; margin-top: 30px;">
-				<a class="btn btn-danger btn-large" style="width: 400px;" id="more">더보기</a>
+				<input type="hidden" class="btn btn-danger btn-large" id="morecnt" value="1" /> 
+				<a class="btn btn-danger btn-large" style="width: 400px;" id="more" >더보기</a>
 			</div>
 			</div>
 	</div>

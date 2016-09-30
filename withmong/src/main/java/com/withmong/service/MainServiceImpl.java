@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.withmong.dao.MainDao;
+import com.withmong.model.Criteria;
 import com.withmong.model.Product;
 
 
@@ -60,6 +61,20 @@ public class MainServiceImpl implements MainService {
 		
 		
 		return list;
+	}
+	
+	//추가 상품 나타낼 개수
+	@Override
+	public int getTotalRows(Criteria criteria) {
+		// TODO Auto-generated method stub
+		return mainDao.getTotalRows(criteria);
+	}
+	
+	//상품리스트 불러오기(통산?)
+	@Override
+	public List<Product> getProducts(Criteria criteria) {
+		// TODO Auto-generated method stub
+		return mainDao.getProducts(criteria);
 	}
 
 	

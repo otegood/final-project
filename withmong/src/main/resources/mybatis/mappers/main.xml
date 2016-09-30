@@ -40,4 +40,15 @@
 		]]>
 	</select>
 	
+	<!-- 상품 총 개수 구하기? -->
+	<select id="getTotalRows" parameterType="Criteria" resultType="int">
+		  select count(*) from product 
+	</select>
+	
+	<!-- 상품리스트 구하기 (통합) -->
+	<select id="getProducts" parameterType="Criteria" resultType="Product">
+ 	<![CDATA[
+ 	 select * from ( select row_number() over (order by no desc) rn, * from product_table ) where rn >= #{beginIndex} and rn < #{endIndex} 
+	]]>
+  	</select>
 </mapper>

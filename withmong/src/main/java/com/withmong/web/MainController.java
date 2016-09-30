@@ -63,4 +63,14 @@ public class MainController {
 			
 			return avglikeList;
 		}
+	/*	
+	//해당 태그의 상품 내역 추가?
+		@RequestMapping(value="/addmainlist.do", method=RequestMethod.GET)
+		public @ResponseBody  List<Product> addlist (int no) throws Exception{
+			List<Product> avglikeList = mainService.getAvglikeList();
+			
+			return avglikeList;
+		}
+		
+	*/
 }
