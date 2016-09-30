@@ -25,9 +25,10 @@ public class MessageController {
 		return "error/error";
 	}
 	
+	// 메세지 목록
 	@RequestMapping("/messagelist.do")
 	public String messagelist(Model model,  User loginedUser) {
-		List<Message> messageList = messageService.getAllMessages(loginedUser.getId());  
+		List<Message> messageList = messageService.getAllMessages(loginedUser.getId());
 		List<Message> onebyoneList = messageService.getOnebyone(loginedUser.getId());
 		//메세지 목록조회
 		model.addAttribute("messageList", messageList);
@@ -36,6 +37,7 @@ public class MessageController {
 		return "message/messagelist";
 	}
 	
+	//쪽지보내기 폼
 	@RequestMapping(value="/firstmessage.do", method=RequestMethod.GET)
 	public String form() {
 		return "message/messageform";
@@ -43,7 +45,7 @@ public class MessageController {
 	//쪽지보내기
 	@RequestMapping(value="/firstmessage.do", method=RequestMethod.POST)
 	public String firstMessage(Message message, User loginedUser) {
-		message.setSender(loginedUser.getId());
+		message.setSender(loginedUser);
 		message.setContents(message.getContents().replace("\r\n", "<br>"));
 		messageService.addFirstMessage(message);
 		return "redirect:/messagelist.do";

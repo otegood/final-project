@@ -6,27 +6,27 @@
 	<!-- 메세지 리스트 -->
 	<select id="getMessages" parameterType="string" resultType="Message">
 		select 
-			distinct sender
+			distinct sender as "sender.id"
 		from
 			message_table
 		where
-			receiver = #{receiver}
+			receiver = #{receiver.id}
 	</select>
 	
 	<!-- 1:1 대화 리스트 -->
 	<select id="getOnebyone" parameterType="string"  resultType="Message">
 		select
-			sender,
-			receiver,
+			sender as "sender.id",
+			receiver as "receiver.id",
 			contents,
 			senddate,
 			readcheck as readCheck
 		from
 			message_table
 		where
-			sender = #{receiver}
+			sender = #{user.id}
 		or
-			receiver = #{receiver}
+			receiver = #{user.id}
 		order by
 			senddate asc
 	</select>
@@ -36,7 +36,7 @@
 		insert into message_table 
 		(no, contents, senddate, readcheck, sender, receiver) 
 		values 
-		(message_seq.nextval, #{contents}, sysdate, 'N', #{sender}, #{receiver})
+		(message_seq.nextval, #{contents}, sysdate, 'N', #{sender.id}, #{receiver.id})
 	</insert>
 	
 </mapper>
