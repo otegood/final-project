@@ -1,10 +1,12 @@
 package com.withmong.web;
 
+import java.io.PrintWriter;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -31,38 +33,36 @@ public class MainController {
 		ex.printStackTrace();
 		return "error/error";
 	}
-	/* 	
-	//인기순 보기
-	@RequestMapping("avglike.do")
-	@ResponseBody
-	public  Product getAvglike(@RequestParam(name="no") String avglike){
-		List<Product> getAvglike = mainService.getAvglikeList();
 		
-		return (Product) getAvglike;
+	//인기순 보기
+	@RequestMapping(value="/avglike.do", method=RequestMethod.GET)
+	
+	public @ResponseBody  List<Product> avglike (int no) throws Exception{
+		List<Product> avglikeList = mainService.getAvglikeList();
+		
+		return avglikeList;
 	}
 
-	
+
 	
 	
 	//조회순 보기
 	@RequestMapping(value="/hitslist.do", method=RequestMethod.GET)
-	public String history(Model model, User loginedUser) throws Exception {
+	public @ResponseBody List<Product>  hits (int no) throws Exception{
+		List<Product> hitsList = mainService.getHitList();
 		
-		//포인트 사용내역 보기
-		List<Point> pointList = pointService.getPointList(loginedUser.getId());
-		model.addAttribute("pointlist", pointList);
+		return hitsList;
+		
+	}
 	
-	*/
+	
+	
 	
 	//등록순 보기
-	@RequestMapping(value="/recentlist.do")
-	@ResponseBody
-	public String recent(Product product, Model model) throws Exception {
+	@RequestMapping(value="/recentlist.do", method=RequestMethod.GET)
+	public @ResponseBody List<Product>  recent(int no) throws Exception{
+		List<Product> recentList = mainService.getRegList();
 		
-		List<Product> recentList = mainService.getRegList(product);
-		model.addAttribute("recentList", recentList);
-		
-		return null;
+		return recentList;
 	}
-		
 }

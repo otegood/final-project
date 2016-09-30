@@ -15,168 +15,214 @@
 	src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
 <script type="text/javascript">
-	//더보기
-	$(document)
-			.ready(
-					function() {
-						$('#more')
-								.click(
-										function() {
-											$(".addToProducts")
-													.append('<div class="row" style="margin-left: 0px; margin-right: 0px;">'+
-															'<div class="col-sm-3" style="padding-left: 15px; padding-right: 15px;">'+
-															'<span class="pro-img"> <a class="togo" href="#">'+ 
-															'<img class="img-responsive" src="resources/img/vvv.png" alt="">'+
-																	'</a>'+'</span>'
-																	
-															+'<div class="row" style="padding-left: 0px;">'+
-																'<div class="call-product-title">'+
-																	'<p>'+
-																		'<span class="glyphicon glyphicon-gift"></span>'+
-																		
-																	'</p>'+
-																'</div>'+
+$(function() {
+	//최근순 클릭시
+	$("#recent").click(function() {
+		$("#area").empty();
+		$.ajax({
+	        url: "recentlist.do",
+	        data:{no:$("#recent").val()},
+			dataType:"json",
+	        success: function(data){
+	        
+	        	$.each(data,function(index, item){
+	        		console.log(item.img);
+	        		$("#area").append(
+	        			'<div class="col-sm-3" style="padding-left: 15px; padding-right: 15px;">'+
+							'<div class="pro-img">'+
+								'<span class="pro-img" id="img">'+ 
+								'<img src="../../resources/images/'+item.img+'" width="50px" height="50px" >'+
+								'</span>'+
+							'</div>'+
+							'<div class="col-sm-6" style="padding-left: 0px;">'+
+								'<div class="call-product-title">'+
+									'<p>'+
+										'<span class="glyphicon glyphicon-gift" id="title">'+
+											'<div>'+item.title+'</div>'+
+										'</span>'+
+									'</p>'+
+								'</div>'+
 
-																'<div class="call-product-price">'+
-																	'<p>'+
-																		'<span class="glyphicon glyphicon-cd"></span>'+
-																		
-																		
-																	'</p>'+
-
-																'</div>'+
-															'</div>'+
-														'</div>'+
-
-														'<div class="col-sm-3" style="padding-left: 15px; padding-right: 15px;">'+
-															
-															'<span class="pro-img"> <a class="togo" href="#">'+ 
-															'<img class="img-responsive" src="resources/img/vvv.png" alt="">'+
-																	
-															'</a>'+
-															'</span>'+
-															'<div class="row" style="padding-left: 0px;">'+
-																'<div class="call-product-title">'+
-																	'<p>'+
-																		'<span class="glyphicon glyphicon-gift"></span>'+
-																		
-																		
-																	'</p>'+
-																'</div>'+
-
-																'<div class="call-product-price">'+
-																	'<p>'+
-																		'<span class="glyphicon glyphicon-cd"></span>'+
-																		
-																		
-																	'</p>'+
-
-																'</div>'+
-															'</div>'+
-														'</div>'+
-														
-														'<div class="col-sm-3" style="padding-left: 15px; padding-right: 15px;">'+
-															'<span class="pro-img"> <a class="togo" href="#">'+ 
-															'<img class="img-responsive" src="resources/img/vvv.png" alt="">'+
-																	'</a>'+'</span>'
-																	
-															+'<div class="row" style="padding-left: 0px;">'+
-																'<div class="call-product-title">'+
-																	'<p>'+
-																		'<span class="glyphicon glyphicon-gift"></span>'+
-																		
-																	'</p>'+
-																'</div>'+
-
-																'<div class="call-product-price">'+
-																	'<p>'+
-																		'<span class="glyphicon glyphicon-cd"></span>'+
-																		
-																		
-																	'</p>'+
-
-																'</div>'+
-															'</div>'+
-														'</div>'+
-
-														'<div class="col-sm-3" style="padding-left: 15px; padding-right: 15px;">'+
-															
-															'<span class="pro-img"> <a class="togo" href="#">'+ 
-															'<img class="img-responsive" src="resources/img/vvv.png" alt="">'+
-																	
-															'</a>'+
-															'</span>'+
-															'<div class="row" style="padding-left: 0px;">'+
-																'<div class="call-product-title">'+
-																	'<p>'+
-																		'<span class="glyphicon glyphicon-gift"></span>'+
-																		
-																		
-																	'</p>'+
-																'</div>'+
-
-																'<div class="call-product-price">'+
-																	'<p>'+
-																		'<span class="glyphicon glyphicon-cd"></span>'+
-																		
-																		
-																	'</p>'+
-
-																'</div>'+
-															'</div>'+
-														'</div>'+
-
-													'</div>');;		
-													
-										})
-					})
-					
+								'<div class="call-product-price">'+
+									'<p>'+
+										'<span class="glyphicon glyphicon-cd" id="price">'+
+											'<div>'+item.price+'</div>'+
+										'</span>'+
+									'</p>'+
+								'</div>'+
+							'</div>'+
+							'<div class="col-sm-6" style="padding-left: 0px;">'+
+								'<div class="call-product-title">'+
+									'<p>'+
+										'<span class="glyphicon glyphicon-calendar" id="regdate">'+
+											'<div>'+item.regdate+'</div>'+
+										'</span>'+
+									'</p>'+
+								'</div>'+
+								'<div class="call-product-price">'+
+									'<p>'+
+										'<span class="glyphicon glyphicon-paperclip" id="tag">'+
+											'<div>'+item.tag+'</div>'+
+										'</span>'+
+									'</p>'+
+								'</div>'+
+							'</div>'+
+							
+						'</div>'		
+	        		);
+	        		
+	        		
+	        		
+			
+				})
+	        	
+	        },
+	        error: function (xhr, status, error) {
+	        	console.log("err");
+	        }
+	      });
 		
-					
-					$("#recent").click(function() {
-						$.ajax({
-					        url: "recentlist.do",
-					        type: "POST",
-					        data: param,
-					        success: function (data) {
-					        	
-					          $('#togo').html("All OK");
-					        },
-					        error: function () {
-					          $("#togo").html("ERROR");
-					        }
-					      });
-					})
-					
-					$("#avglike").click(function() {
-						$.ajax({
-					        url: "avglikelist.do",
-					        type: "POST",
-					       
-					        success: function (data) {
-					        	
-					          $('#togo').html("All OK");
-					        },
-					        error: function () {
-					          $("#togo").html("ERROR");
-					        }
-					      });
-					})
-					
-					$("#hits").click(function() {
-						$.ajax({
-					        url: "hitslist.do",
-					        type: "POST",
-					       
-					        success: function (data) {
-					        	
-					          $('#togo').html("All OK");
-					        },
-					        error: function () {
-					          $("#togo").html("ERROR");
-					        }
-					      });
-					})
+	})
+	//조회순 클릭시
+	$("#hits").click(function() {
+		$("#area").empty();
+		$.ajax({
+	        url: "hitsList.do",
+	        data:{no:$("#hits").val()},
+			dataType:"json",
+	        success: function(data){
+	        
+	        	$.each(data,function(index, item){
+	        		console.log(item.img);
+	        		$("#area").append(
+	        			'<div class="col-sm-3" style="padding-left: 15px; padding-right: 15px;">'+
+							'<div class="pro-img">'+
+								'<span class="pro-img" id="img">'+ 
+								'<img src="../../resources/images/'+item.img+'" width="50px" height="50px" >'+
+								'</span>'+
+							'</div>'+
+							'<div class="col-sm-6" style="padding-left: 0px;">'+
+								'<div class="call-product-title">'+
+									'<p>'+
+										'<span class="glyphicon glyphicon-gift" id="title">'+
+											'<div>'+item.title+'</div>'+
+										'</span>'+
+									'</p>'+
+								'</div>'+
+
+								'<div class="call-product-price">'+
+									'<p>'+
+										'<span class="glyphicon glyphicon-cd" id="price">'+
+											'<div>'+item.price+'</div>'+
+										'</span>'+
+									'</p>'+
+								'</div>'+
+							'</div>'+
+							'<div class="col-sm-6" style="padding-left: 0px;">'+
+								'<div class="call-product-title">'+
+									'<p>'+
+										'<span class="glyphicon glyphicon-calendar" id="regdate">'+
+											'<div>'+item.regdate+'</div>'+
+										'</span>'+
+									'</p>'+
+								'</div>'+
+								'<div class="call-product-price">'+
+									'<p>'+
+										'<span class="glyphicon glyphicon-paperclip" id="tag">'+
+											'<div>'+item.tag+'</div>'+
+										'</span>'+
+									'</p>'+
+								'</div>'+
+							'</div>'+
+							
+						'</div>'		
+	        		);
+	        		
+	        		
+	        		
+			
+				})
+	        	
+	        },
+	        error: function (xhr, status, error) {
+	        	console.log("err");
+	        }
+	      });
+		
+	})
+	//인기순
+	$("#avglike").click(function() {
+		$("#area").empty();
+		$.ajax({
+	        url: "avglikeList.do",
+	        data:{no:$("#avglike").val()},
+			dataType:"json",
+	        success: function(data){
+	        
+	        	$.each(data,function(index, item){
+	        		console.log(item.img);
+	        		$("#area").append(
+	        			'<div class="col-sm-3" style="padding-left: 15px; padding-right: 15px;">'+
+							'<div class="pro-img">'+
+								'<span class="pro-img" id="img">'+ 
+								'<img src="../../resources/images/'+item.img+'" width="50px" height="50px" >'+
+								'</span>'+
+							'</div>'+
+							'<div class="col-sm-6" style="padding-left: 0px;">'+
+								'<div class="call-product-title">'+
+									'<p>'+
+										'<span class="glyphicon glyphicon-gift" id="title">'+
+											'<div>'+item.title+'</div>'+
+										'</span>'+
+									'</p>'+
+								'</div>'+
+
+								'<div class="call-product-price">'+
+									'<p>'+
+										'<span class="glyphicon glyphicon-cd" id="price">'+
+											'<div>'+item.price+'</div>'+
+										'</span>'+
+									'</p>'+
+								'</div>'+
+							'</div>'+
+							'<div class="col-sm-6" style="padding-left: 0px;">'+
+								'<div class="call-product-title">'+
+									'<p>'+
+										'<span class="glyphicon glyphicon-calendar" id="regdate">'+
+											'<div>'+item.regdate+'</div>'+
+										'</span>'+
+									'</p>'+
+								'</div>'+
+								'<div class="call-product-price">'+
+									'<p>'+
+										'<span class="glyphicon glyphicon-paperclip" id="tag">'+
+											'<div>'+item.tag+'</div>'+
+										'</span>'+
+									'</p>'+
+								'</div>'+
+							'</div>'+
+							
+						'</div>'		
+	        		);
+	        		
+	        		
+	        		
+			
+				})
+	        	
+	        },
+	        error: function (xhr, status, error) {
+	        	console.log("err");
+	        }
+	      });
+		
+	})
+	
+	//더보기
+	
+	$("#more").click(function () {
+		
+	})
 </script>
 
 <style type="text/css">
@@ -233,6 +279,8 @@ strong {
 	display: inline-block;
 	margin-left: 80px;
 }
+
+
 </style>
 <title>Insert title here</title>
 </head>
@@ -255,7 +303,7 @@ strong {
 			<!-- Wrapper for slides -->
 			<div class="carousel-inner" role="listbox">
 				<div class="item active" id="show-item">
-					<img src="resources/img/p1.png" alt="cat1" id="show-item">
+					<!-- <img src="resources/img/p1.png" alt="cat1" id="show-item"> -->
 				</div>
 			</div>
 
@@ -274,55 +322,24 @@ strong {
 			<h1 class="page-header">상품 리스트</h1>
 		</div>
 		<div class="row" id="">
-			<div class="col-sm-4 col-sm-offset-8" style="margin-bottom: 20px;">
+			<div class="col-sm-6 col-sm-offset-6" style="margin-bottom: 20px;">
 				<div class="col-sm-4">
-					<a href="avglike.do" id="avglike">인기순</a>
+					<button id="avglike" value="7">인기순</button>
 				</div>
 				<div class="col-sm-4">
-					<a href="recent.do" id="recent">최신 등록순</a>
+					<button id="recent" value="77">최신 등록순</button>
 				</div>
 				<div class="col-sm-4">
-					<a href="hits.do" id="hits">조회순</a>
+					<button  id="hits" value="777">조회순</button>
 				</div>
 			</div>
 			<div class="addToProducts">
 		
-				<div class="row" id="recent" style="margin-left: 0px; margin-right: 0px;">
-					<div class="col-sm-3"
-						style="padding-left: 15px; padding-right: 15px;">
-						
-						<!-- 첫 이미지 크기 400*300 -->
-						<span class="pro-img"> <a class="togo" href="#"> <img
-								class="img-responsive" src="resources/img/vvv.png" alt="">
-								<!-- 이미지 크기는 400*200 -->
-								<c:forEach var="recent" items="${recentList }">
-									<c:out value="${recent.img }"></c:out>
-								</c:forEach>
-						</a>
-						</span>
-						<div class="row" style="padding-left: 0px;">
-							<div class="call-product-title">
-								<p>
-									<span class="glyphicon glyphicon-gift"></span>
-									<!-- 상품명 불러오는 곳 -->
-									<c:forEach var="recent" items="${recentList }">
-									<c:out value="${recent.title }"></c:out> 
-									</c:forEach>
-								</p>
-							</div>
-
-							<div class="call-product-price">
-								<p>
-									<span class="glyphicon glyphicon-cd"></span>
-									<!-- 상품 가격 불러오는 곳 -->
-									
-								</p>
-
-							</div>
-						</div>
+				<div class="row" id="area" style="margin-left: 0px; margin-right: 0px;">
 					
-					</div>
 				</div>
+				
+				
 			</div>
 			<div
 				style="text-align: center; margin-bottom: 30px; margin-top: 30px;">

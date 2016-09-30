@@ -60,7 +60,7 @@
 			<mvc:exclude-mapping path="/searchList.do"/>		
 			
 			
-			<mvc:exclude-mapping path="/recent.do"/>
+			<mvc:exclude-mapping path="/recentlist.do"/>
 			
 
 		
