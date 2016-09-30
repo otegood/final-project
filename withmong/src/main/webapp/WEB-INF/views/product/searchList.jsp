@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -49,7 +50,11 @@ strong {
 	padding: 10px;
 	background-color: black;
 }
+
 </style>
+<script type="text/javascript">
+	
+</script>
 <title>Insert title here</title>
 </head>
 <body>
@@ -57,22 +62,39 @@ strong {
 
 	<div class="container">
 			<c:forEach var="search" items="${searchList}">
-		<div class="row">
+		<div class="row" id="row">
 				<div class="col-sm-2">
-					<a href="#"> 이미지이이이이이<img width="100px" src="">
+					<a href="detail.do?productNo=${search.no }"><img width="100px" height="100px" src="../../resources/images/${search.img }">
 					</a>
 				</div>
 				<div class="col-sm-8">
 					<h4>
-						<a href="#">${search.title }</a>
+						제목 : <a href="detail.do?productNo=${search.no }">
+						<c:choose>
+                              <c:when test="${fn:length(search.title) > 36}">
+                                 ${fn:substring(search.title, 0, 35)}...</c:when>
+                              <c:otherwise>
+                                 ${search.title}
+                              </c:otherwise>
+                           </c:choose>
+						
+						</a>
 					</h4>
-					<p>ㅁㅁㄴㅇㄹㄴㅇㄹㄴㅁㄻ</p>
+						<c:choose>
+                              <c:when test="${fn:length(search.contents) > 160}">
+                                 ${fn:substring(search.contents, 0, 160)}...</c:when>
+                              <c:otherwise>
+                                 ${search.contents}
+                              </c:otherwise>
+                           </c:choose>
 				</div>
 				<div class="col-sm-2">
-					<p>조회수</p>
-					<p>평점</p>
+					<p>조회수 : ${search.hits }</p>
+					<p>평점 : ${search.avglike }</p>
+					<p>가격 : ${search.price }</p>
 				</div>
 		</div>
+		<hr>
 			</c:forEach>
 	</div>
 

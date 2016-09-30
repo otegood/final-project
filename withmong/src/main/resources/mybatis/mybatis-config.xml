@@ -23,6 +23,7 @@
   	<typeAlias type="com.withmong.model.RequestReple" alias="RequestReple"/>
   	<typeAlias type="com.withmong.model.QNA" alias="QNA"/>
   	<typeAlias type="com.withmong.model.QNAReple" alias="QNAReple"/>
+  	<typeAlias type="com.withmong.model.Order" alias="Order"/>
 
   </typeAliases>
   

@@ -199,4 +199,10 @@ public class BoardController {
 		boardService.addQnaReply(qnaReple);
 		return "redirect:/qnaDetail.do?no="+no;
 	}
+	// 로그인한 유저의 요청게시글 목록
+	@RequestMapping("/myrequestlist.do")
+	public String myRequestList(Model model) {
+		model.addAttribute("requests", boardService.requestList());
+		return "board/myrequestlist";
+	}
 }
