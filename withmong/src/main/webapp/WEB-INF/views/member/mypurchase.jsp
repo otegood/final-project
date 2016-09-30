@@ -84,27 +84,40 @@ $(function() {
 		<div class="container" >
 			<div class="row">
 				<h1>나의 구매내역</h1>
-				<table id="example" class="display" cellspacing="0" width="100%">
-        <thead>
-            <tr>
-                <th>판매자ID</th>
-                <th>상품명</th>
-                <th>포인트</th>
-                <th>거래일자</th>
-                <th>구매상태</th>
-            </tr>
-        </thead>
-        <tfoot>
-            <tr>
-                <th>판매자ID</th>
-                <th>상품명</th>
-                <th>포인트</th>
-                <th>거래일자</th>
-                <th>구매상태</th>
-            </tr>
-        </tfoot>
-        <tbody></tbody>
-    </table>
+				<table class="table table-striped table-condensed">
+					<colgroup>
+						<col width="10%">
+						<col width="*%">
+						<col width="10%">
+						<col width="15%">
+						<col width="10%">
+					</colgroup>
+			        <thead>
+			            <tr>
+			                <th>판매자ID</th>
+			                <th>상품명</th>
+			                <th>포인트</th>
+			                <th>거래일자</th>
+			                <th>구매상태</th>
+			            </tr>
+			        </thead>
+			        <tbody>
+			        	<tr>
+			        		<td>asdfasdf</td>
+			        		<td>asdfasdf</td>
+			        		<td>asdfasdf</td>
+			        		<td>asdfasdf</td>
+			        		<td>asdfasdf</td>
+			        	</tr>
+			        	<tr>
+			        		<td>asdfasdf</td>
+			        		<td>asdfasdf</td>
+			        		<td>asdfasdf</td>
+			        		<td>asdfasdf</td>
+			        		<td>asdfasdf</td>
+			        	</tr>
+			        </tbody>
+			    </table>
 			</div>
 		</div>
 		
