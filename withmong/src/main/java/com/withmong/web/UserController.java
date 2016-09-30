@@ -357,11 +357,10 @@ public class UserController {
 		
 		return "redirect:/chgsuccess.do";
 	}
-	
 	//-------------------------------------------------------------------------------------------------//
 	// 내 구매*판매 내역 보기
 	
-	// 1. 내 구매 내역
+		// 1. 내 구매 내역
 	@RequestMapping(value="/mypurchase.do", method=RequestMethod.GET)
 	public String mypurchase(){
 		

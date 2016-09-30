@@ -25,6 +25,9 @@ public interface UserDao {
 	// 신고하기
 	void reportUser(Report report);
 
+	// Order 등록
+	void insertOrder(Order order);
+	
 	// 내 구매내역 확인하기
 	List<Order> myPurchase(String purchaseId);
 	// 내 판매내역 확인하기
