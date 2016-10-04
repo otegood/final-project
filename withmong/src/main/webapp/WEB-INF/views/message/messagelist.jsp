@@ -69,7 +69,7 @@
 				<div class="panel panel-default">
 					<div class="panel-heading" role="tab" id="headingOne">
 						<h4 class="panel-title">
-							<a role="button" data-toggle="collapse" data-parent="#accordion" href="#${message.sender.id }" aria-expanded="true"
+							<a class="btn btn-warning" style="width: 400px;" data-toggle="collapse" data-parent="#accordion" href="#${message.sender.id }" aria-expanded="true"
 							aria-controls="collapseOne"> <c:out value="${message.sender.id }" />님과 대화내용 </a>
 						</h4>
 					</div>
