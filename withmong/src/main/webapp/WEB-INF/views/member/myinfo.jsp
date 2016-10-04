@@ -46,7 +46,26 @@
 		background-color: black;
 	}
 
+	#chk {
+		position:absolute;
+		left:10;
+		top:10;
+	}
 </style>
+<script type="text/javascript">
+$(function() {
+	if("${LOGIN_USER.grade}" == 'B'){
+		$("#img").append("<img alt='profile' src='resources/images/profile/${LOGIN_USER.img }' style='width:200px;height:200px;border:0;'>")
+		$("#img").append("<img alt='grade' src='resources/images/default/bronze.jpg' id='chk' class='img-circle'>")
+	} else if ("${LOGIN_USER.grade}" == 'S'){
+		$("#img").append("<img alt='profile' src='resources/images/profile/${LOGIN_USER.img }' style='width:200px;height:200px;border:0;'>")
+		$("#img").append("<img alt='grade' src='resources/images/default/silver.jpg' id='chk' class='img-circle'>")
+	} else {
+		$("#img").append("<img alt='profile' src='resources/images/profile/${LOGIN_USER.img }' style='width:200px;height:200px;border:0;'>")
+		$("#img").append("<img alt='grade' src='resources/images/default/gold.jpg' id='chk' class='img-circle'>")
+	}
+});
+</script>
 <title>나의 정보</title>
 </head>
 <body>
@@ -55,7 +74,8 @@
 		<div class="container" >
 			<div class="row">
 	        	<h1>내정보</h1>
-	        	<img alt="profile" src="resources/images/profile/${LOGIN_USER.img }" style="width:42px;height:42px;border:0;">
+	        	<div class="text-center" id="img">
+	        	</div>
 				<table class="table table-striped" style="width:100%;">
 			        <tr>
 			            <th><span class="glyphicon glyphicon-user"></span></th>
