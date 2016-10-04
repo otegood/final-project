@@ -68,42 +68,106 @@ $(function() {
 	}
 
 	function getProducts(moreNo) {
-		$("#area").empty();
-
+		
 		$.ajax({
 			url:$("#requestUrl").val(),
 			data:{no:moreNo},
 			dataType:"json",
 			success:function(result) {
+				console.log(result);
 				generatedProducts(result);
 			}
 		});
 	}
 	
 	
-	//최근순 클릭시
+	
+	
+	//최근 등록순 클릭시
 	$("#recent").click(function() {
+		$("#area").empty();
+		
+		
+		$("#morecnt").val();
+		console.log($("#morecnt").val());
 		var pno = parseInt($("#morecnt").val()) + 1
+		
 		$("#morecnt").val(pno);	
+		console.log($("#morecnt").val());
+		
+		$("requestUrl").empty();
 		$("#requestUrl").val("recentlist.do");
-		getProducts(pno);
+		
+		
+		if (pno < 2) {
+			getProducts(pno);
+		}
 	})
 	
 	//조회순 클릭시
 	$("#hits").click(function() {
+		$("#area").empty();
+		
+		$("#morecnt").val() === 0
+		console.log($("#morecnt").val());
+		
 		var pno = parseInt($("#morecnt").val()) + 1
 		$("#morecnt").val(pno);	
+		
+		$("requestUrl").empty();
 		$("#requestUrl").val("hitslist.do");
-		getProducts( pno);		
+		getProducts(pno);		
 	})
 	
 	//인기순
 	$("#avglike").click(function() {
+		$("#area").empty();
+		$("#morecnt").val(0);
+		console.log($("#morecnt").val());		//0?
+		
 		var pno = parseInt($("#morecnt").val()) + 1
-		$("#morecnt").val(pno);	
+		$("#morecnt").val(pno);					//1?
+		
+		$("requestUrl").empty();
 		$("#requestUrl").val("avglikelist.do");
 		getProducts(pno);	
 	});
+	
+	//더보기	인식 X
+	$("#more").click(function() {
+	
+		
+		if($("#requestUrl").val() == "avglikelist.do") {
+			
+			$("#requestUrl").val("avglikelist.do");
+			
+			var pno = parseInt($("#morecnt").val()) + 1
+			$("#morecnt").val(pno);	
+			console.log($("#morecnt").val()	);
+			
+			getProducts(pno);
+			
+		} else if ($("#requestUrl").val() == "hitslist.do") {
+			var pno = parseInt($("#morecnt").val()) + 1
+			$("#morecnt").val(pno);	
+			
+			$("#requestUrl").val("hitslist.do");
+			
+			getProducts(pno);
+			
+		} else {
+			var pno = parseInt($("#morecnt").val()) + 1
+			$("#morecnt").val(pno);	
+			
+			$("#requestUrl").val("recentlist.do");
+		
+			getProducts(pno);
+			
+		}
+		
+	})
+	
+	
 	
 })
 </script>
@@ -207,26 +271,27 @@ strong {
 		<div class="row" id="">
 			<div class="col-sm-6 col-sm-offset-6" style="margin-bottom: 20px;">
 				<div class="col-sm-4">
-					<button id="avglike" value="7" class="btn-primary btn-xs ">인기순</button>
+					<button id="avglike" value="reset" class="btn-primary btn-xs ">인기순</button>
 				</div>
 				<div class="col-sm-4">
-					<button id="recent" value="77" class="btn-success btn-xs">최신 등록순</button>
+					<button id="recent" value="reset" class="btn-success btn-xs">최신 등록순</button>
 				</div>
 				<div class="col-sm-4">
-					<button  id="hits" value="777" class="btn-warning btn-xs">조회순</button>
+					<button id="hits" value="reset" class="btn-warning btn-xs">조회순</button>
 				</div>
 			</div>
 			<div class="addToProducts">
 		
 				<div class="row" id="area" style="margin-left: 0px; margin-right: 0px;">
 					<!-- 리스트 추가되는 부분? -->
-					
+					<div><p>아오오오오오</p></div>
 				</div>
 				
 				
 			</div>
 			<div style="text-align: center; margin-bottom: 30px; margin-top: 30px;">
 				<input type="hidden" id="morecnt" value="0" /> 
+<!-- 히든 인식 안함 -->
 				<input type="hidden" id="requestUrl" value="recentlist.do" />
 				<a class="btn btn-danger btn-large" style="width: 400px;" id="more" >더보기</a>
 			</div>

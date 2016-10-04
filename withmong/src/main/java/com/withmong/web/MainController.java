@@ -46,37 +46,73 @@ public class MainController {
 	
 		
 		List<Product> recentList = new ArrayList<>();
-		
+		System.out.println("_________________________________________________");
+		System.out.println("_________________________________________________");
+		System.out.println("_________________________________________________");
+		System.out.println("_________________________________________________");
+		System.out.println(pageNo);
+		System.out.println("_________________________________________________");
+		System.out.println("_________________________________________________");
+		System.out.println("_________________________________________________");
 		// 페이지 번호가 1보다 작으면 1페이지로 리다이렉트
 		if (pageNo < 1) {
 			return recentList;
 		}
 		
 		int rows = 12;
-		int pages = 5;
 		int beginIndex = (pageNo - 1)*rows + 1;
 		int endIndex = pageNo*rows;
 		
+		criteria = new Criteria();
+		criteria.setBeginIndex(beginIndex);
+		criteria.setEndIndex(endIndex);
 
-		List<Product> total = mainService.getRegList(criteria);
+		recentList = mainService.getRegList(criteria);
+		System.out.println("_________________________________________________");
+		System.out.println("_________________________________________________");
+		System.out.println("_________________________________________________");
+		System.out.println("_________________________________________________");
+		System.out.println(pageNo);
+		System.out.println("_________________________________________________");
+		System.out.println("_________________________________________________");
+		System.out.println("_________________________________________________");
 		
-		return total;
+		return recentList;
 	
 	}	
 	//조회순 보기
 		@RequestMapping(value="/hitslist.do", method=RequestMethod.GET)
-		public @ResponseBody List<Product>  hits (int no, Criteria criteria) throws Exception{
-			List<Product> hitsList = mainService.getHitList(criteria);
-
-			System.out.println("----------------------------------------");
-			System.out.println("----------------------------------------");
-			System.out.println("----------------------------------------");
-			System.out.println("-----------------hit----------------");
-			System.out.println("----------------------------------------");
-			System.out.println("----------------------------------------");
-			return hitsList;
+		public @ResponseBody List<Product> hits (@RequestParam(name="no", required=false, defaultValue="1")int pageNo, 
+															Criteria criteria) throws Exception{
+		
 			
-		}
+			List<Product> hits = new ArrayList<>();
+			
+			// 페이지 번호가 1보다 작으면 1페이지로 리다이렉트
+			if (pageNo < 1) {
+				return hits;
+			}
+			
+			int rows = 12;
+			int beginIndex = (pageNo - 1)*rows + 1;
+			int endIndex = pageNo*rows;
+			
+			criteria = new Criteria();
+			criteria.setBeginIndex(beginIndex);
+			criteria.setEndIndex(endIndex);
+
+			hits = mainService.getHitList(criteria);
+			System.out.println("_________________________________________________");
+			System.out.println("_________________________________________________");
+			System.out.println("_________________________________________________");
+			System.out.println("_________________________________________________");
+			System.out.println(pageNo);
+			System.out.println("_________________________________________________");
+			System.out.println("_________________________________________________");
+			System.out.println("_________________________________________________");
+			return hits;
+		
+		}	
 		/*
 	//인기순 보기
 		@RequestMapping(value="/avglikelist.do", method=RequestMethod.GET)
@@ -89,18 +125,37 @@ public class MainController {
 		
 		//인기순 보기
 		@RequestMapping(value="/avglikelist.do", method=RequestMethod.GET)
-		public @ResponseBody  List<Product> avglikeList (int no, Criteria criteria) throws Exception{
+		public @ResponseBody List<Product> avglikelist (@RequestParam(name="no", required=false, defaultValue="1")int pageNo, 
+				Criteria criteria) throws Exception{
+
 			
-			List<Product> avglikeList = mainService.getAvglikeList(criteria);
-			System.out.println("----------------------------------------");
-			System.out.println("----------------------------------------");
-			System.out.println("----------------------------------------");
-			System.out.println("-----------------avg-------------------");
-			System.out.println("----------------------------------------");
-			System.out.println("----------------------------------------");
+			List<Product> avglikelist = new ArrayList<>();
 			
-			return avglikeList;
-		}
+			// 페이지 번호가 1보다 작으면 1페이지로 리다이렉트
+			if (pageNo < 1) {
+			return avglikelist;
+			}
+			
+			int rows = 12;
+			int beginIndex = (pageNo - 1)*rows + 1;
+			int endIndex = pageNo*rows;
+			
+			criteria = new Criteria();
+			criteria.setBeginIndex(beginIndex);
+			criteria.setEndIndex(endIndex);
+			
+			avglikelist = mainService.getAvglikeList(criteria);
+			System.out.println("_________________________________________________");
+			System.out.println("_________________________________________________");
+			System.out.println("_________________________________________________");
+			System.out.println("_________________________________________________");
+			System.out.println(pageNo);
+			System.out.println("_________________________________________________");
+			System.out.println("_________________________________________________");
+			System.out.println("_________________________________________________");
+			return avglikelist;
+
+}	
 	
 		
 }
