@@ -14,15 +14,15 @@ import com.withmong.model.Product;
 public class MainServiceImpl implements MainService {
 
 	@Autowired MainDao mainDao;
-
+/*
 	//인기순 상품 내역 보기
 	@Override
-	public List<Product> getAvglikeList() {
+	public List<Product> getAvglikeList(Criteria criteria) {
 		// TODO Auto-generated method stub
 		List<Product> list = null;
 		
 		try{
-			list = mainDao.getAvglikeList();
+			list = mainDao.getAvglikeList(Criteria criteria);
 			
 		}catch(Exception e){
 			System.out.println(e.toString());
@@ -33,12 +33,12 @@ public class MainServiceImpl implements MainService {
 	}
 	//등록순 상품 내역 보기
 	@Override
-	public List<Product> getRegList() {
+	public List<Product> getRegList(Criteria criteria) {
 		// TODO Auto-generated method stub
 		List<Product> list = null;
 		
 		try{
-			list = mainDao.getRegList();
+			list = mainDao.getRegList(Criteria criteria);
 			
 		}catch(Exception e){
 			System.out.println(e.toString());
@@ -49,11 +49,11 @@ public class MainServiceImpl implements MainService {
 	}
 	//조회순 상품 내역 보기
 	@Override
-	public List<Product> getHitList() {
+	public List<Product> getHitList(Criteria criteria) {
 		List<Product> list = null;
 		
 		try{
-			list = mainDao.getHitList();
+			list = mainDao.getHitList(Criteria criteria);
 			
 		}catch(Exception e){
 			System.out.println(e.toString());
@@ -62,20 +62,43 @@ public class MainServiceImpl implements MainService {
 		
 		return list;
 	}
+*/	
+	//인기순 상품 내역 보기
+	@Override
+	public List<Product> getAvglikeList(Criteria criteria) {
+		// TODO Auto-generated method stub
+		return mainDao.getAvglikeList(criteria);
+	}
+
 	
-	//추가 상품 나타낼 개수
+	//등록순 상품 내역 보기
+	@Override
+	public List<Product> getRegList(Criteria criteria) {
+		// TODO Auto-generated method stub
+		return mainDao.getRegList(criteria);
+	}
+
+	
+	
+	//조회순 상품 내역 보기
+	@Override
+	public List<Product> getHitList(Criteria criteria) {
+		// TODO Auto-generated method stub
+		return mainDao.getHitList(criteria);
+	}
+
+	//전체 목록 개수?
 	@Override
 	public int getTotalRows(Criteria criteria) {
 		// TODO Auto-generated method stub
 		return mainDao.getTotalRows(criteria);
 	}
+
 	
-	//상품리스트 불러오기(통산?)
-	@Override
-	public List<Product> getProducts(Criteria criteria) {
-		// TODO Auto-generated method stub
-		return mainDao.getProducts(criteria);
-	}
+
+	
+	
+	
 
 	
 

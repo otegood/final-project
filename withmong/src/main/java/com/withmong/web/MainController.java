@@ -41,24 +41,43 @@ public class MainController {
 		
 	//등록순 보기
 	@RequestMapping(value="/recentlist.do", method=RequestMethod.GET)
-	public @ResponseBody List<Product>  recent (int no) throws Exception{
-		List<Product> recentList = mainService.getRegList();
-		
-		
-		return recentList;
-	}
+	public @ResponseBody List<Product> recent (@RequestParam(name="no", required=false, defaultValue="1")int pageNo, 
+														Criteria criteria) throws Exception{
 	
+		
+		List<Product> recentList = new ArrayList<>();
+		
+		// 페이지 번호가 1보다 작으면 1페이지로 리다이렉트
+		if (pageNo < 1) {
+			return recentList;
+		}
+		
+		int rows = 12;
+		int pages = 5;
+		int beginIndex = (pageNo - 1)*rows + 1;
+		int endIndex = pageNo*rows;
+		
+
+		List<Product> total = mainService.getRegList(criteria);
+		
+		return total;
 	
+	}	
 	//조회순 보기
 		@RequestMapping(value="/hitslist.do", method=RequestMethod.GET)
-		public @ResponseBody List<Product>  hits (int no) throws Exception{
-			List<Product> hitsList = mainService.getHitList();
+		public @ResponseBody List<Product>  hits (int no, Criteria criteria) throws Exception{
+			List<Product> hitsList = mainService.getHitList(criteria);
 
-			
+			System.out.println("----------------------------------------");
+			System.out.println("----------------------------------------");
+			System.out.println("----------------------------------------");
+			System.out.println("-----------------hit----------------");
+			System.out.println("----------------------------------------");
+			System.out.println("----------------------------------------");
 			return hitsList;
 			
 		}
-	
+		/*
 	//인기순 보기
 		@RequestMapping(value="/avglikelist.do", method=RequestMethod.GET)
 		public @ResponseBody  List<Product> avglike (int no) throws Exception{
@@ -66,41 +85,22 @@ public class MainController {
 			
 			return avglikeList;
 		}
-	
-	//해당 태그의 상품 내역 추가?
-		@RequestMapping(value="/addmainlist.do", method=RequestMethod.GET)
-		public @ResponseBody  List<Product> addlist (Criteria criteria, @RequestParam(name="pno", required=false, defaultValue="1") int pageNo, Model model) throws Exception{
-			
-			List<Product> results = new ArrayList<>();
-			
-			
-			if(pageNo < 1) {
-				return results;
-			}
-			
-			int rows = 12;
-			int pages = 5;
-			int beginIndex = (pageNo - 1)*rows + 1;
-			int endIndex = pageNo*rows;
-			
-			// 전체 데이타 건수 조회하기
-			int totalRows = mainService.getTotalRows(criteria);
+	*/
 		
-	
-			// 데이타 조회하기
-			criteria.setBeginIndex(beginIndex);
-			criteria.setEndIndex(endIndex);
-			List<Product> addlist = mainService.getProducts(criteria);
+		//인기순 보기
+		@RequestMapping(value="/avglikelist.do", method=RequestMethod.GET)
+		public @ResponseBody  List<Product> avglikeList (int no, Criteria criteria) throws Exception{
+			
+			List<Product> avglikeList = mainService.getAvglikeList(criteria);
 			System.out.println("----------------------------------------");
 			System.out.println("----------------------------------------");
 			System.out.println("----------------------------------------");
-			System.out.println("----------------------------------------");
+			System.out.println("-----------------avg-------------------");
 			System.out.println("----------------------------------------");
 			System.out.println("----------------------------------------");
 			
-			
-			return addlist;
+			return avglikeList;
 		}
-		
 	
+		
 }

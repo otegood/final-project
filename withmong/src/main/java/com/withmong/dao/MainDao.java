@@ -8,15 +8,15 @@ import com.withmong.model.Product;
 public interface MainDao {
 
 	//인기순 상품 내역 보기
-	List<Product> getAvglikeList();
+	List<Product> getAvglikeList(Criteria criteria);
 	//등록순 상품 내역 보기
-	List<Product> getRegList();
+	List<Product> getRegList(Criteria criteria);
 	//조회순 상품 내역 보기
-	List<Product> getHitList();
+	List<Product> getHitList(Criteria criteria);
 	
 	
-	//추가 상품 나타낼 개수
+		
+	// 종합 개수 조회
 	int getTotalRows(Criteria criteria);
-	//상품리스트 불러오기(통산?)
-	List<Product> getProducts(Criteria criteria);
+
 }

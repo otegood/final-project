@@ -16,276 +16,96 @@
 
 <script type="text/javascript">
 $(function() {
+	
+	function generatedProducts(products) {
+		$.each(products, function(index, item) {
+    		$("#area").append(
+   				'<div class="col-sm-3" style="padding-left: 15px; padding-right: 15px;">'+
+				'<div class="pro-img">'+
+					'<span class="pro-img" id="img">'+ 
+					'<img src="../../resources/images/'+item.img+'" width="50px" height="50px" >'+
+					'</span>'+
+				'</div>'+
+				'<div class="col-sm-6" style="padding-left: 0px;">'+
+					'<div class="call-product-title">'+
+						'<p>'+
+							'<span class="glyphicon glyphicon-gift" id="title">'+
+								'<div>'+item.title+'</div>'+
+							'</span>'+
+						'</p>'+
+					'</div>'+
+
+					'<div class="call-product-price">'+
+						'<p>'+
+							'<span class="glyphicon glyphicon-cd" id="price">'+
+								'<div>'+item.price+'</div>'+
+							'</span>'+
+						'</p>'+
+					'</div>'+
+				'</div>'+
+				'<div class="col-sm-6" style="padding-left: 0px;">'+
+					'<div class="call-product-title">'+
+						'<p>'+
+							'<span class="glyphicon glyphicon-calendar" id="regdate">'+
+								'<div>'+item.regDate+'</div>'+
+							'</span>'+
+						'</p>'+
+					'</div>'+
+					'<div class="call-product-price">'+
+						'<p>'+
+							'<span class="glyphicon glyphicon-paperclip" id="tag">'+
+								'<div>'+item.tag+'</div>'+
+							'</span>'+
+						'</p>'+
+					'</div>'+
+				'</div>'+
+				
+			'</div>'
+       		);
+    		
+    	})
+		
+	}
+
+	function getProducts(moreNo) {
+		$("#area").empty();
+
+		$.ajax({
+			url:$("#requestUrl").val(),
+			data:{no:moreNo},
+			dataType:"json",
+			success:function(result) {
+				generatedProducts(result);
+			}
+		});
+	}
+	
+	
 	//최근순 클릭시
 	$("#recent").click(function() {
-		$("#area").empty();
-		$.ajax({
-	        url: "recentlist.do",
-	        data:{no:$("#recent").val()},
-			dataType:"json",
-	        success: function(data){
-	        
-	        	$.each(data,function(index, item){
-	        		console.log(item.img);
-	        		$("#area").append(
-	        			'<div class="col-sm-3" style="padding-left: 15px; padding-right: 15px;">'+
-							'<div class="pro-img">'+
-								'<span class="pro-img" id="img">'+ 
-								'<img src="../../resources/images/'+item.img+'" width="50px" height="50px" >'+
-								'</span>'+
-							'</div>'+
-							'<div class="col-sm-6" style="padding-left: 0px;">'+
-								'<div class="call-product-title">'+
-									'<p>'+
-										'<span class="glyphicon glyphicon-gift" id="title">'+
-											'<div>'+item.title+'</div>'+
-										'</span>'+
-									'</p>'+
-								'</div>'+
-
-								'<div class="call-product-price">'+
-									'<p>'+
-										'<span class="glyphicon glyphicon-cd" id="price">'+
-											'<div>'+item.price+'</div>'+
-										'</span>'+
-									'</p>'+
-								'</div>'+
-							'</div>'+
-							'<div class="col-sm-6" style="padding-left: 0px;">'+
-								'<div class="call-product-title">'+
-									'<p>'+
-										'<span class="glyphicon glyphicon-calendar" id="regdate">'+
-											'<div>'+item.regDate+'</div>'+
-										'</span>'+
-									'</p>'+
-								'</div>'+
-								'<div class="call-product-price">'+
-									'<p>'+
-										'<span class="glyphicon glyphicon-paperclip" id="tag">'+
-											'<div>'+item.tag+'</div>'+
-										'</span>'+
-									'</p>'+
-								'</div>'+
-							'</div>'+
-							
-						'</div>'		
-	        		);
-	        		
-	        		
-	        		
-			
-				})
-	        	
-	        },
-	        error: function (xhr, status, error) {
-	        	console.log("err");
-	        }
-	      });
-		
+		var pno = parseInt($("#morecnt").val()) + 1
+		$("#morecnt").val(pno);	
+		$("#requestUrl").val("recentlist.do");
+		getProducts(pno);
 	})
 	
 	//조회순 클릭시
 	$("#hits").click(function() {
-		$("#area").empty();
-		$.ajax({
-	        url: "hitslist.do",
-	        data:{no:$("#hits").val()},
-			dataType:"json",
-	        success: function(data){
-	        console.log("안넘어 옴?");
-	        	$.each(data,function(index, item){
-	        		console.log(item.img);
-	        		$("#area").append(
-	        			'<div class="col-sm-3" style="padding-left: 15px; padding-right: 15px;">'+
-							'<div class="pro-img">'+
-								'<span class="pro-img" id="img">'+ 
-								'<img src="../../resources/images/'+item.img+'" width="50px" height="50px" >'+
-								'</span>'+
-							'</div>'+
-							'<div class="col-sm-6" style="padding-left: 0px;">'+
-								'<div class="call-product-title">'+
-									'<p>'+
-										'<span class="glyphicon glyphicon-gift" id="title">'+
-											'<div>'+item.title+'</div>'+
-										'</span>'+
-									'</p>'+
-								'</div>'+
-
-								'<div class="call-product-price">'+
-									'<p>'+
-										'<span class="glyphicon glyphicon-cd" id="price">'+
-											'<div>'+item.price+'</div>'+
-										'</span>'+
-									'</p>'+
-								'</div>'+
-							'</div>'+
-							'<div class="col-sm-6" style="padding-left: 0px;">'+
-								'<div class="call-product-title">'+
-									'<p>'+
-										'<span class="glyphicon glyphicon-calendar" id="regdate">'+
-											'<div>'+item.regDate+'</div>'+
-										'</span>'+
-									'</p>'+
-								'</div>'+
-								'<div class="call-product-price">'+
-									'<p>'+
-										'<span class="glyphicon glyphicon-paperclip" id="tag">'+
-											'<div>'+item.tag+'</div>'+
-										'</span>'+
-									'</p>'+
-								'</div>'+
-							'</div>'+
-							
-						'</div>'		
-	        		);
-	        		
-	        		
-	        		
-			
-				})
-	        	
-	        },
-	        error: function (xhr, status, error) {
-	        	console.log("err");
-	        }
-	      });
-		
+		var pno = parseInt($("#morecnt").val()) + 1
+		$("#morecnt").val(pno);	
+		$("#requestUrl").val("hitslist.do");
+		getProducts( pno);		
 	})
+	
 	//인기순
 	$("#avglike").click(function() {
-		$("#area").empty();
-		$.ajax({
-	        url: "avglikelist.do",
-	        data:{no:$("#avglike").val()},
-			dataType:"json",
-	        success: function(data){
-	        console.log("안넘어 옴?");
-	        	$.each(data,function(index, item){
-	        		console.log(item.img);
-	        		$("#area").append(
-	        			'<div class="col-sm-3" style="padding-left: 15px; padding-right: 15px;">'+
-							'<div class="pro-img">'+
-								'<span class="pro-img" id="img">'+ 
-								'<img src="../../resources/images/'+item.img+'" width="50px" height="50px" >'+
-								'</span>'+
-							'</div>'+
-							'<div class="col-sm-6" style="padding-left: 0px;">'+
-								'<div class="call-product-title">'+
-									'<p>'+
-										'<span class="glyphicon glyphicon-gift" id="title">'+
-											'<div>'+item.title+'</div>'+
-										'</span>'+
-									'</p>'+
-								'</div>'+
-
-								'<div class="call-product-price">'+
-									'<p>'+
-										'<span class="glyphicon glyphicon-cd" id="price">'+
-											'<div>'+item.price+'</div>'+
-										'</span>'+
-									'</p>'+
-								'</div>'+
-							'</div>'+
-							'<div class="col-sm-6" style="padding-left: 0px;">'+
-								'<div class="call-product-title">'+
-									'<p>'+
-										'<span class="glyphicon glyphicon-calendar" id="regdate">'+
-											'<div>'+item.regDate+'</div>'+
-										'</span>'+
-									'</p>'+
-								'</div>'+
-								'<div class="call-product-price">'+
-									'<p>'+
-										'<span class="glyphicon glyphicon-paperclip" id="tag">'+
-											'<div>'+item.tag+'</div>'+
-										'</span>'+
-									'</p>'+
-								'</div>'+
-							'</div>'+
-							
-						'</div>'		
-	        		);
-	        		
-	        		
-	        		
-			
-				})
-	        	
-	        },
-	        error: function (xhr, status, error) {
-	        	console.log("err");
-	        }
-	      });
-		
-	})
+		var pno = parseInt($("#morecnt").val()) + 1
+		$("#morecnt").val(pno);	
+		$("#requestUrl").val("avglikelist.do");
+		getProducts(pno);	
+	});
 	
-	//더보기
-	
-	function more () {
-		$("#more").click(function() {
-			//버튼값을 클릭할떄마다 1씩 카운트 증가
-			var pno = parseInt($("#morecnt").val()) + 1
-			$("#morecnt").val(pno);
-			
-			$.ajax({
-				 	url: "addmainlist.do",
-			        data:{no:pno},
-					dataType:"json",
-			        success: function(data){
-			        	console.log(data);
-			        	$.each(data,function(index, item){
-			        		$("#area").append(
-				        			'<div class="col-sm-3" style="padding-left: 15px; padding-right: 15px;">'+
-										'<div class="pro-img">'+
-											'<span class="pro-img" id="img">'+ 
-											'<img src="../../resources/images/'+item.img+'" width="50px" height="50px" >'+
-											'</span>'+
-										'</div>'+
-										'<div class="col-sm-6" style="padding-left: 0px;">'+
-											'<div class="call-product-title">'+
-												'<p>'+
-													'<span class="glyphicon glyphicon-gift" id="title">'+
-														'<div>'+item.title+'</div>'+
-													'</span>'+
-												'</p>'+
-											'</div>'+
-
-											'<div class="call-product-price">'+
-												'<p>'+
-													'<span class="glyphicon glyphicon-cd" id="price">'+
-														'<div>'+item.price+'</div>'+
-													'</span>'+
-												'</p>'+
-											'</div>'+
-										'</div>'+
-										'<div class="col-sm-6" style="padding-left: 0px;">'+
-											'<div class="call-product-title">'+
-												'<p>'+
-													'<span class="glyphicon glyphicon-calendar" id="regdate">'+
-														'<div>'+item.regDate+'</div>'+
-													'</span>'+
-												'</p>'+
-											'</div>'+
-											'<div class="call-product-price">'+
-												'<p>'+
-													'<span class="glyphicon glyphicon-paperclip" id="tag">'+
-														'<div>'+item.tag+'</div>'+
-													'</span>'+
-												'</p>'+
-											'</div>'+
-										'</div>'+
-										
-									'</div>'		
-				        		);
-			        		
-			        	})
-			        }
-			})
-		});
-	}
-	
-	})
-	
+})
 </script>
 
 <style type="text/css">
@@ -407,6 +227,7 @@ strong {
 			</div>
 			<div style="text-align: center; margin-bottom: 30px; margin-top: 30px;">
 				<input type="hidden" id="morecnt" value="0" /> 
+				<input type="hidden" id="requestUrl" value="recentlist.do" />
 				<a class="btn btn-danger btn-large" style="width: 400px;" id="more" >더보기</a>
 			</div>
 			</div>

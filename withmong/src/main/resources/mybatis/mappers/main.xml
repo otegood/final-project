@@ -5,7 +5,7 @@
 <mapper namespace="com.withmong.dao.MainDao">
 
 	<!--인기순으로  내역 가져오기 -->
-	<select id="getAvglikeList" parameterType="double" resultType="Product">
+	<!-- <select id="getAvglikeList" parameterType="double" resultType="Product">
 		<![CDATA[ 
 		select * 
 		from(
@@ -15,8 +15,22 @@
 		where rownum <=12
 		]]> 
 	</select>
-	
+	 -->
+  	<select id="getAvglikeList" parameterType="Criteria" resultType="Product">
+	 	<![CDATA[
+	 	 select * from ( select row_number() over (order by avglike desc) as rn , title, price, regdate, tag from product_table )  where rn >= #{beginIndex} and rn < #{endIndex} 
+		]]>
+  	</select>
+
 	<!-- 등록순으로 내역 가져오기 -->
+  	<select id="getRegList" parameterType="Criteria" resultType="Product">
+	 	<![CDATA[
+	 	 select * from ( select row_number() over (order by regdate desc) as rn , title, price, regdate, tag from product_table )  where rn >= #{beginIndex} and rn < #{endIndex} 
+		]]>
+  	</select>
+	
+	<!-- 
+  	
 	<select id="getRegList" parameterType="date" resultType="Product">
 		<![CDATA[ 
 		select * 
@@ -28,8 +42,17 @@
 		]]>
 	</select>
 	
+  	 -->
+	
 	<!-- 조회순으로 내역 가져오기 -->
-	<select id="getHitList" parameterType="int" resultType="Product">
+
+  	<select id="getHitList" parameterType="Criteria" resultType="Product">
+	 	<![CDATA[
+	 	 select * from ( select row_number() over (order by hits desc) as rn , title, price, regdate, tag from product_table )  where rn >= #{beginIndex} and rn < #{endIndex} 
+		]]>
+  	</select>
+	<!-- 
+  			<select id="getHitList" parameterType="int" resultType="Product">
 		<![CDATA[ 
 		select * 
 		from(
@@ -39,10 +62,12 @@
 		where rownum <=12
 		]]>
 	</select>
+  	 -->
+	
 	
 	<!-- 상품 총 개수 구하기? -->
 	<select id="getTotalRows" parameterType="Criteria" resultType="int">
-		  select count(*) from product 
+		  select count(*) from product_table
 	</select>
 	
 	<!-- 상품리스트 구하기 (통합) -->
@@ -51,4 +76,6 @@
  	 select * from ( select row_number() over (order by no desc) rn, * from product_table ) where rn >= #{beginIndex} and rn < #{endIndex} 
 	]]>
   	</select>
+  	
+  	
 </mapper>
