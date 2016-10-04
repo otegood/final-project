@@ -107,6 +107,14 @@ public class ProductServiceImpl implements ProductService{
 		
 	}
 
+	@Override
+	public void ProductReviewDel(int reviewNo) {
+		productDao.ProductReviewDel(reviewNo);
+		
+	}
+
+
+
 
 
 

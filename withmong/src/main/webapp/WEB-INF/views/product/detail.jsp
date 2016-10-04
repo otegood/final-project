@@ -16,6 +16,7 @@
 <script type="text/javascript">
 
 $(function() {
+	
 	function getReviewList(){
 		
 		$("#reviewTb").empty();
@@ -26,8 +27,15 @@ $(function() {
 			dataType: "json",
 			success: function(data){
 				//로딩하는 ajax 추가
+				
+				var loginedUserId = '${LOGIN_USER.id}';
 				$.each(data,function(index, item){	
-					$("#reviewTb").append('<tr><td><img src="../../resources/images/default/'+item.score+'star.PNG"></td><td>'+item.contents+'</td>'+'<td>'+item.userId+'</td>'+'<td>'+item.regdate+'</td></tr>');
+					if (loginedUserId == item.userId) {
+						$("#reviewTb").append('<tr><td><img src="../../resources/images/default/'+item.score+'star.PNG"></td><td>'+item.contents+'</td>'+'<td>'+item.userId+'</td>'+'<td>'+item.regdate+'</td><td><button class="btn btn-danger btn-xs" value="'+item.no+'">삭제</button></td></tr>');
+					} else {
+						$("#reviewTb").append('<tr><td><img src="../../resources/images/default/'+item.score+'star.PNG"></td><td>'+item.contents+'</td>'+'<td>'+item.userId+'</td>'+'<td>'+item.regdate+'</td><td></td></tr>');
+						
+					}
 				})
 			}
 		})
@@ -40,34 +48,49 @@ $(function() {
 	
 	
 	$("#addreviewBtn").click(function(){
-		
 		$.ajax({
 			url:"productreple.do",
 			type:"POST",
-			data:{score:$(":radio:checked").val(),contents:$("#contents").val(),productNo:$("#productNo").val() },
+			data:{score:$(":radio:checked").val(),contents:$("#contents").val(),productNo:$("#productNo").val()},
+			dataType: "text",
+			success: function(data){
+				getReviewList();	
+			}
+		})
+		return false;
+		
+	});
+	
+	
+	// 컨트롤러에서 Order를 받아 확인하는 코드를 해야한다.
+	$("#buybtn").one("click", function(){
+		$.ajax({
+			url:"productBuy.do",
+			type:"POST",
+			data:{productNo:$("#productNo").val() },
+			dataType: "text",
+			success: function(data){
+				alert("상품구매가 완료 되었습니다.");
+				$("#buybtn").addClass("disabled");
+			}
+		})
+		
+	})
+	
+	//댓글 삭제 버튼을 클릭 했을 때 수행하는 코드
+	$("#reviewTb").on("click", "button", function() {
+		$.ajax({
+			url:"productrepleDel.do",
+			type:"POST",
+			data:{reviewNo:$(this).val()},
 			dataType: "text",
 			success: function(data){
 				//로딩하는 ajax 추가
 				getReviewList();
 			}
 		})
-		return false;
 	});
 	
-	
-	// 컨트롤러에서 Order를 받아 확인하는 코드를 해야한다.
-	$("#buybtn").click(function(){
-		$.ajax({
-			url:"productBuy.do",
-			type:"POST",
-			data:{buyId:$("#buybtn").val(),productNo:$("#productNo").val() },
-			dataType: "text",
-			success: function(data){
-				$("#buybtn").addClass("disabled");
-			}
-		})
-		
-	})
 	
 	
 })
@@ -144,10 +167,10 @@ strong {
 							${detail.price } 원<br>
 							 <c:choose>
 							      	<c:when  test="${empty LOGIN_USER }">
-							        	<button id="buybtn" type="button" class="btn btn-danger" disabled="disabled"  value="${LOGIN_USER }">구매하기</button>
+							        	<button id="buybtn" type="button" class="btn btn-danger" disabled="disabled" >구매하기</button>
 							        </c:when>
 							        <c:otherwise>							        
-							        	<button id="buybtn" type="button" class="btn btn-danger" value="${LOGIN_USER }">구매하기</button>
+							        	<button id="buybtn" type="button" class="btn btn-danger" >구매하기</button>
 							        </c:otherwise>
 							   </c:choose>
 							
@@ -160,7 +183,7 @@ strong {
 								<a href="" style="margin-left: 10px;"><span class="glyphicon glyphicon-envelope"></span></a> 
 								<a href="" style="margin-left: 10px;"><span class="glyphicon glyphicon-alert" style="color: red"></span></a>
 							</p>
-							<img src="../../resources/images/${userDetail.img}" width="200px;">
+							<img src="../../resources/images/profile/${userDetail.img}" width="200px;">
 							<p>등급 : ${userDetail.grade }        성별:  <c:if test="${userDetail.gender eq 'M'}">남자</c:if>
 															 		  <c:if test="${userDetail.gender eq 'F'}">여자</c:if>
 							</p>
@@ -187,6 +210,7 @@ strong {
 					<p>${detail.contents }</p>
 				</div>
 				<div id="menu1" class="tab-pane fade">
+					<div id = "hahaha">
 					<form role="form" action="productreple.do" method="post">
 							<br>
 			       		<div class="text-center">
@@ -202,7 +226,7 @@ strong {
 						<div class="panel-body">
 							<div class="col-lg-12">
 							    <div class="input-group">
-							      <input type="text" id="contents" class="form-control" placeholder="최대 한글 100자까지 가능하며, 스포일러는 삭제될 수 있습니다.">
+							      <input type="text" id="contents" class="form-control" placeholder="최대 한글 100자까지 가능합니다.">
 							      <span class="input-group-btn">
 							     
 							      <c:choose>
@@ -219,6 +243,7 @@ strong {
 							  </div>
 							</div>
 						</form>
+						</div>
 						<div class="row" id="reviewList">
 
 							<table class="table">
