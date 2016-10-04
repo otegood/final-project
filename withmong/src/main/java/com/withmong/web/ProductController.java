@@ -38,7 +38,7 @@ public class ProductController {
 
 
 	@RequestMapping(value="/detail.do")
-	public String detail(@RequestParam(name="productNo") int no, Model model,Model review,Model userDe) {
+	public String detail(@RequestParam(name="productNo") int no, Model model,Model review,Model userDe,User loginedUser) {
 		//조회수 업데이트
 		productService.updateHits(no);
 
@@ -54,15 +54,13 @@ public class ProductController {
 		// 카테고리 정보 조회
 		model.addAttribute("crumbs", crumbs);
 		
-		String name = productDetail.getUserId();
+		String name = productDetail.getUserid();
 		User userDetail = productService.getUserDetail(name);
 
 		
 		userDe.addAttribute("userDetail", userDetail);		
 		
-		//로그인 한 사람이 상품을 구매했는지 확인하기
-		
-		
+
 		
 		List<ProductReview> productReivewList = productService.getAllProductReivew(no);
 		review.addAttribute("productReivewList",productReivewList);
@@ -91,11 +89,6 @@ public class ProductController {
 
 	@RequestMapping(value="/addProduct.do", method=RequestMethod.POST)
 	public String addProduct(ProductForm productForm ,@RequestParam("img")MultipartFile img, User loginedUser) throws Exception{
-
-		System.out.println("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
-		System.out.println("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
-		System.out.println("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
-		System.out.println("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
 		
 		
 		Product product = new Product();
@@ -115,7 +108,7 @@ public class ProductController {
 
 		// 아이디
 		String loginId = loginedUser.getId();
-		product.setUserId(loginId);
+		product.setUserid(loginId);
 	
 
 		// 이미지 사진
@@ -143,12 +136,10 @@ public class ProductController {
 		product.setContents(contents);
 
 		//지역
-		//product.setLocationNo(productForm.getLocationNo());
 		Location location = new Location();
 		location = productService.findLocationNo(productForm.getLocation());
 		product.setLocation(location);
 	
-		
 		
 		//수량 및 인원
 		int qty = productForm.getQty();
@@ -172,12 +163,12 @@ public class ProductController {
 
 	@RequestMapping(value="/productreple.do", method=RequestMethod.POST)
 	public @ResponseBody void productreple(int score,String contents,int productNo, User loginedUser) throws Exception{
-		
+
 		ProductReview productReview = new ProductReview();
 		
-
-		
+	
 		String loginId = loginedUser.getId();
+
 		productReview.setUserId(loginId);
 		productReview.setScore(score);
 		productReview.setContents(contents);
@@ -185,6 +176,13 @@ public class ProductController {
 		
 		productService.addProductReview(productReview);
 	}
+	
+	@RequestMapping(value="/productrepleDel.do", method=RequestMethod.POST)
+	public @ResponseBody void productrepleDel(int reviewNo) throws Exception{
+	
+		productService.ProductReviewDel(reviewNo);
+	}
+	
 	@RequestMapping(value="/locationForlocal.do", method=RequestMethod.POST)
 	public @ResponseBody List<Location> locationForlocal(String city) throws Exception{
 
@@ -209,11 +207,11 @@ public class ProductController {
 
 	
 	@RequestMapping(value="/productBuy.do", method=RequestMethod.POST)
-	public @ResponseBody void  productBuy (User buyId,int productNo) throws Exception{
+	public @ResponseBody void  productBuy (User loginedUser,int productNo) throws Exception{
 		Product product = productService.getProductByNo(productNo);
 		
 			Order order = new Order();
-			order.setUserid(buyId);
+			order.setUserid(loginedUser);
 			order.setProductNo(product);
 			
 			productService.addOrder(order);

@@ -41,13 +41,13 @@
 	
 	<insert id="addProductReview" parameterType="ProductReview">
 		insert into product_review
-		(no,score,contents,regdate,userid,productno)
+		(no,score,contents,regdate,userId,productNo)
 		values
 		(test_seq.nextval,#{score},#{contents},sysdate,#{userId},#{productNo})
 	</insert>
 	
 	<select id="getAllProductReivew" parameterType="int" resultType="ProductReview">
-		select score,contents,regdate,userid,productno
+		select no, score,contents,regdate,userid,productno
 		from product_review
 		where productno = #{value}
 		order by regdate desc
@@ -163,6 +163,10 @@
 		where no = #{value}
 	</update>
 	
+	<delete id="ProductReviewDel" parameterType="int">
+		delete from product_review
+		where no = #{value}
+	</delete>
 	
 </mapper>
 

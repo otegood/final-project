@@ -29,6 +29,7 @@ public interface ProductDao {
 	Product getProductByNo(int productNo);
 	void addOrder(Order order);
 	void updateHits(int no);
+	void ProductReviewDel(int reviewNo);
 
 	
 }
