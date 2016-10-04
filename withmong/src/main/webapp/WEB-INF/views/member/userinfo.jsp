@@ -59,7 +59,7 @@ $(function() {
 			
 			$("#id").append(data.id);
 			$("#email").append(data.email);
-			$("#img").append("<img alt='profile' src='resources/images/profile/"+data.img+"' style='width:42px;height:42px;border:0;'>");
+			$("#img").append("<img alt='profile' src='resources/images/profile/"+data.img+"' style='width:200px;height:200px;border:0;'>");
 		}
 	});	
 });
@@ -72,7 +72,7 @@ $(function() {
 		<div class="container" >
 			<div class="row">
 	        	<h1>정보보기</h1>
-	        	<div id="img">
+	        	<div class="text-center" id="img">
 		        	
 	        	</div>
 				<table class="table table-striped" style="width:100%;">
