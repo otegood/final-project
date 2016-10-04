@@ -113,7 +113,16 @@ $(document).ready(function(){
 								<li class="divider"></li>
 								<li><a href="logout.do"><span
 										class="glyphicon glyphicon-log-out"></span> 로그아웃</a></li>
-							</ul></li>
+							</ul>
+						</li>
+						<!-- 상품 등록링크타기 -->
+						<li>
+							<a class="btn btn-xs" href="addProduct.do">
+								<span class="glyphicon glyphicon-plus">
+									상품등록
+								</span>
+							</a>
+						</li>
 					</ul>
 				</c:otherwise>
 			</c:choose>

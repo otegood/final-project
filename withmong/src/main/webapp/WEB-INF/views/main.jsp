@@ -221,25 +221,29 @@ $(function() {
 	
 	//더보기
 	
-	$("#more").click(function() {
-		//버튼값을 클릭할떄마다 1씩 카운트 증가
-		var cnt = parseInt($("#morecnt").val()) + 1
-		$("#morecnt").val(cnt);
-		
-		$.ajax({
-			 	url: "addmainlist.do",
-		        data:{no:cnt},
-				dataType:"json",
-		        success: function(data){
-		        	$.each(data,function(index, item){
-		        		$("#area").append("<>");
-		        		
-		        	})
-		        }
-		})
-	});
+	function more () {
+		$("#more").click(function() {
+			//버튼값을 클릭할떄마다 1씩 카운트 증가
+			var pno = parseInt($("#morecnt").val()) + 1
+			$("#morecnt").val(pno);
+			
+			$.ajax({
+				 	url: "addmainlist.do",
+			        data:{no:pno},
+					dataType:"json",
+			        success: function(data){
+			        	console.log(data);
+			        	$.each(data,function(index, item){
+			        		$("#area").append("aaaaaaaaaa");
+			        		
+			        	})
+			        }
+			})
+		});
+	}
 	
 	})
+	
 </script>
 
 <style type="text/css">
@@ -358,8 +362,7 @@ strong {
 				
 				
 			</div>
-			<div
-				style="text-align: center; margin-bottom: 30px; margin-top: 30px;">
+			<div style="text-align: center; margin-bottom: 30px; margin-top: 30px;">
 				<input type="hidden" id="morecnt" value="0" /> 
 				<a class="btn btn-danger btn-large" style="width: 400px;" id="more" >더보기</a>
 			</div>

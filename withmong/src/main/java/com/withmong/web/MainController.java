@@ -3,6 +3,7 @@ package com.withmong.web;
 import java.io.PrintWriter;
 import java.sql.Date;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -18,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.withmong.model.Criteria;
 import com.withmong.model.Point;
 import com.withmong.model.Product;
 import com.withmong.model.User;
@@ -63,14 +65,22 @@ public class MainController {
 			
 			return avglikeList;
 		}
-	/*	
+	
 	//해당 태그의 상품 내역 추가?
 		@RequestMapping(value="/addmainlist.do", method=RequestMethod.GET)
-		public @ResponseBody  List<Product> addlist (int no) throws Exception{
-			List<Product> avglikeList = mainService.getAvglikeList();
+		public @ResponseBody  List<Product> addlist (Criteria criteria, @RequestParam(name="pno", required=false, defaultValue="1")int pageNo, Model model) throws Exception{
 			
-			return avglikeList;
+			List<Product> results = new ArrayList<>();
+			System.out.println("dd");
+			if(pageNo < 1) {
+				return results;
+			}
+			int rows = 4;
+			
+			List<Product> addlist = mainService.getProducts(criteria);
+			
+			return addlist;
 		}
 		
-	*/
+	
 }
