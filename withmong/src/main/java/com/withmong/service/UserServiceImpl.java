@@ -10,6 +10,7 @@ import org.springframework.util.DigestUtils;
 
 import com.withmong.dao.UserDao;
 import com.withmong.model.Order;
+import com.withmong.model.Product;
 import com.withmong.model.Report;
 import com.withmong.model.User;
 
@@ -111,7 +112,41 @@ public class UserServiceImpl implements UserService{
 	}
 
 	
+	// 구매취소
+	@Override
+	public void cancelOrder(int orderNo) {
+		// 주문정보 조회
+		Order orderInfo = userDao.getOrderInfoByNo(orderNo);
+		
+		// 관리자 포인트 차감
+		userDao.deductionAdminPoint(orderInfo.getProductNo().getPrice());
+		
+		// 구매자 포인트 증가
+		userDao.increasePurchasePoint(orderInfo);
+		
+		// 구매정보 삭제
+		userDao.deletePurchase(orderNo);
+		
+	}
 
+
+	@Override
+	public void denySell(int orderNo) {
+		userDao.denySell(orderNo);
+	}
+
+	@Override
+	public void confirmSell(int orderNo) {
+		// 주문 정보 조회
+		Order orderInfo = userDao.getOrderInfoByNo(orderNo);
+		
+		// 관리자 포인트 차감
+		userDao.getDevideAdminPoint(orderInfo.getProductNo().getPrice());
+		// 판매자 포인트 증가
+		userDao.getPointSeller(orderInfo);
+		// 구분자 변경
+		userDao.confirmSell(orderNo);
+	}
 }
 
 
