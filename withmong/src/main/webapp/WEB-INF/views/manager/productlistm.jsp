@@ -52,71 +52,37 @@
 	#frames{
 		height: 400px;
 	}
-	th{
-		background-color: lightblue;
-	}
 </style>
-<title>회원정보</title>
+<title>상품목록</title>
 </head>
 <body>
 	<header><%@ include file="../mheader.jsp" %></header>
 	
 	<div class="container" >
-		<h1>회원 정보</h1>
-		<div class="panel panel-boby">
-			<table class="table">
-				<thead>
-					<tr>
-						<th>사진</th>
-						<th>아이디</th>
-						<th>이름</th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr>
-						<td rowspan="5"></td>
-						<td>${userdetail.id }</td>
-						<td>${userdetail.name }</td>
-					</tr>
-					<tr>
-						<th>등급</th>
-						<th>평점합계</th>
-					</tr>
-					<tr>
-						<td>${userdetail.grade }</td>
-						<td>${userdetail.sumLike }</td>
-					</tr>
-					<tr>
-						<th>생일</th>
-						<th>이메일</th>
-					</tr>
-					<tr>
-						<td><fmt:formatDate value="${userdetail.birth }" pattern="yyyy.MM.dd"/></td>
-						<td>${userdetail.email }</td>
-					</tr>
-					<tr>
-						<th>연락처</th>
-						<th>성별</th>
-						<th>학력</th>
-					</tr>
-					<tr>
-						<td>${userdetail.phone }</td>
-						<td>${userdetail.gender }</td>
-						<td>${userdetail.schoolAbility }</td>
-					</tr>
-					<tr>
-						<th>질문</th>
-						<th>답변</th>
-						<th>잔여포인트</th>
-					</tr>
-					<tr>
-						<td>${userdetail.question }</td>
-						<td>${userdetail.answer }</td>
-						<td>${userdetail.point }</td>
-					</tr>
-				</tbody>
-			</table>
-		</div>
+		<table class="table">
+			<tr>
+				<th>번호</th>
+				<th>이미지</th>
+				<th>제목</th>
+				<th>판매자</th>
+				<th>가격</th>
+				<th>평점</th>
+				<th>조회수</th>
+				<th>등록일</th>
+			</tr>	
+			<c:forEach var="product" items="${productList }">
+				<tr>
+					<td>${product.no }</td>
+					<td><img alt="" src="resources/images/profile/${product.img }"></td>
+					<td>${product.title }</td>
+					<td>${product.userid }</td>
+					<td><fmt:formatNumber value="${product.price }"></fmt:formatNumber> </td>
+					<td>${product.avglike }</td>
+					<td>${product.hits }</td>
+					<td>${product.regDate }</td>
+				</tr>
+			</c:forEach>	
+		</table>
 	</div>
 	<%@ include file="../footer.jsp" %>	
 </body>

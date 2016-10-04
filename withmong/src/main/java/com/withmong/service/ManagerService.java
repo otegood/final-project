@@ -2,6 +2,8 @@ package com.withmong.service;
 
 import java.util.List;
 
+import com.withmong.model.Point;
+import com.withmong.model.Product;
 import com.withmong.model.User;
 
 public interface ManagerService {
@@ -14,4 +16,8 @@ public interface ManagerService {
 		void userDelete(String id);
 	// 회원복구
 		void userRestore(String id);
+	// 모든 포인트 목록
+		List<Point> getAllPoints();
+	// 모든 상품 목록
+		List<Product> getAllProducts();
 }

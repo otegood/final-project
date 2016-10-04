@@ -74,13 +74,38 @@ $(function(){
 	$("#noticeChain tr").click(function(){
 		$(location).attr('href', 'noticeDetail.do?no='+$(this).find("td:first").text());
 	});
-	
 	$("#qnaChain tr").click(function(){
 		$(location).attr('href', 'qnaDetail.do?no='+$(this).find("td:first").text());
 	});
 	$("#requestChain tr").click(function(){
 		$(location).attr('href', 'requestDetail.do?no='+$(this).find("td:first").text());
 	});
+	
+	$("#users").click(function(){
+		$("#userlist").show(300, "swing");
+		$("#rechargelist").hide(300);
+		$("#reportlist").hide(300);
+	});
+	$("#reports").click(function(){
+		$("#userlist").hide(300);
+		$("#rechargelist").hide(300);
+		$("#reportlist").show(300, "swing");
+	});
+	$("#recharges").click(function(){
+		$("#userlist").hide(300);
+		$("#rechargelist").show(300, "swing");
+		$("#reportlist").hide(300);
+	});
+	
+	$("#products").click(function(){
+		$("#orderlist").hide(300);
+		$("#productlist").show(300, "swing");
+	});
+	$("#orders").click(function(){
+		$("#productlist").hide(300);
+		$("#orderlist").show(300, "swing");
+	});
+	
 });
 </script>
 <title>관리자 페이지</title>
@@ -96,28 +121,30 @@ $(function(){
 				<a class="btn btn-xs btn-default" id="requests">요청게시판</a>
 				<a class="btn btn-xs btn-default" id="qnas">Q&A</a>
 			</div>
-			<!-- 게시판 리스트 -->
+			
 			<div>
+			<!-- 공지사항 -->
 				<div id="notice" >
 					<table class="table table-hover">
-					<thead>
-						<tr>
-							<th>글번호</th>
-							<th>제목</th>
-							<th>게시일</th>
-						</tr>
-					</thead>
-					<tbody  id="noticeChain">
-						<c:forEach var="n" items="${noticelist }" begin="0" end="6">
+						<thead>
 							<tr>
-								<td>${n.no }</td>
-								<td>${n.title }</td>
-								<td><fmt:formatDate value="${n.regdate }" pattern="yyyy.MM.dd"/></td>
+								<th>글번호</th>
+								<th>제목</th>
+								<th>게시일</th>
 							</tr>
-						</c:forEach>
-					</tbody>
-				</table>
+						</thead>
+						<tbody  id="noticeChain">
+							<c:forEach var="n" items="${noticelist }" begin="0" end="6">
+								<tr>
+									<td>${n.no }</td>
+									<td>${n.title }</td>
+									<td><fmt:formatDate value="${n.regdate }" pattern="yyyy.MM.dd"/></td>
+								</tr>
+							</c:forEach>
+						</tbody>
+					</table>
 				</div>
+			<!-- 요청게시판 -->
 				<div id="request"  style="display: none;">
 					<table class="table table-hover">
 						<thead>
@@ -148,6 +175,7 @@ $(function(){
 						</tbody>
 					</table>
 				</div>
+			<!-- QnA게시판 -->
 				<div id="qna"  style="display: none;">
 					<table class="table table-hover">
 						<thead>
@@ -183,12 +211,14 @@ $(function(){
 		<div class="row col-sm-6" id="frames" style="margin: auto;">
 			<h2>회원 관리</h2>
 			<div style="text-align: right">
-				<a class="btn btn-xs btn-info" href="userlist.do">더 보기</a>
+				<a class="btn btn-xs btn-info" id="users">회원목록</a>
+				<a class="btn btn-xs btn-info" id="reports">신고내역</a>
+				<a class="btn btn-xs btn-info" id="recharges">충전내역</a>
 			</div>
-			
-			<!-- 회원리스트 -->
+	
 			<div>
-				<div class="panel panel-boby">
+			<!-- 회원목록 -->
+				<div id="userlist" class="panel panel-boby">
 					<table class="table">
 						<thead>
 							<tr>
@@ -221,28 +251,57 @@ $(function(){
 						</tbody>
 					</table>
 				</div>
+			<!-- 충전내역 -->
+				<div id="rechargelist" style="display: none;">
+					<table class="table">
+						<tr>
+							<th>회원 ID</th>
+							<th>충전 Point</th>
+							<th>출금 Point</th>
+							<th>날짜</th>
+						</tr>
+						<c:forEach var="point" items="${pointList}" begin="0" end="6">
+							<tr>
+								<td>${point.userid.id }</td>
+								<td><fmt:formatNumber value="${point.charge }" type="number"></fmt:formatNumber></td>
+								<td><fmt:formatNumber value="${point.withdraw }" type="number"></fmt:formatNumber></td>
+								<td><fmt:formatDate value="${point.regdate }" pattern="yyyy.MM.dd hh:mm:ss" /></td>
+							</tr>
+						</c:forEach>
+					</table>
+				</div>
+				<!-- 신고목록 -->
+				<div id = "reportlist" style="display: none;">
+				</div>	
 			</div>
 		</div>
 		
 		<div class="row col-sm-6" id="frames" style="margin: auto;">
-			<h2>신고 관리</h2>
+			<h2>상품 관리</h2>
 			<div style="text-align: right">
-				<a class="btn btn-xs btn-danger" href="">더 보기</a>
+				<a class="btn btn-xs btn-danger" id="products">상품목록</a>
+				<a class="btn btn-xs btn-danger" id="orders">거래내역</a>
 			</div>
 			
-			<!-- 신고리스트 -->
 			<div>
-			
+				<!-- 상품목록 -->
+				<div id="productlist" class="panel panel-boby">
+					
+				</div>
+				<!-- 거래내역 -->
+				<div id="orderlist" style="display: none;">
+					
+				</div>			
 			</div>
 		</div>
 			
 		<div class="row col-sm-6" id="frames" style="margin: auto;">
-			<h2>상품 관리</h2>
+			<h2>통계 자료</h2>
 			<div style="text-align: right">
 				<a class="btn btn-xs btn-warning" href="">더 보기</a>
 			</div>
 			
-			<!-- 거래내역 리스트 -->
+			<!-- 토옹게-->
 			<div>
 			
 			</div>

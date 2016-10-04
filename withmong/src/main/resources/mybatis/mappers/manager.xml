@@ -38,4 +38,35 @@
 		set delCheck = 'N'
 		where id = #{id}
 	</update>
+<!-- 모든 포인트내역 -->	
+	<select id="getAllPoints" resultType="Point">
+		select 
+			a.charge as "charge",
+			a.withdraw as "withdraw", 
+			a.regdate as "regdate", 
+			a.userid as "userid.id",
+			b.point as "userid.point"
+		from
+			point_table a, user_table b
+		where
+			a.userid = b.id
+		order by 
+			a.regdate desc
+	</select>
+<!-- 모든 상품목록 -->
+	<select id="getAllProduct" resultType="Product">
+		select
+			no, 
+			title,
+			userid, 
+			img, 
+			price, 
+			regdate, 
+			avglike, 
+			hits
+		from
+			product_table
+		order by
+			regdate desc
+	</select>
 </mapper>

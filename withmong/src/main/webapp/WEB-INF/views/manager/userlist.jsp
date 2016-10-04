@@ -100,7 +100,7 @@
 						<td>${users.phone }</td>
 						<td>${users.gender }</td>
 						<td>${users.schoolAbility }</td>
-						<td>${users.point }</td>
+						<td><fmt:formatNumber value="${users.point }" type="number"></fmt:formatNumber></td>
 						<td>${users.grade }</td>
 						<td>
 							<c:if test="${users.id ne 'king' }">
