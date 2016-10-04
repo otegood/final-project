@@ -31,5 +31,6 @@ public interface ProductService {
 	List<Product> searchProduct(SearchForm searchForm);
 	Product getProductByNo(int productNo);
 	void addOrder(Order order);
+	void updateHits(int no);
 	
 }

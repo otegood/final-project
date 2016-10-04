@@ -39,20 +39,29 @@ public class ProductController {
 
 	@RequestMapping(value="/detail.do")
 	public String detail(@RequestParam(name="productNo") int no, Model model,Model review,Model userDe) {
+		//조회수 업데이트
+		productService.updateHits(no);
+
+		
 		Product productDetail = productService.productDetail(no);
 		Location location = productService.getLocationByno(productDetail.getLocation().getNo());
 		productDetail.setLocation(location);
 		
-		BreadcrumbsForm crumbs = productService.getCrumbs(productDetail.getCategory().getNo());	
 		
+		BreadcrumbsForm crumbs = productService.getCrumbs(productDetail.getCategory().getNo());	
+		//상품 디테일 정보
 		model.addAttribute("detail",productDetail);
+		// 카테고리 정보 조회
 		model.addAttribute("crumbs", crumbs);
 		
 		String name = productDetail.getUserId();
 		User userDetail = productService.getUserDetail(name);
 
 		
-		userDe.addAttribute("userDetail", userDetail);
+		userDe.addAttribute("userDetail", userDetail);		
+		
+		//로그인 한 사람이 상품을 구매했는지 확인하기
+		
 		
 		
 		List<ProductReview> productReivewList = productService.getAllProductReivew(no);
@@ -83,6 +92,12 @@ public class ProductController {
 	@RequestMapping(value="/addProduct.do", method=RequestMethod.POST)
 	public String addProduct(ProductForm productForm ,@RequestParam("img")MultipartFile img, User loginedUser) throws Exception{
 
+		System.out.println("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+		System.out.println("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+		System.out.println("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+		System.out.println("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+		
+		
 		Product product = new Product();
 		BeanUtils.copyProperties(productForm, product);
 

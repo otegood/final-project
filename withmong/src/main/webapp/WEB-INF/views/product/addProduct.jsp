@@ -16,60 +16,64 @@
 <script
 	src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script type="text/javascript">
-$(function(){
-	$("#addProduct").click(function(){
-		
-	
-		$("form").submit(function() {
-		if($("#categoryNo").val() == "default") {
-			alert("카테고리를 선택해주세요");
-			return false;
-		}
-		if(!$.trim($(":input[name='title']").val())) {
-			alert("타이틀을 입력해주세요");
-			return false;
-		}
-		if(!$.trim($("textarea[name='contents']").val())) {
-			alert("상품 설명을 입력해주세요");
-			return false;
-		}
-		if($("#city").val() == "default") {
-			alert("도시를 선택해주세요");
-			return false;
-		}
-		if($("#selectqty").val() == "default") {
-			alert("수량및 인원을 선택해주세요");
-			return false;
-		}
-		if(!$.trim($(":input[name='price']").val())) {
-			alert("가격을 입력해주세요");
-			return false;
-		}
-		if(!$.trim($(":input[name='tag']").val())) {
-			alert("태그를 입력해주세요");
-			return false;
-		}
-		return true;
+
+	$(function() {
+		$("#addProductbtn").click(function() {
+			$("#addpro").submit(function() {
+				if ($("#categoryNo").val() == "default") {
+					alert("카테고리를 선택해주세요");
+					return false;
+				}
+				if (!$.trim($(":input[name='title']").val())) {
+					alert("타이틀을 입력해주세요");
+					return false;
+				}
+				if (!$.trim($("textarea[name='contents']").val())) {
+					alert("상품 설명을 입력해주세요");
+					return false;
+				}
+				if ($("#city").val() == "default") {
+					alert("도시를 선택해주세요");
+					return false;
+				}
+				if ($("#selectqty").val() == "default") {
+					alert("수량및 인원을 선택해주세요");
+					return false;
+				}
+				if (!$.trim($(":input[name='price']").val())) {
+					alert("가격을 입력해주세요");
+					return false;
+				}
+				if (!$.trim($(":input[name='tag']").val())) {
+					alert("태그를 입력해주세요");
+					return false;
+				}
+				return true;
+			});
+		});
+
+		// 도시 선택시 구 나오기
+		$("#city").change(
+				function() {
+					$("#local").empty();
+					$.ajax({
+						url : "locationForlocal.do",
+						type : "POST",
+						data : {
+							city : $("#city").val()
+						},
+						dataType : "json",
+						success : function(data) {
+							$.each(data, function(index, item) {
+								$("#local").append(
+										'<option value="'+item.local+'">'
+												+ item.local + '</option>');
+							})
+						}
+					})
+				});
+
 	});
-});
-	
-// 도시 선택시 구 나오기
-	$("#city").change(function(){
-		$("#local").empty();
-		$.ajax({
-			url:"locationForlocal.do",
-			type:"POST",
-			data:{city:$("#city").val() },
-			dataType: "json",
-			success: function(data){
-				$.each(data,function(index, item){	
-					$("#local").append('<option value="'+item.local+'">'+item.local+'</option>');
-				})
-			}
-		})
-	});		
-	
-});
 </script>
 <style type="text/css">
 .container {
@@ -122,7 +126,7 @@ strong {
 	<div class="container" style="margin-top: 150px;">
 		<h1>상품 등록</h1>
 		<div class="well">
-			<form role="form" method="post" action="addProduct.do" enctype="multipart/form-data">
+			<form role="form" method="post" action="addProduct.do" id="addpro" enctype="multipart/form-data">
 				<div class="form-group">
 					<div class="form-group row">
 						<label class="col-sm-3 text-right">카테고리</label>
@@ -197,7 +201,7 @@ strong {
 					</div>
 
 					<div class="form-group text-center">
-						<input type="button" class="btn btn-primary" value="등록" id="addProduct" />
+						<input type="submit" class="btn btn-primary" value="등록" id="addProductbtn" />
 						<a href="searchList.do" class="btn btn-default">취소</a>
 					</div>
 					

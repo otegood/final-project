@@ -101,6 +101,12 @@ public class ProductServiceImpl implements ProductService{
 		
 	}
 
+	@Override
+	public void updateHits(int no) {
+		productDao.updateHits(no);
+		
+	}
+
 
 
 
