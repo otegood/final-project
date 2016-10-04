@@ -157,6 +157,12 @@
 		(test_seq.nextval,sysdate,'W',#{userid.id},#{productNo.no})
 	</insert>
 
+	<update id="updateHits" parameterType="int">
+		update product_table
+		set hits = hits+1
+		where no = #{value}
+	</update>
+	
 	
 </mapper>
 

@@ -28,6 +28,7 @@ public interface ProductDao {
 	List<Product> searchProduct(SearchForm searchForm);
 	Product getProductByNo(int productNo);
 	void addOrder(Order order);
+	void updateHits(int no);
 
 	
 }
