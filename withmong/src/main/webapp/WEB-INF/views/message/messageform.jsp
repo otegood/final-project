@@ -64,7 +64,7 @@
 						<div class="form-group row">
 							<label class="col-sm-3 text-right">받는사람</label>
 							<div class="col-sm-9">
-								<input type="text" name="receiver" id="receiver" style="ime-mode:inactive" placeholder="입력해주세요"/> 
+								<input type="text" name="receiver.id" id="receiver.id" style="ime-mode:inactive" placeholder="입력해주세요"/> 
 								<button type="button" class="btn btn-xs" >아이디확인</button>
 							</div>
 						</div>
