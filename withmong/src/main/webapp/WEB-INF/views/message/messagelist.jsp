@@ -106,12 +106,14 @@
 									</form>
 								</div>
 							</div>
-							<div class="col-sm-6" style="position: fixed;margin-top: 10px; right: 50%; margin-right: -300px; background-color: white; width: auto;">
-								<img alt="" src="" width="200px;" height="180px"><br/>
-								${message.sender.img }<br/>
-								ID : ${message.sender.id }<br/>
-								등급 : ${message.sender.grade }<br/>
-								성별 : ${message.sender.gender }<br/>
+							<div class="col-sm-6" style="position: fixed;margin-top: 10px; right: 45%; margin-right: -300px; background-color: white; width: auto;">
+								${message.sender.id }님 프로필<br/>
+								<img alt="" src="resources/images/profile/${message.sender.img }" width="200px;" height="180px"><br/>
+								등급 : <c:if test="${message.sender.grade eq 'B'}">브론즈</c:if>
+									 <c:if test="${message.sender.grade eq 'S'}">실버</c:if>
+									 <c:if test="${message.sender.grade eq 'G'}">골드</c:if><br/>
+								성별 : <c:if test="${message.sender.gender eq 'M'}">남자</c:if>
+									 <c:if test="${message.sender.gender eq 'F'}">여자</c:if> <br/>
 								학력 : ${message.sender.schoolAbility }<br/>
 							</div>
 						</div>
