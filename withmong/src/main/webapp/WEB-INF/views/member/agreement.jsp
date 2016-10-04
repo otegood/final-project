@@ -56,7 +56,7 @@
 <script type="text/javascript">
 $(function(){
 	$("#agreebtn").click(function(){
-		if($(":checked").length != 2) {
+		if($(":checked").length != 3) {
 			alert("모든 약관을 읽어보신 후 동의함에 체크해 주십시오.");
 			return false;
 		}

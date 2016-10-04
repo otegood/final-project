@@ -62,7 +62,7 @@
 			            <td>${LOGIN_USER.id}</td>
 			        </tr>
 			        <tr>
-			            <th><span class="glyphicon glyphicon-email"></span></th>
+			            <th><span class="glyphicon glyphicon-envelope"></span></th>
 			            <td>${LOGIN_USER.email}</td>
 			        </tr>
 			    </table>

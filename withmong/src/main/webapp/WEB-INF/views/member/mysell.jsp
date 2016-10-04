@@ -74,11 +74,11 @@ $(function() {
 				jsp += "<td class='text-center'>"+item.productNo.price+"p</td>";
 				jsp += "<td class='text-center'>"+item.regdate+"</td>";
 				if(item.buyCheck == 'W'){
-					jsp += "<td class='text-center'><span class='label label-warning'>구매요청중</span></td>";
+					jsp += "<td class='text-center'><span class='label label-warning'>판매요청중</span></td>";
 				} else if(item.buyCheck == 'Y'){
-					jsp += "<td class='text-center''><span class='label label-success'>구매완료</span></td>";
+					jsp += "<td class='text-center''><span class='label label-success'>판매완료</span></td>";
 				} else {
-					jsp += "<td class='text-center'><span class='label label-default'>구매거부</span></td>";
+					jsp += "<td class='text-center'><span class='label label-default'>판매거부</span></td>";
 					
 				}
 				

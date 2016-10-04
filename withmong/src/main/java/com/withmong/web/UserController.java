@@ -91,16 +91,20 @@ public class UserController {
 		//파일업로드
 		String filename = img.getOriginalFilename();
 		
-		String userid = userform.getId();
-		
-		String extName = filename.substring(filename.lastIndexOf(".")+1);
-		
-		byte[] bytes = img.getBytes();
-		File file = new File(UPLOAD_DIRECTORY, userid + "." + extName);
-	
-		FileCopyUtils.copy(bytes, file);
-		
-		user.setImg(userid + "." + extName);
+		if(!filename.isEmpty()){
+			String userid = userform.getId();
+			
+			String extName = filename.substring(filename.lastIndexOf(".")+1);
+			
+			byte[] bytes = img.getBytes();
+			File file = new File(UPLOAD_DIRECTORY, userid + "." + extName);
+			
+			FileCopyUtils.copy(bytes, file);
+			
+			user.setImg(userid + "." + extName);
+		} else {
+			user.setImg("profile\\defaultUser.png");
+		}
 		
 		userService.register(user);
 		
@@ -312,17 +316,21 @@ public class UserController {
 		//파일업로드 ( 기존파일 삭제가능한지?)
 		String filename = img.getOriginalFilename();
 		
-		String userid = userform.getId();
-		
-		String extName = filename.substring(filename.lastIndexOf(".")+1);
-		
-		byte[] bytes = img.getBytes();
-		File file = new File(UPLOAD_DIRECTORY, userid + "." + extName);
-	
-		FileCopyUtils.copy(bytes, file);
-		
-		user.setImg(userid + "." + extName);
-		
+			
+		if(!filename.isEmpty()){
+			String userid = userform.getId();
+			
+			String extName = filename.substring(filename.lastIndexOf(".")+1);
+			
+			byte[] bytes = img.getBytes();
+			File file = new File(UPLOAD_DIRECTORY, userid + "." + extName);
+			
+			FileCopyUtils.copy(bytes, file);
+			
+			user.setImg(userid + "." + extName);
+		} else {
+			user.setImg("profile\\defaultUser.png");
+		}
 		userService.myInfoModify(user);
 		System.out.println(user);
 		

@@ -14,5 +14,4 @@ public interface MessageService {
 
 	// 쪽지보내기
 	void addFirstMessage(Message message);
-	
 }

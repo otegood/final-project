@@ -57,66 +57,67 @@
 
 	<div class="container">
 		<h1>1:1 쪽지방</h1>
-		<div class="panel panel-boby">
-			<div style="text-align: right">
-				<a href="firstmessage.do" class="btn btn-danger">쪽지보내기</a>
-			</div>
-			<table class="table">
-				<thead>
-					<tr>
-						<th>쪽지방 [쪽지를 받아야 대화방이 생성됩니다.]</th>
-					</tr>
-				</thead>
-				<tbody>
-					<c:forEach var="message" items="${messageList }">
-						<tr>
-							<td><a class="btn btn-warning" role="button" data-toggle="collapse" href="#${message.sender.id }"  data-parent="#accordion"  aria-expanded="true" aria-controls="${message.sender.id }"	style="width: 300px;"> <c:out value="${message.sender.id }" />님과 대화내용</a>
-								<div class="collapse" id="${message.sender.id }">
-									<div class="well row">
-										<div class="col-sm-6">
-										<c:forEach var="by" items="${onebyoneList}">
-											<div class="row">
-											<c:if test="${by.sender.id eq message.sender.id or by.receiver.id eq message.sender.id }">
-												<c:if test="${by.sender.id eq message.sender.id }">
-													<div class="alert alert-info" role="alert" style="width: 300px; height: auto;">
-												</c:if>
-												<c:if test="${by.receiver.id eq message.sender.id }">
-													<div class="alert alert-warning pull-right"  role="alert" style="width: 300px; height: auto;">
-												</c:if>
-														${by.sender.id } <br />
-														${by.contents } <br />
-														<p style="text-align: right;"><small><fmt:formatDate value="${by.senddate }" pattern="yyyy.MM.dd EEEE hh:mm:ss" /></small></p><br />
-													</div>
+		
+		<div style="text-align: right">
+			<a href="firstmessage.do" class="btn btn-danger">쪽지보내기</a>
+		</div>
+		
+		<h4><b>쪽지방 [쪽지를 받아야 대화방이 생성됩니다.]</b></h4>
+		<br/>
+		<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+			<c:forEach  var="message" items="${messageList }">
+				<div class="panel panel-default">
+					<div class="panel-heading" role="tab" id="headingOne">
+						<h4 class="panel-title">
+							<a role="button" data-toggle="collapse" data-parent="#accordion" href="#${message.sender.id }" aria-expanded="true"
+							aria-controls="collapseOne"> <c:out value="${message.sender.id }" />님과 대화내용 </a>
+						</h4>
+					</div>
+					<div id="${message.sender.id }" class="panel-collapse collapse"	role="tabpanel" aria-labelledby="headingOne">
+						<div class="panel-body">
+							<div class="col-sm-6">
+								<c:forEach var="by" items="${onebyoneList}">
+									<div class="row">
+										<c:if test="${by.sender.id eq message.sender.id or by.receiver.id eq message.sender.id }">
+											<c:if test="${by.sender.id eq message.sender.id }">
+												<div class="alert alert-danger" role="alert" style="width: 300px; height: auto;">
 											</c:if>
-											</div>
-										</c:forEach>
-										<div>
-											<form role="form" method="post" action="firstmessage.do">
-												<table>
-													<tr>
-														<td>
-															<input type="text" name="receiver" id="receiver" value="${message.sender.id }" hidden="hidden"> 
-															<textarea rows="4" cols="57" style="resize: none;" placeholder="입력해주세요" name="contents"></textarea>
-														</td>
-														<td><input type="submit" class="btn btn-info" style="height: 60pt; margin-left: 25px;" value="보내기"></td>
-													<tr>
-												</table>
-											</form>
-										</div>
-										</div>
-										<div class="col-sm-6" style="position: fixed;margin-top: 10px; right: 15%;margin-right: -300px;">
-											${message.sender.id }<br/>
-											${message.sender.grade }<br/>
-											${message.sender.schoolAbility }<br/>
-											${message.sender.img }<br/>
-										</div>
+											<c:if test="${by.receiver.id eq message.sender.id }">
+												<div class="alert alert-info pull-right"  role="alert" style="width: 300px; height: auto;">
+											</c:if>
+												${by.sender.id } <br />
+												${by.contents } <br />
+												<p style="text-align: right;"><small><fmt:formatDate value="${by.senddate }" pattern="yyyy.MM.dd EEEE hh:mm:ss" /></small></p><br />
+												</div>
+										</c:if>
 									</div>
+								</c:forEach>
+								<div>
+									<form role="form" method="post" action="firstmessage.do">
+										<table>
+											<tr>
+												<td>
+													<input type="text" name="receiver.id" id="receiver.id" value="${message.sender.id }" hidden="hidden"> 
+													<textarea rows="4" cols="57" style="resize: none;" placeholder="입력해주세요" name="contents"></textarea>
+												</td>
+												<td><input type="submit" class="btn btn-info" style="height: 60pt; margin-left: 25px;" value="보내기"></td>
+											</tr>
+										</table>
+									</form>
 								</div>
-							</td>
-						</tr>
-					</c:forEach>
-				</tbody>
-			</table>
+							</div>
+							<div class="col-sm-6" style="position: fixed;margin-top: 10px; right: 50%; margin-right: -300px; background-color: white; width: auto;">
+								<img alt="" src="" width="200px;" height="180px"><br/>
+								${message.sender.img }<br/>
+								ID : ${message.sender.id }<br/>
+								등급 : ${message.sender.grade }<br/>
+								성별 : ${message.sender.gender }<br/>
+								학력 : ${message.sender.schoolAbility }<br/>
+							</div>
+						</div>
+					</div>
+				</div>
+			</c:forEach>
 		</div>
 	</div>
 	<%@ include file="../footer.jsp"%>
