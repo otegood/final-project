@@ -44,16 +44,8 @@ public class MainController {
 	public @ResponseBody List<Product> recent (@RequestParam(name="no", required=false, defaultValue="1")int pageNo, 
 														Criteria criteria) throws Exception{
 	
-		
 		List<Product> recentList = new ArrayList<>();
-		System.out.println("_________________________________________________");
-		System.out.println("_________________________________________________");
-		System.out.println("_________________________________________________");
-		System.out.println("_________________________________________________");
-		System.out.println(pageNo);
-		System.out.println("_________________________________________________");
-		System.out.println("_________________________________________________");
-		System.out.println("_________________________________________________");
+	
 		// 페이지 번호가 1보다 작으면 1페이지로 리다이렉트
 		if (pageNo < 1) {
 			return recentList;
@@ -68,15 +60,7 @@ public class MainController {
 		criteria.setEndIndex(endIndex);
 
 		recentList = mainService.getRegList(criteria);
-		System.out.println("_________________________________________________");
-		System.out.println("_________________________________________________");
-		System.out.println("_________________________________________________");
-		System.out.println("_________________________________________________");
-		System.out.println(pageNo);
-		System.out.println("_________________________________________________");
-		System.out.println("_________________________________________________");
-		System.out.println("_________________________________________________");
-		
+	
 		return recentList;
 	
 	}	
@@ -102,27 +86,11 @@ public class MainController {
 			criteria.setEndIndex(endIndex);
 
 			hits = mainService.getHitList(criteria);
-			System.out.println("_________________________________________________");
-			System.out.println("_________________________________________________");
-			System.out.println("_________________________________________________");
-			System.out.println("_________________________________________________");
-			System.out.println(pageNo);
-			System.out.println("_________________________________________________");
-			System.out.println("_________________________________________________");
-			System.out.println("_________________________________________________");
+	
 			return hits;
 		
 		}	
-		/*
-	//인기순 보기
-		@RequestMapping(value="/avglikelist.do", method=RequestMethod.GET)
-		public @ResponseBody  List<Product> avglike (int no) throws Exception{
-			List<Product> avglikeList = mainService.getAvglikeList();
-			
-			return avglikeList;
-		}
-	*/
-		
+
 		//인기순 보기
 		@RequestMapping(value="/avglikelist.do", method=RequestMethod.GET)
 		public @ResponseBody List<Product> avglikelist (@RequestParam(name="no", required=false, defaultValue="1")int pageNo, 
@@ -145,17 +113,22 @@ public class MainController {
 			criteria.setEndIndex(endIndex);
 			
 			avglikelist = mainService.getAvglikeList(criteria);
-			System.out.println("_________________________________________________");
-			System.out.println("_________________________________________________");
-			System.out.println("_________________________________________________");
-			System.out.println("_________________________________________________");
-			System.out.println(pageNo);
-			System.out.println("_________________________________________________");
-			System.out.println("_________________________________________________");
-			System.out.println("_________________________________________________");
+	
 			return avglikelist;
 
 }	
-	
+	//중앙 화면 뿌려주기?
+		@RequestMapping(value="/displaylist.do", method=RequestMethod.GET)
+		public String displaylist(Model model, Criteria criteria) throws Exception {
+			
+			//포인트 사용내역 보기
+			List<Product> displaylist = mainService.getAvglikeList(criteria);
+			
+			model.addAttribute("displaylist", displaylist);
+
+			return "main.do";
+			
+		}
+		
 		
 }
