@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.withmong.model.Point;
+import com.withmong.model.Product;
 import com.withmong.model.User;
 import com.withmong.service.BoardService;
 import com.withmong.service.ManagerService;
@@ -36,6 +38,7 @@ public class ManagerController {
 		model.addAttribute("noticelist", boardService.noticeList() );
 		model.addAttribute("qnalist", boardService.qnaList());
 		model.addAttribute("requestlist", boardService.requestList() );
+		model.addAttribute("pointList", managerService.getAllPoints());
 		
 		if(loginedUser.getId().equals("king")){
 			url = "mmain"; 
@@ -50,13 +53,13 @@ public class ManagerController {
 	public String messagelist(Model model) {
 		List<User> userList = managerService.getAllUsers();  
 		model.addAttribute("userList", userList);
-		return "member/userlist";
+		return "manager/userlist";
 	}
 	//유저 상세조회
 	@RequestMapping("/userdetailm.do")
 	public String userdetailm(Model model, @RequestParam(name="id") String id) {
 		model.addAttribute("userdetail",managerService.getUserM(id));
-		return "member/userdetailm";
+		return "manager/userdetailm";
 	}
 	
 	//유저 계정삭제 처리
@@ -71,5 +74,20 @@ public class ManagerController {
 	public String userRestore(@RequestParam(name="id") String id){
 		managerService.userRestore(id);
 		return "redirect:/userlist.do";
+	}
+	
+	// 전체 포인트 충전/출금내역 목록
+	@RequestMapping("/allPointList.do")
+	public String pointList(Model model) {
+		List<Point> pointList = managerService.getAllPoints();  
+		model.addAttribute("pointList", pointList);
+		return "manager/pointlist";
+	}
+	// 전체 상품 목록
+	@RequestMapping("/allProductList.do")
+	public String productList(Model model) {
+		List<Product> productList = managerService.getAllProducts();  
+		model.addAttribute("productList", productList);
+		return "manager/productlistm";
 	}
 }

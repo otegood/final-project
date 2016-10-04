@@ -42,11 +42,11 @@ public class Product {
 		this.title = title;
 	}
 
-	public String getUserId() {
+	public String getUserid() {
 		return userid;
 	}
 
-	public void setUserId(String userid) {
+	public void setUserid(String userid) {
 		this.userid = userid;
 	}
 
