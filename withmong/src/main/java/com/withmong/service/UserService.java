@@ -4,6 +4,7 @@ package com.withmong.service;
 import java.util.List;
 
 import com.withmong.model.Order;
+import com.withmong.model.Product;
 import com.withmong.model.Report;
 import com.withmong.model.User;
 
@@ -41,7 +42,15 @@ public interface UserService {
 	List<Order> myPurchase(String purchaseId);
 
 	// 내 판매 정보 보기
-
 	List<Order> mySell(String sellId);
 
+	// (구매)구매취소
+	void cancelOrder(int orderNo);
+	
+	// (판매)판매 거부
+	void denySell(int orderNo);
+	
+	// (판매)판매 확정
+	void confirmSell(int orderNo);
+	
 }

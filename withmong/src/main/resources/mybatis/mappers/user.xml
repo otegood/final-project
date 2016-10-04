@@ -96,7 +96,8 @@
 			o.productNo		as "productNo.no", 
 			o.buyCheck		as buyCheck,
 			p.userid		as "productNo.userid",
-			p.title			as "productNo.title"
+			p.title			as "productNo.title",
+			p.price			as "productNo.price"
 		from
 			order_table o, product_table p 
 		where
@@ -114,7 +115,8 @@
 			o.productNo		as "productNo.no", 
 			o.buyCheck		as buyCheck,
 			p.userid		as "productNo.userid",
-			p.title			as "productNo.title"
+			p.title			as "productNo.title",
+			p.price			as "productNo.price"
 		from
 			order_table o, product_table p 
 		where
@@ -122,4 +124,67 @@
 		and	
 			p.userid = #{value}
 	</select>
+	
+	<!-- 1) 내 구매정보 삭제하기 -->
+	<delete id="deletePurchase" parameterType="int">
+		delete from order_table
+		where no=#{value}
+	</delete>
+	
+	<!-- 2) 상품가격확인하는 select 문 -->
+	<select id="getOrderInfoByNo" parameterType="int" resultType="Order">
+		select
+			o.no 			as no, 
+			o.regdate 		as regdate, 
+			o.userid		as "userid.id", 
+			o.productNo		as "productNo.no", 
+			p.userid		as "productNo.userid",
+			p.title			as "productNo.title",
+			p.price			as "productNo.price"
+		from
+			order_table o, product_table p 
+		where
+			o.productno = p.no
+		and	
+			o.no = #{value}
+	</select>
+	<!-- 3) 관리자에서 포인트 차감 update 문 -->
+	<update id="deductionAdminPoint" parameterType="int">
+		update user_table 
+		set point = point - #{value}
+		where id = 'king'
+	</update>
+	<!-- 4) 구매자 포인트 증가 update 문 -->
+	<update id="increasePurchasePoint" parameterType="Order">
+		update user_table
+		set point = point + #{productNo.price}
+		where id = #{userid.id}
+	</update>
+	
+	
+	<!-- (판매)1. 판매 거부 -->
+	<update id="denySell" parameterType="int">
+		update order_table
+		set buycheck = 'N'
+		where no = #{value}
+	</update>
+	
+	<!-- (판매)1. 관리자 포인트 차감 -->
+	<update id="getDevideAdminPoint" parameterType="int">
+		update user_table 
+		set point = point - (#{value}*0.9)
+		where id = 'king'
+	</update>
+	<!-- (판매)2. 판매자 포인트 증가 update 문 -->
+	<update id="getPointSeller" parameterType="Order">
+		update user_table
+		set point = point + (#{productNo.price}*0.9)
+		where id = #{userid.id}
+	</update>
+	<!-- (판매)3. 구분자 변경 -->
+	<update id="confirmSell" parameterType="int">
+		update order_table
+		set buycheck = 'Y'
+		where no = #{value}
+	</update>
 </mapper>

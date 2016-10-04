@@ -58,6 +58,7 @@ $(function() {
 			$.each(data, function(index, item) {
 				console.log(item);	// 객체가 하나씩나오게됨
 				
+				/*
 				$("tbody").append("<tr>");
 				$("tbody").append("<td>"+item.userid.id+"</td>");
 				$("tbody").append("<td>"+item.productNo.title+"</td>");
@@ -65,6 +66,31 @@ $(function() {
 				$("tbody").append("<td>"+item.regdate+"</td>");
 				$("tbody").append("<td>"+item.buyCheck+"</td>");
 				$("tbody").append("</tr>");
+				*/
+				
+				var jsp = "<tr>";
+				jsp += "<td class='text-center'><a href=''>"+item.userid.id+"</a></td>";
+				jsp += "<td><a href=''>"+item.productNo.title+"</a></td>";
+				jsp += "<td class='text-center'>"+item.productNo.price+"p</td>";
+				jsp += "<td class='text-center'>"+item.regdate+"</td>";
+				if(item.buyCheck == 'W'){
+					jsp += "<td class='text-center'><span class='label label-warning'>구매요청중</span></td>";
+				} else if(item.buyCheck == 'Y'){
+					jsp += "<td class='text-center''><span class='label label-success'>구매완료</span></td>";
+				} else {
+					jsp += "<td class='text-center'><span class='label label-default'>구매거부</span></td>";
+					
+				}
+				
+				if(item.buyCheck == 'W'){
+					jsp += "<td class='text-center'><a class='btn btn-success btn-xs' href='confirmsell.do?no="+item.no+"'>확정</a> <a class='btn btn-danger btn-xs' href='denysell.do?no="+item.no+"'>거부</a></td>";
+				} else {
+					jsp += "<td></td>";
+				}
+				jsp += "</tr>";
+				
+				$("tbody").append(jsp);
+				
 			});
 		}
 	});	
@@ -86,25 +112,18 @@ $(function() {
 			<col width="10%">
 			<col width="15%">
 			<col width="10%">
+			<col width="10%">
 		</colgroup>
         <thead>
             <tr>
-                <th>구매자ID</th>
-                <th>상품명</th>
-                <th>포인트</th>
-                <th>거래일자</th>
-                <th>판매상태</th>
+                <th class="text-center">구매자ID</th>
+                <th class="text-center">상품명</th>
+                <th class="text-center">포인트</th>
+                <th class="text-center">거래일자</th>
+                <th class="text-center">판매상태</th>
+                <th class="text-center">판매확정</th>
             </tr>
         </thead>
-        <tfoot>
-            <tr>
-                <th>구매자ID</th>
-                <th>상품명</th>
-                <th>포인트</th>
-                <th>거래일자</th>
-                <th>판매상태</th>
-            </tr>
-        </tfoot>
         <tbody></tbody>
     </table>
 	</div>

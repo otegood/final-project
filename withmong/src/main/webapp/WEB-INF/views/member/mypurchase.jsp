@@ -50,6 +50,7 @@
 <script type="text/javascript">
 $(function() {
 	
+	$("button").click
 	
 	$.ajax({
 		url:"../ckmypurchase.do",
@@ -60,7 +61,29 @@ $(function() {
 			$.each(data, function(index, item) {
 				console.log(item);	// 객체가 하나씩나오게됨
 				
+				var jsp = "<tr>";
+				jsp += "<td class='text-center'><a href=''>"+item.productNo.userId+"</a></td>";
+				jsp += "<td><a href=''>"+item.productNo.title+"</a></td>";
+				jsp += "<td class='text-center'>"+item.productNo.price+"p</td>";
+				jsp += "<td class='text-center'>"+item.regdate+"</td>";
+				if(item.buyCheck == 'W'){
+					jsp += "<td class='text-center'><span class='label label-warning'>구매대기중</span></td>";
+				} else if(item.buyCheck == 'Y'){
+					jsp += "<td class='text-center''><span class='label label-success'>구매완료</span></td>";
+				} else {
+					jsp += "<td class='text-center'><span class='label label-default'>구매거부</span></td>";
+					
+				}
 				
+				if(item.buyCheck == 'W' || item.buyCheck == 'N'){
+					jsp += "<td class='text-center'><a class='btn btn-danger btn-xs' href='delOrder.do?no="+item.no+"'>구매취소</a></td>";
+				} else {
+					jsp += "<td></td>";
+				}
+				jsp += "</tr>";
+				
+				$("tbody").append(jsp);
+				/*
 				$("tbody").append("<tr>");
 				$("tbody").append("<td class='text-center'><a href=''>"+item.productNo.userId+"</a></td>");
 				$("tbody").append("<td><a href=''>"+item.productNo.title+"</a></td>");
@@ -81,7 +104,7 @@ $(function() {
 					$("tbody").append("<td class='text-center'><button class='btn btn-danger btn-xs'>구매취소</button></td>")
 				}
 				$("tbody").append("</tr>");
-				
+				*/
 			});
 		}
 	});
@@ -119,22 +142,6 @@ $(function() {
 			            </tr>
 			        </thead>
 			        <tbody>
-			        	<tr>
-			        		<td>asdfasdf</td>
-			        		<td>asdfasdf</td>
-			        		<td>asdfasdf</td>
-			        		<td>asdfasdf</td>
-			        		<td>asdfasdf</td>
-			        		<td>asdfasdf</td>
-			        	</tr>
-			        	<tr>
-			        		<td>asdfasdf</td>
-			        		<td>asdfasdf</td>
-			        		<td>asdfasdf</td>
-			        		<td>asdfasdf</td>
-			        		<td>asdfasdf</td>
-			        		<td>asdfasdf</td>
-			        	</tr>
 			        </tbody>
 			    </table>
 			</div>

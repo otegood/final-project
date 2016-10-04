@@ -392,7 +392,33 @@ public class UserController {
 		return userService.mySell(loginUser.getId());
 		
 	}
+	
+	// 3. 내 구매내역 삭제하기
+	@RequestMapping(value="/delOrder.do")
+	public String delOrder(int no){
+			
+		userService.cancelOrder(no);
 		
+		return "redirect:/mypurchase.do";
+	}
+	
+	// 4. (판매) 판매 거부
+	@RequestMapping(value="/denysell.do")
+	public String denySell(int no){
+		
+		userService.denySell(no);
+		
+		return "redirect:/mysell.do";
+	}
+	
+	// 5. (판매) 판매 확정
+	@RequestMapping(value="/confirmsell.do")
+	public String confirmSell(int no){
+		
+		userService.confirmSell(no);
+		
+		return "redirect:/mysell.do";
+	}
 	
 	//-------------------------------------------------------------------------------------------------//
 	//-------------------------------------------------------------------------------------------------//
