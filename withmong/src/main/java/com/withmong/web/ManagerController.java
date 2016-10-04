@@ -39,6 +39,7 @@ public class ManagerController {
 		model.addAttribute("qnalist", boardService.qnaList());
 		model.addAttribute("requestlist", boardService.requestList() );
 		model.addAttribute("pointList", managerService.getAllPoints());
+		model.addAttribute("productList", managerService.getAllProducts());
 		
 		if(loginedUser.getId().equals("king")){
 			url = "mmain"; 

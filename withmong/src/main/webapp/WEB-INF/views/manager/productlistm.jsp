@@ -79,7 +79,7 @@
 					<td><fmt:formatNumber value="${product.price }"></fmt:formatNumber> </td>
 					<td>${product.avglike }</td>
 					<td>${product.hits }</td>
-					<td>${product.regDate }</td>
+					<td><fmt:formatDate value="${product.regDate }" pattern="yyyy-MM-dd hh:mm:ss"/></td>
 				</tr>
 			</c:forEach>	
 		</table>
