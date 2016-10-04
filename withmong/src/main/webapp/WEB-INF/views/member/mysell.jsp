@@ -69,8 +69,8 @@ $(function() {
 				*/
 				
 				var jsp = "<tr>";
-				jsp += "<td class='text-center'><a href=''>"+item.userid.id+"</a></td>";
-				jsp += "<td><a href=''>"+item.productNo.title+"</a></td>";
+				jsp += "<td class='text-center'><a href=''getuserinfo.do?id="+item.userid.id+"'>"+item.userid.id+"</a></td>";
+				jsp += "<td class='text-center'><a href='detail.do?productNo="+item.productNo.no+"'>"+item.productNo.title+"</a></td>";
 				jsp += "<td class='text-center'>"+item.productNo.price+"p</td>";
 				jsp += "<td class='text-center'>"+item.regdate+"</td>";
 				if(item.buyCheck == 'W'){
