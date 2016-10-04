@@ -117,7 +117,7 @@ $(document).ready(function(){
 						</li>
 						<!-- 상품 등록링크타기 -->
 						<li>
-							<a class="btn btn-xs" href="addProduct.do">
+							<a class="" href="addProduct.do">
 								<span class="glyphicon glyphicon-plus">
 									상품등록
 								</span>

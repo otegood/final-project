@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.withmong.model.Criteria;
+import com.withmong.model.Pagination;
 import com.withmong.model.Point;
 import com.withmong.model.Product;
 import com.withmong.model.User;
@@ -68,16 +69,35 @@ public class MainController {
 	
 	//해당 태그의 상품 내역 추가?
 		@RequestMapping(value="/addmainlist.do", method=RequestMethod.GET)
-		public @ResponseBody  List<Product> addlist (Criteria criteria, @RequestParam(name="pno", required=false, defaultValue="1")int pageNo, Model model) throws Exception{
+		public @ResponseBody  List<Product> addlist (Criteria criteria, @RequestParam(name="pno", required=false, defaultValue="1") int pageNo, Model model) throws Exception{
 			
 			List<Product> results = new ArrayList<>();
-			System.out.println("dd");
+			
+			
 			if(pageNo < 1) {
 				return results;
 			}
-			int rows = 4;
 			
+			int rows = 12;
+			int pages = 5;
+			int beginIndex = (pageNo - 1)*rows + 1;
+			int endIndex = pageNo*rows;
+			
+			// 전체 데이타 건수 조회하기
+			int totalRows = mainService.getTotalRows(criteria);
+		
+	
+			// 데이타 조회하기
+			criteria.setBeginIndex(beginIndex);
+			criteria.setEndIndex(endIndex);
 			List<Product> addlist = mainService.getProducts(criteria);
+			System.out.println("----------------------------------------");
+			System.out.println("----------------------------------------");
+			System.out.println("----------------------------------------");
+			System.out.println("----------------------------------------");
+			System.out.println("----------------------------------------");
+			System.out.println("----------------------------------------");
+			
 			
 			return addlist;
 		}

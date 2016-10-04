@@ -234,7 +234,49 @@ $(function() {
 			        success: function(data){
 			        	console.log(data);
 			        	$.each(data,function(index, item){
-			        		$("#area").append("aaaaaaaaaa");
+			        		$("#area").append(
+				        			'<div class="col-sm-3" style="padding-left: 15px; padding-right: 15px;">'+
+										'<div class="pro-img">'+
+											'<span class="pro-img" id="img">'+ 
+											'<img src="../../resources/images/'+item.img+'" width="50px" height="50px" >'+
+											'</span>'+
+										'</div>'+
+										'<div class="col-sm-6" style="padding-left: 0px;">'+
+											'<div class="call-product-title">'+
+												'<p>'+
+													'<span class="glyphicon glyphicon-gift" id="title">'+
+														'<div>'+item.title+'</div>'+
+													'</span>'+
+												'</p>'+
+											'</div>'+
+
+											'<div class="call-product-price">'+
+												'<p>'+
+													'<span class="glyphicon glyphicon-cd" id="price">'+
+														'<div>'+item.price+'</div>'+
+													'</span>'+
+												'</p>'+
+											'</div>'+
+										'</div>'+
+										'<div class="col-sm-6" style="padding-left: 0px;">'+
+											'<div class="call-product-title">'+
+												'<p>'+
+													'<span class="glyphicon glyphicon-calendar" id="regdate">'+
+														'<div>'+item.regDate+'</div>'+
+													'</span>'+
+												'</p>'+
+											'</div>'+
+											'<div class="call-product-price">'+
+												'<p>'+
+													'<span class="glyphicon glyphicon-paperclip" id="tag">'+
+														'<div>'+item.tag+'</div>'+
+													'</span>'+
+												'</p>'+
+											'</div>'+
+										'</div>'+
+										
+									'</div>'		
+				        		);
 			        		
 			        	})
 			        }
@@ -345,7 +387,7 @@ strong {
 		<div class="row" id="">
 			<div class="col-sm-6 col-sm-offset-6" style="margin-bottom: 20px;">
 				<div class="col-sm-4">
-					<button id="avglike" value="7" class="btn-primary btn-xs">인기순</button>
+					<button id="avglike" value="7" class="btn-primary btn-xs ">인기순</button>
 				</div>
 				<div class="col-sm-4">
 					<button id="recent" value="77" class="btn-success btn-xs">최신 등록순</button>
@@ -358,6 +400,7 @@ strong {
 		
 				<div class="row" id="area" style="margin-left: 0px; margin-right: 0px;">
 					<!-- 리스트 추가되는 부분? -->
+					
 				</div>
 				
 				
