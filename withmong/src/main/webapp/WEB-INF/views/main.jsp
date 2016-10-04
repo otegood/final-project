@@ -243,7 +243,7 @@ strong {
 				<div class="item active" id="show-item">
 					<!-- <img src="resources/img/p1.png" alt="cat1" id="show-item"> -->
 					<c:forEach var="productimg" items="${displaylist }">
-						<img alt="" src="<c:out value="${productimg.img }" />"/>
+						<img alt="hotproduct" src="${productimg.img }" />
 					</c:forEach>
 				</div>
 			</div>
