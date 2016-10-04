@@ -22,9 +22,11 @@ $(function() {
     		$("#area").append(
    				'<div class="col-sm-3" style="padding-left: 15px; padding-right: 15px;">'+
 				'<div class="pro-img">'+
-					'<span class="pro-img" id="img">'+ 
-					'<img src="../../resources/images/'+item.img+'" width="50px" height="50px" >'+
-					'</span>'+
+					'<a href="detail.do?productNo='+item.no+'" >'+ 
+					
+					'<img src="../../resources/images/'+item.img+'" width="260px" height="50px" />'+
+					
+					'</a>'+
 				'</div>'+
 				'<div class="col-sm-6" style="padding-left: 0px;">'+
 					'<div class="call-product-title">'+
@@ -86,34 +88,26 @@ $(function() {
 	//최근 등록순 클릭시
 	$("#recent").click(function() {
 		$("#area").empty();
+		$("#morecnt").val(0);
 		
-		
-		$("#morecnt").val();
-		console.log($("#morecnt").val());
 		var pno = parseInt($("#morecnt").val()) + 1
-		
-		$("#morecnt").val(pno);	
-		console.log($("#morecnt").val());
-		
+		$("#morecnt").val(pno);			
+
 		$("requestUrl").empty();
 		$("#requestUrl").val("recentlist.do");
 		
-		
-		if (pno < 2) {
 			getProducts(pno);
-		}
+		
 	})
 	
 	//조회순 클릭시
 	$("#hits").click(function() {
 		$("#area").empty();
-		
-		$("#morecnt").val() === 0
-		console.log($("#morecnt").val());
+		$("#morecnt").val(0);
 		
 		var pno = parseInt($("#morecnt").val()) + 1
-		$("#morecnt").val(pno);	
-		
+		$("#morecnt").val(pno);			
+
 		$("requestUrl").empty();
 		$("#requestUrl").val("hitslist.do");
 		getProducts(pno);		
@@ -123,11 +117,10 @@ $(function() {
 	$("#avglike").click(function() {
 		$("#area").empty();
 		$("#morecnt").val(0);
-		console.log($("#morecnt").val());		//0?
 		
 		var pno = parseInt($("#morecnt").val()) + 1
-		$("#morecnt").val(pno);					//1?
-		
+		$("#morecnt").val(pno);			
+
 		$("requestUrl").empty();
 		$("#requestUrl").val("avglikelist.do");
 		getProducts(pno);	
@@ -136,14 +129,12 @@ $(function() {
 	//더보기	인식 X
 	$("#more").click(function() {
 	
-		
 		if($("#requestUrl").val() == "avglikelist.do") {
 			
 			$("#requestUrl").val("avglikelist.do");
 			
 			var pno = parseInt($("#morecnt").val()) + 1
 			$("#morecnt").val(pno);	
-			console.log($("#morecnt").val()	);
 			
 			getProducts(pno);
 			
@@ -284,17 +275,17 @@ strong {
 		
 				<div class="row" id="area" style="margin-left: 0px; margin-right: 0px;">
 					<!-- 리스트 추가되는 부분? -->
-					<div><p>아오오오오오</p></div>
+					<div><p>default 생성 어케함?</p></div>
 				</div>
 				
 				
 			</div>
 			<div style="text-align: center; margin-bottom: 30px; margin-top: 30px;">
 				<input type="hidden" id="morecnt" value="0" /> 
-<!-- 히든 인식 안함 -->
-				<input type="hidden" id="requestUrl" value="recentlist.do" />
 				<a class="btn btn-danger btn-large" style="width: 400px;" id="more" >더보기</a>
 			</div>
+<!-- 히든 인식 안함 -->
+<input type="hidden" id="requestUrl" value="recentlist.do" />
 			</div>
 	</div>
 

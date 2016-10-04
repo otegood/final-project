@@ -8,14 +8,14 @@
 
   	<select id="getAvglikeList" parameterType="Criteria" resultType="Product">
 	 	<![CDATA[
-	 	 select * from ( select row_number() over (order by avglike desc) as rn , title, price, regdate, tag from product_table )  where rn >= #{beginIndex} and rn < #{endIndex}+1 
+	 	 select * from ( select row_number() over (order by avglike desc) as rn , title, price, regdate, tag, no from product_table )  where rn >= #{beginIndex} and rn < #{endIndex}+1 
 		]]>
   	</select>
 
 	<!-- 등록순으로 내역 가져오기 -->
   	<select id="getRegList" parameterType="Criteria" resultType="Product">
 	 	<![CDATA[
-	 	 select * from ( select row_number() over (order by regdate desc) as rn , title, price, regdate, tag from product_table )  where rn >= #{beginIndex} and rn < #{endIndex}+1 
+	 	 select * from ( select row_number() over (order by regdate desc) as rn , title, price, regdate, tag, no from product_table )  where rn >= #{beginIndex} and rn < #{endIndex}+1 
 		]]>
   	</select>
 	
@@ -25,7 +25,7 @@
 
   	<select id="getHitList" parameterType="Criteria" resultType="Product">
 	 	<![CDATA[
-	 	 select * from ( select row_number() over (order by hits desc) as rn , title, price, regdate, tag from product_table )  where rn >= #{beginIndex} and rn < #{endIndex}+1 
+	 	 select * from ( select row_number() over (order by hits desc) as rn , title, price, regdate, tag, no from product_table )  where rn >= #{beginIndex} and rn < #{endIndex}+1 
 		]]>
   	</select>
 
