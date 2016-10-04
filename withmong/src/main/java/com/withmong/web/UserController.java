@@ -103,13 +103,13 @@ public class UserController {
 			
 			user.setImg(userid + "." + extName);
 		} else {
-			user.setImg("profile\\defaultUser.png");
+			user.setImg("\\defaultUser.png");
 		}
 		
 		userService.register(user);
 		
 		//redirect 재요청
-		return "redirect:/regsuccess.do";
+		return "redirect:/main.do";
 	}
 	
 //------------------------------------------------------------------------------------------------------//
@@ -138,14 +138,7 @@ public class UserController {
 		return "{\"size\":0}";
 	}
 	
-	
-	//가입 성공시 나오는 문구
-	@RequestMapping("/regsuccess.do")
-	public String regsuccess() {
 		
-		return "member/regsuccess";
-	}
-	
 //------------------------------------------------------------------------------------------------------//
 	
 	//로그인화면 접속
@@ -236,14 +229,7 @@ public class UserController {
 		
 		userService.changePassword(user);
 		
-		return "redirect:/chgsuccess.do";
-	}
-	
-	//비밀번호 변경 성공시 나오는 문구
-	@RequestMapping("/chgsuccess.do")
-	public String chgsuccess() {
-		
-		return "member/chgsuccess";
+		return "redirect:/main.do";
 	}
 	
 	//-------------------------------------------------------------------------------------------------//
@@ -329,12 +315,12 @@ public class UserController {
 			
 			user.setImg(userid + "." + extName);
 		} else {
-			user.setImg("profile\\defaultUser.png");
+			user.setImg("\\defaultUser.png");
 		}
 		userService.myInfoModify(user);
 		System.out.println(user);
 		
-		return "redirect:/chgsuccess.do";
+		return "redirect:/main.do";
 	}
 	//-------------------------------------------------------------------------------------------------//
 	// 신고하기 페이지 접속
@@ -363,7 +349,7 @@ public class UserController {
 		
 		userService.report(report);
 		
-		return "redirect:/chgsuccess.do";
+		return "redirect:/main.do";
 	}
 	//-------------------------------------------------------------------------------------------------//
 	// 내 구매*판매 내역 보기
@@ -428,6 +414,29 @@ public class UserController {
 		return "redirect:/mysell.do";
 	}
 	
+	// 유저 정보 확인
+	@RequestMapping(value="/getuserinfo.do", method=RequestMethod.GET)
+	public String getUserInfoById(){
+		
+		return "member/userinfo";
+	}
+	
+	// 유저 정보 확인(json)
+	@RequestMapping(value="/userinfo.do")
+	public @ResponseBody User userInfoById(String id){
+		
+		/*
+		User checkUser = userService.idCheck(id);
+				
+				if (checkUser!=null){
+					return "{\"size\":1}";
+				}
+		return "{\"size\":0}";
+		*/
+		User userInfo = userService.getUserInfoById(id);
+		
+		return userInfo;
+	}
 	//-------------------------------------------------------------------------------------------------//
 	//-------------------------------------------------------------------------------------------------//
 }

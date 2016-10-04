@@ -47,6 +47,17 @@
 	}
 
 </style>
+<script type="text/javascript">
+
+$(function() {
+	$("#report").submit(function() {
+		alert("신고처리가 완료되었습니다.");
+		return true;
+	});
+	
+});
+
+</script>
 <title>Insert title here</title>
 </head>
 <body>
@@ -55,7 +66,7 @@
 		<div class="container" >
 			<h2><span class="glyphicon glyphicon-warning-sign"> 신고하기</span></h2>
 			<div class="row">
-				<form role="form" method="post" action="report.do">
+				<form role="form" method="post" action="report.do" id="report">
 					<div class="form-group row">
 						<label>신고할 사람</label>
 						<input class="form-control" id="suspect" name="suspect"/>

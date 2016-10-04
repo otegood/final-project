@@ -105,14 +105,16 @@ $(function() {
 		}
 		// 버튼을 체크 안했을때 안내문구 
 		if(idnotoverlap == false){
-			alert("아이디 중복체크를 해주세요.")
+			alert("아이디 중복체크를 해주세요.");
 			return false;
 		}
 		
 		if(phonenotoverlap == false){
-			alert("전화번호 중복체크를 해주세요.")
+			alert("전화번호 중복체크를 해주세요.");
 			return false;
 		}
+		
+		alert("회원가입이 완료되었습니다.");
 		return true;
 	});
 	

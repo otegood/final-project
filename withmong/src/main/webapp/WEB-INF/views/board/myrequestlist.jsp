@@ -57,7 +57,7 @@ $(function(){
 });
 
 </script>
-<title>요청게시판</title>
+<title>나의 요청게시물</title>
 </head>
 <body>
 	<header>
@@ -66,10 +66,7 @@ $(function(){
 
 	<div class="container">
 		<div class="row">
-			<h1>요청게시판</h1>
-			<div style="text-align: right;">
-				<a class="btn btn-primary" href="requestRegister.do">글 쓰기</a>
-			</div>
+			<h1>나의 요청글 목록</h1>
 			<table class="table table-hover">
 				<thead>
 					<tr>

@@ -62,14 +62,14 @@ $(function() {
 				console.log(item);	// 객체가 하나씩나오게됨
 				
 				var jsp = "<tr>";
-				jsp += "<td class='text-center'><a href=''>"+item.productNo.userId+"</a></td>";
-				jsp += "<td><a href=''>"+item.productNo.title+"</a></td>";
+				jsp += "<td class='text-center'><a href='getuserinfo.do?id="+item.productNo.userId+"'>"+item.productNo.userId+"</a></td>";
+				jsp += "<td class='text-center'><a href='detail.do?productNo="+item.productNo.no+"'>"+item.productNo.title+"</a></td>";
 				jsp += "<td class='text-center'>"+item.productNo.price+"p</td>";
 				jsp += "<td class='text-center'>"+item.regdate+"</td>";
 				if(item.buyCheck == 'W'){
 					jsp += "<td class='text-center'><span class='label label-warning'>구매대기중</span></td>";
 				} else if(item.buyCheck == 'Y'){
-					jsp += "<td class='text-center''><span class='label label-success'>구매완료</span></td>";
+					jsp += "<td class='text-center'><span class='label label-success'>구매완료</span></td>";
 				} else {
 					jsp += "<td class='text-center'><span class='label label-default'>구매거부</span></td>";
 					

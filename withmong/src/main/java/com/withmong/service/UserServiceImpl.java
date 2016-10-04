@@ -147,6 +147,12 @@ public class UserServiceImpl implements UserService{
 		// 구분자 변경
 		userDao.confirmSell(orderNo);
 	}
+
+	@Override
+	public User getUserInfoById(String id) {
+		
+		return userDao.getUserById(id);
+	}
 }
 
 
