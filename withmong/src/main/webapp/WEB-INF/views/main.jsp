@@ -16,7 +16,7 @@
 
 <script type="text/javascript">
 	$(function() {
-
+		//DB에서 태그에 해당하는 상품 보여주기
 		function generatedProducts(products) {
 			$
 					.each(
@@ -86,7 +86,7 @@
 							})
 
 		}
-
+		//클릭한 태그의 번호 넘기기
 		function getProducts(moreNo) {
 
 			$.ajax({
@@ -128,7 +128,7 @@
 			getProducts(pno);
 		})
 
-		//인기순
+		//인기순 클릭시
 		$("#avglike").click(function() {
 			$("#area").empty();
 
@@ -140,7 +140,7 @@
 			getProducts(pno);
 		});
 
-		//더보기	인식 X
+		//더보기
 		$("#more").click(function() {
 
 			var pno = parseInt($("#morecnt").val()) + 1
@@ -150,6 +150,30 @@
 
 		})
 
+		//여기서부터 톱 배너
+		
+		// hide #back-top first
+		$("#back-top").hide();
+		
+		// fade in #back-top
+		$(function () {
+			$(window).scroll(function () {
+				if ($(this).scrollTop() > 100) {
+					$('#back-top').fadeIn();
+				} else {
+					$('#back-top').fadeOut();
+				}
+			});
+
+			// scroll body to 0px on click
+			$('#back-top a').click(function () {
+				$('body,html').animate({
+					scrollTop: 0
+				}, 800);
+				return false;
+			});
+		});
+		
 	})
 </script>
 
@@ -211,6 +235,54 @@ strong {
 #explain {
 	height: 20px;
 }
+
+<!-- 톱 버튼 -->
+#back-top {
+	position: fixed;
+	bottom: 30px;
+	margin-left: -150px;
+}
+
+#back-top a {
+	width: 108px;
+	display: block;
+	text-align: center;
+	font: 11px/100% Arial, Helvetica, sans-serif;
+	text-transform: uppercase;
+	text-decoration: none;
+	color: #bbb;
+
+	/* transition */
+	-webkit-transition: 1s;
+	-moz-transition: 1s;
+	transition: 1s;
+}
+#back-top a:hover {
+	color: #000;
+}
+
+/* arrow icon (span tag) */
+#back-top span {
+	width: 108px;
+	height: 108px;
+	display: block;
+	margin-bottom: 7px;
+	background: #ddd url(up-arrow.png) no-repeat center center;
+
+	/* rounded corners */
+	-webkit-border-radius: 15px;
+	-moz-border-radius: 15px;
+	border-radius: 15px;
+
+	/* transition */
+	-webkit-transition: 1s;
+	-moz-transition: 1s;
+	transition: 1s;
+}
+#back-top a:hover span {
+	background-color: #777;
+}
+
 </style>
 <title>Insert title here</title>
 </head>
@@ -278,9 +350,7 @@ strong {
 				<div class="row" id="area"
 					style="margin-left: 0px; margin-right: 0px;">
 					<!-- 리스트 추가되는 부분? -->
-					<div>
-						<p>default 생성 어케함?</p>
-					</div>
+					
 				</div>
 
 
@@ -290,13 +360,19 @@ strong {
 				<input type="hidden" id="morecnt" value="0" /> <a
 					class="btn btn-danger btn-large" style="width: 400px;" id="more">더보기</a>
 			</div>
-			<!-- 히든 인식 안함 -->
 			<input type="hidden" id="requestUrl" value="recentlist.do" />
+			
+		</div>
+		<!-- 톱 배너  -->
+		<div >
+		<img alt="" src="">
+			<p id="back-top">
+			    <a href="#top">Back To Top</a>
+			</p>
 		</div>
 
 
-
-		<!--  -->
+	
 
 	</div>
 
