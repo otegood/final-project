@@ -113,7 +113,7 @@ public class MainController {
 			criteria.setEndIndex(endIndex);
 			
 			avglikelist = mainService.getAvglikeList(criteria);
-	
+			
 			return avglikelist;
 
 }	

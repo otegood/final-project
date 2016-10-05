@@ -20,49 +20,52 @@ $(function() {
 	function generatedProducts(products) {
 		$.each(products, function(index, item) {
     		$("#area").append(
-   				'<div class="col-sm-3" style="padding-left: 15px; padding-right: 15px;">'+
-				'<div class="pro-img">'+
-					'<a href="detail.do?productNo='+item.no+'" >'+ 
-					
-					'<img src="../../resources/images/'+item.img+'" width="260px" height="50px" />'+
-					
-					'</a>'+
-				'</div>'+
-				'<div class="col-sm-6" style="padding-left: 0px;">'+
-					'<div class="call-product-title">'+
-						'<p>'+
-							'<span class="glyphicon glyphicon-gift" id="title">'+
-								'<div>'+item.title+'</div>'+
-							'</span>'+
-						'</p>'+
-					'</div>'+
+    				'<div class="col-sm-3" style="padding-left: 15px; padding-right: 15px;">'+
+    				'<div class="row" style="height: 90px;">'+
+    					'<a href="detail.do?productNo='+item.no+'">'+ 
+    						'<img src="../../resources/images/'+item.img+'" width="260px" height="90px" />'+
 
-					'<div class="call-product-price">'+
-						'<p>'+
-							'<span class="glyphicon glyphicon-cd" id="price">'+
-								'<div>'+item.price+'</div>'+
-							'</span>'+
-						'</p>'+
-					'</div>'+
-				'</div>'+
-				'<div class="col-sm-6" style="padding-left: 0px;">'+
-					'<div class="call-product-title">'+
-						'<p>'+
-							'<span class="glyphicon glyphicon-calendar" id="regdate">'+
-								'<div>'+item.regDate+'</div>'+
-							'</span>'+
-						'</p>'+
-					'</div>'+
-					'<div class="call-product-price">'+
-						'<p>'+
-							'<span class="glyphicon glyphicon-paperclip" id="tag">'+
-								'<div>'+item.tag+'</div>'+
-							'</span>'+
-						'</p>'+
-					'</div>'+
-				'</div>'+
-				
-			'</div>'
+    					'</a>'+
+    				'</div>'+
+    			'<div class="row" style="height: 60px;">'+		
+    				'<div class="row" >'+
+    					'<div class="col-sm-3" id="explain">'+
+    						'<p>'+
+    							'<span class="glyphicon glyphicon-gift" id="title"> </span>'+
+    						'</p>'+
+    					'</div>'+
+    					'<div class="col-sm-9" id="explain">'+
+    						'<div>'+item.title+'</div>'+
+    					'</div>'+
+    				'</div>'+
+
+    				'<div class="row" >'+
+    					'<div class="col-sm-3" id="explain">'+
+    						'<p>'+
+    							'<span class="glyphicon glyphicon-cd" id="price"> </span>'+
+    						'</p>'+
+    					'</div>'+
+    					'<div class="col-sm-9" id="explain">'+
+    						'<div>'+item.price+'</div>'+
+    					'</div>'+
+    				'</div>'+
+
+    				'<div class="row">'+
+    					'<div class="col-sm-3" id="explain">'+
+    						'<p>'+
+    							'<span class="glyphicon glyphicon-thumbs-up" id="regdate"> </span>'+
+    						'</p>'+
+
+    					'</div>'+
+    					'<div class="col-sm-9" id="explain">'+
+    						'<div>'+
+    						'<img src="resources/images/default/'+Math.round(item.avglike)+'star.PNG"/>' +
+    						'</div>'+
+    					'</div>'+
+    				'</div>'+
+
+    				'</div>'+
+    			'</div>'
        		);
     		
     	})
@@ -88,24 +91,22 @@ $(function() {
 	//최근 등록순 클릭시
 	$("#recent").click(function() {
 		$("#area").empty();
-		$("#morecnt").val(0);
 		
-		var pno = parseInt($("#morecnt").val()) + 1
+		var pno = 1
 		$("#morecnt").val(pno);			
 
 		$("requestUrl").empty();
 		$("#requestUrl").val("recentlist.do");
 		
-			getProducts(pno);
+		getProducts(pno);
 		
-	})
+	}).trigger("click");
 	
 	//조회순 클릭시
 	$("#hits").click(function() {
 		$("#area").empty();
-		$("#morecnt").val(0);
 		
-		var pno = parseInt($("#morecnt").val()) + 1
+		var pno =  1
 		$("#morecnt").val(pno);			
 
 		$("requestUrl").empty();
@@ -116,9 +117,8 @@ $(function() {
 	//인기순
 	$("#avglike").click(function() {
 		$("#area").empty();
-		$("#morecnt").val(0);
 		
-		var pno = parseInt($("#morecnt").val()) + 1
+		var pno = 1
 		$("#morecnt").val(pno);			
 
 		$("requestUrl").empty();
@@ -128,33 +128,11 @@ $(function() {
 	
 	//더보기	인식 X
 	$("#more").click(function() {
-	
-		if($("#requestUrl").val() == "avglikelist.do") {
 			
-			$("#requestUrl").val("avglikelist.do");
-			
-			var pno = parseInt($("#morecnt").val()) + 1
-			$("#morecnt").val(pno);	
-			
-			getProducts(pno);
-			
-		} else if ($("#requestUrl").val() == "hitslist.do") {
-			var pno = parseInt($("#morecnt").val()) + 1
-			$("#morecnt").val(pno);	
-			
-			$("#requestUrl").val("hitslist.do");
-			
-			getProducts(pno);
-			
-		} else {
-			var pno = parseInt($("#morecnt").val()) + 1
-			$("#morecnt").val(pno);	
-			
-			$("#requestUrl").val("recentlist.do");
+		var pno = parseInt($("#morecnt").val()) + 1
+		$("#morecnt").val(pno);	
 		
-			getProducts(pno);
-			
-		}
+		getProducts(pno);
 		
 	})
 	
@@ -218,6 +196,9 @@ strong {
 	margin-left: 80px;
 }
 
+#explain {
+	height: 20px;
+}
 
 </style>
 <title>Insert title here</title>
@@ -236,16 +217,19 @@ strong {
 				<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
 				<li data-target="#myCarousel" data-slide-to="1"></li>
 				<li data-target="#myCarousel" data-slide-to="2"></li>
-				<li data-target="#myCarousel" data-slide-to="3"></li>
 			</ol>
 			<!-- Wrapper for slides -->
 			<div class="carousel-inner" role="listbox">
 				<div class="item active" id="show-item">
 					<!-- <img src="resources/img/p1.png" alt="cat1" id="show-item"> -->
-					<c:forEach var="productimg" items="${displaylist }">
-						<img alt="hotproduct" src="${productimg.img }" />
-					</c:forEach>
+					<img style="width: 250px; height: 250px;" alt="hotproduct" src="resources/images/product/kim.PNG" />
 				</div>
+					<div class="item">
+					<img style="width: 250px; height: 250px;" alt="hotproduct" src="resources/images/product/choi.PNG" />
+					</div>
+					<div class="item">
+					<img style="width: 250px; height: 250px;" alt="hotproduct" src="resources/images/product/glyphicons-girl.PNG" />
+					</div>
 			</div>
 
 			<!-- Left and right controls -->
@@ -287,9 +271,14 @@ strong {
 				<input type="hidden" id="morecnt" value="0" /> 
 				<a class="btn btn-danger btn-large" style="width: 400px;" id="more" >더보기</a>
 			</div>
-<!-- 히든 인식 안함 -->
-<input type="hidden" id="requestUrl" value="recentlist.do" />
-			</div>
+				<!-- 히든 인식 안함 -->
+				<input type="hidden" id="requestUrl" value="recentlist.do" />
+		</div>
+		
+		
+		
+		<!--  -->
+		
 	</div>
 
 	<%@ include file="footer.jsp"%>
