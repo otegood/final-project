@@ -81,9 +81,34 @@ $(function() {
 			}
 		}
 	});	
+	
+	
+	$.ajax({
+		url:"../productbyid.do",
+		data:{id:'${param.id}'},
+		dataType:"json",
+		success: function(data) {
+			console.log(data);		// 전체 객체가 한꺼번에나옴
+			if(data.length == 0) {
+				$("#product").append("<h3 class='text-center' style='color:red'>등록하신 상품이 없습니다.</h3>");
+				return false;
+			} 
+			$.each(data, function(index, item) {
+				var product = "<div class='col-sm-4 col-md-3'>";
+				product += "<div class='thumbnail'>";
+				product += "<a href='detail.do?productNo="+item.no+"'><img src='resources/images/"+item.img+"' style='width:242px;height:200px;'></a>";
+				product += "<div class='caption'>";
+				product += "<h3><a href='detail.do?productNo="+item.no+"'>"+item.title+"</a></h3>";
+				product += "<p>"+item.price+" point</p>";
+				product += "</div></div></div>";
+				
+				$("#product").append(product);
+			});
+		}
+	});
 });
 </script>
-<title>나의 정보</title>
+<title>유저 정보</title>
 </head>
 <body>
 		<header><%@ include file="../header.jsp" %></header>
@@ -100,9 +125,11 @@ $(function() {
 			    </div>
 			    </div>
 			    <br/>
+			    <br/>
+			<h3>전체 상품 정보</h3>						    
+			<div class="row well text-center" id="product">
 			</div>
 		</div>
-		
 
 		<%@ include file="../footer.jsp" %>	
 </body>
