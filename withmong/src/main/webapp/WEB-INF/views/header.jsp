@@ -68,13 +68,11 @@ $(document).ready(function(){
 					data-target=".navbar-collapse">
 					<span class="icon-bar"></span> <span class="icon-bar"></span> <span
 						class="icon-bar"></span>
-
-					<!-- 로고 이미지 삽입하기 
-			<img id="logo" src=""></a>
-				-->
 				</button>
 				<a class="navbar-brand" href="main.do"><img
-					style="max-width: 100px; margin-top: -7px;"">brand</a>
+					style="max-width: 100px; margin-top: -7px;"">	<!-- 로고 이미지 삽입하기 -->
+			<img id="logo" src="resources/images/default/5star.PNG"></a>
+				</a>
 			</div>
 			<c:choose>
 				<c:when test="${empty LOGIN_USER }">
