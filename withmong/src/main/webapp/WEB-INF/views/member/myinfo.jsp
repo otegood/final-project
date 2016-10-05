@@ -10,6 +10,7 @@
   <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
   <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="http://malsup.github.com/jquery.corner.js"></script>
 <style type="text/css">
 	
 	header {
@@ -46,24 +47,32 @@
 		background-color: black;
 	}
 
-	#chk {
-		position:absolute;
-		left:10;
-		top:10;
+	.overlay
+	{
+		padding-left:5px;
+		position: absolute;
+		align:right;
+		margin-left: 150px;
+		margin-top: 130px;
+		width:100px;
+		height:120px;
+		border:0;
 	}
 </style>
 <script type="text/javascript">
 $(function() {
 	if("${LOGIN_USER.grade}" == 'B'){
-		$("#img").append("<img alt='profile' src='resources/images/profile/${LOGIN_USER.img }' style='width:200px;height:200px;border:0;'>")
-		$("#img").append("<img alt='grade' src='resources/images/default/bronze.jpg' id='chk' class='img-circle'>")
+		$("#img").append("<img id='profile' alt='profile' src='resources/images/profile/${LOGIN_USER.img }' class='target' style='width:250px;height:250px;border:0;'>");
+		$(".target").before("<img alt='grade' src='resources/images/default/bronze.jpg' id='chk' class='img-circle overlay img-thumbnail'>");
 	} else if ("${LOGIN_USER.grade}" == 'S'){
-		$("#img").append("<img alt='profile' src='resources/images/profile/${LOGIN_USER.img }' style='width:200px;height:200px;border:0;'>")
-		$("#img").append("<img alt='grade' src='resources/images/default/silver.jpg' id='chk' class='img-circle'>")
+		$("#img").append("<img id='profile' alt='profile' src='resources/images/profile/${LOGIN_USER.img }' class='target' style='width:250px;height:250px;border:0;'>");
+		$(".target").before("<img alt='grade' src='resources/images/default/silver.jpg' id='chk' class='img-circle overlay img-thumbnail'>");
 	} else {
-		$("#img").append("<img alt='profile' src='resources/images/profile/${LOGIN_USER.img }' style='width:200px;height:200px;border:0;'>")
-		$("#img").append("<img alt='grade' src='resources/images/default/gold.jpg' id='chk' class='img-circle'>")
+		$("#img").append("<img id='profile' alt='profile' src='resources/images/profile/${LOGIN_USER.img }' class='target' style='width:250px;height:250px;border:0;'>");
+		$(".target").before("<img alt='grade' src='resources/images/default/gold.jpg' id='chk' class='img-circle overlay img-thumbnail'>");
 	}
+	
+	$("#profile").corner();
 });
 </script>
 <title>나의 정보</title>
@@ -72,20 +81,10 @@ $(function() {
 		<header><%@ include file="../header.jsp" %></header>
 	
 		<div class="container" >
-			<div class="row">
-	        	<h1>내정보</h1>
+			<div class="row text-center">
 	        	<div class="text-center" id="img">
 	        	</div>
-				<table class="table table-striped" style="width:100%;">
-			        <tr>
-			            <th><span class="glyphicon glyphicon-user"></span></th>
-			            <td>${LOGIN_USER.id}</td>
-			        </tr>
-			        <tr>
-			            <th><span class="glyphicon glyphicon-envelope"></span></th>
-			            <td>${LOGIN_USER.email}</td>
-			        </tr>
-			    </table>
+	        	<h2 class="glyphicon glyphicon-user" id="id"> ${LOGIN_USER.id}</h2>
 			    <div class="text-center">
 				    <a href="confirmpw.do" class="btn btn-primary">정보수정</a>
 				    <a href="main.do" class="btn btn-danger">메인으로</a>

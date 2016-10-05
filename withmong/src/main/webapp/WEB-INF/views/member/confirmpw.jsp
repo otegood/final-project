@@ -58,30 +58,30 @@
 		<header><%@ include file="../header.jsp" %></header>
 	
 		<div class="container" >
-			<h1>로그인 폼</h1>
-		<div class="well">
+		<h1></h1>
+		<div class="row">
 			<c:if test="${param.error eq 'req' }">
 				<div class="alert alert-danger">
 					<strong>에러!</strong> 로그인이 필요한 서비스 입니다.
 				</div>
 			</c:if>
-			
-			<form class="form-inline text-center" role="form" method="post" action="confirmpw.do">
-			    <div class="form-group">
-			     <h2>보안을 위하여 사용자의 비밀번호를 입력하여주십시오.</h2>
-			    </div>
-			    <div class="form-group">
-			    	<input type="hidden" class="form-control" value="${LOGIN_USER.id }" name="id" id="id">
-			      	<label class="sr-only" for="password">Password:</label>
-			     	<input type="password" class="form-control" name="password" id="password" placeholder="비밀번호를 입력하세요" autocomplete="off">
-			    </div>
-			    <div class="form-group">
-			    	<input type="submit" class="btn btn-primary" value="확인" />
-					<a href="myinfo.do" class="btn btn-default">돌아가기</a>
-				</div>
-				<br/>
-			  </form>
-		
+			<div class="col-md-6 col-md-offset-3 well">
+				<form class="form-inline text-center" role="form" method="post" action="confirmpw.do">
+				    <div class="form-group">
+				     <h4>보안을 위하여 사용자의 비밀번호를 입력하여주십시오.</h4>
+				    </div><br/><br/>
+				    <div class="form-group">
+				    	<input type="hidden" class="form-control" value="${LOGIN_USER.id }" name="id" id="id">
+				      	<label class="sr-only" for="password">Password:</label>
+				     	<input type="password" class="form-control" name="password" id="password" placeholder="비밀번호를 입력하세요" autocomplete="off">
+				    </div>
+				    <div class="form-group">
+				    	<input type="submit" class="btn btn-primary" value="확인" />
+						<a href="myinfo.do" class="btn btn-default">돌아가기</a>
+					</div>
+					<br/>
+				  </form>
+			</div>
 		</div>
 		
 		</div>

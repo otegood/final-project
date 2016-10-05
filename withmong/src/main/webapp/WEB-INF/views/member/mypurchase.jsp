@@ -50,14 +50,16 @@
 <script type="text/javascript">
 $(function() {
 	
-	$("button").click
-	
 	$.ajax({
 		url:"../ckmypurchase.do",
 		data:{},
 		dataType:"json",
 		success: function(data) {
 			console.log(data);		// 전체 객체가 한꺼번에나옴
+			if(data.length == 0) {
+				$("tbody").append("<tr><td class='text-center' colspan='6'><strong><b style='color:red'>구매하신 내역이 없습니다.</b></strong></td></tr>");
+				return false;
+			} 
 			$.each(data, function(index, item) {
 				console.log(item);	// 객체가 하나씩나오게됨
 				
@@ -83,33 +85,11 @@ $(function() {
 				jsp += "</tr>";
 				
 				$("tbody").append(jsp);
-				/*
-				$("tbody").append("<tr>");
-				$("tbody").append("<td class='text-center'><a href=''>"+item.productNo.userId+"</a></td>");
-				$("tbody").append("<td><a href=''>"+item.productNo.title+"</a></td>");
-				$("tbody").append("<td class='text-center'>"+item.productNo.price+"p</td>");
-				$("tbody").append("<td class='text-center'>"+item.regdate+"</td>");
-				
-				
-				if(item.buyCheck == 'W'){
-					$("tbody").append("<td  class='text-center'><span class='label label-warning'>구매대기중</span></td>");
-				} else if(item.buyCheck == 'Y'){
-					$("tbody").append("<td  class='text-center''><span class='label label-success'>구매완료</span></td>");
-				} else {
-					$("tbody").append("<td  class='text-center'><span class='label label-default'>구매거부</span></td>");
-					
-				}
-				
-				if(item.buyCheck == 'W' || item.buyCheck == 'N'){
-					$("tbody").append("<td class='text-center'><button class='btn btn-danger btn-xs'>구매취소</button></td>")
-				}
-				$("tbody").append("</tr>");
-				*/
 			});
 		}
 	});
 	
-		
+	$('table th').css("backgroundColor","lightblue"); 	
 	
 })
 
@@ -122,7 +102,7 @@ $(function() {
 		<div class="container" >
 			<div class="row">
 				<h1>나의 구매내역</h1>
-				<table id="example" class="table table-striped">
+				<table id="example" class="table table-striped table-bordered">
 					<colgroup>
 						<col width="10%">
 						<col width="*%">
