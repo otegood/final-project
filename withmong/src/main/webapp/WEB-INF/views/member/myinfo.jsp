@@ -73,6 +73,31 @@ $(function() {
 	}
 	
 	$("#profile").corner();
+	
+	$.ajax({
+		url:"../productbyid.do",
+		data:{id:"${LOGIN_USER.id}"},
+		dataType:"json",
+		success: function(data) {
+			console.log(data);		// 전체 객체가 한꺼번에나옴
+			if(data.length == 0) {
+				$("#product").append("<h3 class='text-center' style='color:red'>등록하신 상품이 없습니다.</h3>");
+				return false;
+			} 
+			$.each(data, function(index, item) {
+				var product = "<div class='col-sm-4 col-md-3'>";
+				product += "<div class='thumbnail'>";
+				product += "<a href='detail.do?productNo="+item.no+"'><img src='resources/images/"+item.img+"' style='width:242px;height:200px;'></a>";
+				product += "<div class='caption'>";
+				product += "<h3><a href='detail.do?productNo="+item.no+"'>"+item.title+"</a></h3>";
+				product += "<p>"+item.price+"</p>";
+				product += "<p><a href='detail.do?productNo="+item.no+"' class='btn btn-primary' role='button'>상세보기</a><a href='detail.do?productNo="+item.no+"' class='btn btn-default' role='button'>수정하기</a></p>";
+				product += "</div></div></div>";
+				
+				$("#product").append(product);
+			});
+		}
+	});
 });
 </script>
 <title>나의 정보</title>
@@ -89,7 +114,11 @@ $(function() {
 				    <a href="confirmpw.do" class="btn btn-primary">정보수정</a>
 				    <a href="main.do" class="btn btn-danger">메인으로</a>
 			    </div>
+			    </div>
 			    <br/>
+			    <br/>
+			<h3>전체 상품 정보</h3>						    
+			<div class="row well text-center" id="product">
 			</div>
 		</div>
 		

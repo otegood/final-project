@@ -26,6 +26,7 @@ import org.springframework.web.multipart.MultipartFile;
 import com.withmong.form.ReportForm;
 import com.withmong.form.UserForm;
 import com.withmong.model.Order;
+import com.withmong.model.Product;
 import com.withmong.model.Report;
 import com.withmong.model.User;
 import com.withmong.service.UserService;
@@ -438,5 +439,12 @@ public class UserController {
 		return userInfo;
 	}
 	//-------------------------------------------------------------------------------------------------//
+	// json ) 아이디로 내가 등록한 상품 보기
+	@RequestMapping("/productbyid.do")
+	public @ResponseBody List<Product> productbyid(String id) {
+		
+		return userService.getProductById(id);
+		
+	}
 	//-------------------------------------------------------------------------------------------------//
 }

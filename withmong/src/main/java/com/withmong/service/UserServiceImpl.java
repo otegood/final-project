@@ -153,6 +153,11 @@ public class UserServiceImpl implements UserService{
 		
 		return userDao.getUserById(id);
 	}
+
+	@Override
+	public List<Product> getProductById(String id) {
+		return userDao.getProductById(id);
+	}
 }
 
 

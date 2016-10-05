@@ -56,4 +56,6 @@ public interface UserService {
 	// 아이디로 유저정보 보기
 	User getUserInfoById(String id);
 	
+	// 아이디로 판매목록 보기
+	List<Product> getProductById(String id);
 }
