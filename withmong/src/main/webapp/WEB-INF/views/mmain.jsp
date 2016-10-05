@@ -311,9 +311,29 @@ $(function(){
 					</table>
 				</div>
 				<!-- 거래내역 -->
-				<div id="orderlist" style="display: none;">
-					
-				</div>			
+				<div id="orderlist" style="display: none;" >
+					<table class="table">
+						<tr>
+							<th>번호</th>
+							<th>상품번호</th>
+							<th>구매자</th>
+							<th>날짜</th>
+							<th>구매금액</th>
+							<th>진행상황</th>
+						</tr>
+						<c:forEach var="order" items="${orderList }" begin="0" end="6">
+							<tr>
+								<td>${order.no }</td>
+								<td>${order.productNo.no }</td>
+								<td>${order.userid.id }</td>
+								<td><fmt:formatDate value="${order.regdate }" pattern="yyyy-MM-dd hh:mm:ss" /></td>
+								<td><fmt:formatNumber value="${order.productNo.price }"></fmt:formatNumber>
+								</td>
+								<td>${order.buyCheck }</td>
+							</tr>
+						</c:forEach>
+					</table>
+				</div>
 			</div>
 		</div>
 			

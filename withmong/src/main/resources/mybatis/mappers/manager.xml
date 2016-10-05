@@ -69,4 +69,32 @@
 		order by
 			regdate desc
 	</select>
+<!-- 거래내역 -->
+	<select id="getAllOrder" resultType="Order">
+		select
+			a.no as "no",
+			a.regdate as "regdate", 
+			a.buycheck as "buycheck", 
+			a.productno as "productNo.no",
+			b.price as "productNo.price",
+			c.id as "userid.id" 
+		from
+			order_table a, product_table b, user_table c
+		where 
+			a.userid = c.id
+		and
+			a.productno = b.no
+		order by
+			a.regdate desc
+	</select>
+<!-- 선택한 상품 삭제 -->
+	<delete id="productDelete" parameterType="int">
+		delete from product_table  
+		where no = #{no}
+	</delete>
+	<!-- 관련 댓글 삭제 -->
+	<delete id="productReviewDelete" parameterType="int">
+		delete from product_review 
+		where productno = #{no}
+	</delete>
 </mapper>

@@ -2,6 +2,7 @@ package com.withmong.dao;
 
 import java.util.List;
 
+import com.withmong.model.Order;
 import com.withmong.model.Point;
 import com.withmong.model.Product;
 import com.withmong.model.User;
@@ -25,5 +26,12 @@ public interface ManagerDao {
 	
 	//모든 상품 목록 
 	List<Product> getAllProduct();
+	
+	//모든 거래 내역
+	List<Order> getAllOrder();
+
+	//상품삭제
+	void productDelete(int no);
+	void productReviewDelete(int no);	// 관련 댓글 삭제
 	
 }

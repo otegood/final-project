@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.withmong.dao.ManagerDao;
+import com.withmong.model.Order;
 import com.withmong.model.Point;
 import com.withmong.model.Product;
 import com.withmong.model.User;
@@ -44,6 +45,19 @@ public class ManagerServiceImpl implements ManagerService{
 	@Override
 	public List<Product> getAllProducts() {
 		return managerDao.getAllProduct();
+	}
+	// 모든 거래내역
+	@Override
+	public List<Order> getAllOrders() {
+		return managerDao.getAllOrder();
+	}
+	@Override
+	public void deleteProduct(int no) {
+		managerDao.productDelete(no);
+	}
+	@Override
+	public void deleteProductReview(int no) {
+		managerDao.productReviewDelete(no);
 	}
 
 }
