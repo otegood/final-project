@@ -24,7 +24,7 @@
 							function(index, item) {
 								$("#area")
 										.append(
-												'<div class="col-sm-3" style="padding-left: 15px; padding-right: 15px;">'
+												'<div class="col-sm-3" style="padding-left: 15px; padding-right: 15px; margin-bottom: 15px;">'
 														+ '<div class="row" style="height: 90px;">'
 														+ '<a href="detail.do?productNo='
 														+ item.no

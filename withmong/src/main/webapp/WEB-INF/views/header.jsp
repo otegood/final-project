@@ -54,7 +54,7 @@
 	border-radius: 6px 0 6px 6px;
 }
 
-.navbar-brand { font-weight: 800; font-size: 80px; }
+.navbar-brand { font-weight: 400; font-size: 40px; }
 
 .nav navbar nav {
 	text-align: pull-right;
@@ -98,9 +98,9 @@ WebFontConfig = {
 						class="icon-bar"></span>
 				</button>
 				<a class="navbar-brand" href="main.do"><img
-					style="max-width: 100px; margin-top: 15px;" id="brand" font-family="Nanum Pen Script, serif";>	<!-- 로고 이미지 삽입하기 
+					style="max-width: 100px; margin-top: 0px;" id="brand" font-family="Nanum Pen Script, serif";>	<!-- 로고 이미지 삽입하기 
 					<img id="logo" src="resources/images/default/5star.PNG">-->
-					With-mong2
+					With<br /><br />mong7
 			
 				</a>
 			</div>
