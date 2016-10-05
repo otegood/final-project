@@ -286,7 +286,29 @@ $(function(){
 			<div>
 				<!-- 상품목록 -->
 				<div id="productlist" class="panel panel-boby">
-					
+					<table class="table">
+						<tr>
+							<th>번호</th>
+							<th>제목</th>
+							<th>판매자</th>
+							<th>가격</th>
+							<th>평점</th>
+							<th>조회수</th>
+							<th>등록일</th>
+						</tr>
+						<c:forEach var="product" items="${productList }" begin="0" end="6">
+							<tr>
+								<td>${product.no }</td>
+								<td>${product.title }</td>
+								<td>${product.userid }</td>
+								<td><fmt:formatNumber value="${product.price }"></fmt:formatNumber>
+								</td>
+								<td>${product.avglike }</td>
+								<td>${product.hits }</td>
+								<td><fmt:formatDate value="${product.regDate }"	pattern="yyyy-MM-dd" /></td>
+							</tr>
+						</c:forEach>
+					</table>
 				</div>
 				<!-- 거래내역 -->
 				<div id="orderlist" style="display: none;">
