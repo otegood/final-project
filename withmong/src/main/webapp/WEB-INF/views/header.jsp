@@ -1,6 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
+<link rel="stylesheet"
+	href="http://fonts.googleapis.com/earlyaccess/nanumpenscript.css" type="text/css">
 <style>
 .marginBottom-0 {
 	margin-bottom: 0;
@@ -49,6 +53,12 @@
 	-moz-border-radius: 6px 0 6px 6px;
 	border-radius: 6px 0 6px 6px;
 }
+
+.navbar-brand { font-weight: 800; font-size: 80px; }
+
+.nav navbar nav {
+	text-align: pull-right;
+}
 </style>
 <script>
 $(document).ready(function(){
@@ -60,6 +70,24 @@ $(document).ready(function(){
 	});
 });
 
+WebFontConfig = {
+	    google: { families: [ 'Oswald:300,400,700:latin,latin-ext' ] }
+	  };
+	  (function() {
+	    var wf = document.createElement('script');
+	    wf.src = ('https:' == document.location.protocol ? 'https' : 'http') +
+	      '://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
+	    wf.type = 'text/javascript';
+	    wf.async = 'true';
+	    var s = document.getElementsByTagName('script')[0];
+	    s.parentNode.insertBefore(wf, s);
+	  })();
+
+
+	$('.carousel').carousel({
+	  interval: 3000
+	})
+
 </script>
 	<nav class="navbar navbar-inverse">
 		<div class="container">
@@ -70,8 +98,10 @@ $(document).ready(function(){
 						class="icon-bar"></span>
 				</button>
 				<a class="navbar-brand" href="main.do"><img
-					style="max-width: 100px; margin-top: -7px;"">	<!-- 로고 이미지 삽입하기 -->
-			<img id="logo" src="resources/images/default/5star.PNG"></a>
+					style="max-width: 100px; margin-top: 15px;" id="brand" font-family="Nanum Pen Script, serif";>	<!-- 로고 이미지 삽입하기 
+					<img id="logo" src="resources/images/default/5star.PNG">-->
+					With-mong2
+			
 				</a>
 			</div>
 			<c:choose>
@@ -153,7 +183,7 @@ $(document).ready(function(){
 
 
 
-<div class="container-fluid">
+<div class="container">
 	<!-- Brand and toggle get grouped for better mobile display -->
 	<div class="navbar-header">
 		<button type="button" class="navbar-toggle collapsed"
@@ -165,8 +195,8 @@ $(document).ready(function(){
 	</div>
 
 	<!-- Collect the nav links, forms, and other content for toggling -->
-	<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1"
-		style="margin-left: 350px;">
+	<div class="collapse navbar-collapse navbar-right" id="bs-example-navbar-collapse-1"
+		style="">
 		<ul class="nav navbar-nav  ">
 			<li class="dropdown"><a href="#" class="dropdown-toggle"
 				data-toggle="dropdown" role="button" aria-haspopup="true"
