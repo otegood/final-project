@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.withmong.model.Order;
 import com.withmong.model.Point;
 import com.withmong.model.Product;
 import com.withmong.model.User;
@@ -40,7 +41,7 @@ public class ManagerController {
 		model.addAttribute("requestlist", boardService.requestList() );
 		model.addAttribute("pointList", managerService.getAllPoints());
 		model.addAttribute("productList", managerService.getAllProducts());
-		
+		model.addAttribute("orderList", managerService.getAllOrders());
 		if(loginedUser.getId().equals("king")){
 			url = "mmain"; 
 		}else{
@@ -90,5 +91,19 @@ public class ManagerController {
 		List<Product> productList = managerService.getAllProducts();  
 		model.addAttribute("productList", productList);
 		return "manager/productlistm";
+	}
+	// 거래내역 
+	@RequestMapping("/allOrderList.do")
+	public String orderList(Model model) {
+		List<Order> orderList = managerService.getAllOrders();  
+		model.addAttribute("orderList", orderList);
+		return "manager/orderlistm";
+	}
+	// 상품삭제
+	@RequestMapping("/deleteProduct.do")
+	public String productDelete(int no){
+		managerService.deleteProduct(no);
+		managerService.deleteProductReview(no);
+		return "redirect:/allProductList.do";
 	}
 }
