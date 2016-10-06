@@ -343,7 +343,7 @@ strong {
 			
 		</div>
 		<div class="body-wrap">
-			<img alt="" src="">
+			<img alt="" src="resources/images/default/yame2.png">
 		</div>
 
 
