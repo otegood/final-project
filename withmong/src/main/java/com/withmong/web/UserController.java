@@ -465,4 +465,13 @@ public class UserController {
 		return "member/mycart";
 	}
 	
+	// 찜목록 삭제하기
+	@RequestMapping(value="/delcart.do")
+	public String delCartByNo(int no){
+			
+		userService.delCartByNo(no);
+		
+		return "redirect:/mycart.do";
+	}
+	
 }

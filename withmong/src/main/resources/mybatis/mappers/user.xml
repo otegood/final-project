@@ -216,5 +216,9 @@
 			c.userid = #{value}
 	</select>
 	
-	
+	<!-- 찜번호로 찜 목록 학제하기 -->
+	<delete id="delCartByNo" parameterType="int">
+		delete from cart_table
+		where no=#{value}
+	</delete>
 </mapper>
