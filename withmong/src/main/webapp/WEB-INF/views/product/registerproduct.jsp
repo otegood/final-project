@@ -78,7 +78,6 @@
 
 	});
 	function getThumbnailPrivew(html, $target) {
-		console.log($target);
 		if (html.files && html.files[0]) {
 			var reader = new FileReader();
 			reader.onload = function(e) {
