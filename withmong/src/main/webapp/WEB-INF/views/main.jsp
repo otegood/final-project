@@ -24,64 +24,26 @@
 							function(index, item) {
 								$("#area")
 										.append(
-												'<div class="col-sm-3" style="padding-left: 15px; padding-right: 15px; margin-bottom: 15px;">'
-														+ '<div class="row" style="height: 90px;">'
-														+ '<a href="detail.do?productNo='
-														+ item.no
-														+ '">'
-														+ '<img src="../../resources/images/'+item.img+'" width="260px" height="90px" />'
-														+
-
-														'</a>'
-														+ '</div>'
-														+ '<div class="row" style="height: 60px;">'
-														+ '<div class="row" >'
-														+ '<div class="col-sm-3" id="explain">'
-														+ '<p>'
-														+ '<span class="glyphicon glyphicon-gift" id="title"> </span>'
-														+ '</p>'
-														+ '</div>'
-														+ '<div class="col-sm-9" id="explain">'
-														+ '<div>'
-														+ item.title
-														+ '</div>'
-														+ '</div>'
-														+ '</div>'
-														+
-
-														'<div class="row" >'
-														+ '<div class="col-sm-3" id="explain">'
-														+ '<p>'
-														+ '<span class="glyphicon glyphicon-cd" id="price"> </span>'
-														+ '</p>'
-														+ '</div>'
-														+ '<div class="col-sm-9" id="explain">'
-														+ '<div>'
-														+ item.price
-														+ '</div>'
-														+ '</div>'
-														+ '</div>'
-														+
-
-														'<div class="row">'
-														+ '<div class="col-sm-3" id="explain">'
-														+ '<p>'
-														+ '<span class="glyphicon glyphicon-thumbs-up" id="regdate"> </span>'
-														+ '</p>'
-														+
-
-														'</div>'
-														+ '<div class="col-sm-9" id="explain">'
-														+ '<div>'
-														+ '<img src="resources/images/default/'
-														+ Math
-																.round(item.avglike)
-														+ 'star.PNG"/>'
-														+ '</div>'
-														+ '</div>'
-														+ '</div>' +
-
-														'</div>' + '</div>');
+												
+												  '<div class="col-sm-4 col-md-3" id="plus-product" >'+
+												    '<div class="thumbnail">'+
+													    '<a href="detail.do?productNo='+ item.no+ '">'+
+													 	   '<img src="../../resources/images/'+item.img+' " width="290px" height="90px" style="height: 164px;"/>'+
+													    '</a>'+
+													      '<div class="caption">'+
+													      
+													        '<h3>'  + item.title+'</h3>'+
+													       
+													        '<h5> 포인트: '+ item.price+'P</h5>'+
+													        
+													        '<img src="resources/images/default/'+ 
+													        Math.round(item.avglike)+ 
+													        'star.PNG"/>'+
+													      '</div>'+
+												    '</div>'+
+												  '</div>'
+												
+												);
 
 							})
 
@@ -154,35 +116,45 @@
 		
 		// hide #back-top first
 		$("#back-top").hide();
-		
+		 
 		// fade in #back-top
 		$(function () {
-			$(window).scroll(function () {
-				if ($(this).scrollTop() > 100) {
-					$('#back-top').fadeIn();
-				} else {
-					$('#back-top').fadeOut();
-				}
-			});
-
-			// scroll body to 0px on click
-			$('#back-top a').click(function () {
-				$('body,html').animate({
-					scrollTop: 0
-				}, 800);
-				return false;
-			});
+		    $(window).scroll(function () {
+		        if ($(this).scrollTop() > 100) {
+		            $('#back-top').fadeIn();
+		        } else {
+		            $('#back-top').fadeOut();
+		        }
+		    });
+		 
+		    // scroll body to 0px on click
+		    $('#back-top a').click(function () {
+		        $('body,html').animate({
+		            scrollTop: 0
+		        }, 800);
+		        return false;
+		    });
 		});
 		
 	})
 </script>
 
 <style type="text/css">
+.thumbnail {
+	border: solid;
+	border-width: 1px;
+	
+}
+
 .ex-company {
 	color: white;
 	top: 0;
 	left: 0;
 	border;
+}
+
+p {
+	text-align: center;
 }
 
 strong {
@@ -232,57 +204,61 @@ strong {
 	margin-left: 80px;
 }
 
-#explain {
-	height: 20px;
-}
-
 <!-- 톱 버튼 -->
 #back-top {
-	position: fixed;
-	bottom: 30px;
-	margin-left: -150px;
 }
-
+ 
 #back-top a {
-	width: 108px;
-	display: block;
-	text-align: center;
-	font: 11px/100% Arial, Helvetica, sans-serif;
-	text-transform: uppercase;
-	text-decoration: none;
-	color: #bbb;
-
-	/* transition */
-	-webkit-transition: 1s;
-	-moz-transition: 1s;
-	transition: 1s;
+    width: 88px;
+    display: block;
+    text-align: center;
+    font: 11px/100% Arial, Helvetica, sans-serif;
+    text-transform: uppercase;
+    text-decoration: none;
+    
+ 
+    /* transition */
+    -webkit-transition: 1s;
+    -moz-transition: 1s;
+    transition: 1s;
 }
 #back-top a:hover {
-	color: #000;
+    color: #000;
 }
-
+ 
 /* arrow icon (span tag) */
 #back-top span {
-	width: 108px;
-	height: 108px;
-	display: block;
-	margin-bottom: 7px;
-	background: #ddd url(up-arrow.png) no-repeat center center;
-
-	/* rounded corners */
-	-webkit-border-radius: 15px;
-	-moz-border-radius: 15px;
-	border-radius: 15px;
-
-	/* transition */
-	-webkit-transition: 1s;
-	-moz-transition: 1s;
-	transition: 1s;
-}
-#back-top a:hover span {
-	background-color: #777;
+    width: 108px;
+    height: 108px;
+    display: block;
+    margin-bottom: 7px;
+    background: #ddd url(up-arrow.png) no-repeat center center;
+ 
+    /* rounded corners */
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+    border-radius: 15px;
+ 
+    /* transition */
+    -webkit-transition: 1s;
+    -moz-transition: 1s;
+    transition: 1s;
 }
 
+.sidenav {
+      padding-top: 20px;
+      
+    }
+.row.content {height: 450px}
+
+/* On small screens, set height to 'auto' for sidenav and grid */
+    @media screen and (max-width: 767px) {
+      .sidenav {
+        height: auto;
+        padding: 15px;
+      }
+      .row.content {height:auto;}
+    }
 </style>
 <title>Insert title here</title>
 </head>
@@ -291,8 +267,11 @@ strong {
 		<%@ include file="header.jsp"%>
 	</header>
 	<!-- 내용 기입 -->
-	<div class="container">
+<div class="container">
 		<br>
+	<div class="row content">
+		<div class="col-sm-1 sidenav" ></div>
+		<div class="col-sm-10">
 		<div id="myCarousel" class="carousel slide" data-ride="carousel"
 			style="height: 250px;">
 			<!-- Indicators -->
@@ -363,18 +342,35 @@ strong {
 			<input type="hidden" id="requestUrl" value="recentlist.do" />
 			
 		</div>
-		<!-- 톱 배너  -->
-		<div >
-		<img alt="" src="">
-			<p id="back-top">
-			    <a href="#top">Back To Top</a>
-			</p>
+		<div class="body-wrap">
+			<img alt="" src="">
 		</div>
 
 
 	
-
+		</div>
+		<div class="col-sm-1 sidenav">
+			<div><br /></div>
+			<div><br /></div>
+			<div><br /></div>
+			<div><br /></div>
+			<div><br /></div>
+			<div><br /></div>
+			<div><br /></div>
+			<div><br /></div>
+			<div><br /></div>
+			<div><br /></div>
+			<div><br /></div>
+			
+				<p id="back-top" style="position: fixed;">
+				    <a href="#top"><span><img alt="" src="resources/images/default/top.png" style="height: 100px;"></span>
+					</a>
+				</p>
+			
+		</div>
+		
 	</div>
+</div>
 
 	<%@ include file="footer.jsp"%>
 </body>

@@ -36,7 +36,7 @@
 				상품정보 및 거래에 대해 <br>위드몽은 <strong>일체 책임을 지지 않습니다.</strong><br>
 			</p>
 			
-		<div class="col-sm-4 col-sm-offset-11" id="foot-alpabet" style="margin-left:-10px;">
+		<div class="col-sm-4 col-sm-offset-11" id="foot-alpabet" style="margin-left: 100px;">
 				<img alt="카드이미지" src="resources/images/default/card.PNG">
 			</div>
 		</div>
