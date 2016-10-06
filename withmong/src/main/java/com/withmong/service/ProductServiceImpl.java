@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.withmong.dao.ProductDao;
 import com.withmong.form.BreadcrumbsForm;
+import com.withmong.form.CountForm;
 import com.withmong.form.SearchForm;
 import com.withmong.model.Category;
 import com.withmong.model.Location;
@@ -110,6 +111,17 @@ public class ProductServiceImpl implements ProductService{
 	@Override
 	public void ProductReviewDel(int reviewNo) {
 		productDao.ProductReviewDel(reviewNo);
+		
+	}
+
+	@Override
+	public CountForm getCountandRow(int productNo) {
+		return productDao.getCountandRow(productNo);
+	}
+
+	@Override
+	public void updateAvglike(CountForm cf) {
+		productDao.updateAvglike(cf);
 		
 	}
 

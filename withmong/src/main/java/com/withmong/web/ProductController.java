@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.withmong.form.BreadcrumbsForm;
+import com.withmong.form.CountForm;
 import com.withmong.form.ProductForm;
 import com.withmong.form.SearchForm;
 import com.withmong.model.Category;
@@ -159,13 +160,113 @@ public class ProductController {
 
 		return "redirect:/searchList.do";
 	}
+	//------------------------------------------------------------------------------------------------------------------------
+	// 상품 수정
+	@RequestMapping(value="/updateProduct.do", method=RequestMethod.GET)
+	public String updateProduct(@RequestParam(name="productNo") int productNo, Model model) {
+		
+		List<Category> categoryList = productService.findCategory();
+		model.addAttribute("cateList",categoryList);
+		
+		List<Location> locationList = productService.findLocation();
+		model.addAttribute("locaList",locationList);
+		
+		Product product = productService.productDetail(productNo);
+		model.addAttribute("detail", product);
+		
+		return "product/registerproduct";
+	}
 
+	@RequestMapping(value="/updateProduct.do", method=RequestMethod.POST)
+	public String updateProduct(ProductForm productForm ,@RequestParam("img")MultipartFile img, User loginedUser) throws Exception{
+		
+		
+		System.out.println("---------------------------------------------------------");
+		System.out.println("---------------------------------------------------------");
+		System.out.println("---------------------------------------------------------");
+		System.out.println(productForm.getNo());
+		System.out.println("---------------------------------------------------------");
+		System.out.println("---------------------------------------------------------");
+		System.out.println("---------------------------------------------------------");
+		
+		
+		Product product = new Product();
+		BeanUtils.copyProperties(productForm, product);
+
+		// 카테고리 번호
+		//product.setCategoryNo(productForm.getCategoryNo());
+		Category category = new Category();
+	
+		category = productService.findCategoryByNo(productForm.getCategory().getNo());
+
+		product.setCategory(category);
+		
+		// 제목
+		String title = productForm.getTitle();
+		product.setTitle(title);
+
+		// 아이디
+		String loginId = loginedUser.getId();
+		product.setUserid(loginId);
+	
+
+		// 이미지 사진
+		String filename = img.getOriginalFilename();
+		
+		if(!filename.isEmpty()){			
+			String protitle = "product/"+loginId;
+			
+			String extName = filename.substring(filename.lastIndexOf(".")+1);
+			byte[] bytes = img.getBytes();
+			File file = new File(UPLOAD_DIRECTORY, protitle + "." + extName);
+			FileCopyUtils.copy(bytes, file);
+			product.setImg(protitle + "." + extName);
+		}else{
+			product.setImg("default\\defaultProduct.png");
+		}
+		
+
+		//youtubeURL 
+		String video = productForm.getVideo();
+		product.setVideo(video);
+
+		// 내용
+		String contents = productForm.getContents();
+		product.setContents(contents);
+
+		//지역
+		Location location = new Location();
+		location = productService.findLocationNo(productForm.getLocation());
+		product.setLocation(location);
+	
+		
+		//수량 및 인원
+		int qty = productForm.getQty();
+		product.setQty(qty);
+
+		//가격
+		int price = productForm.getPrice();
+		product.setPrice(price);
+
+		//태그
+		String tag = productForm.getTag();
+		product.setTag(tag);
+		
+
+		productService.addProduct(product);
+
+
+		return "redirect:/searchList.do";
+	}
+
+	
+	
+	//------------------------------------------------------------------------------------------------------------------------
 
 	@RequestMapping(value="/productreple.do", method=RequestMethod.POST)
-	public @ResponseBody void productreple(int score,String contents,int productNo, User loginedUser) throws Exception{
+	public @ResponseBody double productreple(int score,String contents,int productNo, User loginedUser) throws Exception{
 
 		ProductReview productReview = new ProductReview();
-		
 	
 		String loginId = loginedUser.getId();
 
@@ -175,12 +276,35 @@ public class ProductController {
 		productReview.setProductNo(productNo);
 		
 		productService.addProductReview(productReview);
+		// 행의 갯수와 총점을 구하는 서비스
+		CountForm cf = productService.getCountandRow(productNo);
+		
+		double avglike = (double)cf.getTotalScore()/cf.getRowCount();
+		
+		cf.setAvglike(avglike);
+		cf.setProductNo(productNo);
+		productService.updateAvglike(cf);
+		
+		return productService.getProductByNo(productNo).getAvglike();
 	}
 	
 	@RequestMapping(value="/productrepleDel.do", method=RequestMethod.POST)
-	public @ResponseBody void productrepleDel(int reviewNo) throws Exception{
-	
+	public @ResponseBody double productrepleDel(int reviewNo, int productNo) throws Exception{
+		
+		// 댓글 지우기 
 		productService.ProductReviewDel(reviewNo);
+		
+		// 평점 다시계산하기
+		CountForm cf = productService.getCountandRow(productNo);
+		if(cf.getTotalScore() != 0 && cf.getRowCount() !=0 ){
+		double avglike = (double)cf.getTotalScore()/cf.getRowCount();
+		cf.setAvglike(avglike);
+		}else{
+		cf.setAvglike(0);
+		}
+		cf.setProductNo(productNo);
+		productService.updateAvglike(cf);
+		return productService.getProductByNo(productNo).getAvglike();
 	}
 	
 	@RequestMapping(value="/locationForlocal.do", method=RequestMethod.POST)
