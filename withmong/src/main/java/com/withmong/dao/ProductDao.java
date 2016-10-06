@@ -3,6 +3,7 @@ package com.withmong.dao;
 import java.util.List;
 
 import com.withmong.form.BreadcrumbsForm;
+import com.withmong.form.CountForm;
 import com.withmong.form.SearchForm;
 import com.withmong.model.Category;
 import com.withmong.model.Location;
@@ -30,6 +31,7 @@ public interface ProductDao {
 	void addOrder(Order order);
 	void updateHits(int no);
 	void ProductReviewDel(int reviewNo);
-
+	CountForm getCountandRow(int productNo);
+	void updateAvglike(CountForm cf);
 	
 }

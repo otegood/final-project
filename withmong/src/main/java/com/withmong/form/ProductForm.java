@@ -5,6 +5,15 @@ import com.withmong.model.Location;
 
 public class ProductForm {
 	
+	private String no;
+	public String getNo() {
+		return no;
+	}
+
+	public void setNo(String no) {
+		this.no = no;
+	}
+
 	private String title;
 	private String video;
 	private String contents;

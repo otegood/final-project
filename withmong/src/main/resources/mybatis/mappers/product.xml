@@ -8,7 +8,7 @@
 		insert into product_table
 		( no,title,userid,img,video,contents,price,qty,regdate,avglike,hits,tag,categoryno,location )
 		values
-		(test_seq.nextval, #{title},#{userId},#{img}, #{video}, #{contents}, #{price}, #{qty},sysdate,0,0,#{tag},#{category.no},#{location.no})
+		(test_seq.nextval, #{title},#{userid},#{img}, #{video}, #{contents}, #{price}, #{qty},sysdate,0,0,#{tag},#{category.no},#{location.no})
 	</insert>
 	
 		<select id="findCategory" resultType="Category">
@@ -167,6 +167,20 @@
 		delete from product_review
 		where no = #{value}
 	</delete>
+	
+	<select id="getCountandRow" parameterType="int" resultType="CountForm">
+		select sum(score) as "totalScore" ,count(score) as "rowCount"
+		from product_review
+		where productno = #{value}
+	</select>
+	
+	<update id="updateAvglike" parameterType="CountForm">
+		update product_table
+		set avglike = #{avglike}
+		where no = #{productNo}
+	</update>
+	
+	
 	
 </mapper>
 
