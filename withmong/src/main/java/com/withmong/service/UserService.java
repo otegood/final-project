@@ -3,6 +3,7 @@ package com.withmong.service;
 
 import java.util.List;
 
+import com.withmong.model.Cart;
 import com.withmong.model.Order;
 import com.withmong.model.Product;
 import com.withmong.model.Report;
@@ -58,4 +59,7 @@ public interface UserService {
 	
 	// 아이디로 판매목록 보기
 	List<Product> getProductById(String id);
+	
+	// 아이디로 찜목록 보기
+	List<Cart> getCartById(String id);
 }

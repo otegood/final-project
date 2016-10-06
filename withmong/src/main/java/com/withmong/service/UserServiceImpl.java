@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.DigestUtils;
 
 import com.withmong.dao.UserDao;
+import com.withmong.model.Cart;
 import com.withmong.model.Order;
 import com.withmong.model.Product;
 import com.withmong.model.Report;
@@ -157,6 +158,12 @@ public class UserServiceImpl implements UserService{
 	@Override
 	public List<Product> getProductById(String id) {
 		return userDao.getProductById(id);
+	}
+	
+	// 아이디로 찜목록보기
+	@Override
+	public List<Cart> getCartById(String id) {
+		return userDao.getCartById(id);
 	}
 }
 
