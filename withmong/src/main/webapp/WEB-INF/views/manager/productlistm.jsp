@@ -60,6 +60,8 @@
 	<header><%@ include file="../mheader.jsp" %></header>
 
 	<div class="container">
+		<h1>상품 목록</h1>
+		<br/>
 		<c:forEach var="product" items="${productList }">
 			<table class="table" style="margin-bottom: 20px;" border="1">
 				<tr>

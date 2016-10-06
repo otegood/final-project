@@ -59,25 +59,30 @@
 	<header><%@ include file="../mheader.jsp" %></header>
 	
 	<div class="container" >
+		<h1>거래내역 목록</h1>
 		<table class="table">
-			<tr>
-				<th>번호</th>
-				<th>상품번호</th>
-				<th>구매자</th>
-				<th>날짜</th>
-				<th>구매금액</th>
-				<th>진행상황</th>
-			</tr>	
-			<c:forEach var="order" items="${orderList }">
+			<thead>
 				<tr>
-					<td>${order.no }</td>
-					<td>${order.productNo.no }</td>
-					<td>${order.userid.id }</td>
-					<td><fmt:formatDate value="${order.regdate }" pattern="yyyy-MM-dd hh:mm:ss"/></td>
-					<td><fmt:formatNumber value="${order.productNo.price }"></fmt:formatNumber> </td>
-					<td>${order.buyCheck }</td>
-				</tr>
-			</c:forEach>	
+					<th>번호</th>
+					<th>상품번호</th>
+					<th>구매자</th>
+					<th>날짜</th>
+					<th>구매금액</th>
+					<th>진행상황</th>
+				</tr>	
+			</thead>
+			<tbody>
+				<c:forEach var="order" items="${orderList }">
+					<tr>
+						<td>${order.no }</td>
+						<td>${order.productNo.no }</td>
+						<td>${order.userid.id }</td>
+						<td><fmt:formatDate value="${order.regdate }" pattern="yyyy-MM-dd hh:mm:ss"/></td>
+						<td><fmt:formatNumber value="${order.productNo.price }"></fmt:formatNumber> </td>
+						<td>${order.buyCheck }</td>
+					</tr>
+				</c:forEach>
+			</tbody>	
 		</table>
 	</div>
 	<%@ include file="../footer.jsp" %>	

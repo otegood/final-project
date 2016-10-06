@@ -31,7 +31,7 @@ public class ManagerController {
 	//관리자 메인 접속
 	@RequestMapping("/mmain.do")
 	public String mmain(Model model, User loginedUser){
-		//유저 목록조회
+		
 		String url = "";
 		List<User> userList = managerService.getAllUsers();  
 		model.addAttribute("userList", userList);

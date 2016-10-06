@@ -53,6 +53,16 @@
 		height: 400px;
 	}
 </style>
+<script type="text/javascript">
+
+<!-- tr눌렀을때 페이지 이동시키기 -->
+$(function(){
+	$("#chain tr").click(function(){
+		$(location).attr('href', 'userdetailm.do?id='+$(this).find("td:first").text());
+	});
+});
+
+</script>
 <title>충전내역 리스트</title>
 </head>
 <body>
@@ -60,21 +70,25 @@
 	
 	<div class="container" >
 		<h1>충전내역 리스트</h1>
-		<table class="table">
-			<tr>
-				<th>회원 ID</th>
-				<th>충전 Point</th>
-				<th>출금 Point</th>
-				<th>날짜</th>
-			</tr>
-			<c:forEach var="point" items="${pointList}">
+		<table class="table table-hover">
+			<thead>
 				<tr>
-					<td>${point.userid.id }</td>
-					<td><fmt:formatNumber value="${point.charge }" type="number"></fmt:formatNumber></td>
-					<td><fmt:formatNumber value="${point.withdraw }" type="number"></fmt:formatNumber></td>
-					<td><fmt:formatDate value="${point.regdate }" pattern="yyyy.MM.dd hh:mm:ss"/></td>
+					<th>회원 ID</th>
+					<th>충전 Point</th>
+					<th>출금 Point</th>
+					<th>날짜</th>
 				</tr>
-			</c:forEach>
+			</thead>
+			<tbody id="chain">
+				<c:forEach var="point" items="${pointList}">
+					<tr>
+						<td>${point.userid.id }</td>
+						<td><fmt:formatNumber value="${point.charge }" type="number"></fmt:formatNumber></td>
+						<td><fmt:formatNumber value="${point.withdraw }" type="number"></fmt:formatNumber></td>
+						<td><fmt:formatDate value="${point.regdate }" pattern="yyyy.MM.dd hh:mm:ss"/></td>
+					</tr>
+				</c:forEach>
+			</tbody>
 		</table>
 	</div>
 	<%@ include file="../footer.jsp" %>	

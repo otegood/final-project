@@ -50,7 +50,7 @@
 		text-align: center;
 	}
 	#frames{
-		height: 400px;
+		height: 500px;
 	}
 </style>
 <script type="text/javascript">
@@ -80,6 +80,10 @@ $(function(){
 	$("#requestChain tr").click(function(){
 		$(location).attr('href', 'requestDetail.do?no='+$(this).find("td:first").text());
 	});
+	$("#pointchain tr").click(function(){
+		$(location).attr('href', 'userdetailm.do?id='+$(this).find("td:first").text());
+	});
+	
 	
 	$("#users").click(function(){
 		$("#userlist").show(300, "swing");
@@ -125,6 +129,12 @@ $(function(){
 			<div>
 			<!-- 공지사항 -->
 				<div id="notice" >
+					<h4 style="text-align: center;">
+						<b>공지사항 </b>
+					</h4>
+					<div style="text-align: right">
+						<a class="btn btn-default btn-xs" href="noticelist.do">더 보기</a>
+					</div>
 					<table class="table table-hover">
 						<thead>
 							<tr>
@@ -146,6 +156,12 @@ $(function(){
 				</div>
 			<!-- 요청게시판 -->
 				<div id="request"  style="display: none;">
+					<h4 style="text-align: center;">
+						<b>요청게시판 </b>
+					</h4>
+					<div style="text-align: right">
+						<a class="btn btn-default btn-xs" href="requestlist.do">더 보기</a>
+					</div>
 					<table class="table table-hover">
 						<thead>
 							<tr>
@@ -177,6 +193,12 @@ $(function(){
 				</div>
 			<!-- QnA게시판 -->
 				<div id="qna"  style="display: none;">
+					<h4 style="text-align: center;">
+						<b>QnA게시판 </b>
+					</h4>
+					<div style="text-align: right">
+						<a class="btn btn-default btn-xs" href="qnalist.do">더 보기</a>
+					</div>
 					<table class="table table-hover">
 						<thead>
 							<tr>
@@ -219,6 +241,12 @@ $(function(){
 			<div>
 			<!-- 회원목록 -->
 				<div id="userlist" class="panel panel-boby">
+					<h4 style="text-align: center;">
+						<b>회원목록 </b>
+					</h4>
+					<div style="text-align: right">
+						<a class="btn btn-default btn-xs" href="userlist.do">더 보기</a>
+					</div>
 					<table class="table">
 						<thead>
 							<tr>
@@ -279,21 +307,31 @@ $(function(){
 				</div>
 				<!-- 충전내역 -->
 				<div id="rechargelist" style="display: none;">
-					<table class="table">
-						<tr>
-							<th>회원 ID</th>
-							<th>충전 Point</th>
-							<th>출금 Point</th>
-							<th>날짜</th>
-						</tr>
-						<c:forEach var="point" items="${pointList}" begin="0" end="6">
+					<h4 style="text-align: center;">
+						<b>충전내역</b>
+					</h4>
+					<div style="text-align: right">
+						<a class="btn btn-default btn-xs" href="allPointList.do">더 보기</a>
+					</div>
+					<table class="table table-hover">
+						<thead>
 							<tr>
-								<td>${point.userid.id }</td>
-								<td><fmt:formatNumber value="${point.charge }" type="number"></fmt:formatNumber></td>
-								<td><fmt:formatNumber value="${point.withdraw }" type="number"></fmt:formatNumber></td>
-								<td><fmt:formatDate value="${point.regdate }" pattern="yyyy.MM.dd hh:mm:ss" /></td>
+								<th>회원 ID</th>
+								<th>충전 Point</th>
+								<th>출금 Point</th>
+								<th>날짜</th>
 							</tr>
-						</c:forEach>
+						</thead>
+						<tbody id="pointchain">
+							<c:forEach var="point" items="${pointList}" begin="0" end="6">
+								<tr>
+									<td>${point.userid.id }</td>
+									<td><fmt:formatNumber value="${point.charge }" type="number"></fmt:formatNumber></td>
+									<td><fmt:formatNumber value="${point.withdraw }" type="number"></fmt:formatNumber></td>
+									<td><fmt:formatDate value="${point.regdate }" pattern="yyyy.MM.dd hh:mm:ss" /></td>
+								</tr>
+							</c:forEach>
+						</tbody>
 					</table>
 				</div>
 				<!-- 신고목록 -->
@@ -312,6 +350,12 @@ $(function(){
 			<div>
 				<!-- 상품목록 -->
 				<div id="productlist" class="panel panel-boby">
+					<h4 style="text-align: center;">
+						<b>상품목록</b>
+					</h4>
+					<div style="text-align: right">
+						<a class="btn btn-default btn-xs" href="allProductList.do">더 보기</a>
+					</div>
 					<table class="table">
 						<tr>
 							<th>번호</th>
@@ -338,26 +382,36 @@ $(function(){
 				</div>
 				<!-- 거래내역 -->
 				<div id="orderlist" style="display: none;" >
+					<h4 style="text-align: center;">
+						<b>거래내역</b>
+					</h4>
+					<div style="text-align: right">
+						<a class="btn btn-default btn-xs" href="allOrderList.do">더 보기</a>
+					</div>
 					<table class="table">
-						<tr>
-							<th>번호</th>
-							<th>상품번호</th>
-							<th>구매자</th>
-							<th>날짜</th>
-							<th>구매금액</th>
-							<th>진행상황</th>
-						</tr>
-						<c:forEach var="order" items="${orderList }" begin="0" end="6">
+						<thead>
 							<tr>
-								<td>${order.no }</td>
-								<td>${order.productNo.no }</td>
-								<td>${order.userid.id }</td>
-								<td><fmt:formatDate value="${order.regdate }" pattern="yyyy-MM-dd hh:mm:ss" /></td>
-								<td><fmt:formatNumber value="${order.productNo.price }"></fmt:formatNumber>
-								</td>
-								<td>${order.buyCheck }</td>
+								<th>번호</th>
+								<th>상품번호</th>
+								<th>구매자</th>
+								<th>날짜</th>
+								<th>구매금액</th>
+								<th>진행상황</th>
 							</tr>
-						</c:forEach>
+						</thead>
+						<tbody>
+							<c:forEach var="order" items="${orderList }" begin="0" end="6">
+								<tr>
+									<td>${order.no }</td>
+									<td>${order.productNo.no }</td>
+									<td>${order.userid.id }</td>
+									<td><fmt:formatDate value="${order.regdate }" pattern="yyyy-MM-dd hh:mm:ss" /></td>
+									<td><fmt:formatNumber value="${order.productNo.price }"></fmt:formatNumber>
+									</td>
+									<td>${order.buyCheck }</td>
+								</tr>
+							</c:forEach>
+						</tbody>
 					</table>
 				</div>
 			</div>
