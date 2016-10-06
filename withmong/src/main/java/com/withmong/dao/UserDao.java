@@ -66,4 +66,7 @@ public interface UserDao {
 	
 	//나의 찜목록 확인하기
 	List<Cart> getCartById(String id);
+	
+	//찜목록 삭제하기
+	void delCartByNo(int cartNo);
 }

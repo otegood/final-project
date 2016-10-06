@@ -90,7 +90,6 @@ $(function() {
 	});
 	
 	$('table th').css("backgroundColor","lightblue"); 	
-	
 })
 
 </script>

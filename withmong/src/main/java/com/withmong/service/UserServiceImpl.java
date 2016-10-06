@@ -165,6 +165,12 @@ public class UserServiceImpl implements UserService{
 	public List<Cart> getCartById(String id) {
 		return userDao.getCartById(id);
 	}
+	
+	// 찜번호로 찜목록삭제하기
+	@Override
+	public void delCartByNo(int cartNo) {
+		userDao.delCartByNo(cartNo);
+	}
 }
 
 

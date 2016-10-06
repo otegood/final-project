@@ -62,4 +62,7 @@ public interface UserService {
 	
 	// 아이디로 찜목록 보기
 	List<Cart> getCartById(String id);
+	
+	// 찜번호로 찜목록 삭제하기
+	void delCartByNo(int cartNo);
 }

@@ -63,7 +63,7 @@ $(function() {
 				console.log(item);	// 객체가 하나씩나오게됨
 				var jsp = "<tr>";
 				jsp += "<td class='text-center'><a href='getuserinfo.do?id="+item.productNo.userid+"'>"+item.productNo.userid+"</a></td>";
-				jsp += "<td class='text-center'><a href='detail.do?productNo="+item.productNo.no+"'>"+item.productNo.title+"</a></td>";
+				jsp += "<td class='text-center'><a href='detail.do?productNo="+item.productNo.no+"'>"+item.productNo.title+"</a>&nbsp;&nbsp;&nbsp;<a class='btn btn-danger btn-xs' href='delcart.do?no="+item.no+"'>삭제</a></td>";
 				jsp += "<td class='text-center'>"+item.productNo.price+"p</td>";
 				jsp += "</tr>";
 				
@@ -87,9 +87,9 @@ $(function() {
 				<h1>나의 찜 목록</h1>
 				<table id="example" class="table table-striped table-bordered">
 					<colgroup>
-						<col width="10%">
+						<col width="15%">
 						<col width="*%">
-						<col width="10%">
+						<col width="15%">
 					</colgroup>
 			        <thead>
 			            <tr>

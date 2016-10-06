@@ -17,6 +17,27 @@
 
 $(function() {
 	
+	//별점 및 수정 버튼
+	var loginedUserId = '${LOGIN_USER.id}';
+	var saleId = '${userDetail.id }';
+	getStarImg('${detail.avglike}');
+	if(loginedUserId==saleId){
+		$("#proregister").append('<a class="btn btn-warning btn-xs" href="updateProduct.do?productNo=${detail.no}">수정</button>');
+		$("#proregister").append('<a class="btn btn-danger btn-xs" href="deleteProduct.do?productNo=${detail.no}">삭제</button>');
+	}
+	
+	function getStarImg(data){		
+		$("#avgStar").empty();
+		var avglike = data;
+		roundAvglike = Math.round(avglike);
+		if(roundAvglike < 1){
+			$("#avgStar").append('<img src="../../resources/images/default/1star.PNG">');
+		}else{
+			$("#avgStar").append('<img src="../../resources/images/default/'+roundAvglike+'star.PNG">');
+		}
+	}
+	
+	// 댓글 가져오기
 	function getReviewList(){
 		
 		$("#reviewTb").empty();
@@ -40,21 +61,27 @@ $(function() {
 			}
 		})
 	}
-	
+	//탭 클릭시 댓글 가져오기
 	$("#tabmenu1").click(function() {
-		
 		getReviewList();
 	});
 	
 	
+	// 댓글 버튼 클릭시
 	$("#addreviewBtn").click(function(){
+		if (!$.trim($("input[name='contents']").val())) {
+			alert("댓글을 입력해주세요");
+			return false;
+		}
+		
 		$.ajax({
 			url:"productreple.do",
 			type:"POST",
 			data:{score:$(":radio:checked").val(),contents:$("#contents").val(),productNo:$("#productNo").val()},
 			dataType: "text",
 			success: function(data){
-				getReviewList();	
+				getReviewList();
+				getStarImg(data);
 			}
 		})
 		return false;
@@ -82,11 +109,12 @@ $(function() {
 		$.ajax({
 			url:"productrepleDel.do",
 			type:"POST",
-			data:{reviewNo:$(this).val()},
+			data:{reviewNo:$(this).val(),productNo:$("#productNo").val()},
 			dataType: "text",
 			success: function(data){
 				//로딩하는 ajax 추가
 				getReviewList();
+				getStarImg(data);
 			}
 		})
 	});
@@ -157,7 +185,11 @@ strong {
 				<div class="col-sm-3">조회수 : ${detail.hits }</div>
 			</div>
 			<hr>
-			<span> <strong style="color: black;">태그</strong> ${detail.tag }</span>
+			<div class="row">
+				<div class="col-sm-7"><span> <strong style="color: black;">태그</strong> ${detail.tag }</span></div>
+				<div class="col-sm-3" id="avgStar"></div>				
+				<div class="col-sm-2" id="proregister"></div>
+			</div>
 			<hr>
 				<div class="row">
 					<div class="col-sm-3"><img src="../../resources/images/${detail.img}" width="260px;"></div>
@@ -199,8 +231,7 @@ strong {
 				<ul class="nav nav-tabs">
 					<li class="active"><a data-toggle="tab" href="#content">상세설명</a></li>
 					<li><a data-toggle="tab" id="tabmenu1" href="#menu1">후기</a></li>
-					<li><a data-toggle="tab" id="tabmenu2" href="#menu2">Menu 2</a></li>
-					<li><a data-toggle="tab" id="tabmenu3"href="#menu3">Menu 3</a></li>
+					<li><a data-toggle="tab" id="tabmenu2" href="#menu2">관련 상품</a></li>
 				</ul>
 			</div>
 
@@ -226,7 +257,7 @@ strong {
 						<div class="panel-body">
 							<div class="col-lg-12">
 							    <div class="input-group">
-							      <input type="text" id="contents" class="form-control" placeholder="최대 한글 100자까지 가능합니다.">
+							      <input type="text" id="contents" name="contents" class="form-control" placeholder="최대 한글 100자까지 가능합니다.">
 							      <span class="input-group-btn">
 							     
 							      <c:choose>
@@ -267,34 +298,6 @@ strong {
 					<h3>Menu 2</h3>
 					<p>Sed ut perspiciatis unde omnis iste natus error sit
 						voluptatem accusantium doloremque laudantium, totam rem aperiam.</p>
-				</div>
-				<div id="menu3" class="tab-pane fade">
-					<h3>Menu 3</h3>
-					<p>Eaque ipsa quae ab illo inventore veritatis et quasi
-						architecto beatae vitae dicta sunt explicabo.</p>
-					<p>Eaque ipsa quae ab illo inventore veritatis et quasi
-						architecto beatae vitae dicta sunt explicabo.</p>
-					<p>Eaque ipsa quae ab illo inventore veritatis et quasi
-						architecto beatae vitae dicta sunt explicabo.</p>
-					<p>Eaque ipsa quae ab illo inventore veritatis et quasi
-						architecto beatae vitae dicta sunt explicabo.</p>
-					<p>Eaque ipsa quae ab illo inventore veritatis et quasi
-						architecto beatae vitae dicta sunt explicabo.</p>
-					<p>Eaque ipsa quae ab illo inventore veritatis et quasi
-						architecto beatae vitae dicta sunt explicabo.</p>
-					<p>Eaque ipsa quae ab illo inventore veritatis et quasi
-						architecto beatae vitae dicta sunt explicabo.</p>
-					<p>Eaque ipsa quae ab illo inventore veritatis et quasi
-						architecto beatae vitae dicta sunt explicabo.</p>
-					<p>Eaque ipsa quae ab illo inventore veritatis et quasi
-						architecto beatae vitae dicta sunt explicabo.</p>
-					<p>Eaque ipsa quae ab illo inventore veritatis et quasi
-						architecto beatae vitae dicta sunt explicabo.</p>
-					<p>Eaque ipsa quae ab illo inventore veritatis et quasi
-						architecto beatae vitae dicta sunt explicabo.</p>
-					<p>Eaque ipsa quae ab illo inventore veritatis et quasi
-						architecto beatae vitae dicta sunt explicabo.</p>
-
 				</div>
 			</div>
 		</div>
