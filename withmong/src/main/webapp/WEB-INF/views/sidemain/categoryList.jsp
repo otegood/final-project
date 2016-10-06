@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -50,7 +50,6 @@ strong {
 	padding: 10px;
 	background-color: black;
 }
-
 </style>
 <script type="text/javascript">
 	
@@ -61,46 +60,49 @@ strong {
 	<header><%@ include file="../header.jsp"%></header>
 
 	<div class="container">
-	<!-- 태그 경로 알림 -->
-			<div class="row">
-				<div class="col-sm-3">${catelist.cateBName} > ${catelist.cateSName }</div>
+		<!-- 태그 경로 알림 -->
+			<div class="row" id="catoryname">
+				<c:forEach var="category" items="${category }">
+						<div class="col-sm-3">${category.name}</div>
+				</c:forEach>
 			</div>
-			
-			<c:forEach var="search" items="${catelist}">
-		<div class="row" id="row">
+		<c:forEach var="product" items="${products}">
+			<div class="row" id="row">
 				<div class="col-sm-2">
-					<a href="detail.do?productNo=${catelist.no }"><img width="100px" height="100px" src="../../resources/images/${search.img }">
+					<a href="detail.do?productNo=${product.no }"><img width="100px"
+						height="100px" src="../../resources/images/${product.img }">
 					</a>
 				</div>
 				<div class="col-sm-8">
 					<h4>
-						제목 : <a href="detail.do?productNo=${catelist.no }">
-						<c:choose>
-                              <c:when test="${fn:length(catelist.title) > 36}">
-                                 ${fn:substring(catelist.title, 0, 35)}...</c:when>
-                              <c:otherwise>
-                                 ${catelist.title}
+						제목 : <a href="detail.do?productNo=${products.no }"> 
+							<c:choose>
+								<c:when test="${fn:length(products.title) > 36}">
+                                 ${fn:substring(products.title, 0, 35)}...</c:when>
+								<c:otherwise>
+                                 ${products.title}
                               </c:otherwise>
-                           </c:choose>
-						
+							</c:choose>
+
 						</a>
 					</h4>
-						<c:choose>
-                              <c:when test="${fn:length(search.contents) > 160}">
-                                 ${fn:substring(search.contents, 0, 160)}...</c:when>
-                              <c:otherwise>
-                                 ${search.contents}
+					<c:choose>
+						<c:when test="${fn:length(products.contents) > 160}">
+                                 ${fn:substring(products.contents, 0, 160)}...</c:when>
+						<c:otherwise>
+                                 ${products.contents}
                               </c:otherwise>
-                           </c:choose>
+					</c:choose>
 				</div>
 				<div class="col-sm-2">
-					<p>조회수 : ${search.hits }</p>
-					<p>평점 : ${search.avglike }</p>
-					<p>가격 : ${search.price }</p>
+					<p>조회수 : ${products.hits }</p>
+					<p>평점 : ${products.avglike }</p>
+					<p>가격 : ${products.price }</p>
 				</div>
-		</div>
+			</div>
+		</c:forEach>
 		<hr>
-			</c:forEach>
+
 	</div>
 
 

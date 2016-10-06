@@ -94,6 +94,14 @@ public class MainServiceImpl implements MainService {
 		return mainDao.getTotalRows(criteria);
 	}
 
+
+	//카테고리 관련 링크따오기?
+	@Override
+	public List<Product> getCateproductList(int no) {
+		// TODO Auto-generated method stub
+		return mainDao.getCateproductList(no);
+	}
+
 	
 
 	

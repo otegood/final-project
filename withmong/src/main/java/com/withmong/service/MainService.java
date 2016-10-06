@@ -27,6 +27,10 @@ public interface MainService {
 	
 	// 종합 개수 조회
 	int getTotalRows(Criteria criteria);
+	
+	
+	//카테고리 번호 상품 가지고 오기 링크 관련 (임시)
+	List<Product> getCateproductList(int no);
 
 }
 

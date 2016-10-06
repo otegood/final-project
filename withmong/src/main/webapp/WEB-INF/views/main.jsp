@@ -18,8 +18,7 @@
 	$(function() {
 		//DB에서 태그에 해당하는 상품 보여주기
 		function generatedProducts(products) {
-			$
-					.each(
+			$.each(
 							products,
 							function(index, item) {
 								$("#area")
@@ -180,6 +179,7 @@ strong {
 }
 
 #footer {
+	position:relative;
 	padding: 10px;
 	background-color: black;
 }
@@ -359,16 +359,13 @@ strong {
 			<div><br /></div>
 			<div><br /></div>
 			<div><br /></div>
-			<div><br /></div>
-			<div><br /></div>
-			<div><br /></div>
-			<div><br /></div>
+		
 			<div><br /></div>
 			<div><br /></div>
 			<div><br /></div>
 			
-				<p id="back-top" style="position: fixed;">
-				    <a href="#top"><span><img alt="" src="resources/images/default/top.png" style="height: 100px;"></span>
+				<p id="back-top" style="position: fixed; height: auto;">
+				    <a href="#top"><span><img alt="" src="resources/images/default/top.png" style="height: 100%;"></span>
 					</a>
 				</p>
 			

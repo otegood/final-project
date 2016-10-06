@@ -88,6 +88,10 @@ WebFontConfig = {
 	  interval: 3000
 	})
 
+	
+	$(function() {
+		
+	})
 </script>
 	<nav class="navbar navbar-inverse">
 		<div class="container">
@@ -98,7 +102,7 @@ WebFontConfig = {
 						class="icon-bar"></span>
 				</button>
 				<a class="navbar-brand" href="main.do"><img
-					style="max-width: 100px; margin-top: 0px;" id="brand" font-family="Nanum Pen Script, serif";>	<!-- 로고 이미지 삽입하기 
+					style="max-width: 100px; margin-top: 0px;" id="brand" font-family="Nanum Pen Script, serif;">	<!-- 로고 이미지 삽입하기 
 					<img id="logo" src="resources/images/default/5star.PNG">-->
 					With<br /><br />mong7
 			
@@ -215,13 +219,13 @@ WebFontConfig = {
 				data-toggle="dropdown" role="button" aria-haspopup="true"
 				aria-expanded="false">교육 <span class="caret"></span></a>
 				<ul class="dropdown-menu">
-					<li><a href="#">언어</a></li>
+					<li><a href="categoryList.do?categoryNo=5">언어</a></li>
 					<li class="divider"></li>
-					<li><a href="#">수학</a></li>
+					<li><a href="categoryList.do?categoryNo=6">수학</a></li>
 					<li class="divider"></li>
-					<li><a href="#">예체능</a></li>
+					<li><a href="categoryList.do?categoryNo=7">예체능</a></li>
 					<li class="divider"></li>
-					<li><a href="#">프로그램</a></li>
+					<li><a href="categoryList.do?categoryNo=8">프로그램</a></li>
 				</ul></li>
 		</ul>
 		<ul class="nav navbar-nav  ">
@@ -229,15 +233,15 @@ WebFontConfig = {
 				data-toggle="dropdown" role="button" aria-haspopup="true"
 				aria-expanded="false">취미 <span class="caret"></span></a>
 				<ul class="dropdown-menu">
-					<li><a href="#">게임</a></li>
+					<li><a href="categoryList.do?categoryNo=9" >게임</a></li>
 					<li class="divider"></li>
-					<li><a href="#">스터디</a></li>
+					<li><a href="categoryList.do?categoryNo=10">스터디</a></li>
 					<li class="divider"></li>
-					<li><a href="#">요리</a></li>
+					<li><a href="categoryList.do?categoryNo=11">요리</a></li>
 					<li class="divider"></li>
-					<li><a href="#">여행</a></li>
+					<li><a href="categoryList.do?categoryNo=12">여행</a></li>
 					<li class="divider"></li>
-					<li><a href="#">운동</a></li>
+					<li><a href="categoryList.do?categoryNo=13">운동</a></li>
 				</ul></li>
 		</ul>
 
@@ -246,13 +250,13 @@ WebFontConfig = {
 				data-toggle="dropdown" role="button" aria-haspopup="true"
 				aria-expanded="false">대행 서비스 <span class="caret"></span></a>
 				<ul class="dropdown-menu">
-					<li><a href="#">마케팅</a></li>
+					<li><a href="categoryList.do?categoryNo=14">마케팅</a></li>
 					<li class="divider"></li>
-					<li><a href="#">번역</a></li>
+					<li><a href="categoryList.do?categoryNo=15">번역</a></li>
 					<li class="divider"></li>
-					<li><a href="#">문서작업</a></li>
+					<li><a href="categoryList.do?categoryNo=16">문서작업</a></li>
 					<li class="divider"></li>
-					<li><a href="#">대필</a></li>
+					<li><a href="categoryList.do?categoryNo=17">대필</a></li>
 				</ul></li>
 		</ul>
 

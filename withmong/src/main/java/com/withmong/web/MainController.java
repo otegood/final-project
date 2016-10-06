@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.withmong.model.Category;
 import com.withmong.model.Criteria;
 import com.withmong.model.Pagination;
 import com.withmong.model.Point;
@@ -145,4 +146,22 @@ public class MainController {
 		return "sidemain/privacy";
 		
 	}
+	
+	////카테고리 번호 상품 가지고 오기 링크 관련 (임시)
+	@RequestMapping(value="/categoryList.do")
+	public String categoryList (@RequestParam(name="categoryNo") int bno, Model model, Category category) throws Exception {
+		
+		category.setbNo(bno);
+		
+		List<Product> products = mainService.getCateproductList(bno);
+	
+		// 카테고리 번호에 따른 상품 정보 조회
+		model.addAttribute("products",products);
+		model.addAttribute("category", category);
+		
+		return "sidemain/categoryList";
+		
+		
+	}
+	
 }
