@@ -40,6 +40,7 @@
           </ul>
         </li>
         <li><a href="#"  style="text-align: center;width: 300px;" >통계자료</a></li>
+        <li><a>현재 : ${LOGIN_USER.point} point </a></li>
         <li>
         	<a href="logout.do">
         		<font color="white" style="border: medium;">

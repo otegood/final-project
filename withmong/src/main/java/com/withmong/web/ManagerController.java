@@ -31,7 +31,7 @@ public class ManagerController {
 	//관리자 메인 접속
 	@RequestMapping("/mmain.do")
 	public String mmain(Model model, User loginedUser){
-		//유저 목록조회
+		
 		String url = "";
 		List<User> userList = managerService.getAllUsers();  
 		model.addAttribute("userList", userList);
@@ -105,5 +105,24 @@ public class ManagerController {
 		managerService.deleteProduct(no);
 		managerService.deleteProductReview(no);
 		return "redirect:/allProductList.do";
+	}
+	
+	//등급 변경 Silver
+	@RequestMapping("/sclass.do")
+	public String sclass(@RequestParam(name="id") String id){
+		managerService.sclass(id);
+		return "redirect:/userlist.do";
+	}
+	//등급 변경 Silver
+	@RequestMapping("/gclass.do")
+	public String gclass(@RequestParam(name="id") String id){
+		managerService.gclass(id);
+		return "redirect:/userlist.do";
+	}
+	//등급 변경 Silver
+	@RequestMapping("/bclass.do")
+	public String bclass(@RequestParam(name="id") String id){
+		managerService.bclass(id);
+		return "redirect:/userlist.do";
 	}
 }

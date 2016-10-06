@@ -51,13 +51,28 @@ public class ManagerServiceImpl implements ManagerService{
 	public List<Order> getAllOrders() {
 		return managerDao.getAllOrder();
 	}
+	// 상품삭제
 	@Override
 	public void deleteProduct(int no) {
 		managerDao.productDelete(no);
 	}
+	// 상품댓글삭제
 	@Override
 	public void deleteProductReview(int no) {
 		managerDao.productReviewDelete(no);
 	}
-
+	//---- 등급변경--------------------------------------------------------------
+	@Override
+	public void sclass(String id) {
+		managerDao.userSClass(id);
+	}
+	@Override
+	public void gclass(String id) {
+		managerDao.userGClass(id);
+	}
+	@Override
+	public void bclass(String id) {
+		managerDao.userBClass(id);
+	}
+	// -------------------------------------------------------------------------
 }

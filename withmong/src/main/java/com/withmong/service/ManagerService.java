@@ -27,4 +27,8 @@ public interface ManagerService {
 		void deleteProduct(int no);
 		// 관련댓글 삭제
 		void deleteProductReview(int no);
+	// 등급변경 
+		void sclass(String id);
+		void gclass(String id);
+		void bclass(String id);
 }

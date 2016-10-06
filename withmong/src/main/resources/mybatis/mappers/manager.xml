@@ -11,7 +11,7 @@
 		from 
 			user_table 
 		order by 
-			name asc
+			sumLike desc
 	</select>
 <!-- 회원아이디로 정보조회 -->
 	<select id="getUserM" parameterType="string" resultType="User">
@@ -97,4 +97,21 @@
 		delete from product_review 
 		where productno = #{no}
 	</delete>
+	
+<!-- 유저 등급변경  -->
+	<update id="userSClass" parameterType="string">
+		update user_table 
+		set grade = 'S'
+		where id = #{id}
+	</update>	
+	<update id="userGClass" parameterType="string">
+		update user_table 
+		set grade = 'G'
+		where id = #{id}
+	</update>
+	<update id="userBClass" parameterType="string">
+		update user_table 
+		set grade = 'B'
+		where id = #{id}
+	</update>
 </mapper>
