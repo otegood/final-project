@@ -106,4 +106,23 @@ public class ManagerController {
 		managerService.deleteProductReview(no);
 		return "redirect:/allProductList.do";
 	}
+	
+	//등급 변경 Silver
+	@RequestMapping("/sclass.do")
+	public String sclass(@RequestParam(name="id") String id){
+		managerService.sclass(id);
+		return "redirect:/userlist.do";
+	}
+	//등급 변경 Silver
+	@RequestMapping("/gclass.do")
+	public String gclass(@RequestParam(name="id") String id){
+		managerService.gclass(id);
+		return "redirect:/userlist.do";
+	}
+	//등급 변경 Silver
+	@RequestMapping("/bclass.do")
+	public String bclass(@RequestParam(name="id") String id){
+		managerService.bclass(id);
+		return "redirect:/userlist.do";
+	}
 }

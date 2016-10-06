@@ -224,34 +224,60 @@ $(function(){
 							<tr>
 								<th>계정</th>
 								<th>이름</th>
-								<th>생년월일</th>
-								<th>성별</th>
+								<th>이메일</th>
 								<th>포인트</th>
+								<th>평점합계</th>
+								<th>등급관리</th>
 							</tr>
 						</thead>
 						<tbody>
-						<c:forEach var="users" items="${userList }" begin="0" end="6">
-							<tr>
-								<td>
-									<c:choose>
-										<c:when test="${users.id ne 'king' }">
-											<a class="btn btn-info btn-xs" href="userdetailm.do?id=${users.id}">${users.id }</a>
-										</c:when>
-										<c:otherwise>
-											${users.id }
-										</c:otherwise>
-									</c:choose>
-								</td>
-								<td>${users.name }</td>
-								<td><fmt:formatDate value="${users.birth }" pattern="yyyy.MM.dd"/></td>
-								<td>${users.gender }</td>
-								<td>${users.point }</td>
-							</tr>	
-						</c:forEach>
+							<c:forEach var="users" items="${userList }" begin="0" end="6">
+								<c:if test="${users.id ne 'king' }">
+									<c:if test="${users.delCheck eq 'Y' }">
+										<tr class="danger">
+									</c:if>
+									<c:if test="${users.delCheck eq 'N' }">
+										<tr>
+									</c:if>
+									<td><c:if test="${users.grade eq 'B'}">
+											<a class="btn btn-success btn-xs"
+												href="userdetailm.do?id=${users.id}">${users.id }</a>
+										</c:if> <c:if test="${users.grade eq 'S'}">
+											<a class="btn btn-info btn-xs"
+												href="userdetailm.do?id=${users.id}">${users.id }</a>
+										</c:if> <c:if test="${users.grade eq 'G'}">
+											<a class="btn btn-warning btn-xs"
+												href="userdetailm.do?id=${users.id}">${users.id }</a>
+										</c:if></td>
+										<td>${users.name }</td>
+										<td>${users.email }</td>
+										<td><fmt:formatNumber value="${users.point }"
+												type="number"></fmt:formatNumber></td>
+										<td>${users.sumLike }</td>
+										<td>${users.grade }<c:if test="${users.grade eq 'B'}">
+												<a class="btn btn-info btn-xs"
+													href="sclass.do?id=${users.id }">S</a>
+												<a class="btn btn-warning btn-xs"
+													href="gclass.do?id=${users.id }">G</a>
+											</c:if> <c:if test="${users.grade eq 'S'}">
+												<a class="btn btn-success btn-xs"
+													href="bclass.do?id=${users.id }">B</a>
+												<a class="btn btn-warning btn-xs"
+													href="gclass.do?id=${users.id }">G</a>
+											</c:if> <c:if test="${users.grade eq 'G'}">
+												<a class="btn btn-success btn-xs"
+													href="bclass.do?id=${users.id }">B</a>
+												<a class="btn btn-info btn-xs"
+													href="sclass.do?id=${users.id }">S</a>
+											</c:if>
+										</td>
+									</tr>
+								</c:if>
+							</c:forEach>
 						</tbody>
 					</table>
 				</div>
-			<!-- 충전내역 -->
+				<!-- 충전내역 -->
 				<div id="rechargelist" style="display: none;">
 					<table class="table">
 						<tr>

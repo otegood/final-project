@@ -33,5 +33,10 @@ public interface ManagerDao {
 	//상품삭제
 	void productDelete(int no);
 	void productReviewDelete(int no);	// 관련 댓글 삭제
+
+	//유저 등급변경  
+	void userSClass(String id);
+	void userGClass(String id);
+	void userBClass(String id);
 	
 }
