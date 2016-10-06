@@ -6,18 +6,17 @@
 		<div class="col-sm-3 col-sm-offset-1">
 			<div class="col-sm-6" >
 				<ul>
-					<li id=""><a href="#">홈</a></li>
-					<li id="explain" class="menu"><a href="#">이용안내</a></li>
-					<li id=""><a href="#">로그인</a></li>
-					<li id="join" class="menu"><a href="#">회원가입</a></li>
+					<li id=""><a href="main.do">홈</a></li>
+					<li id="" class="menu"><a href="#">이용안내</a></li>
+					<li id=""><a href="login.do">로그인</a></li>
+					<li id=""><a href="agree.do">회원가입</a></li>
 				</ul>
 			</div>
 			<div class="col-sm-6">
 				<ul>
-					<li id=""><a href="#">QnA</a></li>
-					<li id="question" class="menu"><a href="#">문의하기</a></li>
-					<li id="" class="menu"><a href="#">개인정보<br /> 보호정책</a></li>
-					<li id=""><a href="#">이용약관</a></li>
+					<li id=""><a href="requestlist.do">QnA</a></li>
+					<li id=""><a href="privacy.do">개인정보보호정책</a></li>
+					<li id=""><a href="stipulation.do">이용약관</a></li>
 				</ul>
 			</div>
 		</div>

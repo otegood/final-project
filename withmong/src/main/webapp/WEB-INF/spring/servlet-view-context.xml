@@ -61,6 +61,8 @@
 			<mvc:exclude-mapping path="/avglikelist.do"/>
 			<mvc:exclude-mapping path="/hitslist.do"/>
 			<mvc:exclude-mapping path="/displaylist.do"/>
+			<mvc:exclude-mapping path="/privacy.do"/>
+			<mvc:exclude-mapping path="/stipulation.do"/>
 			
 
 

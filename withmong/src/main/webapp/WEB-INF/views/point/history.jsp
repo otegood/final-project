@@ -74,7 +74,7 @@ strong {
 }
 
 #example {
-	text-align: center;
+	text-align: left;
 }
 </style>
 <title>Insert title here</title>

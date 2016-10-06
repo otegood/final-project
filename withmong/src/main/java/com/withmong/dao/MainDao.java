@@ -14,8 +14,6 @@ public interface MainDao {
 	//조회순 상품 내역 보기
 	List<Product> getHitList(Criteria criteria);
 	
-	
-		
 	// 종합 개수 조회
 	int getTotalRows(Criteria criteria);
 

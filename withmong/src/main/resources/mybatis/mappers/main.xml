@@ -37,5 +37,34 @@
 	</select>
 
   	
-  	
+  	<!-- 카테고리 번호 별로 상품 가지고 오기 -->
+  	<select id="getCateproductList" parameterType="int" resultType="Product">
+  			select
+  				p.no,
+				p.title,
+				p.userid,
+				p.img,
+				p.video,
+				p.contents,
+				p.price,
+				p.qty,
+				p.regdate,
+				p.avglike,
+				p.hits,
+				p.tag,
+				p.categoryno as "category.no",
+				p.location as "location.no",
+				c.no,
+				c.bno,
+				c.name
+				 
+			from 
+				product_table p ,
+								(select a.name, a.bno, a.no
+								from Category_table A , Category_table B
+								where a.bno = b.no) c
+			where 
+				p.categoryno = c.no
+				and c.bno = {#value}
+  	</select>
 </mapper>

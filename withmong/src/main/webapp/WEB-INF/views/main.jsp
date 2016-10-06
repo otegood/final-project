@@ -112,7 +112,7 @@
 
 		})
 
-		//여기서부터 톱 배너
+		//톱 배너
 		
 		// hide #back-top first
 		$("#back-top").hide();
@@ -135,6 +135,8 @@
 		        return false;
 		    });
 		});
+		
+		//여기서부터
 		
 	})
 </script>
@@ -270,8 +272,8 @@ strong {
 <div class="container">
 		<br>
 	<div class="row content">
-		<div class="col-sm-1 sidenav" ></div>
-		<div class="col-sm-10">
+		
+		<div class="col-sm-11">
 		<div id="myCarousel" class="carousel slide" data-ride="carousel"
 			style="height: 250px;">
 			<!-- Indicators -->
@@ -343,7 +345,10 @@ strong {
 			
 		</div>
 		<div class="body-wrap">
-			<img alt="" src="resources/images/default/yame2.png">
+			<img alt="" src="resources/images/default/yame1.png">
+		</div>
+		<div class="body-wrap">
+			<img alt="" src="resources/images/default/yame2.png" style="width: 971px; height: 321px;">
 		</div>
 
 

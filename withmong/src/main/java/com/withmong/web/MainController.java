@@ -130,5 +130,19 @@ public class MainController {
 			
 		}
 		
+	//이용 약관 확인
+	@RequestMapping(value="/stipulation.do")
+	public String stipulation() throws Exception {
 		
+		return "sidemain/stipulation";
+		
+	}
+	
+	//개인정보보호정책
+	@RequestMapping(value="/privacy.do")
+	public String privacy() throws Exception {
+		
+		return "sidemain/privacy";
+		
+	}
 }

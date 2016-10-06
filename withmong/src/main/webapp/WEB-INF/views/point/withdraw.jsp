@@ -25,7 +25,7 @@ function showPrice() {
 		$("#space2").html("회원님의 환전 후 포인트는: "+ balance +"P 입니다.  ")
 		
 		if(balance < 0) {
-			$("#space2").html("회원님은 현재 포인트 잔액이 부족하여 환전을 할 수 없습니다.")	
+			$("#space2").html("회원님은 현재 포인트 잔액이 부족하여 환전을 할 수 없습니다. 포인트를 충전해주세요.")	
 		}
 		
 	})
@@ -141,7 +141,7 @@ strong {
 					<tbody>
 						<tr>
 							<td>
-								<input type="radio" onclick="showPrice();" id="5,000" name="point" value="5000" >
+								<input type="radio" onclick="showPrice();" id="5,000" name="point" value="5000" checked="checked">
                      			 <label for="5,000">5,000</label> 
 							</td>
 							<td>5,000</td>
@@ -176,7 +176,7 @@ strong {
 						</tr>
 					</tbody>
 				</table>
-				<button class="btn btn-success btn-lg pull-right">환전하기</button>
+				<button class="btn btn-success btn-lg pull-right">환전하기</button>	
 			</form>
 		</div>
 		
