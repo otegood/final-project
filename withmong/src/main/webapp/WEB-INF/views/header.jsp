@@ -126,7 +126,7 @@ WebFontConfig = {
 										<li><a href="myinfo.do">내 정보</a></li>
 										<li><a href="mypurchase.do">구매</a></li>
 										<li><a href="mysell.do">판매</a></li>
-										<li><a href="#">찜</a></li>
+										<li><a href="mycart.do">찜</a></li>
 										<li><a href="myrequestlist.do">요청글</a></li>
 										<li><a href="messagelist.do">1:1쪽지</a></li>
 									</ul></li>

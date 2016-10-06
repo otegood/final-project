@@ -3,6 +3,7 @@ package com.withmong.dao;
 
 import java.util.List;
 
+import com.withmong.model.Cart;
 import com.withmong.model.Order;
 import com.withmong.model.Product;
 import com.withmong.model.Report;
@@ -62,4 +63,7 @@ public interface UserDao {
 		
 	//아이디에 따라 상품정보 꺼내오기
 	List<Product> getProductById(String id);
+	
+	//나의 찜목록 확인하기
+	List<Cart> getCartById(String id);
 }
