@@ -24,9 +24,11 @@
   	<typeAlias type="com.withmong.model.QNA" alias="QNA"/>
   	<typeAlias type="com.withmong.model.QNAReple" alias="QNAReple"/>
   	<typeAlias type="com.withmong.model.Order" alias="Order"/>
+
   	<typeAlias type="com.withmong.form.CountForm" alias="CountForm"/>
   	
-  	
+  	<typeAlias type="com.withmong.model.Cart" alias="Cart"/>
+
   	
 	<typeAlias type="com.withmong.model.Criteria" alias="Criteria"/>
 

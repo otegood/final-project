@@ -16,7 +16,7 @@
 				<ul>
 					<li id=""><a href="#">QnA</a></li>
 					<li id="question" class="menu"><a href="#">문의하기</a></li>
-					<li id="" class="menu"><a href="#">개인정보 보호정책</a></li>
+					<li id="" class="menu"><a href="#">개인정보<br /> 보호정책</a></li>
 					<li id=""><a href="#">이용약관</a></li>
 				</ul>
 			</div>

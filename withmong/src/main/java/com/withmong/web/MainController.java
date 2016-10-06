@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.withmong.model.Criteria;
+import com.withmong.model.Pagination;
 import com.withmong.model.Point;
 import com.withmong.model.Product;
 import com.withmong.model.User;
@@ -40,47 +41,94 @@ public class MainController {
 		
 	//등록순 보기
 	@RequestMapping(value="/recentlist.do", method=RequestMethod.GET)
-	public @ResponseBody List<Product>  recent (int no) throws Exception{
-		List<Product> recentList = mainService.getRegList();
+	public @ResponseBody List<Product> recent (@RequestParam(name="no", required=false, defaultValue="1")int pageNo, 
+														Criteria criteria) throws Exception{
+	
+		List<Product> recentList = new ArrayList<>();
+	
+		// 페이지 번호가 1보다 작으면 1페이지로 리다이렉트
+		if (pageNo < 1) {
+			return recentList;
+		}
 		
+		int rows = 12;
+		int beginIndex = (pageNo - 1)*rows + 1;
+		int endIndex = pageNo*rows;
 		
+		criteria = new Criteria();
+		criteria.setBeginIndex(beginIndex);
+		criteria.setEndIndex(endIndex);
+
+		recentList = mainService.getRegList(criteria);
+	
 		return recentList;
-	}
 	
-	
+	}	
 	//조회순 보기
 		@RequestMapping(value="/hitslist.do", method=RequestMethod.GET)
-		public @ResponseBody List<Product>  hits (int no) throws Exception{
-			List<Product> hitsList = mainService.getHitList();
+		public @ResponseBody List<Product> hits (@RequestParam(name="no", required=false, defaultValue="1")int pageNo, 
+															Criteria criteria) throws Exception{
+		
+			
+			List<Product> hits = new ArrayList<>();
+			
+			// 페이지 번호가 1보다 작으면 1페이지로 리다이렉트
+			if (pageNo < 1) {
+				return hits;
+			}
+			
+			int rows = 12;
+			int beginIndex = (pageNo - 1)*rows + 1;
+			int endIndex = pageNo*rows;
+			
+			criteria = new Criteria();
+			criteria.setBeginIndex(beginIndex);
+			criteria.setEndIndex(endIndex);
+
+			hits = mainService.getHitList(criteria);
+	
+			return hits;
+		
+		}	
+
+		//인기순 보기
+		@RequestMapping(value="/avglikelist.do", method=RequestMethod.GET)
+		public @ResponseBody List<Product> avglikelist (@RequestParam(name="no", required=false, defaultValue="1")int pageNo, 
+				Criteria criteria) throws Exception{
 
 			
-			return hitsList;
+			List<Product> avglikelist = new ArrayList<>();
 			
-		}
-	
-	//인기순 보기
-		@RequestMapping(value="/avglikelist.do", method=RequestMethod.GET)
-		public @ResponseBody  List<Product> avglike (int no) throws Exception{
-			List<Product> avglikeList = mainService.getAvglikeList();
-			
-			return avglikeList;
-		}
-	
-	//해당 태그의 상품 내역 추가?
-		@RequestMapping(value="/addmainlist.do", method=RequestMethod.GET)
-		public @ResponseBody  List<Product> addlist (Criteria criteria, @RequestParam(name="pno", required=false, defaultValue="1")int pageNo, Model model) throws Exception{
-			
-			List<Product> results = new ArrayList<>();
-			System.out.println("dd");
-			if(pageNo < 1) {
-				return results;
+			// 페이지 번호가 1보다 작으면 1페이지로 리다이렉트
+			if (pageNo < 1) {
+			return avglikelist;
 			}
-			int rows = 4;
 			
-			List<Product> addlist = mainService.getProducts(criteria);
+			int rows = 12;
+			int beginIndex = (pageNo - 1)*rows + 1;
+			int endIndex = pageNo*rows;
 			
-			return addlist;
+			criteria = new Criteria();
+			criteria.setBeginIndex(beginIndex);
+			criteria.setEndIndex(endIndex);
+			
+			avglikelist = mainService.getAvglikeList(criteria);
+			
+			return avglikelist;
+
+}	
+	//중앙 화면 뿌려주기?
+		@RequestMapping(value="/displaylist.do", method=RequestMethod.GET)
+		public String displaylist(Model model, Criteria criteria) throws Exception {
+			
+			//포인트 사용내역 보기
+			List<Product> displaylist = mainService.getAvglikeList(criteria);
+			
+			model.addAttribute("displaylist", displaylist);
+
+			return "main.do";
+			
 		}
 		
-	
+		
 }

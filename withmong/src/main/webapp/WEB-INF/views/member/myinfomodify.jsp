@@ -137,13 +137,13 @@ $(function() {
 });
 
 </script>
-<title>Insert title here</title>
+<title>정보 수정</title>
 </head>
 <body>
 		<header><%@ include file="../header.jsp" %></header>
 	
 		<div class="container" >
-		<h1>회원 가입</h1>
+		<h1>정보 수정</h1>
 		<div class="well">
 			<form role="form" method="post" action="myinfomodify.do" enctype="multipart/form-data">
 				<div class="form-group"> 

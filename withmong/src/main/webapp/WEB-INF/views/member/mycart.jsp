@@ -51,37 +51,20 @@
 <script type="text/javascript">
 $(function() {
 	$.ajax({
-		url:"../ckmypurchase.do",
-		data:{},
+		url:"../cartbyid.do",
 		dataType:"json",
 		success: function(data) {
 			console.log(data);		// 전체 객체가 한꺼번에나옴
 			if(data.length == 0) {
-				$("tbody").append("<tr><td class='text-center' colspan='6'><strong><b style='color:red'>구매하신 내역이 없습니다.</b></strong></td></tr>");
+				$("tbody").append("<tr><td class='text-center' colspan='3'><strong><b style='color:red'>찜하신 내역이 없습니다.</b></strong></td></tr>");
 				return false;
 			} 
 			$.each(data, function(index, item) {
 				console.log(item);	// 객체가 하나씩나오게됨
-				
 				var jsp = "<tr>";
 				jsp += "<td class='text-center'><a href='getuserinfo.do?id="+item.productNo.userid+"'>"+item.productNo.userid+"</a></td>";
 				jsp += "<td class='text-center'><a href='detail.do?productNo="+item.productNo.no+"'>"+item.productNo.title+"</a></td>";
 				jsp += "<td class='text-center'>"+item.productNo.price+"p</td>";
-				jsp += "<td class='text-center'>"+item.regdate+"</td>";
-				if(item.buyCheck == 'W'){
-					jsp += "<td class='text-center'><span class='label label-warning'>구매대기중</span></td>";
-				} else if(item.buyCheck == 'Y'){
-					jsp += "<td class='text-center'><span class='label label-success'>구매완료</span></td>";
-				} else {
-					jsp += "<td class='text-center'><span class='label label-default'>구매거부</span></td>";
-					
-				}
-				
-				if(item.buyCheck == 'W' || item.buyCheck == 'N'){
-					jsp += "<td class='text-center'><a class='btn btn-danger btn-xs' href='delOrder.do?no="+item.no+"'>구매취소</a></td>";
-				} else {
-					jsp += "<td></td>";
-				}
 				jsp += "</tr>";
 				
 				$("tbody").append(jsp);
@@ -101,14 +84,11 @@ $(function() {
 	
 		<div class="container" >
 			<div class="row">
-				<h1>나의 구매내역</h1>
+				<h1>나의 찜 목록</h1>
 				<table id="example" class="table table-striped table-bordered">
 					<colgroup>
 						<col width="10%">
 						<col width="*%">
-						<col width="10%">
-						<col width="15%">
-						<col width="10%">
 						<col width="10%">
 					</colgroup>
 			        <thead>
@@ -116,9 +96,6 @@ $(function() {
 			                <th class="text-center">판매자ID</th>
 			                <th class="text-center">상품명</th>
 			                <th class="text-center">포인트</th>
-			                <th class="text-center">거래일자</th>
-			                <th class="text-center">구매상태</th>
-			                <th class="text-center">구매취소</th>
 			            </tr>
 			        </thead>
 			        <tbody>

@@ -52,37 +52,49 @@
 	#frames{
 		height: 400px;
 	}
+	
 </style>
 <title>상품목록</title>
 </head>
 <body>
 	<header><%@ include file="../mheader.jsp" %></header>
-	
-	<div class="container" >
-		<table class="table">
-			<tr>
-				<th>번호</th>
-				<th>이미지</th>
-				<th>제목</th>
-				<th>판매자</th>
-				<th>가격</th>
-				<th>평점</th>
-				<th>조회수</th>
-				<th>등록일</th>
-			</tr>	
-			<c:forEach var="product" items="${productList }">
+
+	<div class="container">
+		<h1>상품 목록</h1>
+		<br/>
+		<c:forEach var="product" items="${productList }">
+			<table class="table" style="margin-bottom: 20px;" border="1">
 				<tr>
-					<td>${product.no }</td>
-					<td><img alt="" src="resources/images/profile/${product.img }"></td>
+					<th style="width: 100px;">번호</th>
+					<th style="width: 200px;">이미지</th>
+					<th style="width: 300px;">제목</th>
+					<th style="width: 300px;">판매자</th>
+					<th>가격</th>
+					<th>삭제</th>
+				</tr>
+				<tr>
+					<td rowspan="3">${product.no }</td>
+					<td rowspan="3"><img alt=""
+						src="resources/images/${product.img }"
+						style="width: 100px; height: 100px;"></td>
 					<td>${product.title }</td>
 					<td>${product.userid }</td>
-					<td><fmt:formatNumber value="${product.price }"></fmt:formatNumber> </td>
+					<td><fmt:formatNumber value="${product.price }"></fmt:formatNumber>point</td>
+					<td rowspan="3"><a class="btn btn-danger btn-xl" href="deleteProduct.do?no=${product.no }" style="height: 130px; width: 60px;"></a></td>
+				</tr>
+				<tr>
+					<th>평점</th>
+					<th>조회수</th>
+					<th>등록일</th>
+				</tr>
+				<tr>
 					<td>${product.avglike }</td>
 					<td>${product.hits }</td>
-					<td>${product.regDate }</td>
+					<td><fmt:formatDate value="${product.regDate }"
+							pattern="yyyy-MM-dd hh:mm:ss" /></td>
 				</tr>
-			</c:forEach>	
-		</table>
+			</table>
+		</c:forEach>
 	</div>
 	<%@ include file="../footer.jsp" %>	
 </body>

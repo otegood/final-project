@@ -68,13 +68,11 @@ $(document).ready(function(){
 					data-target=".navbar-collapse">
 					<span class="icon-bar"></span> <span class="icon-bar"></span> <span
 						class="icon-bar"></span>
-
-					<!-- 로고 이미지 삽입하기 
-			<img id="logo" src=""></a>
-				-->
 				</button>
 				<a class="navbar-brand" href="main.do"><img
-					style="max-width: 100px; margin-top: -7px;"">brand</a>
+					style="max-width: 100px; margin-top: -7px;"">	<!-- 로고 이미지 삽입하기 -->
+			<img id="logo" src="resources/images/default/5star.PNG"></a>
+				</a>
 			</div>
 			<c:choose>
 				<c:when test="${empty LOGIN_USER }">
@@ -98,7 +96,7 @@ $(document).ready(function(){
 										<li><a href="myinfo.do">내 정보</a></li>
 										<li><a href="mypurchase.do">구매</a></li>
 										<li><a href="mysell.do">판매</a></li>
-										<li><a href="#">찜</a></li>
+										<li><a href="mycart.do">찜</a></li>
 										<li><a href="myrequestlist.do">요청글</a></li>
 										<li><a href="messagelist.do">1:1쪽지</a></li>
 									</ul></li>
@@ -117,7 +115,7 @@ $(document).ready(function(){
 						</li>
 						<!-- 상품 등록링크타기 -->
 						<li>
-							<a class="btn btn-xs" href="addProduct.do">
+							<a class="" href="addProduct.do">
 								<span class="glyphicon glyphicon-plus">
 									상품등록
 								</span>

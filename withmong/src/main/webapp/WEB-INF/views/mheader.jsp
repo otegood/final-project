@@ -36,10 +36,11 @@
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" style="width: 300px;">상품관리</a>
           <ul class="dropdown-menu" style="width: 300px; text-align: center;">
           	<li><a href="allProductList.do">상품목록</a></li>
-            <li><a href="#">거래내역</a></li>
+            <li><a href="allOrderList.do">거래내역</a></li>
           </ul>
         </li>
         <li><a href="#"  style="text-align: center;width: 300px;" >통계자료</a></li>
+        <li><a>현재 : ${LOGIN_USER.point} point </a></li>
         <li>
         	<a href="logout.do">
         		<font color="white" style="border: medium;">

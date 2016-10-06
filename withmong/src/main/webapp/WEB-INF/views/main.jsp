@@ -15,235 +15,142 @@
 	src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
 <script type="text/javascript">
-$(function() {
-	//최근순 클릭시
-	$("#recent").click(function() {
-		$("#area").empty();
-		$.ajax({
-	        url: "recentlist.do",
-	        data:{no:$("#recent").val()},
-			dataType:"json",
-	        success: function(data){
-	        
-	        	$.each(data,function(index, item){
-	        		console.log(item.img);
-	        		$("#area").append(
-	        			'<div class="col-sm-3" style="padding-left: 15px; padding-right: 15px;">'+
-							'<div class="pro-img">'+
-								'<span class="pro-img" id="img">'+ 
-								'<img src="../../resources/images/'+item.img+'" width="50px" height="50px" >'+
-								'</span>'+
-							'</div>'+
-							'<div class="col-sm-6" style="padding-left: 0px;">'+
-								'<div class="call-product-title">'+
-									'<p>'+
-										'<span class="glyphicon glyphicon-gift" id="title">'+
-											'<div>'+item.title+'</div>'+
-										'</span>'+
-									'</p>'+
-								'</div>'+
+	$(function() {
 
-								'<div class="call-product-price">'+
-									'<p>'+
-										'<span class="glyphicon glyphicon-cd" id="price">'+
-											'<div>'+item.price+'</div>'+
-										'</span>'+
-									'</p>'+
-								'</div>'+
-							'</div>'+
-							'<div class="col-sm-6" style="padding-left: 0px;">'+
-								'<div class="call-product-title">'+
-									'<p>'+
-										'<span class="glyphicon glyphicon-calendar" id="regdate">'+
-											'<div>'+item.regDate+'</div>'+
-										'</span>'+
-									'</p>'+
-								'</div>'+
-								'<div class="call-product-price">'+
-									'<p>'+
-										'<span class="glyphicon glyphicon-paperclip" id="tag">'+
-											'<div>'+item.tag+'</div>'+
-										'</span>'+
-									'</p>'+
-								'</div>'+
-							'</div>'+
-							
-						'</div>'		
-	        		);
-	        		
-	        		
-	        		
-			
-				})
-	        	
-	        },
-	        error: function (xhr, status, error) {
-	        	console.log("err");
-	        }
-	      });
-		
-	})
-	
-	//조회순 클릭시
-	$("#hits").click(function() {
-		$("#area").empty();
-		$.ajax({
-	        url: "hitslist.do",
-	        data:{no:$("#hits").val()},
-			dataType:"json",
-	        success: function(data){
-	        console.log("안넘어 옴?");
-	        	$.each(data,function(index, item){
-	        		console.log(item.img);
-	        		$("#area").append(
-	        			'<div class="col-sm-3" style="padding-left: 15px; padding-right: 15px;">'+
-							'<div class="pro-img">'+
-								'<span class="pro-img" id="img">'+ 
-								'<img src="../../resources/images/'+item.img+'" width="50px" height="50px" >'+
-								'</span>'+
-							'</div>'+
-							'<div class="col-sm-6" style="padding-left: 0px;">'+
-								'<div class="call-product-title">'+
-									'<p>'+
-										'<span class="glyphicon glyphicon-gift" id="title">'+
-											'<div>'+item.title+'</div>'+
-										'</span>'+
-									'</p>'+
-								'</div>'+
+		function generatedProducts(products) {
+			$
+					.each(
+							products,
+							function(index, item) {
+								$("#area")
+										.append(
+												'<div class="col-sm-3" style="padding-left: 15px; padding-right: 15px;">'
+														+ '<div class="row" style="height: 90px;">'
+														+ '<a href="detail.do?productNo='
+														+ item.no
+														+ '">'
+														+ '<img src="../../resources/images/'+item.img+'" width="260px" height="90px" />'
+														+
 
-								'<div class="call-product-price">'+
-									'<p>'+
-										'<span class="glyphicon glyphicon-cd" id="price">'+
-											'<div>'+item.price+'</div>'+
-										'</span>'+
-									'</p>'+
-								'</div>'+
-							'</div>'+
-							'<div class="col-sm-6" style="padding-left: 0px;">'+
-								'<div class="call-product-title">'+
-									'<p>'+
-										'<span class="glyphicon glyphicon-calendar" id="regdate">'+
-											'<div>'+item.regDate+'</div>'+
-										'</span>'+
-									'</p>'+
-								'</div>'+
-								'<div class="call-product-price">'+
-									'<p>'+
-										'<span class="glyphicon glyphicon-paperclip" id="tag">'+
-											'<div>'+item.tag+'</div>'+
-										'</span>'+
-									'</p>'+
-								'</div>'+
-							'</div>'+
-							
-						'</div>'		
-	        		);
-	        		
-	        		
-	        		
-			
-				})
-	        	
-	        },
-	        error: function (xhr, status, error) {
-	        	console.log("err");
-	        }
-	      });
-		
-	})
-	//인기순
-	$("#avglike").click(function() {
-		$("#area").empty();
-		$.ajax({
-	        url: "avglikelist.do",
-	        data:{no:$("#avglike").val()},
-			dataType:"json",
-	        success: function(data){
-	        console.log("안넘어 옴?");
-	        	$.each(data,function(index, item){
-	        		console.log(item.img);
-	        		$("#area").append(
-	        			'<div class="col-sm-3" style="padding-left: 15px; padding-right: 15px;">'+
-							'<div class="pro-img">'+
-								'<span class="pro-img" id="img">'+ 
-								'<img src="../../resources/images/'+item.img+'" width="50px" height="50px" >'+
-								'</span>'+
-							'</div>'+
-							'<div class="col-sm-6" style="padding-left: 0px;">'+
-								'<div class="call-product-title">'+
-									'<p>'+
-										'<span class="glyphicon glyphicon-gift" id="title">'+
-											'<div>'+item.title+'</div>'+
-										'</span>'+
-									'</p>'+
-								'</div>'+
+														'</a>'
+														+ '</div>'
+														+ '<div class="row" style="height: 60px;">'
+														+ '<div class="row" >'
+														+ '<div class="col-sm-3" id="explain">'
+														+ '<p>'
+														+ '<span class="glyphicon glyphicon-gift" id="title"> </span>'
+														+ '</p>'
+														+ '</div>'
+														+ '<div class="col-sm-9" id="explain">'
+														+ '<div>'
+														+ item.title
+														+ '</div>'
+														+ '</div>'
+														+ '</div>'
+														+
 
-								'<div class="call-product-price">'+
-									'<p>'+
-										'<span class="glyphicon glyphicon-cd" id="price">'+
-											'<div>'+item.price+'</div>'+
-										'</span>'+
-									'</p>'+
-								'</div>'+
-							'</div>'+
-							'<div class="col-sm-6" style="padding-left: 0px;">'+
-								'<div class="call-product-title">'+
-									'<p>'+
-										'<span class="glyphicon glyphicon-calendar" id="regdate">'+
-											'<div>'+item.regDate+'</div>'+
-										'</span>'+
-									'</p>'+
-								'</div>'+
-								'<div class="call-product-price">'+
-									'<p>'+
-										'<span class="glyphicon glyphicon-paperclip" id="tag">'+
-											'<div>'+item.tag+'</div>'+
-										'</span>'+
-									'</p>'+
-								'</div>'+
-							'</div>'+
-							
-						'</div>'		
-	        		);
-	        		
-	        		
-	        		
-			
-				})
-	        	
-	        },
-	        error: function (xhr, status, error) {
-	        	console.log("err");
-	        }
-	      });
-		
-	})
-	
-	//더보기
-	
-	function more () {
+														'<div class="row" >'
+														+ '<div class="col-sm-3" id="explain">'
+														+ '<p>'
+														+ '<span class="glyphicon glyphicon-cd" id="price"> </span>'
+														+ '</p>'
+														+ '</div>'
+														+ '<div class="col-sm-9" id="explain">'
+														+ '<div>'
+														+ item.price
+														+ '</div>'
+														+ '</div>'
+														+ '</div>'
+														+
+
+														'<div class="row">'
+														+ '<div class="col-sm-3" id="explain">'
+														+ '<p>'
+														+ '<span class="glyphicon glyphicon-thumbs-up" id="regdate"> </span>'
+														+ '</p>'
+														+
+
+														'</div>'
+														+ '<div class="col-sm-9" id="explain">'
+														+ '<div>'
+														+ '<img src="resources/images/default/'
+														+ Math
+																.round(item.avglike)
+														+ 'star.PNG"/>'
+														+ '</div>'
+														+ '</div>'
+														+ '</div>' +
+
+														'</div>' + '</div>');
+
+							})
+
+		}
+
+		function getProducts(moreNo) {
+
+			$.ajax({
+				url : $("#requestUrl").val(),
+				data : {
+					no : moreNo
+				},
+				dataType : "json",
+				success : function(result) {
+					console.log(result);
+					generatedProducts(result);
+				}
+			});
+		}
+
+		//최근 등록순 클릭시
+		$("#recent").click(function() {
+			$("#area").empty();
+
+			var pno = 1
+			$("#morecnt").val(pno);
+
+			$("requestUrl").empty();
+			$("#requestUrl").val("recentlist.do");
+
+			getProducts(pno);
+
+		}).trigger("click");
+
+		//조회순 클릭시
+		$("#hits").click(function() {
+			$("#area").empty();
+
+			var pno = 1
+			$("#morecnt").val(pno);
+
+			$("requestUrl").empty();
+			$("#requestUrl").val("hitslist.do");
+			getProducts(pno);
+		})
+
+		//인기순
+		$("#avglike").click(function() {
+			$("#area").empty();
+
+			var pno = 1
+			$("#morecnt").val(pno);
+
+			$("requestUrl").empty();
+			$("#requestUrl").val("avglikelist.do");
+			getProducts(pno);
+		});
+
+		//더보기	인식 X
 		$("#more").click(function() {
-			//버튼값을 클릭할떄마다 1씩 카운트 증가
+
 			var pno = parseInt($("#morecnt").val()) + 1
 			$("#morecnt").val(pno);
-			
-			$.ajax({
-				 	url: "addmainlist.do",
-			        data:{no:pno},
-					dataType:"json",
-			        success: function(data){
-			        	console.log(data);
-			        	$.each(data,function(index, item){
-			        		$("#area").append("aaaaaaaaaa");
-			        		
-			        	})
-			        }
-			})
-		});
-	}
-	
+
+			getProducts(pno);
+
+		})
+
 	})
-	
 </script>
 
 <style type="text/css">
@@ -301,7 +208,9 @@ strong {
 	margin-left: 80px;
 }
 
-
+#explain {
+	height: 20px;
+}
 </style>
 <title>Insert title here</title>
 </head>
@@ -319,12 +228,21 @@ strong {
 				<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
 				<li data-target="#myCarousel" data-slide-to="1"></li>
 				<li data-target="#myCarousel" data-slide-to="2"></li>
-				<li data-target="#myCarousel" data-slide-to="3"></li>
 			</ol>
 			<!-- Wrapper for slides -->
 			<div class="carousel-inner" role="listbox">
 				<div class="item active" id="show-item">
 					<!-- <img src="resources/img/p1.png" alt="cat1" id="show-item"> -->
+					<img style="width: 250px; height: 250px;" alt="hotproduct"
+						src="resources/images/product/kim.PNG" />
+				</div>
+				<div class="item">
+					<img style="width: 250px; height: 250px;" alt="hotproduct"
+						src="resources/images/product/choi.png" />
+				</div>
+				<div class="item">
+					<img style="width: 250px; height: 250px;" alt="hotproduct"
+						src="resources/images/product/glyphicons-girl.png" />
 				</div>
 			</div>
 
@@ -345,28 +263,41 @@ strong {
 		<div class="row" id="">
 			<div class="col-sm-6 col-sm-offset-6" style="margin-bottom: 20px;">
 				<div class="col-sm-4">
-					<button id="avglike" value="7" class="btn-primary btn-xs">인기순</button>
+					<button id="avglike" value="reset" class="btn-primary btn-xs ">인기순</button>
 				</div>
 				<div class="col-sm-4">
-					<button id="recent" value="77" class="btn-success btn-xs">최신 등록순</button>
+					<button id="recent" value="reset" class="btn-success btn-xs">최신
+						등록순</button>
 				</div>
 				<div class="col-sm-4">
-					<button  id="hits" value="777" class="btn-warning btn-xs">조회순</button>
+					<button id="hits" value="reset" class="btn-warning btn-xs">조회순</button>
 				</div>
 			</div>
 			<div class="addToProducts">
-		
-				<div class="row" id="area" style="margin-left: 0px; margin-right: 0px;">
+
+				<div class="row" id="area"
+					style="margin-left: 0px; margin-right: 0px;">
 					<!-- 리스트 추가되는 부분? -->
+					<div>
+						<p>default 생성 어케함?</p>
+					</div>
 				</div>
-				
-				
+
+
 			</div>
-			<div style="text-align: center; margin-bottom: 30px; margin-top: 30px;">
-				<input type="hidden" id="morecnt" value="0" /> 
-				<a class="btn btn-danger btn-large" style="width: 400px;" id="more" >더보기</a>
+			<div
+				style="text-align: center; margin-bottom: 30px; margin-top: 30px;">
+				<input type="hidden" id="morecnt" value="0" /> <a
+					class="btn btn-danger btn-large" style="width: 400px;" id="more">더보기</a>
 			</div>
-			</div>
+			<!-- 히든 인식 안함 -->
+			<input type="hidden" id="requestUrl" value="recentlist.do" />
+		</div>
+
+
+
+		<!--  -->
+
 	</div>
 
 	<%@ include file="footer.jsp"%>

@@ -53,42 +53,36 @@
 		height: 400px;
 	}
 </style>
-<script type="text/javascript">
-
-<!-- tr눌렀을때 페이지 이동시키기 -->
-$(function(){
-	$("#chain tr").click(function(){
-		$(location).attr('href', 'userdetailm.do?id='+$(this).find("td:first").text());
-	});
-});
-
-</script>
-<title>충전내역 리스트</title>
+<title>거래내역</title>
 </head>
 <body>
 	<header><%@ include file="../mheader.jsp" %></header>
 	
 	<div class="container" >
-		<h1>충전내역 리스트</h1>
-		<table class="table table-hover">
+		<h1>거래내역 목록</h1>
+		<table class="table">
 			<thead>
 				<tr>
-					<th>회원 ID</th>
-					<th>충전 Point</th>
-					<th>출금 Point</th>
+					<th>번호</th>
+					<th>상품번호</th>
+					<th>구매자</th>
 					<th>날짜</th>
-				</tr>
+					<th>구매금액</th>
+					<th>진행상황</th>
+				</tr>	
 			</thead>
-			<tbody id="chain">
-				<c:forEach var="point" items="${pointList}">
+			<tbody>
+				<c:forEach var="order" items="${orderList }">
 					<tr>
-						<td>${point.userid.id }</td>
-						<td><fmt:formatNumber value="${point.charge }" type="number"></fmt:formatNumber></td>
-						<td><fmt:formatNumber value="${point.withdraw }" type="number"></fmt:formatNumber></td>
-						<td><fmt:formatDate value="${point.regdate }" pattern="yyyy.MM.dd hh:mm:ss"/></td>
+						<td>${order.no }</td>
+						<td>${order.productNo.no }</td>
+						<td>${order.userid.id }</td>
+						<td><fmt:formatDate value="${order.regdate }" pattern="yyyy-MM-dd hh:mm:ss"/></td>
+						<td><fmt:formatNumber value="${order.productNo.price }"></fmt:formatNumber> </td>
+						<td>${order.buyCheck }</td>
 					</tr>
 				</c:forEach>
-			</tbody>
+			</tbody>	
 		</table>
 	</div>
 	<%@ include file="../footer.jsp" %>	

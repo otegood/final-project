@@ -52,38 +52,38 @@
 	}
 
 </style>
-<title>Insert title here</title>
+<title>Login</title>
 </head>
 <body>
 		<header><%@ include file="../header.jsp" %></header>
 	
 		<div class="container" >
-			<h1>로그인 폼</h1>
-		<div class="well">
+		<div>
 			<c:if test="${param.error eq 'req' }">
 				<div class="alert alert-danger">
 					<strong>에러!</strong> 로그인이 필요한 서비스 입니다.
 				</div>
 			</c:if>
-			
-			<form class="form-inline text-center" role="form" method="post" action="login.do">
-			    <div class="form-group">
-			     	 <label class="sr-only" for="id">Id:</label>
-			     	 <input type="text" class="form-control" name="id" id="id" placeholder="아이디를 입력하세요" autocomplete="off">
-			    </div>
-			    <div class="form-group">
-			      	<label class="sr-only" for="password">Password:</label>
-			     	 <input type="password" class="form-control" name="password" id="password" placeholder="비밀번호를 입력하세요" autocomplete="off">
-			    </div>
-			    <div class="form-group">
-			    	<input type="submit" class="btn btn-primary" value="로그인" />
-					<a href="main.do" class="btn btn-default">취소</a>
-				</div>
-				<br/>
-				<div>
-					<a href="find.do">아이디/비밀번호를 잊었다면?</a>
-				</div>
-			  </form>
+			<div class="col-md-6 col-md-offset-3 well">
+				<form class="form-inline text-center" role="form" method="post" action="login.do">
+				    <div class="form-group">
+				     	 <label class="sr-only" for="id">Id:</label>
+				     	 <input type="text" class="form-control" name="id" id="id" placeholder="아이디를 입력하세요" autocomplete="off">
+				    </div>
+				    <div class="form-group">
+				      	<label class="sr-only" for="password">Password:</label>
+				     	 <input type="password" class="form-control" name="password" id="password" placeholder="비밀번호를 입력하세요" autocomplete="off">
+				    </div><br/><br/>
+				    <div class="form-group">
+				    	<input type="submit" class="btn btn-primary" value="로그인" />
+						<a href="main.do" class="btn btn-default">취소</a>
+					</div>
+					<br/><br/>
+					<div>
+						<a href="find.do" style="text-decoration:underline;">아이디/비밀번호를 잊었다면?</a>
+					</div>
+				</form>
+			</div>
 		
 		</div>
 		

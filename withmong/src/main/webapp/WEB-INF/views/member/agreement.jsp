@@ -73,12 +73,13 @@ $(function(){
 	
 		<div class="container" >
 		<!-- 이용/개인정보 약관 동의 폼 -->
-	<h2 style="font-weight: bolder">회원 가입</h2>
+	<h2 style="font-weight: bolder">필수 약관 동의</h2>
 	
 	<br/>
-	<h4 style="font-weight: bolder">이용 약관 동의</h4>
  		<form name="check">
  		 <div>
+ 		 <div class="well">
+		<h4 style="font-weight: bolder">이용 약관 동의</h4>
   		<div class="agreeArea">
   			<div class="agreeIndex">
 			<textarea name="memo" style="width:100%;height:250px;border:1 solid #333333;overflow:visible;text-overflow:ellipsis;">
@@ -196,8 +197,9 @@ $(function(){
 	</div>
 	<p style="font-weight: bold">위의 약관의 내용에 모두 동의하십니까?</p>
 	<input type="checkbox" name="agree" id="checkAgree" value="이용약관" class="inputCheckbox">동의함
-</div><br/>
+</div></div><br/>
 
+<div class="well">
 <h4 style="font-weight: bolder">개인정보 사용 약관 동의</h4>
 	<div class="agreeArea">
 		<div class="agreeIndex2">
@@ -224,6 +226,7 @@ $(function(){
 			<p style="font-weight: bold">위의 약관의 내용에 모두 동의하십니까? </p>
 			<input type="checkbox" name="agree" id="checkAgree" value="개인정보 수집약관" class="inputCheckbox"/>동의함
 		</div>
+	</div>
 		<br/>
 			
 		<div class="text-center">

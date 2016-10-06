@@ -5,50 +5,37 @@
 <mapper namespace="com.withmong.dao.MainDao">
 
 	<!--인기순으로  내역 가져오기 -->
-	<select id="getAvglikeList" parameterType="double" resultType="Product">
-		<![CDATA[ 
-		select * 
-		from(
-			select *
-			from product_table
-			order by avglike desc)
-		where rownum <=12
-		]]> 
-	</select>
-	
-	<!-- 등록순으로 내역 가져오기 -->
-	<select id="getRegList" parameterType="date" resultType="Product">
-		<![CDATA[ 
-		select * 
-		from(
-			select *
-			from product_table
-			order by regdate desc)
-		where rownum <=12
+
+  	<select id="getAvglikeList" parameterType="Criteria" resultType="Product">
+	 	<![CDATA[
+	 	 select * from ( select row_number() over (order by avglike desc) as rn , title, price, avglike, no, userid, img, video, contents, qty, regdate, hits, tag, location, categoryno from product_table )  where rn >= #{beginIndex} and rn < #{endIndex}+1 
 		]]>
-	</select>
+  	</select>
+
+	<!-- 등록순으로 내역 가져오기 -->
+  	<select id="getRegList" parameterType="Criteria" resultType="Product">
+	 	<![CDATA[
+	 	 select * from ( select row_number() over (order by regdate desc) as rn , title, price, avglike, no, userid, img, video, contents, qty, regdate, hits, tag, location, categoryno from product_table )  where rn >= #{beginIndex} and rn < #{endIndex}+1  
+		]]>
+  	</select>
+	
+
 	
 	<!-- 조회순으로 내역 가져오기 -->
-	<select id="getHitList" parameterType="int" resultType="Product">
-		<![CDATA[ 
-		select * 
-		from(
-			select *
-			from product_table
-			order by hits desc)
-		where rownum <=12
+
+  	<select id="getHitList" parameterType="Criteria" resultType="Product">
+	 	<![CDATA[
+	 	 select * from ( select row_number() over (order by hits desc) as rn , title, price, avglike, no, userid, img, video, contents, qty, regdate, hits, tag, location, categoryno from product_table )  where rn >= #{beginIndex} and rn < #{endIndex}+1  
 		]]>
-	</select>
+  	</select>
+
+	
 	
 	<!-- 상품 총 개수 구하기? -->
 	<select id="getTotalRows" parameterType="Criteria" resultType="int">
-		  select count(*) from product 
+		  select count(*) from product_table
 	</select>
-	
-	<!-- 상품리스트 구하기 (통합) -->
-	<select id="getProducts" parameterType="Criteria" resultType="Product">
- 	<![CDATA[
- 	 select * from ( select row_number() over (order by no desc) rn, * from product_table ) where rn >= #{beginIndex} and rn < #{endIndex} 
-	]]>
-  	</select>
+
+  	
+  	
 </mapper>
