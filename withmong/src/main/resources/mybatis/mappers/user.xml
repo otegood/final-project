@@ -179,7 +179,7 @@
 	<update id="getPointSeller" parameterType="Order">
 		update user_table
 		set point = point + (#{productNo.price}*0.9)
-		where id = #{userid.id}
+		where id = #{productNo.userid}
 	</update>
 	<!-- (판매)3. 구분자 변경 -->
 	<update id="confirmSell" parameterType="int">
