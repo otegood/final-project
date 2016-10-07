@@ -33,5 +33,7 @@ public interface ProductDao {
 	void ProductReviewDel(int reviewNo);
 	CountForm getCountandRow(int productNo);
 	void updateAvglike(CountForm cf);
+	void updateProduct(Product product);
+	int getSeqNumber();
 	
 }

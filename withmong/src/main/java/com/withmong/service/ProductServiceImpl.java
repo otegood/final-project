@@ -1,9 +1,12 @@
 package com.withmong.service;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.FileCopyUtils;
 
 import com.withmong.dao.ProductDao;
 import com.withmong.form.BreadcrumbsForm;
@@ -19,14 +22,33 @@ import com.withmong.model.User;
 @Service
 public class ProductServiceImpl implements ProductService{
 
+	private static String UPLOAD_DIRECTORY = "C:\\Users\\JHTA\\git\\final-project\\withmong\\src\\main\\webapp\\resources\\images";
+	
 	@Autowired
 	private ProductDao productDao;
 	
 	@Override
-	public void addProduct(Product product) {
+	public void addProduct(Product product) throws Exception{
 
-		productDao.addProduct(product);
 		
+		int no = productDao.getSeqNumber();
+		product.setNo(no);
+		
+		String filename = product.getImgmul().getOriginalFilename();
+		if(!filename.isEmpty()){	
+			String protitle = "product/"+product.getUserid();
+			
+			String extName = filename.substring(filename.lastIndexOf(".")+1);
+			byte[] bytes = product.getImgmul().getBytes();
+			File file = new File(UPLOAD_DIRECTORY, protitle + no + "." + extName);
+			FileCopyUtils.copy(bytes, file);
+			product.setImg(protitle + no + "." + extName);
+		}else{
+			product.setImg("default/defaultProduct.png");
+		} 
+		 
+		
+		productDao.addProduct(product);
 	}
 
 	@Override
@@ -122,6 +144,40 @@ public class ProductServiceImpl implements ProductService{
 	@Override
 	public void updateAvglike(CountForm cf) {
 		productDao.updateAvglike(cf);
+		
+	}
+
+	@Override
+	public void updateProduct(Product product) throws Exception{
+		
+		int no = product.getNo();
+		
+		String preimgName = product.getImg();
+		String changeImgName = product.getImgmul().getOriginalFilename();
+		
+		System.out.println("------------------------------------");
+		System.out.println("------------------------------------");
+		System.out.println("------------------------------------");
+		System.out.println("preimgName = " + preimgName);
+		System.out.println("changeImgName = " + changeImgName);
+		System.out.println("------------------------------------");
+		System.out.println("------------------------------------");
+		System.out.println("------------------------------------");
+		System.out.println("------------------------------------");
+		
+		if(!preimgName.equals(changeImgName)){	
+			String protitle = "product/"+product.getUserid();
+			
+			String extName = changeImgName.substring(changeImgName.lastIndexOf(".")+1);
+			byte[] bytes = product.getImgmul().getBytes();
+			File file = new File(UPLOAD_DIRECTORY, protitle + no + "." + extName);
+			FileCopyUtils.copy(bytes, file);
+			product.setImg(protitle + no + "." + extName);
+		}else{
+			product.setImg(preimgName);
+		} 
+		
+		productDao.updateProduct(product);
 		
 	}
 

@@ -1,5 +1,6 @@
 package com.withmong.service;
 
+
 import java.util.List;
 
 import com.withmong.form.BreadcrumbsForm;
@@ -14,11 +15,11 @@ import com.withmong.model.User;
 
 public interface ProductService {
 	
-	void addProduct(Product product);
+	void addProduct(Product product) throws Exception;
 	List<Category> findCategory();
 	Product productDetail(int no);
 	
-	void addProductReview(ProductReview productReview);
+	void addProductReview(ProductReview productReview) throws Exception;
 	List<ProductReview> getAllProductReivew(int no);
 	Category findCategoryByNo(int no);
 	
@@ -36,5 +37,6 @@ public interface ProductService {
 	void ProductReviewDel(int reviewNo);
 	CountForm getCountandRow(int productNo);
 	void updateAvglike(CountForm cf);
+	void updateProduct(Product product)throws Exception ;
 	
 }
