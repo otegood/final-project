@@ -77,8 +77,9 @@ public class PointController {
 		if(loginedUser.getPoint()-point >= 0) {
 			loginedUser.setPoint(loginedUser.getPoint()-point);
 			pointService.withdraw(loginedUser.getId(), point);
+		} else {
+			return "point/charge";
 		}
-		
 		
 		return "redirect:/history.do";
 		

@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.withmong.dao.PointDao;
+import com.withmong.model.Category;
 import com.withmong.model.Criteria;
 import com.withmong.model.Point;
 import com.withmong.model.Product;
@@ -27,6 +28,15 @@ public interface MainService {
 	
 	// 종합 개수 조회
 	int getTotalRows(Criteria criteria);
+	
+	
+	//카테고리 번호 상품 가지고 오기 링크 관련 (임시)
+	List<Product> getCateproductList(int no);
 
+	//카테고리 번호에 해당하는 카테고리 이름 얻기
+	Category getCategoryName(int no);
+	
+	//카테고리 번호에 해당하는 작성자 얻기
+	//User getuserBycateno(int no);
 }
 

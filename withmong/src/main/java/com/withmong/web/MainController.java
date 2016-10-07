@@ -1,15 +1,8 @@
 package com.withmong.web;
 
-import java.io.PrintWriter;
-import java.sql.Date;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
-import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,9 +12,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.withmong.model.Category;
 import com.withmong.model.Criteria;
-import com.withmong.model.Pagination;
-import com.withmong.model.Point;
 import com.withmong.model.Product;
 import com.withmong.model.User;
 import com.withmong.service.MainService;
@@ -87,6 +79,7 @@ public class MainController {
 
 			hits = mainService.getHitList(criteria);
 	
+			
 			return hits;
 		
 		}	
@@ -117,11 +110,12 @@ public class MainController {
 			return avglikelist;
 
 }	
+		/*
 	//중앙 화면 뿌려주기?
 		@RequestMapping(value="/displaylist.do", method=RequestMethod.GET)
 		public String displaylist(Model model, Criteria criteria) throws Exception {
 			
-			//포인트 사용내역 보기
+			//최근 등록한 상품
 			List<Product> displaylist = mainService.getAvglikeList(criteria);
 			
 			model.addAttribute("displaylist", displaylist);
@@ -129,6 +123,44 @@ public class MainController {
 			return "main.do";
 			
 		}
+		*/
+	//이용 약관 확인
+	@RequestMapping(value="/stipulation.do")
+	public String stipulation() throws Exception {
+		
+		return "sidemain/stipulation";
+		
+	}
+	
+	//개인정보보호정책
+	@RequestMapping(value="/privacy.do")
+	public String privacy() throws Exception {
+		
+		return "sidemain/privacy";
+		
+	}
+	
+	////카테고리 번호 상품 가지고 오기 링크 관련 (임시)
+	
+	@RequestMapping(value="/categoryList.do")
+	public String categoryList (@RequestParam(name="categoryNo") int no, Model model, Category category) throws Exception {
+		
+		category = mainService.getCategoryName(no);
+		
+		//user = mainService.getuserBycateno(no);
+		
+		List<Product> products = mainService.getCateproductList(no);
+	
+		// 카테고리 번호에 따른 상품 정보 조회
+		model.addAttribute("products",products);
+		model.addAttribute("category", category);
+		//model.addAttribute("user", user);
+		
+
+		
+		return "sidemain/categoryList";
 		
 		
+	}
+	
 }
