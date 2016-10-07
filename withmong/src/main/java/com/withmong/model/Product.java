@@ -2,6 +2,8 @@ package com.withmong.model;
 
 import java.util.Date;
 
+import org.springframework.web.multipart.MultipartFile;
+
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 public class Product {
@@ -20,6 +22,7 @@ public class Product {
 	private double avglike;
 	private int hits;
 	private String tag;
+	private MultipartFile imgmul;
 	
 	private Location location;
 	private Category category;
@@ -137,6 +140,16 @@ public class Product {
 
 	public void setCategory(Category category) {
 		this.category = category;
+	}
+
+	
+	
+	public MultipartFile getImgmul() {
+		return imgmul;
+	}
+
+	public void setImgmul(MultipartFile imgmul) {
+		this.imgmul = imgmul;
 	}
 
 	@Override

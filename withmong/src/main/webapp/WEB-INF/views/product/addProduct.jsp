@@ -148,7 +148,7 @@ strong {
 					<div class="form-group row">
 						<label class="col-sm-3 text-right">상품 등록 사진</label>
 						<div class="col-sm-9">
-							<input type="file" name=img id="img">
+							<input type="file" name="imgmul" id="imgmul">
 						</div>
 					</div>
 					<div class="form-group row">

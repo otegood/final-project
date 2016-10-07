@@ -21,8 +21,7 @@
 		$("#cma_image").append('<img src="../../resources/images/${detail.img }" style="width: 100px; height: 100px;">');   
 		
 		
-		$("#addProductbtn").click(function() {
-			$("#addpro").submit(function() {
+		$("#rigiProductbtn").click(function() {
 				if ($("#categoryNo").val() == "default") {
 					alert("카테고리를 선택해주세요");
 					return false;
@@ -52,7 +51,6 @@
 					return false;
 				}
 				return true;
-			});
 		});
 
 		// 도시 선택시 구 나오기
@@ -171,6 +169,7 @@ strong {
 		<div class="well">
 			<form role="form" method="post" action="updateProduct.do"
 				id="updatePro" enctype="multipart/form-data">
+				<input type="hidden" name="no" id="no" value="${detail.no }">
  				<div class="form-group">
 					<div class="form-group row">
 						<label class="col-sm-3 text-right">제목</label>
@@ -191,7 +190,8 @@ strong {
 					<div class="form-group row">
 						<label class="col-sm-3 text-right">상품 등록 사진</label>
 						<div class="col-sm-9">
-							<input type="file" name="cma_file" id="cma_file" accept="image/*"
+							<input type="hidden" name="img" id="img" value="${detail.img }">
+							<input type="file" name="changeimg" id="changeimg" accept="image/*"
 								onchange="getThumbnailPrivew(this,$('#cma_image'))" /> <br>
 							<!--  <div id="cma_image" style="width: 300px;"></div> -->
 						</div>

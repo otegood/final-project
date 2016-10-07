@@ -1,5 +1,7 @@
 package com.withmong.form;
 
+
+
 import com.withmong.model.Category;
 import com.withmong.model.Location;
 
@@ -20,6 +22,8 @@ public class ProductForm {
 	private int price;
 	private int qty;
 	private String tag;
+	
+	private String img;
 
 	
 	private Location location;
@@ -90,6 +94,23 @@ public class ProductForm {
 	public void setCategory(Category category) {
 		this.category = category;
 	}
+
+	public String getImg() {
+		return img;
+	}
+
+	public void setImg(String img) {
+		this.img = img;
+	}
+
+	@Override
+	public String toString() {
+		return "ProductForm [no=" + no + ", title=" + title + ", video=" + video + ", contents=" + contents + ", price="
+				+ price + ", qty=" + qty + ", tag=" + tag + ", img=" + img + ", location=" + location + ", category="
+				+ category + "]";
+	}
+
+
 
 
 	

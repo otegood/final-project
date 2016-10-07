@@ -33,11 +33,6 @@ public class ProductController {
 	@Autowired
 	private ProductService productService;
 
-
-	private static String UPLOAD_DIRECTORY = "C:\\Users\\JHTA\\git\\final-project\\withmong\\src\\main\\webapp\\resources\\images\\";
-
-
-
 	@RequestMapping(value="/detail.do")
 	public String detail(@RequestParam(name="productNo") int no, Model model,Model review,Model userDe,User loginedUser) {
 		//조회수 업데이트
@@ -89,14 +84,12 @@ public class ProductController {
 	}
 
 	@RequestMapping(value="/addProduct.do", method=RequestMethod.POST)
-	public String addProduct(ProductForm productForm ,@RequestParam("img")MultipartFile img, User loginedUser) throws Exception{
-		
+	public String addProduct(ProductForm productForm ,@RequestParam("imgmul")MultipartFile imgmul, User loginedUser) throws Exception{
 		
 		Product product = new Product();
 		BeanUtils.copyProperties(productForm, product);
 
 		// 카테고리 번호
-		//product.setCategoryNo(productForm.getCategoryNo());
 		Category category = new Category();
 	
 		category = productService.findCategoryByNo(productForm.getCategory().getNo());
@@ -113,21 +106,10 @@ public class ProductController {
 	
 
 		// 이미지 사진
-		String filename = img.getOriginalFilename();
-		
-		if(!filename.isEmpty()){			
-			String protitle = "product/"+loginId;
-			
-			String extName = filename.substring(filename.lastIndexOf(".")+1);
-			byte[] bytes = img.getBytes();
-			File file = new File(UPLOAD_DIRECTORY, protitle + "." + extName);
-			FileCopyUtils.copy(bytes, file);
-			product.setImg(protitle + "." + extName);
-		}else{
-			product.setImg("default\\defaultProduct.png");
-		}
-		
+		//product.setImg(img.getOriginalFilename());
+		product.setImgmul(imgmul);	
 
+		
 		//youtubeURL 
 		String video = productForm.getVideo();
 		product.setVideo(video);
@@ -178,29 +160,14 @@ public class ProductController {
 	}
 
 	@RequestMapping(value="/updateProduct.do", method=RequestMethod.POST)
-	public String updateProduct(ProductForm productForm ,@RequestParam("img")MultipartFile img, User loginedUser) throws Exception{
-		
-		
-		System.out.println("---------------------------------------------------------");
-		System.out.println("---------------------------------------------------------");
-		System.out.println("---------------------------------------------------------");
-		System.out.println(productForm.getNo());
-		System.out.println("---------------------------------------------------------");
-		System.out.println("---------------------------------------------------------");
-		System.out.println("---------------------------------------------------------");
-		
+	public String updateProduct(ProductForm productForm ,@RequestParam("changeimg")MultipartFile changeimg, User loginedUser) throws Exception{
 		
 		Product product = new Product();
 		BeanUtils.copyProperties(productForm, product);
 
-		// 카테고리 번호
-		//product.setCategoryNo(productForm.getCategoryNo());
-		Category category = new Category();
-	
-		category = productService.findCategoryByNo(productForm.getCategory().getNo());
-
-		product.setCategory(category);
 		
+		int no = Integer.parseInt(productForm.getNo()); 
+		product.setNo(no);
 		// 제목
 		String title = productForm.getTitle();
 		product.setTitle(title);
@@ -208,23 +175,16 @@ public class ProductController {
 		// 아이디
 		String loginId = loginedUser.getId();
 		product.setUserid(loginId);
-	
 
 		// 이미지 사진
-		String filename = img.getOriginalFilename();
+		String preimg = productForm.getImg();
 		
-		if(!filename.isEmpty()){			
-			String protitle = "product/"+loginId;
-			
-			String extName = filename.substring(filename.lastIndexOf(".")+1);
-			byte[] bytes = img.getBytes();
-			File file = new File(UPLOAD_DIRECTORY, protitle + "." + extName);
-			FileCopyUtils.copy(bytes, file);
-			product.setImg(protitle + "." + extName);
-		}else{
-			product.setImg("default\\defaultProduct.png");
-		}
+		product.setImg(preimg);
+		product.setImgmul(changeimg);
 		
+		System.out.println("controller preimg : " + preimg);
+		System.out.println("controller changeimg : " + changeimg);
+
 
 		//youtubeURL 
 		String video = productForm.getVideo();
@@ -253,15 +213,13 @@ public class ProductController {
 		product.setTag(tag);
 		
 
-		productService.addProduct(product);
+		productService.updateProduct(product);
 
-
+		
 		return "redirect:/searchList.do";
-	}
-
-	
-	
+	}	
 	//------------------------------------------------------------------------------------------------------------------------
+	//수정끝
 
 	@RequestMapping(value="/productreple.do", method=RequestMethod.POST)
 	public @ResponseBody double productreple(int score,String contents,int productNo, User loginedUser) throws Exception{
