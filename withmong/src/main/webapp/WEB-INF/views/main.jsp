@@ -31,7 +31,7 @@
 													    '</a>'+
 													      '<div class="caption">'+
 													      
-													        '<h3>'  + item.title+'</h3>'+
+													        '<h4>'  + item.title+'</h4>'+
 													       
 													        '<h5> 포인트: '+ item.price+'P</h5>'+
 													        
