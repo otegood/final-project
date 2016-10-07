@@ -37,7 +37,7 @@
 	</select>
 
   	
-  	<!-- 카테고리 번호 별로 상품 가지고 오기 (임시)-->
+  	<!-- 카테고리 번호 별로 상품 가지고 오기 -->
   	<select id="getCateproductList" parameterType="int" resultType="Product">
   			select
   				p.no,
@@ -64,6 +64,37 @@
 								where a.bno = b.no) c
 			where 
 				p.categoryno = c.no
-				and c.bno = #{value}
+				
+				and c.no = #{value}
+				
   	</select>
+  	
+  	<!-- 카테고리 번호에 해당하는 카테고리 이름 얻기 -->
+  	
+  	<select id="getCategoryName" parameterType="int" resultType="Category">
+		select
+  			name
+  		from
+  			category_table
+  		where no = #{value}		
+  	</select>
+  	
+  	<!-- 
+  	카테고리 번호에 해당하는 상품 작성자 얻기
+  	
+  	<select id="getuserBycateno" parameterType="int" resultType="User">
+  	
+  		select u.id
+  		from 
+  				user_table u, product_table p, (select a.name, a.bno, a.no
+												from Category_table A , Category_table B
+												where a.bno = b.no) c
+  		where 
+  			p.categoryno = c.no
+  			and p.userid = u.id
+  			and c.no = #{value}
+  		
+  		  
+  	</select>
+  	-->
 </mapper>

@@ -50,6 +50,10 @@ strong {
 	padding: 10px;
 	background-color: black;
 }
+
+#cate-name> value {
+	width: 30px;
+}
 </style>
 <script type="text/javascript">
 	
@@ -61,48 +65,50 @@ strong {
 
 	<div class="container">
 		<!-- 태그 경로 알림 -->
-			<div class="row" id="catoryname">
-				<c:forEach var="category" items="${category }">
-						<div class="col-sm-3">${category.name}</div>
-				</c:forEach>
-			</div>
-		<c:forEach var="product" items="${products}">
-			<div class="row" id="row">
-				<div class="col-sm-2">
-					<a href="detail.do?productNo=${product.no }"><img width="100px"
-						height="100px" src="../../resources/images/${product.img }">
-					</a>
-				</div>
-				<div class="col-sm-8">
-					<h4>
-						제목 : <a href="detail.do?productNo=${products.no }"> 
-							<c:choose>
-								<c:when test="${fn:length(products.title) > 36}">
-                                 ${fn:substring(products.title, 0, 35)}...</c:when>
-								<c:otherwise>
-                                 ${products.title}
-                              </c:otherwise>
-							</c:choose>
-
-						</a>
-					</h4>
-					<c:choose>
-						<c:when test="${fn:length(products.contents) > 160}">
-                                 ${fn:substring(products.contents, 0, 160)}...</c:when>
-						<c:otherwise>
-                                 ${products.contents}
-                              </c:otherwise>
-					</c:choose>
-				</div>
-				<div class="col-sm-2">
-					<p>조회수 : ${products.hits }</p>
-					<p>평점 : ${products.avglike }</p>
-					<p>가격 : ${products.price }</p>
-				</div>
-			</div>
-		</c:forEach>
+		<div class="row" id="cate-name">
+			<c:out value="${category.name}"></c:out>
+		</div>
 		<hr>
+		<c:forEach var="p" items="${products}">
+			<div class="row" style="margin-bottom: 20px;">
+				<div class="col-sm-2">
+					<a href="detail.do?productNo=${p.no}"><img width="100px"
+						height="100px" src="../../resources/images/${p.img }"> </a>
+				</div>
+				<div class="col-sm-4">
+					제목 : <a href="detail.do?productNo=${p.no }"> <c:choose>
+							<c:when test="${fn:length(p.title) > 36}">
+                                 ${fn:substring(p.title, 0, 35)}...</c:when>
+							<c:otherwise>
+                                 ${p.title}
+                              </c:otherwise>
+						</c:choose>
+					</a> <br /> <br /> <br />
 
+					<p>
+						내용:
+						<c:choose>
+							<c:when test="${fn:length(p.contents) > 160}">
+	                                 ${fn:substring(p.contents, 0, 160)}...</c:when>
+							<c:otherwise>
+	                                 ${p.contents}
+	                              </c:otherwise>
+						</c:choose>
+					</p>
+				</div>
+				<div class="col-sm-3">
+					<!--작성자: <c:out value="${user.id}"></c:out>-->
+					<p>작성자: ${p.userid } </p>
+				</div>
+				 
+				<div class="col-sm-3">
+					<p>조회수 : ${p.hits }</p>
+					<p>평점:  ${p.avglike }점</p>
+					<p>포인트 : ${p.price }P</p>
+				</div>
+			</div>
+			<hr>
+		</c:forEach>
 	</div>
 
 

@@ -265,8 +265,8 @@ WebFontConfig = {
 				data-toggle="dropdown" role="button" aria-haspopup="true"
 				aria-expanded="false">Others <span class="caret"></span></a>
 				<ul class="dropdown-menu">
-					<li><a href="#">상담</a></li>
-					<li><a href="#">기타</a></li>
+					<li><a href="categoryList.do?categoryNo=18">상담</a></li>
+					<li><a href="categoryList.do?categoryNo=19">기타</a></li>
 				</ul></li>
 		</ul>
 	</div>

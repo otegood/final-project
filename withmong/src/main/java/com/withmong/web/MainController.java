@@ -1,15 +1,8 @@
 package com.withmong.web;
 
-import java.io.PrintWriter;
-import java.sql.Date;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
-import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -21,8 +14,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.withmong.model.Category;
 import com.withmong.model.Criteria;
-import com.withmong.model.Pagination;
-import com.withmong.model.Point;
 import com.withmong.model.Product;
 import com.withmong.model.User;
 import com.withmong.service.MainService;
@@ -148,16 +139,22 @@ public class MainController {
 	}
 	
 	////카테고리 번호 상품 가지고 오기 링크 관련 (임시)
+	
 	@RequestMapping(value="/categoryList.do")
-	public String categoryList (@RequestParam(name="categoryNo") int bno, Model model, Category category) throws Exception {
+	public String categoryList (@RequestParam(name="categoryNo") int no, Model model, Category category) throws Exception {
 		
-		category.setbNo(bno);
+		category = mainService.getCategoryName(no);
 		
-		List<Product> products = mainService.getCateproductList(bno);
+		//user = mainService.getuserBycateno(no);
+		
+		List<Product> products = mainService.getCateproductList(no);
 	
 		// 카테고리 번호에 따른 상품 정보 조회
 		model.addAttribute("products",products);
 		model.addAttribute("category", category);
+		//model.addAttribute("user", user);
+		
+
 		
 		return "sidemain/categoryList";
 		
