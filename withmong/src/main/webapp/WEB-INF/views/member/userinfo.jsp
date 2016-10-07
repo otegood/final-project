@@ -108,7 +108,7 @@ $(function() {
 	});
 });
 </script>
-<title>유저 정보</title>
+<title>WithMong</title>
 </head>
 <body>
 		<header><%@ include file="../header.jsp" %></header>

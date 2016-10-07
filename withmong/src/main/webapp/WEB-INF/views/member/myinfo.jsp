@@ -91,7 +91,7 @@ $(function() {
 				product += "<div class='caption'>";
 				product += "<h3><a href='detail.do?productNo="+item.no+"'>"+item.title+"</a></h3>";
 				product += "<p>"+item.price+" point</p>";
-				product += "<p><a href='detail.do?productNo="+item.no+"' class='btn btn-primary' role='button'>상세보기</a><a href='detail.do?productNo="+item.no+"' class='btn btn-default' role='button'>수정하기</a></p>";
+				product += "<p><a href='detail.do?productNo="+item.no+"' class='btn btn-primary' role='button'>상세보기</a><a href='updateProduct.do?productNo="+item.no+"' class='btn btn-default' role='button'>수정하기</a></p>";
 				product += "</div></div></div>";
 				
 				$("#product").append(product);
@@ -100,7 +100,7 @@ $(function() {
 	});
 });
 </script>
-<title>나의 정보</title>
+<title>WithMong</title>
 </head>
 <body>
 		<header><%@ include file="../header.jsp" %></header>

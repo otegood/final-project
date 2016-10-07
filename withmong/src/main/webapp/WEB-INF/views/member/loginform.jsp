@@ -52,7 +52,7 @@
 	}
 
 </style>
-<title>Login</title>
+<title>WithMong</title>
 </head>
 <body>
 		<header><%@ include file="../header.jsp" %></header>
