@@ -113,7 +113,7 @@ public class MainController {
 		@RequestMapping(value="/displaylist.do", method=RequestMethod.GET)
 		public String displaylist(Model model, Criteria criteria) throws Exception {
 			
-			//포인트 사용내역 보기
+			//최근 등록한 상품
 			List<Product> displaylist = mainService.getAvglikeList(criteria);
 			
 			model.addAttribute("displaylist", displaylist);

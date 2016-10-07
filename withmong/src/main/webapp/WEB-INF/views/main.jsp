@@ -31,9 +31,9 @@
 													    '</a>'+
 													      '<div class="caption">'+
 													      
-													        '<h4>'  + item.title+'</h4>'+
+													        '<h5>'  + item.title+'</h5>'+
 													       
-													        '<h5> 포인트: '+ item.price+'P</h5>'+
+													        '포인트: '+ item.price+'P'+ '<br/>'+
 													        
 													        '<img src="resources/images/default/'+ 
 													        Math.round(item.avglike)+ 
@@ -349,6 +349,9 @@ strong {
 		</div>
 		<div class="body-wrap">
 			<img alt="" src="resources/images/default/yame2.png" style="width: 971px; height: 321px;">
+		</div>
+		<div class="body-wrap">
+			<img alt="" src="resources/images/default/yame3.png" style="width: 960px; height: 500px;">
 		</div>
 
 
