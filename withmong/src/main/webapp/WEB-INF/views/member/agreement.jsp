@@ -67,6 +67,7 @@ $(function(){
 	
 
 </script>
+<title>WithMong</title>
 </head>
 <body>
 		<header><%@ include file="../header.jsp" %></header>
