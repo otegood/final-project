@@ -79,6 +79,7 @@ public class MainController {
 
 			hits = mainService.getHitList(criteria);
 	
+			
 			return hits;
 		
 		}	
@@ -109,6 +110,7 @@ public class MainController {
 			return avglikelist;
 
 }	
+		/*
 	//중앙 화면 뿌려주기?
 		@RequestMapping(value="/displaylist.do", method=RequestMethod.GET)
 		public String displaylist(Model model, Criteria criteria) throws Exception {
@@ -121,7 +123,7 @@ public class MainController {
 			return "main.do";
 			
 		}
-		
+		*/
 	//이용 약관 확인
 	@RequestMapping(value="/stipulation.do")
 	public String stipulation() throws Exception {
