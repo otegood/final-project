@@ -281,6 +281,8 @@ strong {
 				<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
 				<li data-target="#myCarousel" data-slide-to="1"></li>
 				<li data-target="#myCarousel" data-slide-to="2"></li>
+				<li data-target="#myCarousel" data-slide-to="3"></li>
+				<li data-target="#myCarousel" data-slide-to="4"></li>
 			</ol>
 			<!-- Wrapper for slides -->
 			<div class="carousel-inner" role="listbox">
@@ -288,10 +290,6 @@ strong {
 					<!-- <img src="resources/img/p1.png" alt="cat1" id="show-item"> -->
 					<img style="width: 250px; height: 250px;" alt="hotproduct"
 						src="resources/images/product/kim.PNG" />
-				</div>
-				<div class="item">
-					<img style="width: 250px; height: 250px;" alt="hotproduct"
-						src="resources/images/product/choi.png" />
 				</div>
 				<div class="item">
 					<img style="width: 250px; height: 250px;" alt="hotproduct"

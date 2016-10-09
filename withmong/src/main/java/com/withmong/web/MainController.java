@@ -34,7 +34,7 @@ public class MainController {
 	//등록순 보기
 	@RequestMapping(value="/recentlist.do", method=RequestMethod.GET)
 	public @ResponseBody List<Product> recent (@RequestParam(name="no", required=false, defaultValue="1")int pageNo, 
-														Criteria criteria) throws Exception{
+														Criteria criteria, Model model) throws Exception{
 	
 		List<Product> recentList = new ArrayList<>();
 	
@@ -53,8 +53,25 @@ public class MainController {
 
 		recentList = mainService.getRegList(criteria);
 	
+		for(Product product : recentList) {
+			 String title = product.getTitle();
+			 
+			if (title.length() > 15) {
+				title = title.substring(0, 14)+"...";
+				product.setTitle(title);
+			}else{
+				product.setTitle(title);				
+			}
+			
+		}
+		
+	
 		return recentList;
 	
+		
+		
+		
+		
 	}	
 	//조회순 보기
 		@RequestMapping(value="/hitslist.do", method=RequestMethod.GET)
@@ -110,20 +127,9 @@ public class MainController {
 			return avglikelist;
 
 }	
-		/*
-	//중앙 화면 뿌려주기?
-		@RequestMapping(value="/displaylist.do", method=RequestMethod.GET)
-		public String displaylist(Model model, Criteria criteria) throws Exception {
-			
-			//최근 등록한 상품
-			List<Product> displaylist = mainService.getAvglikeList(criteria);
-			
-			model.addAttribute("displaylist", displaylist);
-
-			return "main.do";
-			
-		}
-		*/
+		
+	
+		
 	//이용 약관 확인
 	@RequestMapping(value="/stipulation.do")
 	public String stipulation() throws Exception {
@@ -140,7 +146,7 @@ public class MainController {
 		
 	}
 	
-	////카테고리 번호 상품 가지고 오기 링크 관련 (임시)
+	//카테고리 번호 상품 가지고 오기  
 	
 	@RequestMapping(value="/categoryList.do")
 	public String categoryList (@RequestParam(name="categoryNo") int no, Model model, Category category) throws Exception {
@@ -162,5 +168,22 @@ public class MainController {
 		
 		
 	}
+	
+	//중앙 화면 뿌려주기?	
+	@RequestMapping(value="/main.do", method=RequestMethod.GET)
+	public String displaylist(Model model, Criteria criteria) throws Exception {
+
+		criteria.setBeginIndex(1);
+		criteria.setEndIndex(5);
+
+		List<Product> displaylist = mainService.getRegList(criteria);
+
+	
+		model.addAttribute("displaylist", displaylist);
+		
+		return "main.do";
+		
+	}
+
 	
 }
