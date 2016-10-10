@@ -63,20 +63,20 @@
 		<div class="well">
 			<h2 style="font-weight: bolder">이용안내</h2>
 			<br />
-			<div class="agreeArea">
-				<div class="body-wrap">
+			<div class="agreeArea" >
+				<div class="body-wrap" style="padding-left: 70px;">
 					<img alt="" src="resources/images/default/guide1.png" style="width: 971px; height: 600px;">
 				</div>
 				<br />
-				<div class="body-wrap">
+				<div class="body-wrap" style="padding-left: 70px;">
 					<img alt="" src="resources/images/default/guide2.png" style="width: 971px; height: 321px;">
 				</div>
 				<br />
-				<div class="body-wrap">
+				<div class="body-wrap" style="padding-left: 70px;">
 					<img alt="" src="resources/images/default/guide3.png" style="width: 971px; height: 700px;">
 				</div>
 			
-				<div class="agreeIndex2">
+				<div class="agreeIndex2" style="padding-left: 70px;">
 					<textarea name="memo"
 						style="width: 971px; height: 450px; border: 1 solid #333333; overflow: visible; text-overflow: ellipsis;">
 1. 재능 상품구분
@@ -102,7 +102,7 @@
 				</textarea>
 				</div>
 				<div style="text-align: center;">
-					<a class="btn btn-default" href="main.do" style="border-width: thin; border: dotted; margin-top: 20px; margin-right: 150px;">메인페이지로 돌아가기</a>
+					<a class="btn btn-default" href="main.do" style="border-width: thin; border: dotted; margin-top: 20px; margin-right: 80px;">메인페이지로 돌아가기</a>
 				</div>
 			</div>
 		</div>
