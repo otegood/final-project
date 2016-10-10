@@ -252,7 +252,7 @@ strong {
 								disabled="disabled">구매하기</button>
 						</c:when>
 						<c:otherwise>
-							<button id="buybtn" type="button" class="btn btn-danger">구매하기</button>
+							<button id="buybtn" type="button" class="btn btn-danger">구매하기!!!</button>
 						</c:otherwise>
 					</c:choose>
 
