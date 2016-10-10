@@ -7,7 +7,7 @@
 			<div class="col-sm-6" >
 				<ul>
 					<li id=""><a href="main.do">홈</a></li>
-					<li id="" class="menu"><a href="#">이용안내</a></li>
+					<li id=""><a href="siteinfo.do">이용안내</a></li>
 					<li id=""><a href="login.do">로그인</a></li>
 					<li id=""><a href="agree.do">회원가입</a></li>
 				</ul>

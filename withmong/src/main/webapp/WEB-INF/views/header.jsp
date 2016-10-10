@@ -104,7 +104,7 @@ WebFontConfig = {
 				<a class="navbar-brand" href="main.do"><img
 					style="max-width: 100px; margin-top: 0px;" id="brand" font-family="Nanum Pen Script, serif;">	<!-- 로고 이미지 삽입하기 
 					<img id="logo" src="resources/images/default/5star.PNG">-->
-					With<br /><br />mong
+					With<br /><br />&nbsp&nbsp&nbsp Mong
 			
 				</a>
 			</div>

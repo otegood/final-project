@@ -64,6 +64,7 @@
 			<mvc:exclude-mapping path="/privacy.do"/>
 			<mvc:exclude-mapping path="/stipulation.do"/>
 			<mvc:exclude-mapping path="/categoryList.do"/>
+			<mvc:exclude-mapping path="/siteinfo.do"/>
 			
 
 

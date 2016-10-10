@@ -121,13 +121,23 @@
 		    $(window).scroll(function () {
 		        if ($(this).scrollTop() > 100) {
 		            $('#back-top').fadeIn();
+		            $('#direct').fadeIn();
 		        } else {
 		            $('#back-top').fadeOut();
+		            $('#direct').fadeOut();
 		        }
 		    });
 		 
 		    // scroll body to 0px on click
 		    $('#back-top a').click(function () {
+		        $('body,html').animate({
+		            scrollTop: 0
+		        }, 800);
+		        return false;
+		    });
+		    
+		    //scroll body-left
+		    $('#direct a').click(function () {
 		        $('body,html').animate({
 		            scrollTop: 0
 		        }, 800);
@@ -224,6 +234,21 @@ strong {
     -moz-transition: 1s;
     transition: 1s;
 }
+
+#direct a {
+    width: 88px;
+    display: block;
+    text-align: center;
+    font: 11px/100% Arial, Helvetica, sans-serif;
+    text-transform: uppercase;
+    text-decoration: none;
+    
+ 
+    /* transition */
+    -webkit-transition: 1s;
+    -moz-transition: 1s;
+    transition: 1s;
+}
 #back-top a:hover {
     color: #000;
 }
@@ -265,6 +290,19 @@ strong {
 <title>Insert title here</title>
 </head>
 <body>
+
+<div class="jumbotron" style="
+    margin-bottom: 0px;">
+  <div class="container-fixded text-center">
+    
+	    <a href="main.do" style="color: black; text-decoration:none;">
+		    <span>
+		   	 <h1>WithMong</h1>
+		   	 <p>Talent, Vission & Values</p>
+		    </span>
+	    </a>
+  </div>
+</div>
 	<header>
 		<%@ include file="header.jsp"%>
 	</header>
@@ -273,7 +311,26 @@ strong {
 		<br>
 	<div class="row content">
 		
-		<div class="col-sm-11">
+		<div class="col-sm-1 sidenav" style="padding-right: 0px;">
+			<div><br /></div>
+			<div><br /></div>
+			<div><br /></div>
+			<div><br /></div>
+			<div><br /></div>
+			<div><br /></div>
+			<div><br /></div>
+			<div><br /></div>
+			
+			
+				<p id="direct" style="position: fixed; height: auto; ">
+				    <h5><a href="siteinfo.do" style="text-decoration:none;">이용안내</a></h5>
+				    <h5><a href="privacy.do" style="text-decoration:none;">개인정보<br />보호정책</a></h5>
+				 	<h5><a href="stipulation.do" style="text-decoration:none;">이용약관</a></h5>
+				</p>
+			
+		</div>
+		
+		<div class="col-sm-10">
 		<div id="myCarousel" class="carousel slide" data-ride="carousel"
 			style="height: 250px;">
 			<!-- Indicators -->
@@ -365,9 +422,7 @@ strong {
 		<div class="body-wrap">
 			<img alt="" src="resources/images/default/yame2.png" style="width: 971px; height: 321px;">
 		</div>
-		<div class="body-wrap">
-			<img alt="" src="resources/images/default/yame3.png" style="width: 960px; height: 500px;">
-		</div>
+		
 
 
 	

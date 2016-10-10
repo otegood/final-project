@@ -19,7 +19,6 @@
 	header {
 		background-color: black;
 	}
-
 	.ex-company {
 		color: white;
 		top: 0; left: 0;

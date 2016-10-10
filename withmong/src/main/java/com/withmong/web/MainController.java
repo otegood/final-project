@@ -170,6 +170,15 @@ public class MainController {
 		
 	}
 	
+	//이용안내
+	@RequestMapping(value="/siteinfo.do")
+	public String siteinfo() throws Exception {
+		
+		return "sidemain/siteinfo";
+		
+	}
+	
+	
 	//카테고리 번호 상품 가지고 오기  
 	
 	@RequestMapping(value="/categoryList.do")
