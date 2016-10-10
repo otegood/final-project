@@ -37,6 +37,11 @@ public interface ProductService {
 	void ProductReviewDel(int reviewNo);
 	CountForm getCountandRow(int productNo);
 	void updateAvglike(CountForm cf);
-	void updateProduct(Product product)throws Exception ;
+	void updateProduct(Product product)throws Exception;
+	void deleteProduct(int no);
+	void pointupdateUser(User user);
+	void pointupdateAdmin(User user);
+	List<Product> getSellerProducts(Product product);
+
 	
 }

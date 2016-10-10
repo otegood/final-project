@@ -111,6 +111,13 @@ public class Product {
 		this.regDate = regDate;
 	}
 
+	public int getAvg() {
+		if (avglike <= 1) {
+			return 1;
+		}
+		return (int)Math.round(avglike);
+	}
+	
 	public double getAvglike() {
 		return avglike;
 	}

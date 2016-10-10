@@ -1,13 +1,13 @@
 package com.withmong.service;
 
 import java.io.File;
-import java.io.IOException;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.FileCopyUtils;
 
+import com.withmong.dao.ManagerDao;
 import com.withmong.dao.ProductDao;
 import com.withmong.form.BreadcrumbsForm;
 import com.withmong.form.CountForm;
@@ -26,6 +26,9 @@ public class ProductServiceImpl implements ProductService{
 	
 	@Autowired
 	private ProductDao productDao;
+	
+	@Autowired
+	private ManagerDao managerDao;
 	
 	@Override
 	public void addProduct(Product product) throws Exception{
@@ -155,32 +158,54 @@ public class ProductServiceImpl implements ProductService{
 		String preimgName = product.getImg();
 		String changeImgName = product.getImgmul().getOriginalFilename();
 		
-		System.out.println("------------------------------------");
-		System.out.println("------------------------------------");
-		System.out.println("------------------------------------");
-		System.out.println("preimgName = " + preimgName);
-		System.out.println("changeImgName = " + changeImgName);
-		System.out.println("------------------------------------");
-		System.out.println("------------------------------------");
-		System.out.println("------------------------------------");
-		System.out.println("------------------------------------");
+		System.out.println("--------------------------");
+		System.out.println("--------------------------");
+		System.out.println(preimgName+" , " + changeImgName);
+		System.out.println("--------------------------");
+		System.out.println("--------------------------");
 		
-		if(!preimgName.equals(changeImgName)){	
+		if(!changeImgName.equals(preimgName)){	
 			String protitle = "product/"+product.getUserid();
 			
 			String extName = changeImgName.substring(changeImgName.lastIndexOf(".")+1);
+			System.out.println("extName : " + extName);
 			byte[] bytes = product.getImgmul().getBytes();
 			File file = new File(UPLOAD_DIRECTORY, protitle + no + "." + extName);
 			FileCopyUtils.copy(bytes, file);
 			product.setImg(protitle + no + "." + extName);
+			productDao.updateProduct(product);
 		}else{
-			product.setImg(preimgName);
+			//product.setImg(preimgName);
+			System.out.println("preimgName : " + preimgName);
+			productDao.updateProductNoImg(product);
 		} 
 		
-		productDao.updateProduct(product);
 		
 	}
 
+	@Override
+	public void deleteProduct(int no) {
+		managerDao.productDelete(no);
+	}
+
+	@Override
+	public void pointupdateUser(User user) {
+		productDao.pointupdateUser(user);
+	}
+
+	@Override
+	public void pointupdateAdmin(User user) {
+		productDao.pointupdateAdmin(user);
+		
+	}
+
+	@Override
+	public List<Product> getSellerProducts(Product product) {
+		return productDao.getSellerProduct(product);
+	}
+
+
+	
 
 
 

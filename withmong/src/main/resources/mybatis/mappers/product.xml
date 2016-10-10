@@ -67,7 +67,7 @@
 	</select>
 	
 	<select id="getUserDetail" parameterType="String" resultType="User">
-		select id,name,birth,gender,grade,img,schoolAbility
+		select id,name,birth,gender,grade,point,img,schoolAbility
 		from user_table
 		where id = #{value}
 	</select>
@@ -201,6 +201,40 @@
 		where 
 			no = #{no}
 	</update>
+	
+	<update id="updateProductNoImg" parameterType="Product">
+		update product_table
+		set 
+			title = #{title},
+			video = #{video},
+			contents =#{contents},
+			price = #{price},
+			qty = #{qty},
+			regdate = sysdate,
+			tag = #{tag},
+			location = #{location.no}
+		where 
+			no = #{no}
+	</update>
+	
+	<update id="pointupdateUser" parameterType="User">
+		update user_table
+		set point = point - #{point}
+		where id = #{id}
+	</update>
+	
+	<update id="pointupdateAdmin" parameterType="User">
+		update user_table
+		set point = point + #{point}
+		where id = #{id}
+	</update>
+	
+	<select id="getSellerProduct" parameterType="Product" resultType="Product">
+		select no,title,userid,img,video,contents,price,qty,regdate,avglike,hits,tag,categoryno,location
+		from product_table
+		where userid = #{userid} and
+			  no != #{no}
+	</select>
 	
 	
 </mapper>

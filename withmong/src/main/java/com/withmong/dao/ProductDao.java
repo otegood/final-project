@@ -35,5 +35,9 @@ public interface ProductDao {
 	void updateAvglike(CountForm cf);
 	void updateProduct(Product product);
 	int getSeqNumber();
+	void pointupdateUser(User user);
+	void pointupdateAdmin(User user);
+	void updateProductNoImg(Product product);
+	List<Product> getSellerProduct(Product product);
 	
 }

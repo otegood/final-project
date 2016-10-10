@@ -1,13 +1,11 @@
 package com.withmong.web;
 
-import java.io.File;
 import java.util.List;
 
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -53,13 +51,15 @@ public class ProductController {
 		String name = productDetail.getUserid();
 		User userDetail = productService.getUserDetail(name);
 
-		
 		userDe.addAttribute("userDetail", userDetail);		
-		
-
-		
+				
 		List<ProductReview> productReivewList = productService.getAllProductReivew(no);
 		review.addAttribute("productReivewList",productReivewList);
+		
+		
+		Product product = productService.getProductByNo(no);
+		List<Product> sellerProducts = productService.getSellerProducts(product);
+		model.addAttribute("sellerProducts", sellerProducts);
 		return "product/detail";
 	}
 	
@@ -108,7 +108,7 @@ public class ProductController {
 		// 이미지 사진
 		//product.setImg(img.getOriginalFilename());
 		product.setImgmul(imgmul);	
-
+ 
 		
 		//youtubeURL 
 		String video = productForm.getVideo();
@@ -184,6 +184,7 @@ public class ProductController {
 		
 		System.out.println("controller preimg : " + preimg);
 		System.out.println("controller changeimg : " + changeimg);
+		System.out.println("controller changeimg : " + changeimg.getOriginalFilename());
 
 
 		//youtubeURL 
@@ -214,13 +215,22 @@ public class ProductController {
 		
 
 		productService.updateProduct(product);
-
 		
-		return "redirect:/searchList.do";
+		return "redirect:/detail.do?productNo=" +no;
 	}	
 	//------------------------------------------------------------------------------------------------------------------------
 	//수정끝
 
+	//디테일에서 삭제
+	@RequestMapping(value="/deleteProduct.do", method=RequestMethod.GET)
+	public String deleteProduct(@RequestParam(name="productNo")int no) {
+		
+		productService.deleteProduct(no);
+		
+		return "redirect:/searchList.do";
+	}
+		
+	
 	@RequestMapping(value="/productreple.do", method=RequestMethod.POST)
 	public @ResponseBody double productreple(int score,String contents,int productNo, User loginedUser) throws Exception{
 
@@ -291,12 +301,26 @@ public class ProductController {
 	@RequestMapping(value="/productBuy.do", method=RequestMethod.POST)
 	public @ResponseBody void  productBuy (User loginedUser,int productNo) throws Exception{
 		Product product = productService.getProductByNo(productNo);
+			int price = product.getPrice();
 		
 			Order order = new Order();
 			order.setUserid(loginedUser);
 			order.setProductNo(product);
 			
+			User user = new User();
+			// 유저에서 상품 가격 차감
+			user.setId(loginedUser.getId());
+			user.setPoint(price);
+			productService.pointupdateUser(user);
+			// 관리자에게 포인트 업데이트
+			user.setId("king");
+			user.setPoint(price);
+			productService.pointupdateAdmin(user);
+			
+			// 주문목록에 추가
 			productService.addOrder(order);
+			
+			
 			
 	}
 
