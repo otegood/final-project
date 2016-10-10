@@ -27,7 +27,7 @@
 												  '<div class="col-sm-4 col-md-3" id="plus-product" >'+
 												    '<div class="thumbnail">'+
 													    '<a href="detail.do?productNo='+ item.no+ '">'+
-													 	   '<img src="../../resources/images/'+item.img+' " width="290px" height="90px" style="height: 164px;"/>'+
+													 	   '<img src="../../resources/images/'+item.img+' " width="290px" style="height: 90px;"/>'+
 													    '</a>'+
 													      '<div class="caption">'+
 													      
@@ -287,8 +287,15 @@ strong {
 			<!-- Wrapper for slides -->
 			
 			<div class="carousel-inner" role="listbox">
+				<c:forEach var="display" items="${displaylist }" varStatus="Product">
+				<div class="item <c:if test='${Product.first }'>active</c:if>" id="show-item">
+						<img style="width: 250px; height: 250px;" alt="hotproduct"
+							src=" ../../resources/images/${display.img}" />
+				</div>
+				</c:forEach>
+				<!-- 
+			
 				<div class="item active" id="show-item">
-					<!-- <img src="resources/img/p1.png" alt="cat1" id="show-item"> -->
 					<img style="width: 250px; height: 250px;" alt="hotproduct"
 						src="resources/images/product/kim.PNG" />
 				</div>
@@ -296,6 +303,15 @@ strong {
 					<img style="width: 250px; height: 250px;" alt="hotproduct"
 						src="resources/images/product/glyphicons-girl.png" />
 				</div>
+				
+				<div class="carousel-inner" role="listbox">
+					<c:forEach var="display" items="${displaylist }">
+						<img style="width: 250px; height: 250px;" alt="hotproduct"
+							src=" ../../resources/images/${display.img}" />
+					</c:forEach>
+				</div>
+				
+				 -->
 			</div>
 
 			<!-- Left and right controls -->
