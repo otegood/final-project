@@ -60,6 +60,9 @@
 	
 	<div class="container" >
 		<h1>거래내역 목록</h1>
+		<h4 style="text-align: right">
+			<b>진행상황( W:구매중 | N:판매거부 | Y:구매완료 )</b>
+		</h4>
 		<table class="table">
 			<thead>
 				<tr>

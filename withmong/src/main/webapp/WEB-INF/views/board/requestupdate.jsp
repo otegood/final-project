@@ -49,7 +49,7 @@
 		background-color: lightgreen;
 	}
 </style>
-<title>요청게시판 상세페이지</title>
+<title>요청게시판 수정페이지</title>
 </head>
 <body>
 	<header>
@@ -61,7 +61,7 @@
 		</c:if>
 	</header>
 	<div class="container" >
-		<h1>요청게시판 상세페이지</h1>
+		<h1>요청게시판 수정페이지</h1>
 		<form role="form" method="post" action="requestUpdate.do">
 			<table class="table">
 				<thead>

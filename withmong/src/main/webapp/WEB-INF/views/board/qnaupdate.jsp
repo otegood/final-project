@@ -49,7 +49,7 @@
 		background-color: lightgreen;
 	}
 </style>
-<title>QNA 상세페이지</title>
+<title>QNA 수정페이지</title>
 </head>
 <body>
 	<header>
@@ -61,7 +61,7 @@
 		</c:if>
 	</header>
 	<div class="container" >
-		<h1>QNA 상세페이지</h1>
+		<h1>QNA 수정페이지</h1>
 		<form role="form" method="post" action="qnaUpdate.do">
 			<table class="table">
 				<thead>
