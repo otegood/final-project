@@ -57,7 +57,7 @@
 	
 		<div class="container" >
 			<div class="row">
-				<h1>쪽지 보내기</h1>
+				<h1 class="col-md-offset-2">쪽지 보내기</h1>
 			<div class="col-md-8 col-md-offset-2 well">
 				<form role="form" method="post" action="firstmessage.do" >
 						<div class="form-group"> 
@@ -70,7 +70,7 @@
 							<div class="form-group row">
 								<label class="col-sm-2 text-right">내용</label>
 								<div class="col-sm-10">
-									<textarea rows="6" class="form-control" cols="70" placeholder="입력해주세요" style="resize:none;" name="contents"></textarea>
+									<textarea rows="6" class="form-control" cols="70" placeholder="메세지를 입력해주세요" style="resize:none;" name="contents"></textarea>
 								</div>
 							</div>
 							<div class="form-group text-right">
