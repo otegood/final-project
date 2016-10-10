@@ -56,4 +56,19 @@ public class MessageController {
 		messageService.addFirstMessage(message);
 		return "redirect:/messagelist.do";
 	}
+	
+	// 유저에게 바로 쪽지보내기 폼
+	@RequestMapping(value="/tomessage.do", method=RequestMethod.GET)
+	public String formMessage() {
+		return "message/messageformTo";
+	}
+	//쪽지보내기
+	@RequestMapping(value="/tomessage.do", method=RequestMethod.POST)
+	public String toMessage(Message message, User loginedUser, @RequestParam(name="receiver.id") String receiver) {
+		message.setSender(loginedUser);
+		message.setReceiver(managerService.getUserM(receiver));
+		message.setContents(message.getContents().replace("\r\n", "<br>"));
+		messageService.addFirstMessage(message);
+		return "redirect:/messagelist.do";
+	}
 }

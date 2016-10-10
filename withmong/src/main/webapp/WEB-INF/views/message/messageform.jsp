@@ -50,7 +50,49 @@
 	}
 
 </style>
-<title>Insert title here</title>
+<script type="text/javascript">
+var idnotoverlap = false;
+
+$(function () {
+	$("form").submit(function() {
+		if(idnotoverlap == false){
+			alert("아이디 중복체크를 해주세요.");
+			return false;
+		}
+	});
+	
+	// 아이디 중복확인 하는거 만들기
+	$("#checkid").click(function (){
+		console.log($("#checkid").size());
+		var inputedId = $("#receiver").val();
+		console.log(inputedId);
+		if (inputedId == "") {
+			
+			return false;
+		}
+		
+		$.ajax({
+			url:"../idcheck.do",
+			data:{id:inputedId},
+			dataType:"json",
+			success: function(data) {
+				
+				//2. 이 부분 조건 빈칸일때
+				if(data.size == 0){
+					alert("아이디가 없습니다.")
+					idnotoverlap = false;
+				} else {
+					alert(inputedId+"는 전송 가능한 아이디입니다.");
+					idnotoverlap = true;
+				}
+			}
+		});
+		
+		
+	});
+});
+</script>
+<title>WithMong</title>
 </head>
 <body>
 		<header><%@ include file="../header.jsp" %></header>
@@ -58,20 +100,22 @@
 		<div class="container" >
 			<div class="row">
 				<h1>쪽지 보내기</h1>
-			<div class="well">
+			<div class="col-md-8 col-md-offset-2  well">
 				<form role="form" method="post" action="firstmessage.do" >
 					<div class="form-group"> 
 						<div class="form-group row">
-							<label class="col-sm-3 text-right">받는사람</label>
-							<div class="col-sm-9">
-								<input type="text" name="receiver.id" id="receiver.id" style="ime-mode:inactive" placeholder="입력해주세요"/> 
-								<button type="button" class="btn btn-xs" >아이디확인</button>
+							<label class="col-sm-2 text-right">받는사람</label>
+							<div class="col-sm-7">
+								<input type="text" class="form-control" name="receiver.id" id="receiver" style="ime-mode:inactive" placeholder="입력해주세요"/> 
+							</div>
+							<div class="col-sm-3">
+								<button type="button" class="btn btn-success" id="checkid">아이디확인</button>
 							</div>
 						</div>
 						<div class="form-group row">
-							<label class="col-sm-3 text-right">내용</label>
-							<div class="col-sm-9">
-								<textarea rows="6" cols="70" placeholder="입력해주세요" style="resize:none;" name="contents"></textarea>
+							<label class="col-sm-2 text-right">내용</label>
+							<div class="col-sm-10">
+								<textarea rows="6" class="form-control" cols="70" placeholder="입력해주세요" style="resize:none;" name="contents"></textarea>
 							</div>
 						</div>
 						<div class="form-group text-right">
