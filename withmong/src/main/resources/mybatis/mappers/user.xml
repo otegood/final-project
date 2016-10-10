@@ -168,6 +168,13 @@
 		set buycheck = 'N'
 		where no = #{value}
 	</update>
+	<!-- (판매)5. 물품 qty 증가 update 문 -->
+	<update id="getPlusQty" parameterType="Order">
+		update product_table
+		set qty = qty + 1
+		where no = #{productNo.no}
+	</update>
+	
 	
 	<!-- (판매)1. 관리자 포인트 차감 -->
 	<update id="getDevideAdminPoint" parameterType="int">
@@ -187,6 +194,7 @@
 		set buycheck = 'Y'
 		where no = #{value}
 	</update>
+	
 	
 	
 	<!-- 아이디에 따른 상품정보 검색하기 -->

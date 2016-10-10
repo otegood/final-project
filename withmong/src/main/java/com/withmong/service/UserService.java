@@ -54,6 +54,7 @@ public interface UserService {
 	// (판매)판매 확정
 	void confirmSell(int orderNo);
 	
+	
 	// 아이디로 유저정보 보기
 	User getUserInfoById(String id);
 	

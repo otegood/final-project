@@ -133,9 +133,12 @@ public class UserServiceImpl implements UserService{
 
 	@Override
 	public void denySell(int orderNo) {
+		Order orderInfo = userDao.getOrderInfoByNo(orderNo);
 		userDao.denySell(orderNo);
+		userDao.getPlusQty(orderInfo);
 	}
 
+	
 	@Override
 	public void confirmSell(int orderNo) {
 		// 주문 정보 조회
@@ -147,6 +150,7 @@ public class UserServiceImpl implements UserService{
 		userDao.getPointSeller(orderInfo);
 		// 구분자 변경
 		userDao.confirmSell(orderNo);
+		
 	}
 
 	@Override

@@ -47,10 +47,13 @@ public interface UserDao {
 		
 		// 4) 구매자 포인트 증가 update 문
 		void increasePurchasePoint(Order order);
+		
 	
 	// 판매내역 기능
 		// 1) 구매 거부
 		void denySell(int no);
+		// 5) 상품 qty (+1)
+		void getPlusQty(Order order);
 		
 		// 1) 관리자에서 포인트차감
 		void getDevideAdminPoint(int point);
@@ -59,7 +62,6 @@ public interface UserDao {
 		// 3) 상품 가격확인하는 select문 (위에있음)
 		// 4) 확정 구분자 변경
 		void confirmSell(int no);
-	
 		
 	//아이디에 따라 상품정보 꺼내오기
 	List<Product> getProductById(String id);
