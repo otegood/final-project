@@ -24,7 +24,7 @@
 								$("#area")
 										.append(
 												
-												  '<div class="col-sm-4 col-md-3" id="plus-product" >'+
+												  '<div class="col-sm-4 col-md-3" id="plus-product" style="padding-left:10px; padding-right:10px;">'+
 												    '<div class="thumbnail">'+
 													    '<a href="detail.do?productNo='+ item.no+ '">'+
 													 	   '<img src="../../resources/images/'+item.img+' " width="290px" style="height: 90px;"/>'+
