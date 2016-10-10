@@ -181,7 +181,7 @@ public class MainController {
 	
 		model.addAttribute("displaylist", displaylist);
 		
-		return "main.do";
+		return "main";
 		
 	}
 

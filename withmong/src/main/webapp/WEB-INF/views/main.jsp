@@ -286,7 +286,8 @@ strong {
 			</ol>
 			<!-- Wrapper for slides -->
 			
-<div class="item active" id="show-item">
+			<div class="carousel-inner" role="listbox">
+				<div class="item active" id="show-item">
 					<!-- <img src="resources/img/p1.png" alt="cat1" id="show-item"> -->
 					<img style="width: 250px; height: 250px;" alt="hotproduct"
 						src="resources/images/product/kim.PNG" />
@@ -295,6 +296,7 @@ strong {
 					<img style="width: 250px; height: 250px;" alt="hotproduct"
 						src="resources/images/product/glyphicons-girl.png" />
 				</div>
+			</div>
 
 			<!-- Left and right controls -->
 			<a class="left carousel-control" href="#myCarousel" role="button"
