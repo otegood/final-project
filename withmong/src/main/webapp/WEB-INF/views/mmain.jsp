@@ -160,11 +160,11 @@ $(function(){
 	});
 	
 	$.jqplot('ograph', [ ochartData ], {
-		title : '주간 주문 그래프',
+		title : '주간 구매 그래프',
 		series : [ {renderer : $.jqplot.BarRenderer	} ],
 		axes : {
 			xaxis : {renderer : $.jqplot.CategoryAxisRenderer},
-			yaxis : { label : "주문 수"	}
+			yaxis : { label : "구매 수"	}
 		}
 	});
 });
