@@ -49,14 +49,14 @@
 		background-color: lightgreen;
 	}
 </style>
-<title>공지사항 상세페이지</title>
+<title>공지사항 수정페이지</title>
 </head>
 <body>
 	<header>
 		<%@ include file="../mheader.jsp" %>
 	</header>
 	<div class="container" >
-		<h1>공지사항 상세페이지</h1>
+		<h1>공지사항 수정페이지</h1>
 		<form role="form" method="post" action="noticeDbUpdate.do">
 			<table class="table">
 				<thead>
