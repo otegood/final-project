@@ -120,7 +120,7 @@ $(function() {
 	        	</div>
 			    <h2 class="glyphicon glyphicon-user" id="id"> </h2>
 			    <div class="text-center">
-				    <a href="firstmessage.do" class="btn btn-primary">1:1 문의</a>
+				    <a href="tomessage.do?id=${param.id }" class="btn btn-primary">1:1 문의</a>
 				    <a href="main.do" class="btn btn-danger">메인으로</a>
 			    </div>
 			    </div>
