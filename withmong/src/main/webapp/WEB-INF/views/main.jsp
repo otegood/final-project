@@ -285,12 +285,16 @@ strong {
 				<li data-target="#myCarousel" data-slide-to="4"></li>
 			</ol>
 			<!-- Wrapper for slides -->
-			<div class="carousel-inner" role="listbox">
-				<c:forEach var="display" items="${displaylist }">
+			
+<div class="item active" id="show-item">
+					<!-- <img src="resources/img/p1.png" alt="cat1" id="show-item"> -->
 					<img style="width: 250px; height: 250px;" alt="hotproduct"
-						src="resources/images/${display.img}" />
-				</c:forEach>
-			</div>
+						src="resources/images/product/kim.PNG" />
+				</div>
+				<div class="item">
+					<img style="width: 250px; height: 250px;" alt="hotproduct"
+						src="resources/images/product/glyphicons-girl.png" />
+				</div>
 
 			<!-- Left and right controls -->
 			<a class="left carousel-control" href="#myCarousel" role="button"
