@@ -109,10 +109,16 @@
 							</div>
 							<div class="col-sm-6" style="position: fixed;margin-top: 10px; right: 45%; margin-right: -300px; background-color: white; width: auto;">
 								${message.sender.id }님 프로필<br/>
+								<c:if test="${message.sender.grade eq 'B'}">
+									<img alt='grade' src='resources/images/default/bronze.jpg' class='img-circle overlay img-thumbnail'>
+								</c:if>
+								<c:if test="${message.sender.grade eq 'S'}">
+									<img alt='grade' src='resources/images/default/silver.jpg' class='img-circle overlay img-thumbnail'>
+								</c:if>
+								<c:if test="${message.sender.grade eq 'G'}">
+									<img alt='grade' src='resources/images/default/gold.jpg' class='img-circle overlay img-thumbnail'>
+								</c:if>																
 								<img alt="" src="resources/images/profile/${message.sender.img }" width="200px;" height="180px"><br/>
-								등급 : <c:if test="${message.sender.grade eq 'B'}">브론즈</c:if>
-									 <c:if test="${message.sender.grade eq 'S'}">실버</c:if>
-									 <c:if test="${message.sender.grade eq 'G'}">골드</c:if><br/>
 								성별 : <c:if test="${message.sender.gender eq 'M'}">남자</c:if>
 									 <c:if test="${message.sender.gender eq 'F'}">여자</c:if> <br/>
 								학력 : ${message.sender.schoolAbility }<br/>
