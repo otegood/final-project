@@ -98,7 +98,7 @@ $(function() {
 				product += "<div class='thumbnail'>";
 				product += "<a href='detail.do?productNo="+item.no+"'><img src='resources/images/"+item.img+"' style='width:242px;height:200px;'></a>";
 				product += "<div class='caption'>";
-				product += "<h3><a href='detail.do?productNo="+item.no+"'>"+item.title+"</a></h3>";
+				product += "<h4><a href='detail.do?productNo="+item.no+"'>"+item.shortTitle+"</a></h4>";
 				product += "<p>"+item.price+" point</p>";
 				product += "</div></div></div>";
 				
