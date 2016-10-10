@@ -44,8 +44,8 @@ public class Product {
 		if (title == null) {
 			return "[없음]";
 		}
-		if (title.length() > 20) {
-			return title.substring(0, 18) + "...";
+		if (title.length() > 14) {
+			return title.substring(0, 12) + "...";
 		} else {
 			return title;
 		}
