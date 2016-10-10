@@ -2,19 +2,21 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+
 	<link class="include" rel="stylesheet" type="text/css" href="/resources/chart/jquery.jqplot.min.css" />
-	<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	
+	<script src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
 	<script type="text/javascript" src="/resources/chart/jquery.jqplot.min.js"></script>
 	<script type="text/javascript" src="/resources/chart/plugins/jqplot.categoryAxisRenderer.min.js"></script>
 	<script type="text/javascript" src="/resources/chart/plugins/jqplot.barRenderer.min.js"></script>
-	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	
 <style type="text/css">
 	
 	header {
@@ -128,7 +130,7 @@ $(function(){
 		chartData.push(spotData);
 	});
 	
-	$.jqplot('#graph', [ chartData ], {
+	$.jqplot('graph', [ chartData ], {
 		title : '주간 상품등록 그래프',
 		series : [ {renderer : $.jqplot.BarRenderer	} ],
 		axes : {
@@ -383,7 +385,15 @@ $(function(){
 						<c:forEach var="product" items="${productList }" begin="0" end="6">
 							<tr>
 								<td>${product.no }</td>
-								<td>${product.title }</td>
+								<td>
+								<c:choose>
+									<c:when test="${fn:length(product.title) > 12}">
+		                                 ${fn:substring(product.title, 0, 11)}...</c:when>
+									<c:otherwise>
+		                                 ${product.title}
+	                            	</c:otherwise>
+								</c:choose>
+								</td>
 								<td>${product.userid }</td>
 								<td><fmt:formatNumber value="${product.price }"></fmt:formatNumber>
 								</td>
@@ -440,7 +450,7 @@ $(function(){
 			
 			<!-- 토옹게-->
 			<div>
-				<div id="graph" style="width:300px; height:300px;"></div>
+				<div id="graph" style="width:600px; height:395px;"></div>
 			</div>
 		</div>
 	</div>
