@@ -45,7 +45,7 @@ public class ManagerController {
 		model.addAttribute("pointList", managerService.getAllPoints());
 		model.addAttribute("productList", managerService.getAllProducts());
 		model.addAttribute("orderList", managerService.getAllOrders());
-		
+		model.addAttribute("reportList", managerService.getAllReport());
 		List<CountChartForm> productChart = managerService.productChart();
 		List<CountChartForm> orderChart = managerService.orderChart();
 		// 오브젝트를 스트링으로 바꿔줌

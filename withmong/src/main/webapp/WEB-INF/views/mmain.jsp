@@ -384,6 +384,39 @@ $(function(){
 				</div>
 				<!-- 신고목록 -->
 				<div id = "reportlist" style="display: none;">
+					<h1>신고내역</h1>
+					<table class="table table-hover">
+						<thead>
+							<tr>
+								<th>번호</th>
+								<th>사유</th>
+								<th>내용</th>
+								<th>신고자</th>
+								<th>받는사람</th>
+								<th>날짜</th>
+							</tr>
+						</thead>
+						<tbody>
+							<c:forEach var="report" items="${reportList }" begin="0" end="6">
+								<tr>
+									<td>${report.no }</td>
+									<td>${report.reason}</td>
+									<td>
+										<c:choose>
+											<c:when test="${fn:length(report.contents) > 8}">
+				                                 ${fn:substring(report.contents, 0, 7)}...</c:when>
+											<c:otherwise>
+				                                ${report.contents}
+			                            	</c:otherwise>
+										</c:choose>
+									</td>
+									<td>${report.reporter.id}</td>
+									<td>${report.suspect.id}</td>
+									<td><fmt:formatDate value="${report.regdate }" pattern="yyyy.MM.dd"/></td>
+								</tr>
+							</c:forEach>
+						</tbody>
+					</table>
 				</div>	
 			</div>
 		</div>

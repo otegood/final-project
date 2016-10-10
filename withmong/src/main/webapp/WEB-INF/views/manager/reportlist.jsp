@@ -58,7 +58,33 @@
 		</header>
 		
 		<div class="container" >
-			
+			<div class="row">
+				<h1>신고내역</h1>
+				<table class="table table-hover">
+					<thead>
+						<tr>
+							<th>번호</th>
+							<th>사유</th>
+							<th>내용</th>
+							<th>신고자</th>
+							<th>신고받는사람</th>
+							<th>날짜</th>
+						</tr>
+					</thead>
+					<tbody>
+						<c:forEach var="report" items="${reportList }">
+							<tr>
+								<td>${report.no }</td>
+								<td>${report.reason}</td>
+								<td>${report.contents}</td>
+								<td>${report.reporter.id}</td>
+								<td>${report.suspect.id}</td>
+								<td><fmt:formatDate value="${report.regdate }" pattern="yyyy.MM.dd"/></td>
+							</tr>
+						</c:forEach>
+					</tbody>
+				</table>
+			</div>
 		</div>
 		<%@ include file="../footer.jsp" %>	
 </body>

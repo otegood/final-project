@@ -28,7 +28,7 @@
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" style="width: 300px;">회원관리</a>
           <ul class="dropdown-menu"  style="width: 300px; text-align: center;">
             <li><a href="userlist.do">회원목록</a></li>
-            <li><a href="#">신고목록</a></li>
+            <li><a href="reportList.do">신고목록</a></li>
             <li><a href="allPointList.do">충전내역</a></li>
           </ul>
         </li>

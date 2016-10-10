@@ -150,9 +150,9 @@
 			to_char(regdate, 'mm/dd') 
 	</select>
 <!-- 신고목록 -->
-	<select id="getAllReport" resultType="">
+	<select id="getAllReport" resultType="Report">
 		select
-			no, contents, regdate, reason, reproter, suspect
+			no, contents, regdate, reason, reporter as "reporter.id", suspect as "suspect.id"
 		from
 			report_table
 		order by
