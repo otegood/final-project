@@ -286,15 +286,10 @@ strong {
 			</ol>
 			<!-- Wrapper for slides -->
 			<div class="carousel-inner" role="listbox">
-				<div class="item active" id="show-item">
-					<!-- <img src="resources/img/p1.png" alt="cat1" id="show-item"> -->
+				<c:forEach var="display" items="${displaylist }">
 					<img style="width: 250px; height: 250px;" alt="hotproduct"
-						src="resources/images/product/kim.PNG" />
-				</div>
-				<div class="item">
-					<img style="width: 250px; height: 250px;" alt="hotproduct"
-						src="resources/images/product/glyphicons-girl.png" />
-				</div>
+						src="resources/images/${display.img}" />
+				</c:forEach>
 			</div>
 
 			<!-- Left and right controls -->
