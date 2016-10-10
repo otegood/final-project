@@ -291,18 +291,7 @@ strong {
 </head>
 <body>
 
-<div class="jumbotron" style="
-    margin-bottom: 0px;">
-  <div class="container-fixded text-center">
-    
-	    <a href="main.do" style="color: black; text-decoration:none;">
-		    <span>
-		   	 <h1>WithMong</h1>
-		   	 <p>Talent, Vission & Values</p>
-		    </span>
-	    </a>
-  </div>
-</div>
+
 	<header>
 		<%@ include file="header.jsp"%>
 	</header>
@@ -311,7 +300,7 @@ strong {
 		<br>
 	<div class="row content">
 		
-		<div class="col-sm-1 sidenav" style="padding-right: 0px;">
+		<div class="col-sm-1 sidenav" style="padding-right: 0px; margin-top: 100px;" >
 			<div><br /></div>
 			<div><br /></div>
 			<div><br /></div>
