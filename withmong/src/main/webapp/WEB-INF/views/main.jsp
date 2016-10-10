@@ -29,7 +29,7 @@
 													    '<a href="detail.do?productNo='+ item.no+ '">'+
 													 	   '<img src="../../resources/images/'+item.img+' " width="290px" style="height: 90px;"/>'+
 													    '</a>'+
-													      '<div class="caption">'+
+													      '<div class="caption" style="height: 95px;" >'+
 													      
 													        '<h5>'  + item.title+'</h5>'+
 													       

@@ -97,6 +97,18 @@ public class MainController {
 			hits = mainService.getHitList(criteria);
 	
 			
+			for(Product product : hits) {
+				 String title = product.getTitle();
+				 
+				if (title.length() > 15) {
+					title = title.substring(0, 14)+"...";
+					product.setTitle(title);
+				}else{
+					product.setTitle(title);				
+				}
+				
+			}
+			
 			return hits;
 		
 		}	
@@ -123,6 +135,18 @@ public class MainController {
 			criteria.setEndIndex(endIndex);
 			
 			avglikelist = mainService.getAvglikeList(criteria);
+			
+			for(Product product : avglikelist) {
+				 String title = product.getTitle();
+				 
+				if (title.length() > 15) {
+					title = title.substring(0, 14)+"...";
+					product.setTitle(title);
+				}else{
+					product.setTitle(title);				
+				}
+				
+			}
 			
 			return avglikelist;
 
