@@ -89,7 +89,7 @@ $(function() {
 				product += "<div class='thumbnail'>";
 				product += "<a href='detail.do?productNo="+item.no+"'><img src='resources/images/"+item.img+"' style='width:242px;height:200px;'></a>";
 				product += "<div class='caption'>";
-				product += "<h3><a href='detail.do?productNo="+item.no+"'>"+item.title+"</a></h3>";
+				product += "<h4><a href='detail.do?productNo="+item.no+"'>"+item.shortTitle+"</a></h4>";
 				product += "<p>"+item.price+" point</p>";
 				product += "<p><a href='detail.do?productNo="+item.no+"' class='btn btn-primary' role='button'>상세보기</a><a href='updateProduct.do?productNo="+item.no+"' class='btn btn-default' role='button'>수정하기</a></p>";
 				product += "</div></div></div>";

@@ -40,7 +40,16 @@ public class Product {
 	public String getTitle() {
 		return title;
 	}
-
+	public String getShortTitle(){
+		if (title == null) {
+			return "[없음]";
+		}
+		if (title.length() > 20) {
+			return title.substring(0, 18) + "...";
+		} else {
+			return title;
+		}
+	}
 	public void setTitle(String title) {
 		this.title = title;
 	}

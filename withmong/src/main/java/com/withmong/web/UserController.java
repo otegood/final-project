@@ -444,6 +444,11 @@ public class UserController {
 	@RequestMapping("/productbyid.do")
 	public @ResponseBody List<Product> productbyid(String id) {
 		
+		System.out.println("-----------------------------");
+		System.out.println(id);
+		System.out.println("-----------------------------");
+		
+		
 		return userService.getProductById(id);
 		
 	}
