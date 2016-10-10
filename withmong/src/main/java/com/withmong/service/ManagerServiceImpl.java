@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.withmong.dao.ManagerDao;
+import com.withmong.form.CountChartForm;
 import com.withmong.model.Order;
 import com.withmong.model.Point;
 import com.withmong.model.Product;
@@ -75,4 +76,9 @@ public class ManagerServiceImpl implements ManagerService{
 		managerDao.userBClass(id);
 	}
 	// -------------------------------------------------------------------------
+	// 주간 상품등록 수 차트
+	@Override
+	public List<CountChartForm> productChart() {
+		return managerDao.getCountProductChart();
+	}
 }

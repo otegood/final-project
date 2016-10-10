@@ -54,12 +54,22 @@
 	}
 	
 </style>
+<script type="text/javascript">
+
+<!-- tr눌렀을때 페이지 이동시키기 -->
+$(function(){
+	$("#chain table").click(function(){
+		$(location).attr('href', 'detail.do?productNo='+$(this).find("td:first").text());
+	});
+});
+
+</script>
 <title>상품목록</title>
 </head>
 <body>
 	<header><%@ include file="../mheader.jsp" %></header>
 
-	<div class="container">
+	<div class="container" id="chain">
 		<h1>상품 목록</h1>
 		<br/>
 		<c:forEach var="product" items="${productList }">

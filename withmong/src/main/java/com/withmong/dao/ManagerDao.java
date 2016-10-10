@@ -2,6 +2,7 @@ package com.withmong.dao;
 
 import java.util.List;
 
+import com.withmong.form.CountChartForm;
 import com.withmong.model.Order;
 import com.withmong.model.Point;
 import com.withmong.model.Product;
@@ -38,5 +39,8 @@ public interface ManagerDao {
 	void userSClass(String id);
 	void userGClass(String id);
 	void userBClass(String id);
+
+	// 주간 상품등록 수 차트
+	List<CountChartForm> getCountProductChart();
 	
 }

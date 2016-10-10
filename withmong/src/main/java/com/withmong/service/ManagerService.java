@@ -2,6 +2,7 @@ package com.withmong.service;
 
 import java.util.List;
 
+import com.withmong.form.CountChartForm;
 import com.withmong.model.Order;
 import com.withmong.model.Point;
 import com.withmong.model.Product;
@@ -31,4 +32,6 @@ public interface ManagerService {
 		void sclass(String id);
 		void gclass(String id);
 		void bclass(String id);
+	// 주간 상품등록수 차트
+	List<CountChartForm> productChart();
 }
