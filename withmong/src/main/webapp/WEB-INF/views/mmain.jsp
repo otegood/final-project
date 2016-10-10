@@ -162,7 +162,13 @@ $(function(){
 	
 	$.jqplot('ograph', [ ochartData ], {
 		title : '주간 구매 그래프',
-		series : [ {renderer : $.jqplot.BarRenderer	} ],
+		series : [ {	
+						color : 'red', //Line Color
+						lineWidth : 3, // Line 굵기
+						markerOptions : { // 점 옵션
+							size : '3px' // 점 Size
+						}
+				 } ],
 		axes : {
 			xaxis : {renderer : $.jqplot.CategoryAxisRenderer},
 			yaxis : { label : "구매 수"	}
@@ -455,7 +461,15 @@ $(function(){
 						</thead>
 						<tbody>
 							<c:forEach var="order" items="${orderList }" begin="0" end="6">
-								<tr>
+								<c:if test="${order.buyCheck eq 'N'}">
+									<tr class="danger">
+								</c:if>
+								<c:if test="${order.buyCheck eq 'W'}">
+									<tr class="warning">
+								</c:if>
+								<c:if test="${order.buyCheck eq 'Y'}">
+									<tr class="success">
+								</c:if>
 									<td>${order.no }</td>
 									<td>${order.productNo.no }</td>
 									<td>${order.userid.id }</td>

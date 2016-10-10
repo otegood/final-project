@@ -14,6 +14,7 @@ import com.withmong.form.CountChartForm;
 import com.withmong.model.Order;
 import com.withmong.model.Point;
 import com.withmong.model.Product;
+import com.withmong.model.Report;
 import com.withmong.model.User;
 import com.withmong.service.BoardService;
 import com.withmong.service.ManagerService;
@@ -136,6 +137,7 @@ public class ManagerController {
 		managerService.bclass(id);
 		return "redirect:/userlist.do";
 	}
+	
 	// 상품등록 차트표
 	@RequestMapping("/productchart.do")
 	public String productChart(Model model) throws Exception {
@@ -146,5 +148,13 @@ public class ManagerController {
 		model.addAttribute("countChart",jsonString ); 
 		
 		return "manager/productchart";
+	}
+	
+	// 신고목록
+	@RequestMapping("/reportList.do")
+	public String reportList(Model model) {
+		List<Report> reportList = managerService.getAllReport();  
+		model.addAttribute("reportList", reportList);
+		return "manager/reportlist";
 	}
 }

@@ -46,7 +46,7 @@
 		background-color: black;
 	}
 	th{
-		background-color: lightgreen;
+		text-align: center;
 	}
 </style>
 <title>공지사항 상세페이지</title>
@@ -62,22 +62,23 @@
 	</header>
 	<div class="container" >
 		<h1>공지사항 상세페이지</h1>
+		
 		<table class="table">
 			<thead>
 				<tr>
-					<th>번호</th>
+					<th class="well" width="150px;">번호</th>
 					<td>${notice.no }</td>
-					<th>등록일</th>
+					<th class="well">등록일</th>
 					<td><fmt:formatDate value="${notice.regdate }" pattern="yyyy-MM-dd EEEE" /></td>
 				</tr>
 			</thead>
 			<tbody>
 				<tr>
-					<th>제목</th>
+					<th class="well">제목</th>
 					<td colspan="3"><c:out value="${notice.title }" /></td>
 				</tr>
 				<tr>
-					<th>내용</th>
+					<th class="well">내용</th>
 					<td colspan="3">${notice.contents }</td>
 				</tr>
 			</tbody>

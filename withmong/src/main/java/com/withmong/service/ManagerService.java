@@ -6,6 +6,7 @@ import com.withmong.form.CountChartForm;
 import com.withmong.model.Order;
 import com.withmong.model.Point;
 import com.withmong.model.Product;
+import com.withmong.model.Report;
 import com.withmong.model.User;
 
 public interface ManagerService {
@@ -36,4 +37,6 @@ public interface ManagerService {
 	List<CountChartForm> productChart();
 	// 주간 구매 차트
 	List<CountChartForm> orderChart();
+	// 신고목록
+	List<Report> getAllReport();
 }

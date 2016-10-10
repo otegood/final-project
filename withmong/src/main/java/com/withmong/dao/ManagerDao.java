@@ -6,6 +6,7 @@ import com.withmong.form.CountChartForm;
 import com.withmong.model.Order;
 import com.withmong.model.Point;
 import com.withmong.model.Product;
+import com.withmong.model.Report;
 import com.withmong.model.User;
 
 public interface ManagerDao {
@@ -44,5 +45,7 @@ public interface ManagerDao {
 	List<CountChartForm> getCountProductChart();
 	// 주간 주문 수 차트
 	List<CountChartForm> getCountOrderChart();
+	// 신고 목록
+	List<Report> getAllReport();
 	
 }

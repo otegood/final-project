@@ -10,6 +10,7 @@ import com.withmong.form.CountChartForm;
 import com.withmong.model.Order;
 import com.withmong.model.Point;
 import com.withmong.model.Product;
+import com.withmong.model.Report;
 import com.withmong.model.User;
 
 @Service
@@ -85,5 +86,10 @@ public class ManagerServiceImpl implements ManagerService{
 	@Override
 	public List<CountChartForm> orderChart() {
 		return managerDao.getCountOrderChart();
+	}
+	// 신고 목록
+	@Override
+	public List<Report> getAllReport() {
+		return managerDao.getAllReport();
 	}
 }

@@ -76,7 +76,15 @@
 			</thead>
 			<tbody>
 				<c:forEach var="order" items="${orderList }">
-					<tr>
+					<c:if test="${order.buyCheck eq 'N'}">
+						<tr class="danger">
+					</c:if>
+					<c:if test="${order.buyCheck eq 'W'}">
+						<tr class="warning">
+					</c:if>
+					<c:if test="${order.buyCheck eq 'Y'}">
+						<tr class="success">
+					</c:if>
 						<td>${order.no }</td>
 						<td>${order.productNo.no }</td>
 						<td>${order.userid.id }</td>

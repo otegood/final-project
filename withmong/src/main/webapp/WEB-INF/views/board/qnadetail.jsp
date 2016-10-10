@@ -45,7 +45,6 @@
 		background-color: black;
 	}
 	th{
-		background-color: lightgreen;
 		text-align: center;
 	}
 </style>
@@ -69,21 +68,21 @@
 		<table class="table">
 			<thead>
 				<tr>
-					<th>번호</th>
+					<th class="well" width="150px;">번호</th>
 					<td>${qna.no }</td>
-					<th>작성자</th>
+					<th class="well">작성자</th>
 					<td>${qna.userId.id }</td>
-					<th>등록일</th>
+					<th class="well">등록일</th>
 					<td><fmt:formatDate value="${qna.regdate }" pattern="yyyy-MM-dd EEEE" /></td>
 				</tr>
 			</thead>
 			<tbody>
 				<tr>
-					<th>제목</th>
+					<th class="well">제목</th>
 					<td colspan="5"><c:out value="${qna.title }" /></td>
 				</tr>
 				<tr>
-					<th>내용</th>
+					<th class="well">내용</th>
 					<td colspan="5">${qna.contents }</td>
 				</tr>
 			</tbody>
