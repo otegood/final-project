@@ -81,4 +81,9 @@ public class ManagerServiceImpl implements ManagerService{
 	public List<CountChartForm> productChart() {
 		return managerDao.getCountProductChart();
 	}
+	// 주간 주문 수 차트
+	@Override
+	public List<CountChartForm> orderChart() {
+		return managerDao.getCountOrderChart();
+	}
 }

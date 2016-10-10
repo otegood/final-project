@@ -45,12 +45,14 @@ public class ManagerController {
 		model.addAttribute("productList", managerService.getAllProducts());
 		model.addAttribute("orderList", managerService.getAllOrders());
 		
-		List<CountChartForm> countChart = managerService.productChart(); 
+		List<CountChartForm> productChart = managerService.productChart();
+		List<CountChartForm> orderChart = managerService.orderChart();
 		// 오브젝트를 스트링으로 바꿔줌
 		ObjectMapper mapper = new ObjectMapper();
-		String jsonString = mapper.writeValueAsString(countChart);
-		model.addAttribute("countChart",jsonString );
-		
+		String pjsonString = mapper.writeValueAsString(productChart);
+		String ojsonString = mapper.writeValueAsString(orderChart);
+		model.addAttribute("productChart",pjsonString );
+		model.addAttribute("orderChart", ojsonString);
 		if(loginedUser.getId().equals("king")){
 			url = "mmain"; 
 		}else{

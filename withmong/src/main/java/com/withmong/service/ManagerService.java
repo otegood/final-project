@@ -34,4 +34,6 @@ public interface ManagerService {
 		void bclass(String id);
 	// 주간 상품등록수 차트
 	List<CountChartForm> productChart();
+	// 주간 구매 차트
+	List<CountChartForm> orderChart();
 }
