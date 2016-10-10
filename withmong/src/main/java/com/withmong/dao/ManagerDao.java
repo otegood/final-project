@@ -42,5 +42,7 @@ public interface ManagerDao {
 
 	// 주간 상품등록 수 차트
 	List<CountChartForm> getCountProductChart();
+	// 주간 주문 수 차트
+	List<CountChartForm> getCountOrderChart();
 	
 }

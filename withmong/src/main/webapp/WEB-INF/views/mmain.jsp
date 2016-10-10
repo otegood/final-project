@@ -16,7 +16,7 @@
 	<script type="text/javascript" src="/resources/chart/jquery.jqplot.min.js"></script>
 	<script type="text/javascript" src="/resources/chart/plugins/jqplot.categoryAxisRenderer.min.js"></script>
 	<script type="text/javascript" src="/resources/chart/plugins/jqplot.barRenderer.min.js"></script>
-	
+  	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <style type="text/css">
 	
 	header {
@@ -62,6 +62,7 @@
 </style>
 <script type="text/javascript">
 $(function(){
+	$("#orderChart").hide(1);
 	$("#notices").click(function(){
 		$("#notice").show(300, "swing");
 		$("#request").hide(300);
@@ -118,8 +119,16 @@ $(function(){
 		$("#productlist").hide(300);
 		$("#orderlist").show(300, "swing");
 	});
-	
-	var data = JSON.parse('${countChart}');
+	$("#pChart").click(function(){
+		$("#orderChart").hide(300);
+		$("#productChart").show(300, "swing");
+	});
+	$("#oChart").click(function(){
+		$("#productChart").hide(300);
+		$("#orderChart").show(300, "swing");
+	});
+	// 상품 차트
+	var data = JSON.parse('${productChart}');
 	var chartData= [];
 	
 	$.each(data, function(index, item) {
@@ -130,15 +139,34 @@ $(function(){
 		chartData.push(spotData);
 	});
 	
-	$.jqplot('graph', [ chartData ], {
+	$.jqplot('pgraph', [ chartData ], {
 		title : '주간 상품등록 그래프',
 		series : [ {renderer : $.jqplot.BarRenderer	} ],
 		axes : {
-			xaxis : {renderer : $.jqplot.CategoryAxisRenderer, label : "주간" },
+			xaxis : {renderer : $.jqplot.CategoryAxisRenderer},
 			yaxis : { label : "상품등록 수"	}
 		}
 	});
+	// 주문 차트
+	var odata = JSON.parse('${orderChart}');
+	var ochartData= [];
 	
+	$.each(odata, function(index, item) {
+		var ospotData = [];
+		ospotData.push(item.regdate);
+		ospotData.push(item.count);
+		
+		ochartData.push(ospotData);
+	});
+	
+	$.jqplot('ograph', [ ochartData ], {
+		title : '주간 주문 그래프',
+		series : [ {renderer : $.jqplot.BarRenderer	} ],
+		axes : {
+			xaxis : {renderer : $.jqplot.CategoryAxisRenderer},
+			yaxis : { label : "주문 수"	}
+		}
+	});
 });
 </script>
 <title>관리자 페이지</title>
@@ -445,19 +473,27 @@ $(function(){
 		<div class="row col-sm-6" id="frames" style="margin: auto;">
 			<h2>통계 자료</h2>
 			<div style="text-align: right">
-				<a class="btn btn-xs btn-warning" href="">더 보기</a>
+				<a class="btn btn-xs btn-warning" id="pChart">상품 통계</a>
+				<a class="btn btn-xs btn-warning" id="oChart">구매 통계</a>
 			</div>
-			
-			<!-- 토옹게-->
 			<div>
-				<div id="graph" style="width:600px; height:395px;"></div>
+			<!-- 상품등록 -->
+				<div id="productChart" class="panel panel-boby">
+					<h4 style="text-align: center;"><b>상품 통계</b></h4>
+					<div>
+						<div id="pgraph" style="width:600px; height:379px;"></div>
+					</div>
+				</div>
+			<!-- 구매통계 -->
+				<div id="orderChart" class="panel panel-boby">
+					<h4 style="text-align: center;"><b>구매 통계</b></h4>
+					<div>
+						<div id="ograph" style="width:600px; height:379px;"></div>
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>
 	<%@ include file="footer.jsp" %>	
 </body>
 </html>
-
-
-
-

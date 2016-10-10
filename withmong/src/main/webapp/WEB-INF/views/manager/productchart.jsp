@@ -4,11 +4,12 @@
 <html lang="ko">
 <head>
 <link class="include" rel="stylesheet" type="text/css" href="/resources/chart/jquery.jqplot.min.css" />
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
 <script type="text/javascript" src="/resources/chart/jquery.jqplot.min.js"></script>
 <script type="text/javascript" src="/resources/chart/plugins/jqplot.categoryAxisRenderer.min.js"></script>
 <script type="text/javascript" src="/resources/chart/plugins/jqplot.barRenderer.min.js"></script>
-
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script type="text/javascript">
 $(function() {
 /*
@@ -36,7 +37,7 @@ $(function() {
 			yaxis : { label : "상품등록 수"	}
 		}
 	});
-	
+		
 });
 </script>
 

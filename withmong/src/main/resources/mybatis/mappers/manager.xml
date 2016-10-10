@@ -131,4 +131,22 @@
 		order by 
 			to_char(regdate, 'mm/dd') 
 	</select>
+<!-- 주간 주문 수 차트 -->
+	<select id="getCountOrderChart" resultType="CountChartForm">
+		select 
+			to_char(regdate,'mm/dd') as "regdate", 
+			count(no) as "count"
+		from
+			order_table
+		where 
+			regdate >= (sysdate-7) 
+		and 
+			regdate &lt; sysdate 
+		and
+			buycheck = 'Y'
+		group by 
+			to_char(regdate, 'mm/dd')
+		order by 
+			to_char(regdate, 'mm/dd') 
+	</select>
 </mapper>
