@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.withmong.form.CountChartForm;
 import com.withmong.model.Order;
 import com.withmong.model.Point;
 import com.withmong.model.Product;
@@ -30,7 +32,7 @@ public class ManagerController {
 	
 	//관리자 메인 접속
 	@RequestMapping("/mmain.do")
-	public String mmain(Model model, User loginedUser){
+	public String mmain(Model model, User loginedUser) throws Exception{
 		
 		String url = "";
 		List<User> userList = managerService.getAllUsers();  
@@ -42,6 +44,13 @@ public class ManagerController {
 		model.addAttribute("pointList", managerService.getAllPoints());
 		model.addAttribute("productList", managerService.getAllProducts());
 		model.addAttribute("orderList", managerService.getAllOrders());
+		
+		List<CountChartForm> countChart = managerService.productChart(); 
+		// 오브젝트를 스트링으로 바꿔줌
+		ObjectMapper mapper = new ObjectMapper();
+		String jsonString = mapper.writeValueAsString(countChart);
+		model.addAttribute("countChart",jsonString );
+		
 		if(loginedUser.getId().equals("king")){
 			url = "mmain"; 
 		}else{
@@ -113,16 +122,27 @@ public class ManagerController {
 		managerService.sclass(id);
 		return "redirect:/userlist.do";
 	}
-	//등급 변경 Silver
+	//등급 변경 Gold
 	@RequestMapping("/gclass.do")
 	public String gclass(@RequestParam(name="id") String id){
 		managerService.gclass(id);
 		return "redirect:/userlist.do";
 	}
-	//등급 변경 Silver
+	//등급 변경 Bronz
 	@RequestMapping("/bclass.do")
 	public String bclass(@RequestParam(name="id") String id){
 		managerService.bclass(id);
 		return "redirect:/userlist.do";
+	}
+	// 상품등록 차트표
+	@RequestMapping("/productchart.do")
+	public String productChart(Model model) throws Exception {
+		List<CountChartForm> countChart = managerService.productChart(); 
+		// 오브젝트를 스트링으로 바꿔줌
+		ObjectMapper mapper = new ObjectMapper();
+		String jsonString = mapper.writeValueAsString(countChart);
+		model.addAttribute("countChart",jsonString ); 
+		
+		return "manager/productchart";
 	}
 }

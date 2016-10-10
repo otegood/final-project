@@ -2,14 +2,21 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+	<link class="include" rel="stylesheet" type="text/css" href="/resources/chart/jquery.jqplot.min.css" />
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	
+	<script src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
+	<script type="text/javascript" src="/resources/chart/jquery.jqplot.min.js"></script>
+	<script type="text/javascript" src="/resources/chart/plugins/jqplot.categoryAxisRenderer.min.js"></script>
+	<script type="text/javascript" src="/resources/chart/plugins/jqplot.barRenderer.min.js"></script>
+	
 <style type="text/css">
 	
 	header {
@@ -83,7 +90,9 @@ $(function(){
 	$("#pointchain tr").click(function(){
 		$(location).attr('href', 'userdetailm.do?id='+$(this).find("td:first").text());
 	});
-	
+	$("#productchain tr").click(function(){
+		$(location).attr('href', 'detail.do?productNo='+$(this).find("td:first").text());
+	});
 	
 	$("#users").click(function(){
 		$("#userlist").show(300, "swing");
@@ -108,6 +117,26 @@ $(function(){
 	$("#orders").click(function(){
 		$("#productlist").hide(300);
 		$("#orderlist").show(300, "swing");
+	});
+	
+	var data = JSON.parse('${countChart}');
+	var chartData= [];
+	
+	$.each(data, function(index, item) {
+		var spotData = [];
+		spotData.push(item.regdate);
+		spotData.push(item.count);
+		
+		chartData.push(spotData);
+	});
+	
+	$.jqplot('graph', [ chartData ], {
+		title : '주간 상품등록 그래프',
+		series : [ {renderer : $.jqplot.BarRenderer	} ],
+		axes : {
+			xaxis : {renderer : $.jqplot.CategoryAxisRenderer, label : "주간" },
+			yaxis : { label : "상품등록 수"	}
+		}
 	});
 	
 });
@@ -255,7 +284,7 @@ $(function(){
 								<th>이메일</th>
 								<th>포인트</th>
 								<th>평점합계</th>
-								<th>등급관리</th>
+								<th>등급</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -282,23 +311,7 @@ $(function(){
 										<td><fmt:formatNumber value="${users.point }"
 												type="number"></fmt:formatNumber></td>
 										<td>${users.sumLike }</td>
-										<td>${users.grade }<c:if test="${users.grade eq 'B'}">
-												<a class="btn btn-info btn-xs"
-													href="sclass.do?id=${users.id }">S</a>
-												<a class="btn btn-warning btn-xs"
-													href="gclass.do?id=${users.id }">G</a>
-											</c:if> <c:if test="${users.grade eq 'S'}">
-												<a class="btn btn-success btn-xs"
-													href="bclass.do?id=${users.id }">B</a>
-												<a class="btn btn-warning btn-xs"
-													href="gclass.do?id=${users.id }">G</a>
-											</c:if> <c:if test="${users.grade eq 'G'}">
-												<a class="btn btn-success btn-xs"
-													href="bclass.do?id=${users.id }">B</a>
-												<a class="btn btn-info btn-xs"
-													href="sclass.do?id=${users.id }">S</a>
-											</c:if>
-										</td>
+										<td>${users.grade }</td>
 									</tr>
 								</c:if>
 							</c:forEach>
@@ -357,19 +370,30 @@ $(function(){
 						<a class="btn btn-default btn-xs" href="allProductList.do">더 보기</a>
 					</div>
 					<table class="table">
-						<tr>
-							<th>번호</th>
-							<th>제목</th>
-							<th>판매자</th>
-							<th>가격</th>
-							<th>평점</th>
-							<th>조회수</th>
-							<th>등록일</th>
-						</tr>
+						<thead>
+							<tr>
+								<th>번호</th>
+								<th width="180px">제목</th>
+								<th>판매자</th>
+								<th>가격</th>
+								<th>평점</th>
+								<th>조회수</th>
+								<th>등록일</th>
+							</tr>
+						</thead>
+						<tbody id="productchain">
 						<c:forEach var="product" items="${productList }" begin="0" end="6">
 							<tr>
 								<td>${product.no }</td>
-								<td>${product.title }</td>
+								<td>
+								<c:choose>
+									<c:when test="${fn:length(product.title) > 12}">
+		                                 ${fn:substring(product.title, 0, 11)}...</c:when>
+									<c:otherwise>
+		                                 ${product.title}
+	                            	</c:otherwise>
+								</c:choose>
+								</td>
 								<td>${product.userid }</td>
 								<td><fmt:formatNumber value="${product.price }"></fmt:formatNumber>
 								</td>
@@ -378,6 +402,7 @@ $(function(){
 								<td><fmt:formatDate value="${product.regDate }"	pattern="yyyy-MM-dd" /></td>
 							</tr>
 						</c:forEach>
+						</tbody>
 					</table>
 				</div>
 				<!-- 거래내역 -->
@@ -425,7 +450,7 @@ $(function(){
 			
 			<!-- 토옹게-->
 			<div>
-			
+				<div id="graph" style="width:600px; height:395px;"></div>
 			</div>
 		</div>
 	</div>

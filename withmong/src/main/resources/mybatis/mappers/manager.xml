@@ -114,4 +114,21 @@
 		set grade = 'B'
 		where id = #{id}
 	</update>
+	
+<!-- 주간 상품등록수 차트 -->
+	<select id="getCountProductChart" resultType="CountChartForm">
+		select 
+			to_char(regdate,'mm/dd') as "regdate", 
+			count(no) as "count"
+		from
+			product_table
+		where 
+			regdate >= (sysdate-7) 
+		and 
+			regdate &lt; sysdate 
+		group by 
+			to_char(regdate, 'mm/dd')
+		order by 
+			to_char(regdate, 'mm/dd') 
+	</select>
 </mapper>
