@@ -77,7 +77,7 @@ strong {
 						height="100px" src="../../resources/images/${p.img }"> </a>
 				</div>
 				<div class="col-sm-4">
-					제목 : <a href="detail.do?productNo=${p.no }"> <c:choose>
+					제목 : <a href="detail.do?productNo=${p.no }" style="text-decoration: none;"> <c:choose>
 							<c:when test="${fn:length(p.title) > 36}">
                                  ${fn:substring(p.title, 0, 35)}...</c:when>
 							<c:otherwise>

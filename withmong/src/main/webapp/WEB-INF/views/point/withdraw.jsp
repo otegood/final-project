@@ -28,6 +28,8 @@ function showPrice() {
 		if(balance < 0) {
 			$("#space2").html("회원님은 현재 포인트 잔액이 부족하여 환전을 할 수 없습니다. 포인트를 충전해주세요.")	
 			$("#wbtn").addClass("disabled");
+		} else {
+			$("#wbtn").removeClass("disabled");
 		}
 		
 	})

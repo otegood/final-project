@@ -7,17 +7,17 @@
 			<div class="col-sm-6" >
 			<!-- 페이지 이동 -->
 				<ul>
-					<li id=""><a href="main.do">홈</a></li>
-					<li id=""><a href="siteinfo.do">이용안내</a></li>
-					<li id=""><a href="login.do">로그인</a></li>
-					<li id=""><a href="agree.do">회원가입</a></li>
+					<li id=""><a href="main.do" style="text-decoration: none;">홈</a></li>
+					<li id=""><a href="siteinfo.do" style="text-decoration: none;">이용안내</a></li>
+					<li id=""><a href="login.do" style="text-decoration: none;">로그인</a></li>
+					<li id=""><a href="agree.do" style="text-decoration: none;">회원가입</a></li>
 				</ul>
 			</div>
 			<div class="col-sm-6">
 				<ul>
-					<li id=""><a href="requestlist.do">QnA</a></li>
-					<li id=""><a href="privacy.do">개인정보보호정책</a></li>
-					<li id=""><a href="stipulation.do">이용약관</a></li>
+					<li id=""><a href="requestlist.do" style="text-decoration: none;">QnA</a></li>
+					<li id=""><a href="privacy.do" style="text-decoration: none;">개인정보보호정책</a></li>
+					<li id=""><a href="stipulation.do" style="text-decoration: none;">이용약관</a></li>
 				</ul>
 			</div>
 		</div>
