@@ -5,6 +5,7 @@
 	<div class="row">
 		<div class="col-sm-3 col-sm-offset-1">
 			<div class="col-sm-6" >
+			<!-- 페이지 이동 -->
 				<ul>
 					<li id=""><a href="main.do">홈</a></li>
 					<li id=""><a href="siteinfo.do">이용안내</a></li>
@@ -21,6 +22,7 @@
 			</div>
 		</div>
 		<div class="col-sm-4" style="color: white;">
+		<!-- 회사 설명 -->
 			<p>
 				회사명: 위드몽 (주) &nbsp;대표자: 최지웅 &nbsp; 정보처리책임자: 이응수 <br> 주소: 서울특별시&nbsp;
 				종로구&nbsp; 봉익동&nbsp; 디아망&nbsp; 빌딩&nbsp;(401, 402호)<br /> 통신판매업신고:
@@ -30,6 +32,7 @@
 					
 		</div>
 		<div class="col-sm-4" style="color: white;">
+		<!-- 안내 문구 -->
 			<p>
 				 위드몽은 통신 판매 중계자로서 거래당사자가 아닙니다.<br>따라서 판매자가 등록한
 				상품정보 및 거래에 대해 <br>위드몽은 <strong>일체 책임을 지지 않습니다.</strong><br>

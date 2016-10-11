@@ -98,7 +98,6 @@
 			where 
 				p.categoryno = c.no
 				and rn >= #{beginIndex} and rn &lt;= #{endIndex}
-				
 			
   	</select>
 </mapper>

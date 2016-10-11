@@ -58,7 +58,7 @@ strong {
 <script type="text/javascript">
 	
 </script>
-<title>Insert title here</title>
+<title>카테고리별 리스트</title>
 </head>
 <body>
 	<header><%@ include file="../header.jsp"%></header>
@@ -69,6 +69,7 @@ strong {
 			<c:out value="${category.name}"></c:out>
 		</div>
 		<hr>
+		<!-- 상품 뿌려주는 곳 -->
 		<c:forEach var="p" items="${products}">
 			<div class="row" style="margin-bottom: 20px;">
 				<div class="col-sm-2">
@@ -83,8 +84,8 @@ strong {
                                  ${p.title}
                               </c:otherwise>
 						</c:choose>
-					</a> <br /> <br /> <br />
-
+					</a> 
+					<br /><br /><br />
 					<p>
 						내용:
 						<c:choose>
@@ -97,7 +98,6 @@ strong {
 					</p>
 				</div>
 				<div class="col-sm-3">
-					<!--작성자: <c:out value="${user.id}"></c:out>-->
 					<p>작성자: ${p.userid } </p>
 				</div>
 				 
@@ -109,7 +109,7 @@ strong {
 			</div>
 			<hr>
 		</c:forEach>
-		
+		<!-- 페이지네이션 처리-->
 		<div class="row text-center">
 			<ul class="pagination">
 			<c:if test="${param.pno gt 1 }">

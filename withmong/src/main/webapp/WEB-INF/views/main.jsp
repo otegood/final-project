@@ -111,7 +111,7 @@
 
 		})
 
-		//톱 배너
+	//톱 배너
 		
 		// hide #back-top first
 		$("#back-top").hide();
@@ -137,8 +137,6 @@
 		    });
 		    
 		});
-		
-		//여기서부터
 		
 	})
 </script>
@@ -320,13 +318,13 @@ strong {
 			<h1 class="page-header">상품 리스트</h1>
 		</div>
 		<div class="row" id="">
+		<!-- 태그 -->
 			<div class="col-sm-6 col-sm-offset-6" style="margin-bottom: 20px;">
 				<div class="col-sm-4">
 					<button id="avglike" value="reset" class="btn-primary btn-xs ">인기순</button>
 				</div>
 				<div class="col-sm-4">
-					<button id="recent" value="reset" class="btn-success btn-xs">최신
-						등록순</button>
+					<button id="recent" value="reset" class="btn-success btn-xs">최신 등록순</button>
 				</div>
 				<div class="col-sm-4">
 					<button id="hits" value="reset" class="btn-warning btn-xs">조회순</button>
@@ -336,7 +334,7 @@ strong {
 
 				<div class="row" id="area"
 					style="margin-left: 0px; margin-right: 0px;">
-					<!-- 리스트 추가되는 부분? -->
+					<!-- 태그 관련 상품 리스트 추가되는 부분 -->
 					
 				</div>
 
@@ -361,6 +359,7 @@ strong {
 
 	
 		</div>
+		<!-- 상단으로 이동하는 배너 등록 -->
 		<div class="col-sm-1 sidenav">
 			<div><br /></div>
 			<div><br /></div>
@@ -372,7 +371,10 @@ strong {
 			<div><br /></div>
 			
 				<p id="back-top" style="position: fixed; height: auto;">
-				    <a href="#top"><span><img alt="" src="resources/images/default/top.jpg" style="height: 100%;"></span>
+				    <a href="#top">
+					    <span>
+					    	<img alt="" src="resources/images/default/top.jpg" style="height: 100%;">
+				    	</span>
 					</a>
 				</p>
 			

@@ -57,7 +57,7 @@ public class MainController {
 	
 		for(Product product : recentList) {
 			 String title = product.getTitle();
-			 
+			//제목이 길어질 때 일정부분 축약
 			if (title.length() > 15) {
 				title = title.substring(0, 12)+"...";
 				product.setTitle(title);
@@ -101,7 +101,7 @@ public class MainController {
 			
 			for(Product product : hits) {
 				 String title = product.getTitle();
-				 
+				//제목이 길어질 때 일정부분 축약
 				if (title.length() > 15) {
 					title = title.substring(0, 12)+"...";
 					product.setTitle(title);
@@ -140,7 +140,7 @@ public class MainController {
 			
 			for(Product product : avglikelist) {
 				 String title = product.getTitle();
-				 
+				 //제목이 길어질 때 일정부분 축약
 				if (title.length() > 15) {
 					title = title.substring(0, 12)+"...";
 					product.setTitle(title);
@@ -182,7 +182,6 @@ public class MainController {
 	
 	
 	//카테고리 번호 상품 가지고 오기  
-	
 	@RequestMapping(value="/categoryList.do")
 	public String categoryList (
 			@RequestParam(name="pno", required=false, defaultValue="1" ) int pno,
@@ -212,20 +211,13 @@ public class MainController {
 					return "redirect:/categoryList.do?categoryNo="+ criteria.getCategoryNo() +"&pno="+pagination.getTotalPages();
 				}
 				
-		
-				
 				// 데이타 조회하기
 				criteria.setBeginIndex(beginIndex);
 				criteria.setEndIndex(endIndex);
 			
-				System.out.println(beginIndex);
-				System.out.println(endIndex);
-				System.out.println(criteria.getCategoryNo());
 				List<Product> products = mainService.getCategory(criteria);
 
-				System.out.println("개수:"+products.size());
 				
-			
 				// 카테고리 번호에 따른 상품 정보 조회
 				model.addAttribute("products",products);
 				model.addAttribute("navi", pagination);

@@ -61,6 +61,7 @@
 }
 </style>
 <script>
+//네비바 관련
 $(document).ready(function(){
 	$('ul.dropdown-menu [data-toggle=dropdown]').on('click', function(event) {
 		event.preventDefault(); 
@@ -69,7 +70,7 @@ $(document).ready(function(){
 		$(this).parent().toggleClass('open');
 	});
 });
-
+//웹 폰트 관련 설정
 WebFontConfig = {
 	    google: { families: [ 'Oswald:300,400,700:latin,latin-ext' ] }
 	  };
@@ -83,15 +84,12 @@ WebFontConfig = {
 	    s.parentNode.insertBefore(wf, s);
 	  })();
 
-
+//carousel 상품이미지 작동? 시간
 	$('.carousel').carousel({
 	  interval: 3000
 	})
 
 	
-	$(function() {
-		
-	})
 </script>
 	<nav class="navbar navbar-inverse">
 		<div class="container">
@@ -102,8 +100,8 @@ WebFontConfig = {
 						class="icon-bar"></span>
 				</button>
 				<a class="navbar-brand" href="main.do"><img
-					style="max-width: 100px; margin-top: 0px;" id="brand" font-family="Nanum Pen Script, serif;">	<!-- 로고 이미지 삽입하기 
-					<img id="logo" src="resources/images/default/5star.PNG">-->
+					style="max-width: 100px; margin-top: 0px;" id="brand" font-family="Nanum Pen Script, serif;">	
+					<!-- 로고 삽입하기 -->
 					With<br /><br />&nbsp&nbsp&nbsp Mong
 			
 				</a>

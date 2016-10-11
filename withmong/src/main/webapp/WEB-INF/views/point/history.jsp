@@ -18,6 +18,7 @@
 <script
 	src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
 <script type="text/javascript">
+//페이지네이션 처리화 관련
   $(document).ready(function() {
 	    $('#example').DataTable( {
 	        "pagingType": "full_numbers"
@@ -77,7 +78,7 @@ strong {
 	text-align: left;
 }
 </style>
-<title>Insert title here</title>
+<title>거래 내역</title>
 </head>
 <body>
 	<header><%@ include file="../header.jsp"%></header>
@@ -86,6 +87,7 @@ strong {
 				<div class="row" style="margin-bottom: 40px;">
 					<h2>거래 내역</h2>
 				</div>
+				<!-- 거래내역 테이블 -->
 		<table id="example" class="display" cellspacing="0" width="100%">
 			<thead>
 				<tr>
@@ -126,6 +128,7 @@ strong {
 				</c:forEach>
 			</tbody>
 		</table>
+		<!-- 잔여포인트 확인 -->
 		<div class="remainPoint" style="margin-top: 50px;">
 			회원님의 잔여포인트: <c:out value="${loginedUser.point }"></c:out>P 
 		</div>

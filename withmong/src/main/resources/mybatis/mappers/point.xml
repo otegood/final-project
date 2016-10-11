@@ -29,19 +29,3 @@
 	</update>
 	
 </mapper>
-
-<!-- 
-	테이블 컬럼명
-	 private int charge;		// 충전
-	private int withraw;	// 출금
-	private Date regdate;
-	private User userid;
-
-	Form
-	private int charge;		//충전
-	private int withraw;	//출금
-	private Date regdate;
-	private User userid;
-	
-
- -->

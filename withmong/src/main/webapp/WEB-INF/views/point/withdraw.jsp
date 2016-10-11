@@ -13,6 +13,7 @@
 <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
 <script type="text/javascript">
+//라디오 버튼 클릭시 알림 및 경고창
 function showPrice() {
 	
 	$("#bar").show(function() {
@@ -108,7 +109,7 @@ strong {
 	border: 1;
 }
 </style>
-<title>Insert title here</title>
+<title>포인트 환전</title>
 </head>
 <body>
 	<header>
@@ -117,6 +118,7 @@ strong {
 	<!-- 내용 기입 -->
 	<div class="container">
 		<br>
+		<!-- 알림 및 경고창 -->
 		<div class="row" id="bar" style="display: none;">
 			<div class="alert alert-danger" id="redbar" >
 	   			 <p id=space style="margin-bottom: 0px;"></p>
@@ -129,7 +131,7 @@ strong {
 			<div class="row" style="margin-bottom: 40px;">
 					<h2>포인트 환전</h2>
 				</div>
-			
+			<!-- 포인트 환전  -->
 			<form method="post" action="withdraw.do" role="form">
 				<table id="changes" class="table table-striped table-condensed">
 					<thead

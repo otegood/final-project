@@ -50,7 +50,7 @@
 	}
 
 </style>
-<title>개인정보보호취급</title>
+<title>개인정보 보호취급</title>
 </head>
 <body>
 	<header>
@@ -60,7 +60,7 @@
 	<div class="container">
 		<br>
 		<div class="well">
-			<h4 style="font-weight: bolder">개인정보보호취급</h4>
+			<h4 style="font-weight: bolder">개인정보 보호취급</h4>
 			<div class="agreeArea">
 				<div class="agreeIndex2">
 					<textarea name="memo"
