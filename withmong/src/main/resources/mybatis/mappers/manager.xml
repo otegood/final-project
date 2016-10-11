@@ -76,6 +76,8 @@
 			a.regdate as "regdate", 
 			a.buycheck as "buycheck", 
 			a.productno as "productNo.no",
+			a.price,
+			a.qty,
 			b.price as "productNo.price",
 			c.id as "userid.id" 
 		from

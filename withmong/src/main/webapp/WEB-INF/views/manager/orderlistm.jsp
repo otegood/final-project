@@ -70,7 +70,9 @@
 					<th>상품번호</th>
 					<th>구매자</th>
 					<th>날짜</th>
-					<th>구매금액</th>
+					<th>상품금액</th>
+					<th>갯수</th>
+					<th>결제금액</th>
 					<th>진행상황</th>
 				</tr>	
 			</thead>
@@ -90,6 +92,8 @@
 						<td>${order.userid.id }</td>
 						<td><fmt:formatDate value="${order.regdate }" pattern="yyyy-MM-dd hh:mm:ss"/></td>
 						<td><fmt:formatNumber value="${order.productNo.price }"></fmt:formatNumber> </td>
+						<td>${order.qty }</td>
+						<td><fmt:formatNumber value="${order.price }"></fmt:formatNumber> </td>
 						<td>${order.buyCheck }</td>
 					</tr>
 				</c:forEach>

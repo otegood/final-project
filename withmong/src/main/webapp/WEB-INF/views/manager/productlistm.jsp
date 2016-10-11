@@ -79,7 +79,9 @@ $(function(){
 					<th style="width: 200px;">이미지</th>
 					<th style="width: 300px;">제목</th>
 					<th style="width: 300px;">판매자</th>
-					<th>가격</th>
+					<th>상품가격</th>
+					<th>갯수</th>
+					<th>결제액</th>
 					<th>삭제</th>
 				</tr>
 				<tr>

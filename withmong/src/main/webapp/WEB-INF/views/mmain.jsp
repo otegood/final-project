@@ -455,8 +455,8 @@ $(function(){
 								<td>${product.no }</td>
 								<td>
 								<c:choose>
-									<c:when test="${fn:length(product.title) > 12}">
-		                                 ${fn:substring(product.title, 0, 11)}...</c:when>
+									<c:when test="${fn:length(product.title) > 10}">
+		                                 ${fn:substring(product.title, 0, 9)}...</c:when>
 									<c:otherwise>
 		                                 ${product.title}
 	                            	</c:otherwise>
@@ -488,7 +488,7 @@ $(function(){
 								<th>상품번호</th>
 								<th>구매자</th>
 								<th>날짜</th>
-								<th>구매금액</th>
+								<th>상품가</th>
 								<th>진행상황</th>
 							</tr>
 						</thead>
