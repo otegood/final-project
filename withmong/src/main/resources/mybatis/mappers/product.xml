@@ -158,9 +158,9 @@
 
 	<insert id="addOrder" parameterType="Order">
 		insert into Order_table
-		(no,regdate,buycheck,userid,productno)
+		(no,regdate,buycheck,userid,productno,qty,price)
 		values
-		(test_seq.nextval,sysdate,'W',#{userid.id},#{productNo.no})
+		(test_seq.nextval,sysdate,'W',#{userid.id},#{productNo.no},#{qty},#{price})
 	</insert>
 
 	<update id="updateHits" parameterType="int">
@@ -235,6 +235,19 @@
 		where userid = #{userid} and
 			  no != #{no}
 	</select>
+	
+	<update id="productQtyupdate" parameterType="Product">
+		update product_table
+		set qty = qty - #{qty}
+		where no = #{no}
+	</update>
+	
+	<insert id="addCart" parameterType="Product">
+		insert into cart_table
+		(no,userid,productno)
+		values
+		(test_seq.nextval,#{userid},#{no})
+	</insert>
 	
 	
 </mapper>

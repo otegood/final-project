@@ -39,5 +39,7 @@ public interface ProductDao {
 	void pointupdateAdmin(User user);
 	void updateProductNoImg(Product product);
 	List<Product> getSellerProduct(Product product);
+	void productQtyupdate(Product product);
+	void addCart(Product product);
 	
 }

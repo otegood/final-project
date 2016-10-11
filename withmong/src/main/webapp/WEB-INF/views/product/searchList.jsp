@@ -61,6 +61,8 @@ strong {
 	<header><%@ include file="../header.jsp"%></header>
 
 	<div class="container">
+		<div class="text-right">가나다라마바사</div>
+		<hr>
 			<c:forEach var="search" items="${searchList}">
 		<div class="row" id="row">
 				<div class="col-sm-2">

@@ -204,6 +204,18 @@ public class ProductServiceImpl implements ProductService{
 		return productDao.getSellerProduct(product);
 	}
 
+	@Override
+	public void productQtyupdate(Product product) {
+		productDao.productQtyupdate(product);
+		
+	}
+
+	@Override
+	public void addCart(Product product) {
+		productDao.addCart(product);
+		
+	}
+
 
 	
 

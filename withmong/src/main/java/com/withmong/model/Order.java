@@ -11,6 +11,8 @@ public class Order {
 	private String buyCheck;
 	private User userid;
 	private Product productNo;
+	private int qty;
+	private int price;
 	
 	public Order () {}
 	
@@ -46,11 +48,30 @@ public class Order {
 		this.productNo = productNo;
 	}
 	
+	
+	public int getQty() {
+		return qty;
+	}
+
+	public void setQty(int qty) {
+		this.qty = qty;
+	}
+
+	public int getPrice() {
+		return price;
+	}
+
+	public void setPrice(int price) {
+		this.price = price;
+	}
+
 	@Override
 	public String toString() {
 		return "Order [no=" + no + ", regdate=" + regdate + ", buyCheck=" + buyCheck + ", userid=" + userid
-				+ ", productNo=" + productNo + "]";
+				+ ", productNo=" + productNo + ", qty=" + qty + ", price=" + price + "]";
 	}
+
+	
 	
 	
 	

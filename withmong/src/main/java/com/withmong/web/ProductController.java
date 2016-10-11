@@ -40,7 +40,7 @@ public class ProductController {
 		Product productDetail = productService.productDetail(no);
 		Location location = productService.getLocationByno(productDetail.getLocation().getNo());
 		productDetail.setLocation(location);
-		
+
 		
 		BreadcrumbsForm crumbs = productService.getCrumbs(productDetail.getCategory().getNo());	
 		//상품 디테일 정보
@@ -55,6 +55,7 @@ public class ProductController {
 				
 		List<ProductReview> productReivewList = productService.getAllProductReivew(no);
 		review.addAttribute("productReivewList",productReivewList);
+		
 		
 		
 		Product product = productService.getProductByNo(no);
@@ -299,14 +300,14 @@ public class ProductController {
 
 	
 	@RequestMapping(value="/productBuy.do", method=RequestMethod.POST)
-	public @ResponseBody void  productBuy (User loginedUser,int productNo) throws Exception{
+	public @ResponseBody void  productBuy (User loginedUser,int productNo, int qty, int price) throws Exception{
 		Product product = productService.getProductByNo(productNo);
-			int price = product.getPrice();
 		
 			Order order = new Order();
 			order.setUserid(loginedUser);
 			order.setProductNo(product);
-			
+			order.setQty(qty);
+			order.setPrice(price);
 			User user = new User();
 			// 유저에서 상품 가격 차감
 			user.setId(loginedUser.getId());
@@ -316,14 +317,26 @@ public class ProductController {
 			user.setId("king");
 			user.setPoint(price);
 			productService.pointupdateAdmin(user);
-			
 			// 주문목록에 추가
 			productService.addOrder(order);
 			
-			
+			// 상품목록에서 qty값 감소시키기
+			product.setQty(qty);
+			productService.productQtyupdate(product);	
 			
 	}
 
+	
+	@RequestMapping(value="/addCart.do", method=RequestMethod.POST)
+	public String addCart(User loginedUser, int productNo) throws Exception{
+		Product product = new Product();
+		product.setUserid(loginedUser.getId());
+		product.setNo(productNo);
+		productService.addCart(product);
+		
+		return "redirect:/detail.do?productNo=" +productNo;
+	}	
+	
 
 
 }

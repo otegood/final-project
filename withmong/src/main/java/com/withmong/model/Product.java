@@ -118,6 +118,10 @@ public class Product {
 		return (int)Math.round(avglike);
 	}
 	
+	public int getPricesum() {
+		return (price * qty);
+	}
+	
 	public double getAvglike() {
 		return avglike;
 	}
@@ -157,8 +161,6 @@ public class Product {
 	public void setCategory(Category category) {
 		this.category = category;
 	}
-
-	
 	
 	public MultipartFile getImgmul() {
 		return imgmul;

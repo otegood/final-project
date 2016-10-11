@@ -42,6 +42,8 @@ public interface ProductService {
 	void pointupdateUser(User user);
 	void pointupdateAdmin(User user);
 	List<Product> getSellerProducts(Product product);
+	void productQtyupdate(Product product);
+	void addCart(Product product);
 
 	
 }

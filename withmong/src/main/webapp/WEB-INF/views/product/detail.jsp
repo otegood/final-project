@@ -98,19 +98,25 @@ $(function() {
 	// 컨트롤러에서 Order를 받아 확인하는 코드를 해야한다.
 	$("#buybtn").one("click", function(){
 		var userPoint ='${LOGIN_USER.point}';
-		var price = '${detail.price }';
+		var price = $("#lastPrice").text();
+		var qty = 0;
+		if('${detail.qty}'>5){
+			qty = $("#selectqty option:selected").val();
+		}else{
+		 	qty = $(":input:radio[name=qty]:checked").val()
+		}
+		qty = parseInt(qty);
+		price = parseInt(price);
 		
 		userPoint = parseInt(userPoint);
 		price = parseInt(price);
 		
-		console.log(userPoint);
-		console.log(price);
 		
-		if(userPoint >= price){
+		if(userPoint >= price || '${detail.qty}'<=0){
 			$.ajax({
 				url:"productBuy.do",
 				type:"POST",
-				data:{productNo:$("#productNo").val() },
+				data:{productNo:$("#productNo").val(),qty:qty,price:price },
 				dataType: "text",
 				success: function(data){
 					alert("상품구매가 완료 되었습니다.");
@@ -138,6 +144,21 @@ $(function() {
 		})
 	});
 	
+	//찜하기 버튼을 클릭했을 때 수행하는 코드
+	$("#cartbtn").one("click",function() {
+		$.ajax({
+			url:"addCart.do",
+			type:"POST",
+			data:{productNo:$("#productNo").val()},
+			dataType: "text",
+			success: function(data){
+				//로딩하는 ajax 추가
+				alert("상품찜하기가 완료 되었습니다.");
+				$("#cartbtn").addClass("disabled");
+			}
+		})
+	});
+	
 	// 관련 상품 가져오기에 첫번째아이에게 클래스 추가
 	$("#myCaroitem").find("div:first").addClass("active");
 	
@@ -153,6 +174,24 @@ $(function() {
 		$(".target").before("<img alt='grade' src='resources/images/default/gold.jpg' id='chk' class='img-circle overlay img-thumbnail'>");
 	}
 	$("#profile").corner();
+	
+	// 가격클릭시
+	$("input[name='qty']").first().attr("checked",true);
+	$("input[name='qty']").change(function() {
+		$("#lastPrice").empty();
+				var qty = $(this).val();
+				$("#lastPrice").append(qty * "${detail.price}" + 'P');
+			});
+	$("#selectqty").change(function() {
+		$("#lastPrice").empty();
+		$("#qtyview").empty();
+				var qty = $(this).val();
+				$("#qtyview").append("구매 수 : "+qty+" X ${detail.price } P = "+qty * "${detail.price}" + "P")
+				$("#lastPrice").append(qty * "${detail.price}" + 'P');
+			});
+	
+	
+	
 })
 
 </script>
@@ -244,18 +283,35 @@ strong {
 				</div>
 				<div class="col-sm-1"></div>
 				<div class="col-sm-3">
-
-					${detail.price } 원<br>
+					<c:if test="${detail.qty le 5}">
+						<c:forEach var="i" begin="1" end="${detail.qty }" step="1" >
+							<input type="radio" name="qty" value="${i }">구매 수 : ${i} X ${detail.price } P = ${i * detail.price }<br>
+						</c:forEach>
+					</c:if>
+					
+					<c:if test="${detail.qty gt 5}">
+							구매 수 :  <select id="selectqty">
+							<c:forEach var="i" begin="1" end="${detail.qty }" step="1" >
+							<option value="${i}">${i }</option>
+						</c:forEach>
+						</select><br><br>
+						<span id="qtyview"></span><br>
+					</c:if>
+					
+					<br>
+					
+					<span id="lastPrice">${1 * detail.price }P</span><br>
 					<c:choose>
-						<c:when test="${empty LOGIN_USER }">
+						<c:when test="${empty LOGIN_USER or detail.qty eq 0}">
 							<button id="buybtn" type="button" class="btn btn-danger"
 								disabled="disabled">구매하기</button>
 						</c:when>
 						<c:otherwise>
-							<button id="buybtn" type="button" class="btn btn-danger">구매하기!!!</button>
+							<button id="buybtn" type="button" class="btn btn-danger">구매하기</button>
 						</c:otherwise>
 					</c:choose>
-
+							<button id="cartbtn" type="button" class="btn btn-info">찜하기</button>
+					
 				</div>
 				<div class="col-sm-1"></div>
 				<div class="col-sm-4">
@@ -406,9 +462,16 @@ strong {
 
 				</div>
 				<div id="menu3" class="tab-pane fade">
-					<div class="embed-responsive embed-responsive-16by9">
- 						 <iframe width="560" height="315" src="https://www.youtube.com/embed/${detail.video }"></iframe>
-					</div>
+					<c:choose>
+						<c:when test="${empty detail.video }">
+							<h3>관련 유튜브 동영상이 없습니다.</h3>
+						</c:when>
+						<c:otherwise>
+							<div class="embed-responsive embed-responsive-16by9">
+	 							 <iframe width="560" height="315" src="https://www.youtube.com/embed/${detail.video }"></iframe>
+							</div>
+						</c:otherwise>
+					</c:choose>
 				</div>
 			</div>
 		</div>
