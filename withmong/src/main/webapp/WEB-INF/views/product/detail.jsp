@@ -94,7 +94,9 @@ $(function() {
 		
 	});
 	
-	
+	var userPoint ='${LOGIN_USER.point}';
+	userPoint = parseInt(userPoint);
+	console.log(userPoint)
 	// 컨트롤러에서 Order를 받아 확인하는 코드를 해야한다.
 	$("#buybtn").one("click", function(){
 		var userPoint ='${LOGIN_USER.point}';
