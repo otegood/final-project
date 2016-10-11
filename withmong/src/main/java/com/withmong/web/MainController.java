@@ -191,6 +191,7 @@ public class MainController {
 			Category category = mainService.getCategoryName(criteria.getCategoryNo());
 		
 			// 페이지 번호가 1보다 작으면 1페이지로 리다이렉트
+				
 				if (pno < 1) {
 					return "redirect:/categoryList.do?categoryNo="+ criteria.getCategoryNo()
 							+ "&pno=1";
