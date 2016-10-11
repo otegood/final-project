@@ -26,6 +26,7 @@
   	<typeAlias type="com.withmong.model.Order" alias="Order"/>
   	<typeAlias type="com.withmong.model.Report" alias="Report"/>
 
+	<typeAlias type="com.withmong.form.ProfitForm" alias="Profit"/>
   	<typeAlias type="com.withmong.form.CountForm" alias="CountForm"/>
   	<typeAlias type="com.withmong.form.CountChartForm" alias="CountChartForm"/>
   	<typeAlias type="com.withmong.model.Cart" alias="Cart"/>

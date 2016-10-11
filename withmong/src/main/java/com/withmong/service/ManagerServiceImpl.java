@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.withmong.dao.ManagerDao;
 import com.withmong.form.CountChartForm;
+import com.withmong.form.ProfitForm;
 import com.withmong.model.Order;
 import com.withmong.model.Point;
 import com.withmong.model.Product;
@@ -91,5 +92,11 @@ public class ManagerServiceImpl implements ManagerService{
 	@Override
 	public List<Report> getAllReport() {
 		return managerDao.getAllReport();
+	}
+	
+	// 수익목록
+	@Override
+	public List<ProfitForm> profitChart() {
+		return managerDao.getProfitList();
 	}
 }
