@@ -90,8 +90,8 @@ strong {
 						<c:choose>
 							<c:when test="${fn:length(p.contents) > 160}">
 	                                 ${fn:substring(p.contents, 0, 160)}...</c:when>
-							<c:otherwise>
-	                                 ${p.contents}
+								  <c:otherwise>
+	                               	  ${p.contents}
 	                              </c:otherwise>
 						</c:choose>
 					</p>
@@ -109,6 +109,35 @@ strong {
 			</div>
 			<hr>
 		</c:forEach>
+		
+		<div class="row text-center">
+			<ul class="pagination">
+			<c:if test="${param.pno gt 1 }">
+    			<li>
+      				<a href="categoryList.do?categoryNo=${param.categoryNo}&pno=${param.pno - 1 }" aria-label="Previous">
+        				<span aria-hidden="true">&laquo;</span>
+      				</a>
+    			</li>
+    		</c:if>
+    		<c:forEach var="num" begin="${navi.beginPage }" end="${navi.endPage }">
+    			<c:choose>
+    				<c:when test="${param.pno eq num }">
+    					<li class="active"><a href="categoryList.do?categoryNo=${param.categoryNo }&pno=${num }">${num }</a></li>
+    				</c:when>
+    				<c:otherwise>
+					    <li><a href="categoryList.do?categoryNo=${param.categoryNo }&pno=${num }"">${num }</a></li>
+    				</c:otherwise>
+    			</c:choose>
+    		</c:forEach>
+    		<c:if test="${param.pno lt navi.totalPages}">
+    			<li>
+      				<a href="categoryList.do?categoryNo=${param.categoryNo }&pno=${param.pno + 1 }" aria-label="Next">
+        				<span aria-hidden="true">&raquo;</span>
+      				</a>
+    			</li>
+    		</c:if>
+  			</ul>
+		</div>
 	</div>
 
 

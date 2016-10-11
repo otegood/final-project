@@ -121,10 +121,10 @@
 		    $(window).scroll(function () {
 		        if ($(this).scrollTop() > 100) {
 		            $('#back-top').fadeIn();
-		            $('#direct').fadeIn();
+		           
 		        } else {
 		            $('#back-top').fadeOut();
-		            $('#direct').fadeOut();
+		           
 		        }
 		    });
 		 
@@ -136,13 +136,6 @@
 		        return false;
 		    });
 		    
-		    //scroll body-left
-		    $('#direct a').click(function () {
-		        $('body,html').animate({
-		            scrollTop: 0
-		        }, 800);
-		        return false;
-		    });
 		});
 		
 		//여기서부터
@@ -235,20 +228,7 @@ strong {
     transition: 1s;
 }
 
-#direct a {
-    width: 88px;
-    display: block;
-    text-align: center;
-    font: 11px/100% Arial, Helvetica, sans-serif;
-    text-transform: uppercase;
-    text-decoration: none;
-    
- 
-    /* transition */
-    -webkit-transition: 1s;
-    -moz-transition: 1s;
-    transition: 1s;
-}
+
 #back-top a:hover {
     color: #000;
 }
@@ -300,26 +280,8 @@ strong {
 		<br>
 	<div class="row content">
 		
-		<div class="col-sm-1 sidenav" style="padding-right: 0px; margin-top: 100px;" >
-			<div><br /></div>
-			<div><br /></div>
-			<div><br /></div>
-			<div><br /></div>
-			<div><br /></div>
-			<div><br /></div>
-			<div><br /></div>
-			<div><br /></div>
-			
-			
-				<p id="direct" style="position: fixed; height: auto; ">
-				    <h5><a href="siteinfo.do" style="text-decoration:none;">이용안내</a></h5>
-				    <h5><a href="privacy.do" style="text-decoration:none;">개인정보<br />보호정책</a></h5>
-				 	<h5><a href="stipulation.do" style="text-decoration:none;">이용약관</a></h5>
-				</p>
-			
-		</div>
 		
-		<div class="col-sm-10">
+		<div class="col-sm-11">
 		<div id="myCarousel" class="carousel slide" data-ride="carousel"
 			style="height: 250px;">
 			<!-- Indicators -->
@@ -427,7 +389,7 @@ strong {
 			<div><br /></div>
 			
 				<p id="back-top" style="position: fixed; height: auto;">
-				    <a href="#top"><span><img alt="" src="resources/images/default/top.png" style="height: 100%;"></span>
+				    <a href="#top"><span><img alt="" src="resources/images/default/top.jpg" style="height: 100%;"></span>
 					</a>
 				</p>
 			

@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Required;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.withmong.model.Category;
 import com.withmong.model.Criteria;
+import com.withmong.model.Pagination;
 import com.withmong.model.Product;
 import com.withmong.model.User;
 import com.withmong.service.MainService;
@@ -57,7 +59,7 @@ public class MainController {
 			 String title = product.getTitle();
 			 
 			if (title.length() > 15) {
-				title = title.substring(0, 14)+"...";
+				title = title.substring(0, 12)+"...";
 				product.setTitle(title);
 			}else{
 				product.setTitle(title);				
@@ -101,7 +103,7 @@ public class MainController {
 				 String title = product.getTitle();
 				 
 				if (title.length() > 15) {
-					title = title.substring(0, 14)+"...";
+					title = title.substring(0, 12)+"...";
 					product.setTitle(title);
 				}else{
 					product.setTitle(title);				
@@ -140,7 +142,7 @@ public class MainController {
 				 String title = product.getTitle();
 				 
 				if (title.length() > 15) {
-					title = title.substring(0, 14)+"...";
+					title = title.substring(0, 12)+"...";
 					product.setTitle(title);
 				}else{
 					product.setTitle(title);				
@@ -182,22 +184,55 @@ public class MainController {
 	//카테고리 번호 상품 가지고 오기  
 	
 	@RequestMapping(value="/categoryList.do")
-	public String categoryList (@RequestParam(name="categoryNo") int no, Model model, Category category) throws Exception {
+	public String categoryList (
+			@RequestParam(name="pno", required=false, defaultValue="1" ) int pno,
+			Criteria criteria, Model model)  throws Exception {
 		
-		category = mainService.getCategoryName(no);
+			Category category = mainService.getCategoryName(criteria.getCategoryNo());
 		
-		//user = mainService.getuserBycateno(no);
+			// 페이지 번호가 1보다 작으면 1페이지로 리다이렉트
+				if (pno < 1) {
+					return "redirect:/categoryList.do?categoryNo="+ criteria.getCategoryNo()
+							+ "&pno=1";
+				}
+				int rows = 4;
+				int pages = 5;
+				int beginIndex = (pno - 1)*rows + 1;
+				int endIndex = pno*rows;
+				
+				// 전체 데이타 건수 조회하기
+				int totalRows = mainService.getTotalRows(criteria);
+				
+				// 페이지 내비게이션 정보 생성하기
+				Pagination pagination = new Pagination(rows, pages, pno, totalRows);
+				
+				// 페이지번호가 너무 크면 맨 마지막 페이지로 리다이렉트
+				if (pno > pagination.getTotalPages()) {
+					return "redirect:/categoryList.do?categoryNo="+ criteria.getCategoryNo() +"&pno="+pagination.getTotalPages();
+				}
+				
 		
-		List<Product> products = mainService.getCateproductList(no);
+				
+				// 데이타 조회하기
+				criteria.setBeginIndex(beginIndex);
+				criteria.setEndIndex(endIndex);
+			
+				System.out.println(beginIndex);
+				System.out.println(endIndex);
+				System.out.println(criteria.getCategoryNo());
+				List<Product> products = mainService.getCategory(criteria);
+
+				System.out.println("개수:"+products.size());
+				
+			
+				// 카테고리 번호에 따른 상품 정보 조회
+				model.addAttribute("products",products);
+				model.addAttribute("navi", pagination);
+				model.addAttribute("category", category);
 	
-		// 카테고리 번호에 따른 상품 정보 조회
-		model.addAttribute("products",products);
-		model.addAttribute("category", category);
-		//model.addAttribute("user", user);
-		
 
 		
-		return "sidemain/categoryList";
+				return "sidemain/categoryList";
 		
 		
 	}

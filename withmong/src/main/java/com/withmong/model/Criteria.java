@@ -6,9 +6,17 @@ public class Criteria {
 	private String keyword;
 	private int beginIndex;
 	private int endIndex;
+	private int categoryNo;
 	
 	public Criteria() {}
 
+	
+	public int getCategoryNo() {
+		return categoryNo;
+	}
+	public void setCategoryNo(int categoryNo) {
+		this.categoryNo = categoryNo;
+	}
 	public String getOpt() {
 		return opt;
 	}
