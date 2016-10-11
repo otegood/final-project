@@ -297,29 +297,12 @@ strong {
 			<div class="carousel-inner" role="listbox">
 				<c:forEach var="display" items="${displaylist }" varStatus="Product">
 				<div class="item <c:if test='${Product.first }'>active</c:if>" id="show-item">
-						<img style="width: 250px; height: 250px;" alt="hotproduct"
-							src=" ../../resources/images/${display.img}" />
+						<a href="detail.do?productNo=${display.no }">
+							<img style="width: 250px; height: 250px;" alt="hotproduct"
+								src=" ../../resources/images/${display.img}" />
+						</a>
 				</div>
 				</c:forEach>
-				<!-- 
-			
-				<div class="item active" id="show-item">
-					<img style="width: 250px; height: 250px;" alt="hotproduct"
-						src="resources/images/product/kim.PNG" />
-				</div>
-				<div class="item">
-					<img style="width: 250px; height: 250px;" alt="hotproduct"
-						src="resources/images/product/glyphicons-girl.png" />
-				</div>
-				
-				<div class="carousel-inner" role="listbox">
-					<c:forEach var="display" items="${displaylist }">
-						<img style="width: 250px; height: 250px;" alt="hotproduct"
-							src=" ../../resources/images/${display.img}" />
-					</c:forEach>
-				</div>
-				
-				 -->
 			</div>
 
 			<!-- Left and right controls -->
