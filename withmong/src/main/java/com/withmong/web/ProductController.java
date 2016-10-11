@@ -35,7 +35,6 @@ public class ProductController {
 	public String detail(@RequestParam(name="productNo") int no, Model model,Model review,Model userDe,User loginedUser) {
 		//조회수 업데이트
 		productService.updateHits(no);
-
 		
 		Product productDetail = productService.productDetail(no);
 		Location location = productService.getLocationByno(productDetail.getLocation().getNo());
@@ -323,6 +322,8 @@ public class ProductController {
 			// 상품목록에서 qty값 감소시키기
 			product.setQty(qty);
 			productService.productQtyupdate(product);	
+			
+			loginedUser.setPoint(loginedUser.getPoint() - price);
 			
 	}
 
