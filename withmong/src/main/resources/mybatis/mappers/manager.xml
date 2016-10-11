@@ -160,4 +160,22 @@
 		order by
 			regdate desc
 	</select>
+<!-- 수익목록 -->
+	<select id="getProfitList" resultType="Profit">
+		select
+			sum(price*0.1) as "profit",
+			to_char(regdate,'mm/dd') as "regdate"
+		from 
+			order_table
+		where 
+			regdate >= (sysdate-7) 
+		and 
+			regdate &lt; sysdate 
+		and
+			buycheck = 'Y'
+		group by 
+			to_char(regdate, 'mm/dd')
+		order by 
+			to_char(regdate, 'mm/dd') 
+	</select>
 </mapper>

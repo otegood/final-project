@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.withmong.form.CountChartForm;
+import com.withmong.form.ProfitForm;
 import com.withmong.model.Order;
 import com.withmong.model.Point;
 import com.withmong.model.Product;
@@ -48,12 +49,15 @@ public class ManagerController {
 		model.addAttribute("reportList", managerService.getAllReport());
 		List<CountChartForm> productChart = managerService.productChart();
 		List<CountChartForm> orderChart = managerService.orderChart();
+		List<ProfitForm> profitChart = managerService.profitChart();
 		// 오브젝트를 스트링으로 바꿔줌
 		ObjectMapper mapper = new ObjectMapper();
 		String pjsonString = mapper.writeValueAsString(productChart);
 		String ojsonString = mapper.writeValueAsString(orderChart);
+		String profitjsonString = mapper.writeValueAsString(profitChart);
 		model.addAttribute("productChart",pjsonString );
 		model.addAttribute("orderChart", ojsonString);
+		model.addAttribute("profitChart", profitjsonString);
 		if(loginedUser.getId().equals("king")){
 			url = "mmain"; 
 		}else{
@@ -138,18 +142,6 @@ public class ManagerController {
 		return "redirect:/userlist.do";
 	}
 	
-	// 상품등록 차트표
-	@RequestMapping("/productchart.do")
-	public String productChart(Model model) throws Exception {
-		List<CountChartForm> countChart = managerService.productChart(); 
-		// 오브젝트를 스트링으로 바꿔줌
-		ObjectMapper mapper = new ObjectMapper();
-		String jsonString = mapper.writeValueAsString(countChart);
-		model.addAttribute("countChart",jsonString ); 
-		
-		return "manager/productchart";
-	}
-	
 	// 신고목록
 	@RequestMapping("/reportList.do")
 	public String reportList(Model model) {
@@ -157,4 +149,5 @@ public class ManagerController {
 		model.addAttribute("reportList", reportList);
 		return "manager/reportlist";
 	}
+	
 }

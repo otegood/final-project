@@ -52,14 +52,16 @@
 	#frames{
 		height: 400px;
 	}
-	
+	th{
+		text-align: center;
+	}
 </style>
 <script type="text/javascript">
 
 <!-- tr눌렀을때 페이지 이동시키기 -->
 $(function(){
 	$("#chain table").click(function(){
-		$(location).attr('href', 'detail.do?productNo='+$(this).find("td:first").text());
+		$(location).attr('href', 'detail.do?productNo='+$(this).find("th:first").text());
 	});
 });
 
@@ -75,24 +77,22 @@ $(function(){
 		<c:forEach var="product" items="${productList }">
 			<table class="table" style="margin-bottom: 20px;" border="1">
 				<tr>
-					<th style="width: 100px;">번호</th>
-					<th style="width: 200px;">이미지</th>
+					<th style="width: 100px;">${product.no }</th>
 					<th style="width: 300px;">제목</th>
 					<th style="width: 300px;">판매자</th>
 					<th>상품가격</th>
-					<th>갯수</th>
-					<th>결제액</th>
-					<th>삭제</th>
+					<th style="width: 110px;">Danger</th>
 				</tr>
 				<tr>
-					<td rowspan="3">${product.no }</td>
-					<td rowspan="3"><img alt=""
-						src="resources/images/${product.img }"
-						style="width: 100px; height: 100px;"></td>
+					<td rowspan="3"><img src="resources/images/${product.img }" style="width: 100px; height: 100px;"></td>
 					<td>${product.title }</td>
 					<td>${product.userid }</td>
 					<td><fmt:formatNumber value="${product.price }"></fmt:formatNumber>point</td>
-					<td rowspan="3"><a class="btn btn-danger btn-xl" href="deleteProduct.do?no=${product.no }" style="height: 130px; width: 60px;"></a></td>
+					<td rowspan="3">
+						<a class="btn btn-danger btn-xl" href="deleteProduct.do?no=${product.no }" style="height: 100px; width:100px;">
+							<font size="6">삭제</font>
+						</a>
+					</td>
 				</tr>
 				<tr>
 					<th>평점</th>

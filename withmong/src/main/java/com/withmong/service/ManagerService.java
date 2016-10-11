@@ -3,6 +3,7 @@ package com.withmong.service;
 import java.util.List;
 
 import com.withmong.form.CountChartForm;
+import com.withmong.form.ProfitForm;
 import com.withmong.model.Order;
 import com.withmong.model.Point;
 import com.withmong.model.Product;
@@ -39,4 +40,6 @@ public interface ManagerService {
 	List<CountChartForm> orderChart();
 	// 신고목록
 	List<Report> getAllReport();
+	// 수익목록
+	List<ProfitForm> profitChart();
 }

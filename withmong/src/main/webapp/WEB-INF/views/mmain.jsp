@@ -64,6 +64,7 @@
 <script type="text/javascript">
 $(function(){
 	$("#orderChart").hide(1);
+	$("#profitChart").hide(1);
 	$("#notices").click(function(){
 		$("#notice").show(300, "swing");
 		$("#request").hide(300);
@@ -123,11 +124,19 @@ $(function(){
 	$("#pChart").click(function(){
 		$("#orderChart").hide(300);
 		$("#productChart").show(300, "swing");
+		$("#profitChart").hide(300);
 	});
 	$("#oChart").click(function(){
 		$("#productChart").hide(300);
 		$("#orderChart").show(300, "swing");
+		$("#profitChart").hide(300);
 	});
+	$("#fChart").click(function(){
+		$("#productChart").hide(300);
+		$("#profitChart").show(300, "swing");
+		$("#orderChart").hide(300);
+	});
+	
 	// 상품 차트
 	var data = JSON.parse('${productChart}');
 	var chartData= [];
@@ -174,6 +183,34 @@ $(function(){
 			yaxis : { label : "구매 수"	}
 		}
 	});
+	
+	// 수익 차트
+	var profitdata = JSON.parse('${profitChart}');
+	var profitchartData= [];
+	
+	$.each(profitdata, function(index, item) {
+		var profitspotData = [];
+		profitspotData.push(item.regdate);
+		profitspotData.push(item.profit);
+		
+		profitchartData.push(profitspotData);
+	});
+	
+	$.jqplot('profitgraph', [ profitchartData ], {
+		title : '수익 그래프',
+		series : [ {	
+						color : 'red', //Line Color
+						lineWidth : 3, // Line 굵기
+						markerOptions : { // 점 옵션
+							size : '3px' // 점 Size
+						}
+				 } ],
+		axes : {
+			xaxis : {renderer : $.jqplot.CategoryAxisRenderer},
+			yaxis : { label : "수익"	}
+		}
+	});
+	
 });
 </script>
 <title>관리자 페이지</title>
@@ -523,6 +560,7 @@ $(function(){
 			<div style="text-align: right">
 				<a class="btn btn-xs btn-warning" id="pChart">상품 통계</a>
 				<a class="btn btn-xs btn-warning" id="oChart">구매 통계</a>
+				<a class="btn btn-xs btn-warning" id="fChart">수익 통계</a>
 			</div>
 			<div>
 			<!-- 상품등록 -->
@@ -537,6 +575,13 @@ $(function(){
 					<h4 style="text-align: center;"><b>구매 통계</b></h4>
 					<div>
 						<div id="ograph" style="width:600px; height:379px;"></div>
+					</div>
+				</div>
+			<!-- 수익통계 -->
+				<div id="profitChart" class="panel panel-boby">
+					<h4 style="text-align: center;"><b>수익 통계</b></h4>
+					<div>
+						<div id="profitgraph" style="width:600px; height:379px;"></div>
 					</div>
 				</div>
 			</div>
