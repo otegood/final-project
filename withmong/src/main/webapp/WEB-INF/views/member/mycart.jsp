@@ -83,7 +83,7 @@ $(function() {
 		<header><%@ include file="../header.jsp" %></header>
 	
 		<div class="container" >
-			<div class="row">
+			<div class="row col-md-10 col-md-offset-1">
 				<h1>나의 찜 목록</h1>
 				<table id="example" class="table table-striped table-bordered">
 					<colgroup>

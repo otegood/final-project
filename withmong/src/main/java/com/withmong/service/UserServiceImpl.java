@@ -128,14 +128,14 @@ public class UserServiceImpl implements UserService{
 		// 구매정보 삭제
 		userDao.deletePurchase(orderNo);
 		
+		userDao.getPlusQty(orderInfo);
+		
 	}
 
 
 	@Override
 	public void denySell(int orderNo) {
-		Order orderInfo = userDao.getOrderInfoByNo(orderNo);
 		userDao.denySell(orderNo);
-		userDao.getPlusQty(orderInfo);
 	}
 
 	

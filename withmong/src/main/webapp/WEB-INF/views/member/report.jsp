@@ -64,7 +64,7 @@ $(function() {
 		<header><%@ include file="../header.jsp" %></header>
 	
 		<div class="container" >
-			<h2 class="col-md-offset-2"><span class="glyphicon glyphicon-warning-sign"> 신고하기</span></h2>
+			<h2 class="col-md-offset-2"><span class="glyphicon glyphicon-warning-sign" style="color: red;"></span>   신고하기</h2>
 			<div class="well col-md-8 col-md-offset-2 row">
 				<form role="form" method="post" action="report.do" id="report">
 					<div class="form-group row">
