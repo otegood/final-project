@@ -102,7 +102,7 @@ $(function() {
 		<div class="container" >
 			<div class="row">
 				<h1>나의 구매내역</h1>
-				<table id="example" class="table table-striped table-bordered">
+				<table id="example" class="table table-hover">
 					<colgroup>
 						<col width="10%">
 						<col width="*%">
