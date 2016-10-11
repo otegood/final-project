@@ -56,7 +56,7 @@ $(function() {
 		success: function(data) {
 					// 전체 객체가 한꺼번에나옴
 			if(data.length == 0) {
-				$("tbody").append("<tr><td class='text-center' colspan='6'><b style='color:red'>판매하신 내역이 없습니다.</b></td></tr>");
+				$("tbody").append("<tr><td class='text-center' colspan='7'><b style='color:red'>판매하신 내역이 없습니다.</b></td></tr>");
 				return false;
 			} 
 					
@@ -67,7 +67,8 @@ $(function() {
 				var jsp = "<tr>";
 				jsp += "<td class='text-center'><a href='getuserinfo.do?id="+item.userid.id+"'>"+item.userid.id+"</a></td>";
 				jsp += "<td class='text-center'><a href='detail.do?productNo="+item.productNo.no+"'>"+item.productNo.title+"</a></td>";
-				jsp += "<td class='text-center'>"+item.productNo.price+"p</td>";
+				jsp += "<td class='text-center'>"+item.qty+"</td>";
+				jsp += "<td class='text-center'>"+item.price+"p</td>";
 				jsp += "<td class='text-center'>"+item.regdate+"</td>";
 				if(item.buyCheck == 'W'){
 					jsp += "<td class='text-center'><span class='label label-warning'>판매요청중</span></td>";
@@ -108,6 +109,7 @@ $(function() {
 					<colgroup>
 						<col width="10%">
 						<col width="*%">
+						<col width="5%">
 						<col width="10%">
 						<col width="15%">
 						<col width="10%">
@@ -117,6 +119,7 @@ $(function() {
 			            <tr>
 			                <th class="text-center">구매자ID</th>
 			                <th class="text-center">상품명</th>
+			                <th class="text-center">수량</th>
 			                <th class="text-center">포인트</th>
 			                <th class="text-center">거래일자</th>
 			                <th class="text-center">판매상태</th>

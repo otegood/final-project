@@ -86,7 +86,6 @@
 		(test_seq.nextval, #{contents}, sysdate, #{reason}, #{reporter.id}, #{suspect.id})
 	</insert>
 
-	
 	<!-- 내 구매 정보 보기 기능 (Product에 들어갈 예정)--> 
 	<select id="myPurchase" parameterType="string" resultType="Order">
 		select
@@ -94,6 +93,8 @@
 			o.regdate 		as regdate, 
 			o.userid		as "userid.id", 
 			o.productNo		as "productNo.no", 
+			o.qty			as qty,
+			o.price			as price,
 			o.buyCheck		as buyCheck,
 			p.userid		as "productNo.userid",
 			p.title			as "productNo.title",
@@ -114,6 +115,8 @@
 			o.userid		as "userid.id", 
 			o.productNo		as "productNo.no", 
 			o.buyCheck		as buyCheck,
+			o.qty			as qty,
+			o.price			as price,
 			p.userid		as "productNo.userid",
 			p.title			as "productNo.title",
 			p.price			as "productNo.price"
@@ -138,6 +141,8 @@
 			o.regdate 		as regdate, 
 			o.userid		as "userid.id", 
 			o.productNo		as "productNo.no", 
+			o.qty			as qty,
+			o.price			as price,
 			p.userid		as "productNo.userid",
 			p.title			as "productNo.title",
 			p.price			as "productNo.price"
@@ -157,7 +162,7 @@
 	<!-- 4) 구매자 포인트 증가 update 문 -->
 	<update id="increasePurchasePoint" parameterType="Order">
 		update user_table
-		set point = point + #{productNo.price}
+		set point = point + #{price}
 		where id = #{userid.id}
 	</update>
 	
@@ -171,7 +176,7 @@
 	<!-- (판매)5. 물품 qty 증가 update 문 -->
 	<update id="getPlusQty" parameterType="Order">
 		update product_table
-		set qty = qty + 1
+		set qty = qty + #{qty}
 		where no = #{productNo.no}
 	</update>
 	
@@ -185,7 +190,7 @@
 	<!-- (판매)2. 판매자 포인트 증가 update 문 -->
 	<update id="getPointSeller" parameterType="Order">
 		update user_table
-		set point = point + (#{productNo.price}*0.9)
+		set point = point + (#{price}*0.9)
 		where id = #{productNo.userid}
 	</update>
 	<!-- (판매)3. 구분자 변경 -->
