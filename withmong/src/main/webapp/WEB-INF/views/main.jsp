@@ -264,7 +264,6 @@ strong {
     height: 108px;
     display: block;
     margin-bottom: 7px;
-    background: #ddd url(up-arrow.png) no-repeat center center;
  
     /* rounded corners */
     -webkit-border-radius: 15px;
