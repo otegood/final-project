@@ -99,4 +99,9 @@ public class ManagerServiceImpl implements ManagerService{
 	public List<ProfitForm> profitChart() {
 		return managerDao.getProfitList();
 	}
+	// 카테고리별 상품목록
+	@Override
+	public List<Product> getProducts(int cno) {
+		return managerDao.getProducts(cno);
+	}
 }

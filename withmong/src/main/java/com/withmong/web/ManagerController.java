@@ -149,5 +149,11 @@ public class ManagerController {
 		model.addAttribute("reportList", reportList);
 		return "manager/reportlist";
 	}
-	
+	// 카테고리 별 상품목록
+	@RequestMapping("/productlist.do")
+	public String productList(@RequestParam(name="cno") int cno, Model model) {
+		List<Product> products = managerService.getProducts(cno);  
+		model.addAttribute("products", products);
+		return "manager/categoryproductlistm";
+	}
 }

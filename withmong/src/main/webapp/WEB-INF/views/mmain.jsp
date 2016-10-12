@@ -421,7 +421,12 @@ $(function(){
 				</div>
 				<!-- 신고목록 -->
 				<div id = "reportlist" style="display: none;">
-					<h1>신고내역</h1>
+					<h4 style="text-align: center;">
+						<b>신고내역</b>
+					</h4>
+					<div style="text-align: right">
+						<a class="btn btn-default btn-xs" href="reportList.do">더 보기</a>
+					</div>
 					<table class="table table-hover">
 						<thead>
 							<tr>
@@ -567,21 +572,21 @@ $(function(){
 				<div id="productChart" class="panel panel-boby">
 					<h4 style="text-align: center;"><b>상품 통계</b></h4>
 					<div>
-						<div id="pgraph" style="width:600px; height:379px;"></div>
+						<div id="pgraph" style="width:530px; height:379px;"></div>
 					</div>
 				</div>
 			<!-- 구매통계 -->
 				<div id="orderChart" class="panel panel-boby">
 					<h4 style="text-align: center;"><b>구매 통계</b></h4>
 					<div>
-						<div id="ograph" style="width:600px; height:379px;"></div>
+						<div id="ograph" style="width:530px; height:379px;"></div>
 					</div>
 				</div>
 			<!-- 수익통계 -->
 				<div id="profitChart" class="panel panel-boby">
 					<h4 style="text-align: center;"><b>수익 통계</b></h4>
 					<div>
-						<div id="profitgraph" style="width:600px; height:379px;"></div>
+						<div id="profitgraph" style="width:530px; height:379px;"></div>
 					</div>
 				</div>
 			</div>
