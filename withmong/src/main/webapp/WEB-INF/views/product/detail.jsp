@@ -17,7 +17,6 @@
 <script type="text/javascript">
 
 $(function() {
-	
 	getOptionBox();
 	
 	
@@ -156,7 +155,7 @@ $(function() {
 				dataType: "text",
 				success: function(data){
 					alert("상품구매가 완료 되었습니다.");
-					location.href="detail.do?productNo=" + $("#productNo").val()
+				//	location.href="detail.do?productNo=" + $("#productNo").val()
 					$("#buybtn").addClass("disabled");
 				}
 			})
