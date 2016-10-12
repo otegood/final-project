@@ -252,8 +252,17 @@ $(function() {
 				$("#qtyview").append("구매 수 : "+qty+" X ${detail.price } P = "+qty * "${detail.price}" + "P")
 				$("#lastPrice").append(qty * "${detail.price}" + 'P');
 			});
-	
-	
+
+	var loginId = '${LOGIN_USER.id}'
+	var saleId = '${userDetail.id}'
+	if(loginId == saleId){
+		$("#buybtn").hide()
+		$("#cartbtn").hide()	
+	}else{
+		$("#buybtn").show()
+		$("#cartbtn").show()
+	}
+
 	
 })
 

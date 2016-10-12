@@ -159,15 +159,13 @@ public class ProductServiceImpl implements ProductService{
 		String preimgName = product.getImg();
 		String changeImgName = product.getImgmul().getOriginalFilename();
 		
-		System.out.println(preimgName);
-		System.out.println(changeImgName);
+	
 		
 		if(!(changeImgName.isEmpty())){	
 		
 			String protitle = "product/"+product.getUserid();
 			
 			String extName = changeImgName.substring(changeImgName.lastIndexOf(".")+1);
-			System.out.println("extName : " + extName);
 			byte[] bytes = product.getImgmul().getBytes();
 			File file = new File(UPLOAD_DIRECTORY, protitle + no + "." + extName);
 			FileCopyUtils.copy(bytes, file);
