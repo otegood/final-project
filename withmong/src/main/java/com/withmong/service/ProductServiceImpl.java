@@ -23,7 +23,7 @@ import com.withmong.model.User;
 @Service
 public class ProductServiceImpl implements ProductService{
 
-	private static String UPLOAD_DIRECTORY = "C:\\Users\\JHTA\\git\\final-project\\withmong\\src\\main\\webapp\\resources\\images";
+	private static String UPLOAD_DIRECTORY = "C:\\project_spring\\workspace\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\wtpwebapps\\withmong\\resources\\images";
 	
 	@Autowired
 	private ProductDao productDao;
