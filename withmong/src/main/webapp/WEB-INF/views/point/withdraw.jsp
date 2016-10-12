@@ -179,6 +179,13 @@ strong {
 							</td>
 							<td>100,000</td>
 						</tr>
+						<tr>
+							<td>
+								<input type="radio" onclick="showPrice();" id="500,000" name="point" value="500000" >
+                     			 <label for="500,000">500,000</label> 
+							</td>
+							<td>500,000</td>
+						</tr>
 					</tbody>
 				</table>
 				<button class="btn btn-success btn-lg pull-right" id="wbtn">환전하기</button>	

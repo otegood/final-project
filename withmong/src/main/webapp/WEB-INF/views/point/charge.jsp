@@ -181,6 +181,13 @@ strong {
 							</td>
 							<td>100,000</td>
 						</tr>
+						<tr>
+							<td>
+								<input type="radio" onclick="showPrice();" class="radiobox" name="point" value="1000000" >
+                     			 <label for="1,000,000">1,000,000</label> 
+							</td>
+							<td>1,000,000</td>
+						</tr>
 					</tbody>
 				</table>
 				<button class="btn btn-success btn-lg pull-right">충전하기</button>
