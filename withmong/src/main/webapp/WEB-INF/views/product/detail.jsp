@@ -18,7 +18,12 @@
 
 $(function() {
 	
+	getOptionBox();
+	
+	
+	var REPLY_EXIST = 1
 	//별점 및 수정 버튼
+	
 	var loginedUserId = '${LOGIN_USER.id}';
 	var saleId = '${userDetail.id }';
 	getStarImg('${detail.avglike}');
@@ -28,6 +33,28 @@ $(function() {
 		$("#messagebtn").hide();
 		$("#reportbtn").hide();
 	}
+	
+	
+	function getOptionBox(){
+		if ('${detail.qty}' <= 5){
+			for(var i=1;i<='${detail.qty }';i++){
+				$("#optionBox").append('<input type="radio" name="qty" value="'+ i +'">구매 수 : '+i+' X ${detail.price } P = '+i * '${detail.price }'+'<br>');
+				
+			}
+		}else{
+				var $selectbox = $("<select id='selectqty'></select>");
+				
+				for(i=1;i<='${detail.qty }';i++){
+					$selectbox.append('<option value="'+i+'">'+i+'</option>')
+				}
+					$("#optionBox").append("구매수 :");
+					$("#optionBox").append($selectbox);
+					$("#optionBox").append("<br><span id='qtyview'></span><br>");
+								
+			}
+	}
+	
+	
 	
 	function getStarImg(data){		
 		$("#avgStar").empty();
@@ -45,7 +72,6 @@ $(function() {
 	
 	// 댓글 가져오기
 	function getReviewList(){
-		
 		$("#reviewTb").empty();
 		
 		$.ajax({
@@ -69,34 +95,42 @@ $(function() {
 	}
 	//탭 클릭시 댓글 가져오기
 	$("#tabmenu1").click(function() {
+		if('${proReplyCount}' != 0){
 		getReviewList();
+		}
 	});
-	
 	
 	// 댓글 버튼 클릭시
-	$("#addreviewBtn").click(function(){
-		if (!$.trim($("input[name='contents']").val())) {
-			alert("댓글을 입력해주세요");
-			return false;
-		}
-		
-		$.ajax({
-			url:"productreple.do",
-			type:"POST",
-			data:{score:$(":radio:checked").val(),contents:$("#contents").val(),productNo:$("#productNo").val()},
-			dataType: "text",
-			success: function(data){
-				getReviewList();
-				getStarImg(data);
+	console.log("replycountttttttttt", '${repleCount}');
+	if ('${repleCount}' != REPLY_EXIST) {
+		$("#addreviewBtn").on("click",function(){
+			if (!$.trim($("input[name='contents']").val())) {
+				alert("댓글을 입력해주세요");
+				return false;
 			}
-		})
-		return false;
+	
+			$(this).off("click");
+			console.log($(":radio[name='score']:checked").val());
+			$.ajax({
+				url:"productreple.do",
+				type:"POST",
+				data:{score:$(":radio[name='score']:checked").val(),contents:$("#contents").val(),productNo:$("#productNo").val()},
+				dataType: "text",
+				success: function(data){
+					getReviewList();
+					getStarImg(data);
+					$("#addreviewBtn").addClass("disabled");
+				}
+			})
+			return false;
+		});
 		
-	});
+		
+	}
+	
 	
 	var userPoint ='${LOGIN_USER.point}';
 	userPoint = parseInt(userPoint);
-	console.log(userPoint)
 	// 컨트롤러에서 Order를 받아 확인하는 코드를 해야한다.
 	$("#buybtn").one("click", function(){
 		var userPoint ='${LOGIN_USER.point}';
@@ -122,6 +156,7 @@ $(function() {
 				dataType: "text",
 				success: function(data){
 					alert("상품구매가 완료 되었습니다.");
+					location.href="detail.do?productNo=" + $("#productNo").val()
 					$("#buybtn").addClass("disabled");
 				}
 			})
@@ -133,6 +168,8 @@ $(function() {
 	
 	//댓글 삭제 버튼을 클릭 했을 때 수행하는 코드
 	$("#reviewTb").on("click", "button", function() {
+		$("#addreviewBtn").off("click");
+		
 		$.ajax({
 			url:"productrepleDel.do",
 			type:"POST",
@@ -142,6 +179,31 @@ $(function() {
 				//로딩하는 ajax 추가
 				getReviewList();
 				getStarImg(data);
+				$("#addreviewBtn").removeClass("disabled");
+				
+				//다시 등록
+				$("#addreviewBtn").on("click",function(){
+					if (!$.trim($("input[name='contents']").val())) {
+						alert("댓글을 입력해주세요");
+						return false;
+					}
+					
+					$(this).off("click");
+					$.ajax({
+						url:"productreple.do",
+						type:"POST",
+						data:{score:$(":radio[name='score']:checked").val(),contents:$("#contents").val(),productNo:$("#productNo").val()},
+						dataType: "text",
+						success: function(data){
+							getReviewList();
+							getStarImg(data);
+							$("#addreviewBtn").addClass("disabled");
+							
+						}
+					})
+					return false;
+				});
+				
 			}
 		})
 	});
@@ -285,35 +347,30 @@ strong {
 				</div>
 				<div class="col-sm-1"></div>
 				<div class="col-sm-3">
-					<c:if test="${detail.qty le 5}">
-						<c:forEach var="i" begin="1" end="${detail.qty }" step="1" >
-							<input type="radio" name="qty" value="${i }">구매 수 : ${i} X ${detail.price } P = ${i * detail.price }<br>
-						</c:forEach>
-					</c:if>
-					
-					<c:if test="${detail.qty gt 5}">
-							구매 수 :  <select id="selectqty">
-							<c:forEach var="i" begin="1" end="${detail.qty }" step="1" >
-							<option value="${i}">${i }</option>
-						</c:forEach>
-						</select><br><br>
-						<span id="qtyview"></span><br>
-					</c:if>
-					
+					<div id="optionBox">
+					</div>
 					<br>
-					
-					<span id="lastPrice">${1 * detail.price }P</span><br>
-					<c:choose>
-						<c:when test="${empty LOGIN_USER or detail.qty eq 0}">
-							<button id="buybtn" type="button" class="btn btn-danger"
-								disabled="disabled">구매하기</button>
-						</c:when>
-						<c:otherwise>
-							<button id="buybtn" type="button" class="btn btn-danger">구매하기</button>
-						</c:otherwise>
-					</c:choose>
-							<button id="cartbtn" type="button" class="btn btn-info">찜하기</button>
-					
+					<div>
+						<span id="lastPrice">${1 * detail.price }P</span><br>
+						<c:choose>
+							<c:when test="${empty LOGIN_USER or detail.qty eq 0 or orderCount eq 1}">
+								<button id="buybtn" type="button" class="btn btn-danger"
+									disabled="disabled">구매하기</button>
+							</c:when>
+							<c:otherwise>
+								<button id="buybtn" type="button" class="btn btn-danger">구매하기</button>
+							</c:otherwise>
+						</c:choose>
+						<c:choose>
+							<c:when test="${empty LOGIN_USER or cartCount eq 1}">
+								<button id="cartbtn" type="button" class="btn btn-info"
+									disabled="disabled">찜하기</button>
+							</c:when>
+							<c:otherwise>
+								<button id="cartbtn" type="button" class="btn btn-info">찜하기</button>
+							</c:otherwise>
+						</c:choose>
+					</div>
 				</div>
 				<div class="col-sm-1"></div>
 				<div class="col-sm-4">
@@ -357,23 +414,23 @@ strong {
 					<p>${detail.contents }</p>
 				</div>
 				<div id="menu1" class="tab-pane fade">
+					<input type="hidden" id="productNo" value="${detail.no }">
+					<c:if test="${not empty LOGIN_USER }">
 					<div id="hahaha">
-						<form role="form" action="productreple.do" method="post">
 							<br>
 							<div class="text-center">
-								<input type="radio" name="score" value="1" checked="checked" /><img
-									src="../../resources/images/default/1star.PNG"> <input
-									type="radio" name="score" value="2" /> <img
-									src="../../resources/images/default/2star.PNG"> <input
-									type="radio" name="score" value="3" /> <img
-									src="../../resources/images/default/3star.PNG"> <input
-									type="radio" name="score" value="4" /> <img
-									src="../../resources/images/default/4star.PNG"> <input
-									type="radio" name="score" value="5" /> <img
-									src="../../resources/images/default/5star.PNG">
+								<input type="radio" name="score" value="1" checked="checked" />
+								<img src="../../resources/images/default/1star.PNG"> 
+								<input type="radio" name="score" value="2" /> 
+								<img src="../../resources/images/default/2star.PNG"> 
+								<input type="radio" name="score" value="3" /> 
+								<img src="../../resources/images/default/3star.PNG"> 
+								<input type="radio" name="score" value="4" /> 
+								<img src="../../resources/images/default/4star.PNG"> 
+								<input type="radio" name="score" value="5" /> 
+								<img src="../../resources/images/default/5star.PNG">
 							</div>
 
-							<input type="hidden" id="productNo" value="${detail.no }">
 
 							<div class="panel-body">
 								<div class="col-lg-12">
@@ -381,12 +438,12 @@ strong {
 										<input type="text" id="contents" name="contents"
 											class="form-control" placeholder="최대 한글 100자까지 가능합니다.">
 										<span class="input-group-btn"> <c:choose>
-												<c:when test="${empty LOGIN_USER }">
-													<button class="btn btn-danger" type="submit"
-														id="addreviewBtn" disabled="disabled">등록</button>
+												<c:when test="${empty LOGIN_USER or repleCount == 1}">
+													<button class="btn btn-danger disabled" 
+														id="addreviewBtn">등록</button>
 												</c:when>
 												<c:otherwise>
-													<button class="btn btn-danger" type="submit"
+													<button class="btn btn-danger"
 														id="addreviewBtn">등록</button>
 												</c:otherwise>
 											</c:choose>
@@ -395,8 +452,8 @@ strong {
 									</div>
 								</div>
 							</div>
-						</form>
 					</div>
+					</c:if>
 					<div class="row" id="reviewList">
 
 						<table class="table">
@@ -409,7 +466,7 @@ strong {
 								</tr>
 							</thead>
 							<tbody id="reviewTb">
-
+								<tr><td>입력한 댓글이 없습니다.</td></tr>
 							</tbody>
 						</table>
 

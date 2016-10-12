@@ -53,7 +53,13 @@ strong {
 
 </style>
 <script type="text/javascript">
+$(function() {
+	console.log('${searchIndex}');
+	if('${searchIndex}' == 0){
+		alert("검색한 결과가 없습니다.");
+	}
 	
+});
 </script>
 <title>Insert title here</title>
 </head>
@@ -61,8 +67,6 @@ strong {
 	<header><%@ include file="../header.jsp"%></header>
 
 	<div class="container">
-		<div class="text-right">가나다라마바사</div>
-		<hr>
 			<c:forEach var="search" items="${searchList}">
 		<div class="row" id="row">
 				<div class="col-sm-2">
@@ -98,7 +102,47 @@ strong {
 		</div>
 		<hr>
 			</c:forEach>
+			
+	<!-- 페이지네이션 해볼까  -->
+		<div class="row text-center">
+			<ul class="pagination">
+			<c:if test="${param.pno gt 1 }">
+    			<li>
+      				<a href="searchList.do?type=${param.type }&search=${param.search}&pno=${param.pno - 1 }" aria-label="Previous">
+        				<span aria-hidden="true">&laquo;</span>
+      				</a>
+    			</li>
+    		</c:if>
+    		<c:forEach var="num" begin="${page.beginPage }" end="${page.endPage }">
+    			<c:choose>
+    				<c:when test="${param.pno eq num }">
+    					<li class="active"><a href="searchList.do?type=${param.type }&search=${param.search}&pno=${num }">${num }</a></li>
+    				</c:when>
+    				<c:otherwise>
+					    <li><a href="searchList.do?type=${param.type }&search=${param.search}&pno=${num }">${num }</a></li>
+    				</c:otherwise>
+    			</c:choose>
+    		</c:forEach>
+    		<c:if test="${param.pno lt page.totalPages}">
+    			<li>
+      				<a href="searchList.do?type=${param.type }&search=${param.search}&pno=${param.pno + 1 }" aria-label="Next">
+        				<span aria-hidden="true">&raquo;</span>
+      				</a>
+    			</li>
+    		</c:if>
+  			</ul>
+		</div>
+	
+			
+			
+			
+			
+			
 	</div>
+
+	
+
+
 
 
 	<%@ include file="../footer.jsp"%>

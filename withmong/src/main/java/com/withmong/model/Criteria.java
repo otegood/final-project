@@ -10,7 +10,6 @@ public class Criteria {
 	
 	public Criteria() {}
 
-	
 	public int getCategoryNo() {
 		return categoryNo;
 	}
