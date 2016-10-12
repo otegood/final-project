@@ -116,8 +116,8 @@ public class ManagerController {
 		return "manager/orderlistm";
 	}
 	// 상품삭제
-	@RequestMapping("/deleteProduct.do")
-	public String productDelete(int no){
+	@RequestMapping("/deleteProductm.do")
+	public String productDelete(@RequestParam(name="no") int no){
 		managerService.deleteProduct(no);
 		managerService.deleteProductReview(no);
 		return "redirect:/allProductList.do";

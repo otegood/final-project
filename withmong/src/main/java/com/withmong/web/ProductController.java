@@ -150,8 +150,8 @@ public class ProductController {
 
 		// 내용
 		String contents = productForm.getContents();
-		product.setContents(contents);
-
+		product.setContents(contents.replace("\r\n", "<br>"));
+		
 		//지역
 		Location location = new Location();
 		location = productService.findLocationNo(productForm.getLocation());
@@ -215,11 +215,6 @@ public class ProductController {
 		
 		product.setImg(preimg);
 		product.setImgmul(changeimg);
-		
-		System.out.println("controller preimg : " + preimg);
-		System.out.println("controller changeimg : " + changeimg);
-		System.out.println("controller changeimg : " + changeimg.getOriginalFilename());
-
 
 		//youtubeURL 
 		String video = productForm.getVideo();
@@ -227,7 +222,7 @@ public class ProductController {
 
 		// 내용
 		String contents = productForm.getContents();
-		product.setContents(contents);
+		product.setContents(contents.replace("\r\n", "<br>"));
 
 		//지역
 		Location location = new Location();
@@ -318,10 +313,7 @@ public class ProductController {
 	
 	@RequestMapping(value="/searchList.do")
 	public String searchList (@RequestParam(name="pno", required=false, defaultValue="1" ) int pno,SearchForm searchForm,Model model) throws Exception{
-		
-		System.out.println(searchForm.getSearch());
-		
-		
+
 				int rows = 7;
 				int pages = 5;
 				int beginIndex = (pno - 1)*rows + 1;
