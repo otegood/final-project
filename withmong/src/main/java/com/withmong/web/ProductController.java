@@ -150,8 +150,8 @@ public class ProductController {
 
 		// 내용
 		String contents = productForm.getContents();
-		product.setContents(contents);
-
+		product.setContents(contents.replace("\r\n", "<br>"));
+		
 		//지역
 		Location location = new Location();
 		location = productService.findLocationNo(productForm.getLocation());
@@ -227,7 +227,7 @@ public class ProductController {
 
 		// 내용
 		String contents = productForm.getContents();
-		product.setContents(contents);
+		product.setContents(contents.replace("\r\n", "<br>"));
 
 		//지역
 		Location location = new Location();

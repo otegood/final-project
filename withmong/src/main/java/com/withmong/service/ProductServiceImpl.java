@@ -159,7 +159,11 @@ public class ProductServiceImpl implements ProductService{
 		String preimgName = product.getImg();
 		String changeImgName = product.getImgmul().getOriginalFilename();
 		
-		if(!changeImgName.equals(preimgName)){	
+		System.out.println(preimgName);
+		System.out.println(changeImgName);
+		
+		if(!(changeImgName.isEmpty())){	
+		
 			String protitle = "product/"+product.getUserid();
 			
 			String extName = changeImgName.substring(changeImgName.lastIndexOf(".")+1);
