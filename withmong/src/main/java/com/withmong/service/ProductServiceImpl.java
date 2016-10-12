@@ -13,6 +13,7 @@ import com.withmong.form.BreadcrumbsForm;
 import com.withmong.form.CountForm;
 import com.withmong.form.SearchForm;
 import com.withmong.model.Category;
+import com.withmong.model.Criteria;
 import com.withmong.model.Location;
 import com.withmong.model.Order;
 import com.withmong.model.Product;
@@ -158,12 +159,6 @@ public class ProductServiceImpl implements ProductService{
 		String preimgName = product.getImg();
 		String changeImgName = product.getImgmul().getOriginalFilename();
 		
-		System.out.println("--------------------------");
-		System.out.println("--------------------------");
-		System.out.println(preimgName+" , " + changeImgName);
-		System.out.println("--------------------------");
-		System.out.println("--------------------------");
-		
 		if(!changeImgName.equals(preimgName)){	
 			String protitle = "product/"+product.getUserid();
 			
@@ -176,7 +171,6 @@ public class ProductServiceImpl implements ProductService{
 			productDao.updateProduct(product);
 		}else{
 			//product.setImg(preimgName);
-			System.out.println("preimgName : " + preimgName);
 			productDao.updateProductNoImg(product);
 		} 
 		
@@ -214,6 +208,31 @@ public class ProductServiceImpl implements ProductService{
 	public void addCart(Product product) {
 		productDao.addCart(product);
 		
+	}
+
+	@Override
+	public int getOrderCount(Product product) {
+		return productDao.getOrderCount(product);
+	}
+
+	@Override
+	public int getCartCount(Product product) {
+		return productDao.getCartCount(product);
+	}
+
+	@Override
+	public int getRepleCount(Product product) {
+		return productDao.getRepleCount(product);
+	}
+
+	@Override
+	public int getProReplyCount(int no) {
+		return productDao.getProReplyCount(no);
+	}
+
+	@Override
+	public int getTotalRows(SearchForm searchForm) {
+		return productDao.getTotalRows(searchForm);
 	}
 
 

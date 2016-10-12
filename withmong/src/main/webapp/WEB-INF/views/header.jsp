@@ -175,6 +175,7 @@ WebFontConfig = {
 							</span> <input class="form-control" name="search"
 								placeholder="검색" autocomplete="off"
 								autofocus="autofocus" type="text">
+								<input type="hidden" name="pno" value="1">
 						</div>
 					</div>
 				</form>

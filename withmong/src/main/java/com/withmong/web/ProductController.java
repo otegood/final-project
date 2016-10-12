@@ -22,8 +22,10 @@ import com.withmong.form.CountForm;
 import com.withmong.form.ProductForm;
 import com.withmong.form.SearchForm;
 import com.withmong.model.Category;
+import com.withmong.model.Criteria;
 import com.withmong.model.Location;
 import com.withmong.model.Order;
+import com.withmong.model.Pagination;
 import com.withmong.model.Product;
 import com.withmong.model.ProductReview;
 import com.withmong.model.User;
@@ -66,13 +68,31 @@ public class ProductController {
 		Product product = productService.getProductByNo(no);
 		List<Product> sellerProducts = productService.getSellerProducts(product);
 		model.addAttribute("sellerProducts", sellerProducts);
+
+		int orderCount = 0;
+		int cartCount = 0;
+		int repleCount = 0;
+		
+		if(loginedUser != null){
+						
+			product.setUserid(loginedUser.getId());
+			product.setNo(no);
+			orderCount = productService.getOrderCount(product);
+			cartCount = productService.getCartCount(product);	
+			repleCount = productService.getRepleCount(product);
+		}
+		int proReplyCount = productService.getProReplyCount(no);
+		
+		model.addAttribute("orderCount", orderCount);
+		model.addAttribute("cartCount", cartCount);
+		model.addAttribute("repleCount", repleCount);
+		model.addAttribute("proReplyCount", proReplyCount);
 		
 		
 		//쿠키 조회용
-		Cookie cookie = new Cookie("item_"+no, URLEncoder.encode(product.getTitle()+"___ZZZ___"+product.getImg(), "utf-8"));
-		cookie.setMaxAge(60*60*24);
-		res.addCookie(cookie);
-		
+				Cookie cookie = new Cookie("item_"+no, URLEncoder.encode(product.getTitle()+"___ZZZ___"+product.getImg(), "utf-8"));
+				cookie.setMaxAge(60*60*24);
+				res.addCookie(cookie);
 		
 		return "product/detail";
 	}
@@ -297,17 +317,34 @@ public class ProductController {
 	}
 	
 	@RequestMapping(value="/searchList.do")
-	//public String searchList (@RequestParam(name="search")String search, @RequestParam(name="type")String type,Model model) throws Exception{
-	public String searchList (String search, String type,Model model) throws Exception{
-
+	public String searchList (@RequestParam(name="pno", required=false, defaultValue="1" ) int pno,SearchForm searchForm,Model model) throws Exception{
 		
-		SearchForm searchForm = new SearchForm();
-		searchForm.setType(type);
-		searchForm.setSearch(search);
+		System.out.println(searchForm.getSearch());
 		
-		List<Product> searchProduct = productService.searchProduct(searchForm);	
-		
-		model.addAttribute("searchList",searchProduct);
+		 // 페이지 번호가 1보다 작으면 1페이지로 리다이렉트
+				
+				
+				int rows = 7;
+				int pages = 5;
+				int beginIndex = (pno - 1)*rows + 1;
+				int endIndex = pno*rows;
+				
+				searchForm.setBeginIndex(beginIndex);
+				searchForm.setEndIndex(endIndex);
+				
+				// 전체 데이타 건수 조회하기
+				int totalRows = productService.getTotalRows(searchForm);
+				
+				// 페이지 내비게이션 정보 생성하기
+				Pagination pagination = new Pagination(rows, pages, pno, totalRows);
+				List<Product> searchProduct = productService.searchProduct(searchForm);
+			
+			model.addAttribute("type",searchForm.getType());
+			model.addAttribute("search",searchForm.getSearch());
+			model.addAttribute("searchList",searchProduct);
+			model.addAttribute("page", pagination);
+			model.addAttribute("searchIndex", totalRows);
+			
 		return "product/searchList";
 	}
 

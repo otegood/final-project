@@ -105,7 +105,8 @@
 	
 
 	<select id="searchProduct" parameterType="Search" resultType="Product">
-		select no,
+		select
+			no,
 			title,
 			userid,
 			img,
@@ -119,21 +120,29 @@
 			tag,
 			categoryno as "category.no",
 			location as "location.no"
-		from product_table
-		<where> 
-			<if test="type == 'title'">
-				title like '%' || #{search} || '%'
-			</if>
-			<if test="type == 'contents'">
-				and contents like '%' || #{search} || '%'
-			</if>
-			<if test="type == 'tag'">
-				and tag like '%' || #{search} || '%'
-			</if>
-			<if test="type == 'writer'">
-				and userid like '%' || #{search} || '%'
-			</if>
-		</where>
+		from (select 
+					row_number () over (order by regdate desc) rn, 
+				no, title, userid, img, video, contents, price, 
+				qty, regdate, avglike, hits, tag, categoryno, location
+				from
+				product_table
+			<where> 
+				<if test="type == 'title'">
+					and title like '%' || #{search} || '%'
+				</if>
+				<if test="type == 'contents'">
+					and contents like '%' || #{search} || '%'
+				</if>
+				<if test="type == 'tag'">
+					and tag like '%' || #{search} || '%'
+				</if>
+				<if test="type == 'writer'">
+					and userid like '%' || #{search} || '%'
+				</if>
+			</where>
+				)
+			where
+				 RN >= #{beginIndex} and RN &lt;= #{endIndex}
 	</select>
 
 	<select id="getProductByNo" parameterType="int" resultType="Product">
@@ -249,6 +258,47 @@
 		(test_seq.nextval,#{userid},#{no})
 	</insert>
 	
+	<!-- 주문목록에 상품이 있는지 확인 -->
+	<select id="getOrderCount" parameterType="Product" resultType="int">
+		SELECT count(no)
+		FROM order_table
+		where productno = #{no} and userid=#{userid}
+		
+	</select>
+	<select id="getCartCount" parameterType="Product" resultType="int">
+		SELECT count(no)
+		FROM cart_table
+		where productno = #{no} and userid=#{userid}
+	
+	</select>
+	<select id="getRepleCount" parameterType="Product" resultType="int">
+		SELECT count(no)
+		FROM product_review
+		where productno = #{no} and userid=#{userid}
+	</select>
+	<select id="getProReplyCount" parameterType="int" resultType="int">
+		SELECT count(no)
+		FROM product_review
+		where productno = #{value}
+	</select>
+	<select id="getTotalRows" parameterType="Search" resultType="int">
+	select count(no)
+	from product_table
+	<where>
+		<if test="type == 'title'">
+			and title like '%' || #{search} || '%'
+		</if>
+		<if test="type == 'contents'">
+			and contents like '%' || #{search} || '%'
+		</if>
+		<if test="type == 'tag'">
+			and tag like '%' || #{search} || '%'
+		</if>
+		<if test="type == 'writer'">
+			and userid like '%' || #{search} || '%'
+		</if>
+	</where>
+	</select>
 	
 </mapper>
 

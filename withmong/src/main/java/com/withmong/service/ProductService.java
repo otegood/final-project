@@ -7,6 +7,7 @@ import com.withmong.form.BreadcrumbsForm;
 import com.withmong.form.CountForm;
 import com.withmong.form.SearchForm;
 import com.withmong.model.Category;
+import com.withmong.model.Criteria;
 import com.withmong.model.Location;
 import com.withmong.model.Order;
 import com.withmong.model.Product;
@@ -44,6 +45,11 @@ public interface ProductService {
 	List<Product> getSellerProducts(Product product);
 	void productQtyupdate(Product product);
 	void addCart(Product product);
+	int getOrderCount(Product product);
+	int getCartCount(Product product);
+	int getRepleCount(Product product);
+	int getProReplyCount(int no);
+	int getTotalRows(SearchForm searchForm);
 
 	
 }

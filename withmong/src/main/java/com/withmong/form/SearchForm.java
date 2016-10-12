@@ -4,8 +4,23 @@ public class SearchForm {
 
 	private String type;
 	private String search;
+	private int beginIndex;
+	private int endIndex;
 	
 	
+	
+	public int getBeginIndex() {
+		return beginIndex;
+	}
+	public void setBeginIndex(int beginIndex) {
+		this.beginIndex = beginIndex;
+	}
+	public int getEndIndex() {
+		return endIndex;
+	}
+	public void setEndIndex(int endIndex) {
+		this.endIndex = endIndex;
+	}
 	public String getType() {
 		return type;
 	}
