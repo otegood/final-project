@@ -97,7 +97,7 @@ $(function(){
 					<td>${product.userid }</td>
 					<td><fmt:formatNumber value="${product.price }"></fmt:formatNumber>point</td>
 					<td rowspan="3">
-						<a class="btn btn-danger btn-xl" href="deleteProduct.do?no=${product.no }" style="height: 100px; width:100px;">
+						<a class="btn btn-danger btn-xl" href="deleteProductm.do?no=${product.no }" style="height: 100px; width:100px;">
 							<font size="6">삭제</font>
 						</a>
 					</td>
