@@ -13,7 +13,7 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script
 	src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
+<script language='JavaScript'>MovePosition();</script>
 <script type="text/javascript">
 	$(function() {
 		//DB에서 태그에 해당하는 상품 보여주기
@@ -137,6 +137,34 @@
 		    });
 		    
 		});
+		//최근 배너 도전중
+		function CheckUIElements(){
+			 var yMenu1From, yMenu1To, yOffset,timeoutNextCheck;
+			 var wndWidth = parseInt(document.body.clientWidth);
+			 yMenu1From   = parseInt(r2_scroll_area.style.top, 10);
+			 yMenu1To     = document.body.scrollTop + 0; // 위쪽 위치
+
+			 timeoutNextCheck = 500;
+
+			 if ( yMenu1From != yMenu1To ) {
+			 yOffset = Math.ceil(Math.abs( yMenu1To - yMenu1From ) / 20 );
+			 if ( yMenu1To < yMenu1From ) yOffset = -yOffset;
+			 r2_scroll_area.style.top = parseInt (r2_scroll_area.style.top, 10) + yOffset;
+			 timeoutNextCheck = 10;
+			 }
+
+			 setTimeout ("CheckUIElements()",timeoutNextCheck);
+			}
+
+			function MovePosition(){
+			 var wndWidth = parseInt(document.body.clientWidth);
+			 r2_scroll_area.style.top = document.body.scrollTop + 0;    // 포지션
+			 r2_scroll_area.style.visibility = "visible";
+
+			 // initializing UI update timer
+			 CheckUIElements();
+			 return true;
+			}
 		
 	})
 </script>
@@ -264,6 +292,24 @@ strong {
       }
       .row.content {height:auto;}
     }
+    
+    #floatdiv {
+ 
+   position:fixed; _position:absolute; _z-index:-1;
+    width:170px;
+    background-color: transparent;
+    padding:0;
+
+    display: block;
+    text-align: center;
+    text-transform: uppercase;
+    text-decoration: none;
+}
+
+#floatdiv ul  { list-style: none; }
+#floatdiv li  { margin-bottom: 2px; text-align: center; }
+#floatdiv a   { color: #5D5D5D; border: 0; text-decoration: none; display: block; }
+
 </style>
 <title>Insert title here</title>
 </head>
@@ -360,26 +406,43 @@ strong {
 	
 		</div>
 		<!-- 상단으로 이동하는 배너 등록 -->
-		<div class="col-sm-1 sidenav">
-			<div><br /></div>
-			<div><br /></div>
-			<div><br /></div>
-			<div><br /></div>
-		
-			<div><br /></div>
-			<div><br /></div>
-			<div><br /></div>
+		<div class="col-sm-1">
+			<div class="col-sm-6 sidenav">
+				<div><br /></div>
+				<div><br /></div>
+				<div id="floatdiv">
+					<ul style="padding-left: 0px; width: 100px; height: 80px;">
+					<p style="border: 3 ; color: red;">최근 본 상품</p>
+					    <c:forEach var="product" items="${recentList }">
+					    	
+							<li class="recent" style="border: solid; margin-bottom: 10px;">
+								<a href="detail.do?productNo=${product.no }"><span>${product.title}</span>
+									<img alt="" src="resources/images/${product.img}" style="width: 80px; height: 60px; margin: 10px; padding-right: 5px;">
+								</a>
+							</li>	
+					    </c:forEach>
+								
+					    </ul>
+				</div>
+				<div><br /></div>
+				
 			
-				<p id="back-top" style="position: fixed; height: auto;">
-				    <a href="#top">
-					    <span>
-					    	<img alt="" src="resources/images/default/top.jpg" style="height: 100%;">
-				    	</span>
-					</a>
-				</p>
+				<div><br /></div>
+				<div><br /></div>
+				<div class="row"></div>
+				
+					<p id="back-top" style="position: fixed; height: auto; margin-top: 450px;">
+					    <a href="#top">
+						    <span>
+						    	<img alt="" src="resources/images/default/top.jpg" style="height: 100%;">
+					    	</span>
+						</a>
+					</p>
+				
+			</div>
+		
 			
 		</div>
-		
 	</div>
 </div>
 

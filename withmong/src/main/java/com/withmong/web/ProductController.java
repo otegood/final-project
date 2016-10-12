@@ -1,6 +1,11 @@
 package com.withmong.web;
 
+import java.net.URLEncoder;
 import java.util.List;
+
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,7 +37,8 @@ public class ProductController {
 	private ProductService productService;
 
 	@RequestMapping(value="/detail.do")
-	public String detail(@RequestParam(name="productNo") int no, Model model,Model review,Model userDe,User loginedUser) {
+	public String detail(@RequestParam(name="productNo") int no, Model model,Model review,Model userDe,User loginedUser
+			, HttpServletRequest req, HttpServletResponse res) throws Exception {
 		//조회수 업데이트
 		productService.updateHits(no);
 		
@@ -60,6 +66,14 @@ public class ProductController {
 		Product product = productService.getProductByNo(no);
 		List<Product> sellerProducts = productService.getSellerProducts(product);
 		model.addAttribute("sellerProducts", sellerProducts);
+		
+		
+		//쿠키 조회용
+		Cookie cookie = new Cookie("item_"+no, URLEncoder.encode(product.getTitle()+"___ZZZ___"+product.getImg(), "utf-8"));
+		cookie.setMaxAge(60*60*24);
+		res.addCookie(cookie);
+		
+		
 		return "product/detail";
 	}
 	

@@ -1,12 +1,17 @@
 package com.withmong.web;
 
+import java.net.URLDecoder;
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Required;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -232,7 +237,7 @@ public class MainController {
 	
 	//중앙 화면 뿌려주기?	
 	@RequestMapping(value="/main.do", method=RequestMethod.GET)
-	public String displaylist(Model model, Criteria criteria) throws Exception {
+	public String displaylist(Model model, Criteria criteria, HttpServletRequest req) throws Exception {
 
 		criteria.setBeginIndex(1);
 		criteria.setEndIndex(5);
@@ -241,6 +246,39 @@ public class MainController {
 
 	
 		model.addAttribute("displaylist", displaylist);
+		
+		Cookie[] cookies = req.getCookies();
+		List<Product> recentList = new ArrayList<>();
+		
+		int count = 0;
+		if (cookies != null) {
+			for (int i = cookies.length-1; i>=0; i--) {
+				String name = cookies[i].getName();
+				if (name.startsWith("item_")) {
+					String value = URLDecoder.decode(cookies[i].getValue(), "utf-8");
+					String[] values = value.split("___ZZZ___");
+					Product product = new Product();
+					product.setNo(Integer.parseInt(name.replace("item_", "")));
+					 //제목이 길어질 때 일정부분 축약
+					if (values[0].length() > 7) {
+						values[0] = values[0].substring(0, 5)+"...";
+						product.setTitle(values[0]);
+					} else {
+						product.setTitle(values[0]);
+					}
+					product.setImg(values[1]);
+					if(product != null) {
+						count++;
+						recentList.add(product);
+					}
+				}
+				if (count == 4) {
+					break;
+				}
+			}			
+		}
+		model.addAttribute("recentList",recentList);
+		
 		
 		return "main";
 		
