@@ -260,7 +260,7 @@ public class MainController {
 					Product product = new Product();
 					product.setNo(Integer.parseInt(name.replace("item_", "")));
 					 //제목이 길어질 때 일정부분 축약
-					if (values[0].length() > 7) {
+					if (values[0].length() > 6) {
 						values[0] = values[0].substring(0, 5)+"...";
 						product.setTitle(values[0]);
 					} else {
