@@ -13,7 +13,6 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script
 	src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<script language='JavaScript'>MovePosition();</script>
 <script type="text/javascript">
 	$(function() {
 		//DB에서 태그에 해당하는 상품 보여주기
