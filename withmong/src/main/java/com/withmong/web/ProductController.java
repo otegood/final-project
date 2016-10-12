@@ -321,9 +321,7 @@ public class ProductController {
 		
 		System.out.println(searchForm.getSearch());
 		
-		 // 페이지 번호가 1보다 작으면 1페이지로 리다이렉트
-				
-				
+		
 				int rows = 7;
 				int pages = 5;
 				int beginIndex = (pno - 1)*rows + 1;
