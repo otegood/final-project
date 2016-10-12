@@ -42,4 +42,6 @@ public interface ManagerService {
 	List<Report> getAllReport();
 	// 수익목록
 	List<ProfitForm> profitChart();
+	// 카테고리별상품목록
+	List<Product> getProducts(int cno);
 }

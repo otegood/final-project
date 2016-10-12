@@ -178,4 +178,25 @@
 		order by 
 			to_char(regdate, 'mm/dd') 
 	</select>
+<!-- 카테고리별 상품목록 -->
+	<select id="getProducts" resultType="Product" parameterType="int">
+		select
+			a.no as "no", 
+			a.title as "title",
+			a.userid as "userid.id", 
+			a.img as "img", 
+			a.price as "price", 
+			a.regdate as "regdate", 
+			a.avglike as "avglike", 
+			a.hits as "hits",
+			a.categoryno as "categoryno"
+		from
+			product_table a, category_table b
+		where
+			a.categoryno = b.no
+		and 
+			b.bno = #{cno}
+		order by
+			regdate desc
+	</select>
 </mapper>

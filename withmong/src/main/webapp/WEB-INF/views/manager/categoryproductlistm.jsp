@@ -82,7 +82,7 @@ $(function(){
 			<a class="btn btn-warning" href="productlist.do?cno=4">Other</a>
 		</div>
 		<br/>
-		<c:forEach var="product" items="${productList }">
+		<c:forEach var="product" items="${products }">
 			<table class="table" style="margin-bottom: 20px;" border="1">
 				<tr>
 					<th style="width: 100px;">${product.no }</th>

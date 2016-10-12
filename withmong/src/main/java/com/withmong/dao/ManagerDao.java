@@ -50,5 +50,7 @@ public interface ManagerDao {
 	List<Report> getAllReport();
 	// 수익목록
 	List<ProfitForm> getProfitList();
+	// 카테고리별 상품목록
+	List<Product> getProducts(int cno);
 	
 }
