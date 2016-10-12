@@ -408,8 +408,7 @@ strong {
 		<!-- 상단으로 이동하는 배너 등록 -->
 		<div class="col-sm-1">
 			<div class="col-sm-6 sidenav">
-				<div><br /></div>
-				<div><br /></div>
+				
 				<div id="floatdiv">
 					<ul style="padding-left: 0px; width: 100px; height: 80px;">
 					<p style="border: 3 ; color: red;">최근 본 상품</p>
