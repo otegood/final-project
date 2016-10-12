@@ -19,7 +19,7 @@ import com.withmong.service.PointService;
 @Controller
 public class PointController {
 
-	@Autowired
+	@Autowired   
 	private PointService pointService;
 	
 	//에러날때
