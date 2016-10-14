@@ -76,7 +76,7 @@ strong {
 					<a href="detail.do?productNo=${p.no}"><img width="100px"
 						height="100px" src="../../resources/images/${p.img }"> </a>
 				</div>
-				<div class="col-sm-4">
+				<div class="col-sm-7">
 					제목 : <a href="detail.do?productNo=${p.no }" style="text-decoration: none;"> <c:choose>
 							<c:when test="${fn:length(p.title) > 36}">
                                  ${fn:substring(p.title, 0, 35)}...</c:when>
@@ -90,7 +90,9 @@ strong {
 						내용:
 						<c:choose>
 							<c:when test="${fn:length(p.contents) > 160}">
-	                                 ${fn:substring(p.contents, 0, 160)}...</c:when>
+	                           <c:set var="contents" value="${fn:replace(p.contents, '<br>', '')}"/>
+                               ${fn:substring(contents, 0, 155) } ...      
+	                        </c:when>
 								  <c:otherwise>
 	                               	  ${p.contents}
 	                              </c:otherwise>
@@ -99,9 +101,6 @@ strong {
 				</div>
 				<div class="col-sm-3">
 					<p>작성자: ${p.userid } </p>
-				</div>
-				 
-				<div class="col-sm-3">
 					<p>조회수 : ${p.hits }</p>
 					<p>평점:  ${p.avglike }점</p>
 					<p>포인트 : ${p.price }P</p>

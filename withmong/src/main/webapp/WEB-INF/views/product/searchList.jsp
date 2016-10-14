@@ -73,7 +73,7 @@ $(function() {
 					<a href="detail.do?productNo=${search.no }"><img width="100px" height="100px" src="../../resources/images/${search.img }">
 					</a>
 				</div>
-				<div class="col-sm-8">
+				<div class="col-sm-8" style="height: 150px;">
 					<h4>
 						제목 : <a href="detail.do?productNo=${search.no }">
 						<c:choose>
@@ -88,7 +88,11 @@ $(function() {
 					</h4>
 						<c:choose>
                               <c:when test="${fn:length(search.contents) > 160}">
-                                 ${fn:substring(search.contents, 0, 160)}...</c:when>
+                                 
+                                 <c:set var="contents" value="${fn:replace(search.contents, '<br>', '')}"/>
+                                 ${fn:substring(contents, 0, 155) } ...
+                                 </c:when>
+                                 
                               <c:otherwise>
                                  ${search.contents}
                               </c:otherwise>
