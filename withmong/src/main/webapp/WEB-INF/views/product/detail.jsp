@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -243,14 +244,14 @@ $(function() {
 	$("input[name='qty']").change(function() {
 		$("#lastPrice").empty();
 				var qty = $(this).val();
-				$("#lastPrice").append(qty * "${detail.price}" + 'P');
+				$("#lastPrice").append("구매 총액 : "+qty * "${detail.price}" + 'P');
 			});
 	$("#selectqty").change(function() {
 		$("#lastPrice").empty();
 		$("#qtyview").empty();
 				var qty = $(this).val();
 				$("#qtyview").append("구매 수 : "+qty+" X ${detail.price } P = "+qty * "${detail.price}" + "P")
-				$("#lastPrice").append(qty * "${detail.price}" + 'P');
+				$("#lastPrice").append("구매 총액 : "+qty * "${detail.price}" + 'P');
 			});
 
 	var loginId = '${LOGIN_USER.id}'
@@ -334,24 +335,21 @@ strong {
 		<!-- 내용 기입 -->
 		<div class="container">
 			<div class="row">
-				<div class="col-sm-3">${crumbs.cateBName}> ${crumbs.cateSName }</div>
-				<div class="col-sm-6">제목 : ${detail.title }</div>
-				<div class="col-sm-3">조회수 : ${detail.hits }</div>
+				<div>
+					<font size="8" ><b>${detail.title }</b></font>
+				</div>
 			</div>
 			<hr>
 			<div class="row">
-				<div class="col-sm-7">
-					<span> <strong style="color: black;">태그</strong>
-						${detail.tag }
-					</span>
-				</div>
-				<div class="col-sm-3" id="avgStar"></div>
-				<div class="col-sm-2" id="proregister"></div>
+				<div class="col-sm-3"> ${crumbs.cateBName}> ${crumbs.cateSName }</div>
+				<div class="col-sm-5" id="avgStar"></div>
+				<div class="col-sm-2">조회수 : ${detail.hits }</div>
 			</div>
 			<hr>
 			<div class="row">
 				<div class="col-sm-3">
 					<img src="../../resources/images/${detail.img}" width="300px;" height="300px">
+					<b>${fn:replace(detail.tag , ' ', '#')}</b>
 				</div>
 				<div class="col-sm-1"></div>
 				<div class="col-sm-3">
@@ -359,7 +357,7 @@ strong {
 					</div>
 					<br>
 					<div>
-						<span id="lastPrice">${1 * detail.price }P</span><br>
+						<span id="lastPrice">구매 총액 : ${1 * detail.price }P</span><br>
 						<c:choose>
 							<c:when test="${empty LOGIN_USER or detail.qty eq 0 or orderCount eq 1}">
 								<button id="buybtn" type="button" class="btn btn-danger"
@@ -376,6 +374,8 @@ strong {
 							</c:when>
 							<c:otherwise>
 								<button id="cartbtn" type="button" class="btn btn-info">찜하기</button>
+								<br/>
+								<div id="proregister"></div>
 							</c:otherwise>
 						</c:choose>
 					</div>
@@ -383,7 +383,7 @@ strong {
 				<div class="col-sm-1"></div>
 				<div class="col-sm-4">
 					<div class="row">
-						<p>판매자 아이디 : ${userDetail.id }</p>
+						<p>판매자 아이디 : <b>${userDetail.id }</b></p>
 						<p>
 							판매자 프로필 
 							<a href="tomessage.do?id=${userDetail.id }" style="margin-left: 10px;">
