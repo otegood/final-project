@@ -145,6 +145,9 @@ WebFontConfig = {
 										class="glyphicon glyphicon-log-out"></span> 로그아웃</a></li>
 							</ul>
 						</li>
+						<li style="margin-top: 15px; color: yellow;">
+							 ${LOGIN_USER.point }P
+						</li>
 						<!-- 상품 등록링크타기 -->
 						<li>
 							<a class="" href="addProduct.do">
