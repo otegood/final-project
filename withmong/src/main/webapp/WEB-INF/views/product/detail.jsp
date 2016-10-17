@@ -357,7 +357,7 @@ strong {
 					</div>
 					<br>
 					<div>
-						<span id="lastPrice">구매 총액 : ${1 * detail.price }P</span><br>
+						구매 총액 : <span id="lastPrice">${1 * detail.price }</span>P<br>
 						<c:choose>
 							<c:when test="${empty LOGIN_USER or detail.qty eq 0 or orderCount eq 1}">
 								<button id="buybtn" type="button" class="btn btn-danger"
