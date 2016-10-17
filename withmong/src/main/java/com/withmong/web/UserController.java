@@ -36,8 +36,7 @@ import com.withmong.service.UserService;
 public class UserController {
 	
 	@Autowired private UserService userService;
-	private static String UPLOAD_DIRECTORY = "C:\\Users\\JHTA\\git\\final-project\\withmong\\src\\main\\webapp\\resources\\images\\profile";
-	
+	private static String UPLOAD_DIRECTORY = "C:\\project_spring\\workspace\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\wtpwebapps\\withmong\\resources\\images\\profile";
 	@InitBinder
 	public void initBinder(WebDataBinder binder) {
 		binder.registerCustomEditor(Date.class, new CustomDateEditor(new SimpleDateFormat("yyyy-MM-dd"), true));
